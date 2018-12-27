@@ -28,6 +28,8 @@
 
 		<module>../../releng/org.pgcase.xobot.repository</module>
 
+		<module>../../products/org.pgcase.xobot.ide.product</module>
+
 	</modules>
 
 </project>

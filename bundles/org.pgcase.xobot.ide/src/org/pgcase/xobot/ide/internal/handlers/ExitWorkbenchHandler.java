@@ -18,7 +18,7 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package ru.arsysop.mola.workbench.internal.handlers;
+package org.pgcase.xobot.ide.internal.handlers;
 
 import javax.inject.Named;
 
@@ -43,9 +43,9 @@ public class ExitWorkbenchHandler {
 		String title = "Exit dialog";
 		String message = "Do you want to exit the product?";
 		if (MessageDialog.openQuestion(shell, title, message)) {
-			Object workbench = context.get(IWorkbench.class.getName());
-			if (workbench != null && workbench instanceof IWorkbench) {
-				((IWorkbench) workbench).close();
+			IWorkbench workbench = context.get(IWorkbench.class);
+			if (workbench != null) {
+				workbench.close();
 			}
 		}
 	}

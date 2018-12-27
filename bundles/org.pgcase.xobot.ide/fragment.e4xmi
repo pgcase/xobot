@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_vMKaEAnIEemjs-KJUhKP6w">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yNNJMAnIEemjs-KJUhKP6w" featurename="children" parentElementId="IDEWindow">
+    <elements xsi:type="advanced:PerspectiveStack" xmi:id="_-5JQUAnIEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.perspectivestack.main" selectedElement="__uEtMAnIEemjs-KJUhKP6w">
+      <children xsi:type="advanced:Perspective" xmi:id="__uEtMAnIEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.perspective.main" label="Xobot IDE" iconURI="platform:/plugin/org.pgcase.xobot.ide/images/xobot16.png">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_DbzjMAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.partsashcontainer.root" horizontal="true">
+          <children xsi:type="basic:PartStack" xmi:id="_LrpScAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.partstack.explorers" containerData="25">
+            <children xsi:type="basic:Part" xmi:id="_N9ojMAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.part.sources" label="Sources"/>
+          </children>
+          <children xsi:type="basic:PartSashContainer" xmi:id="_Q9x6cAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.partsashcontainer.right" containerData="75">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_iTGngAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.partsashcontainer.area" containerData="75" horizontal="true">
+              <children xsi:type="advanced:Area" xmi:id="_xI4I8AnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.area.editor" containerData="75"/>
+              <children xsi:type="basic:PartStack" xmi:id="_2NSeAAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.partstack.outlines" containerData="25">
+                <children xsi:type="basic:Part" xmi:id="_5x7CYAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.part.targets" label="Targets"/>
+              </children>
+            </children>
+            <children xsi:type="basic:PartStack" xmi:id="_q4PRUAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.partstack.messages" containerData="25">
+              <children xsi:type="basic:Part" xmi:id="_toFiwAnJEemjs-KJUhKP6w" elementId="org.pgcase.xobot.ide.part.toolchains" label="Toolchains"/>
+            </children>
+          </children>
+        </children>
+      </children>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

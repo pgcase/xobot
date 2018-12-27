@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Xobot IDE" uid="org.pgcase.xobot.ide.product" id="org.pgcase.xobot.ide.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="0.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/org.pgcase.xobot.ide/images/xobot_lg.png"/>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-clearPersistedState
+      </programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/org.pgcase.xobot.ide/images/xobot16.png" i32="/org.pgcase.xobot.ide/images/xobot32.png" i48="/org.pgcase.xobot.ide/images/xobot48.png" i64="/org.pgcase.xobot.ide/images/xobot64.png" i128="/org.pgcase.xobot.ide/images/xobot128.png"/>
+
+   <splash
+      location="org.pgcase.xobot.ide" />
+   <launcher name="XobotIDE">
+      <win useIco="true">
+         <ico path="./ico/xobot.ico"/>
+         <bmp
+            winSmallHigh="./ico/xobot_16_32.bmp"
+            winSmallLow="./ico/xobot_16_8.bmp"
+            winMediumHigh="./ico/xobot_32_32.bmp"
+            winMediumLow="./ico/xobot_32_8.bmp"
+            winLargeHigh="./ico/xobot_48_32.bmp"
+            winLargeLow="./ico/xobot_48_8.bmp"/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.pgcase.xobot.ide.feature"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
+
+</product>

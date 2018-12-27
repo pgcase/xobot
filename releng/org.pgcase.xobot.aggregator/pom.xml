@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2018 ArSysOp
+-->
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.pgcase.xobot.aggregator</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.pgcase.xobot</groupId>
+		<artifactId>org.pgcase.xobot.parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath>../../releng/org.pgcase.xobot.parent</relativePath>
+	</parent>
+
+	<modules>
+		<module>../../releng/org.pgcase.xobot.target</module>
+		<module>../../features/org.pgcase.xobot.license.feature</module>
+
+		<module>../../bundles/org.pgcase.xobot.ide</module>
+		<module>../../features/org.pgcase.xobot.ide.feature</module>
+
+		<module>../../releng/org.pgcase.xobot.repository</module>
+
+	</modules>
+
+</project>

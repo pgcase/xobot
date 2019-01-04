@@ -2,11 +2,9 @@ package org.pgcase.xobot.runtime;
 
 import java.math.BigInteger;
 
-public interface XIDESource {
+public interface XIDESource extends XIDESourceStream{
 	
 	String getName();
-	
-	Iterable<XIDEItem> items(boolean loadBody);
 	
 	BigInteger update(XIDEItem item);
 	

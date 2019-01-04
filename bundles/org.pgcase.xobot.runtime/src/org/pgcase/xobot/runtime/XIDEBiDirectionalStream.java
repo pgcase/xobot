@@ -1,5 +1,9 @@
 package org.pgcase.xobot.runtime;
 
-public interface XIDEBiDirectionalStream extends XIDESource,XIDETarget{
+import java.math.BigInteger;
 
+public interface XIDEBiDirectionalStream extends XIDESourceStream,XIDETargetStream{
+	String getName();
+	
+	BigInteger update(XIDEItem item);
 }

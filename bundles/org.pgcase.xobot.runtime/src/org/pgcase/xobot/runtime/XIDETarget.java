@@ -1,9 +1,7 @@
 package org.pgcase.xobot.runtime;
 
-public interface XIDETarget {
+public interface XIDETarget extends XIDETargetStream{
 	
 	String getName();
 	
-	void item();
-
 }

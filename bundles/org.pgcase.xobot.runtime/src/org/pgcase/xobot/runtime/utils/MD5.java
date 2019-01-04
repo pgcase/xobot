@@ -1,4 +1,4 @@
-package org.pgcase.xobot.ide.utils;
+package org.pgcase.xobot.runtime.utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

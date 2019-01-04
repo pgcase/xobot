@@ -1,12 +1,12 @@
-package org.pgcase.xobot.ide.elemets;
+package org.pgcase.xobot.runtime.impl;
 
 import java.math.BigInteger;
 import java.util.List;
 import java.util.UUID;
 
-import org.pgcase.xobot.ide.model.XIDEType;
+import org.pgcase.xobot.runtime.XIDEType;
 
-public class XIDEProcedure implements org.pgcase.xobot.ide.model.XIDEProcedure {
+public class XIDEProcedure implements org.pgcase.xobot.runtime.XIDEProcedure {
 	
 	private final String name;
 	

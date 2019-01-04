@@ -1,4 +1,4 @@
-package org.pgcase.xobot.ide.model;
+package org.pgcase.xobot.runtime;
 
 public enum XIDEContainerType {
   XIDECONTAINER_CONTAINER, XIDECONTAINER_PROCEDURES, XIDECONTAINER_TRIGGERS, XIDECONTAINER_FUNCTIONS

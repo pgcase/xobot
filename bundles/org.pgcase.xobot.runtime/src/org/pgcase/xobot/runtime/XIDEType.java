@@ -1,4 +1,4 @@
-package org.pgcase.xobot.ide.model;
+package org.pgcase.xobot.runtime;
 
 public interface XIDEType {
  String getTitle();

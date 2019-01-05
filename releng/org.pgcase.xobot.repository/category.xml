@@ -29,16 +29,19 @@
 		id="org.pgcase.xobot.landscape.feature"
 		version="0.1.0.qualifier">
 		<category name="org.pgcase.xobot.category" />
+	</feature>
 	<feature
 		url="features/org.pgcase.xobot.toolchain.feature_0.1.0.qualifier.jar"
 		id="org.pgcase.xobot.toolchain.feature"
 		version="0.1.0.qualifier">
 		<category name="org.pgcase.xobot.category" />
+	</feature>
 	<feature
 		url="features/org.pgcase.xobot.workspace.feature_0.1.0.qualifier.jar"
 		id="org.pgcase.xobot.workspace.feature"
 		version="0.1.0.qualifier">
 		<category name="org.pgcase.xobot.category" />
+	</feature>
 	<feature
 		url="features/org.pgcase.xobot.ide.feature_0.1.0.qualifier.jar"
 		id="org.pgcase.xobot.ide.feature"

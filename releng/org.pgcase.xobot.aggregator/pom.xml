@@ -36,6 +36,9 @@
 		<module>../../bundles/org.pgcase.xobot.ide</module>
 		<module>../../features/org.pgcase.xobot.ide.feature</module>
 
+		<module>../../bundles/org.pgcase.xobot.e3</module>
+		<module>../../features/org.pgcase.xobot.e3.feature</module>
+
 		<module>../../releng/org.pgcase.xobot.repository</module>
 
 		<module>../../products/org.pgcase.xobot.ide.product</module>

@@ -13,7 +13,7 @@ import org.pgcase.xobot.parsers.postgres.SqlParser;
 
 public class PGFunctionParseHeader {
 
-	public static RawFunction parse(InputStream in,List<String> errors) throws IOException {
+	public static RawFunctionBase parse(InputStream in,List<String> errors) throws IOException {
 		
 		final ANTLRInputStream input = new ANTLRInputStream(in);
 

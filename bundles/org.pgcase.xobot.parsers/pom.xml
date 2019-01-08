@@ -20,7 +20,7 @@
 				<version>4.5</version>
 				<configuration>
 					<sourceDirectory>${basedir}/grammar</sourceDirectory>
-					<outputDirectory>${basedir}/src</outputDirectory>
+					<outputDirectory>${basedir}/src-gen</outputDirectory>
 					<libDirectory>${basedir}/grammar/org/pgcase/xobot/parsers/postgres</libDirectory>
 					<visitor>true</visitor>
 					<listener>false</listener>
@@ -46,7 +46,7 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>src</source>
+								<source>src-gen</source>
 								<source>grammar</source>
 							</sources>
 						</configuration>
@@ -60,16 +60,9 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>src/org/pgcase/xobot/parsers/postgres</directory>
+							<directory>src-gen</directory>
 							<includes>
 								<include>**/*</include>
-							</includes>
-							<followSymlinks>false</followSymlinks>
-						</fileset>
-						<fileset>
-							<directory>src</directory>
-							<includes>
-								<include>*.token</include>
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>

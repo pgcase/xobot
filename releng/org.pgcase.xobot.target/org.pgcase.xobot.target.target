@@ -38,6 +38,8 @@
 			<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180905201904/repository"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.apiguardian" version="0.0.0"/>
+			<unit id="org.apiguardian.source" version="0.0.0"/>
 			<unit id="org.opentest4j" version="0.0.0"/>
 			<unit id="org.opentest4j.source" version="0.0.0"/>
 			<unit id="org.junit.platform.commons" version="0.0.0"/>

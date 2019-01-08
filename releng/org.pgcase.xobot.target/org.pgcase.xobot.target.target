@@ -38,8 +38,16 @@
 			<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180905201904/repository"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.opentest4j" version="0.0.0"/>
+			<unit id="org.opentest4j.source" version="0.0.0"/>
+			<unit id="org.junit.platform.commons" version="0.0.0"/>
+			<unit id="org.junit.platform.commons.source" version="0.0.0"/>
+			<unit id="org.junit.platform.engine" version="0.0.0"/>
+			<unit id="org.junit.platform.engine.source" version="0.0.0"/>
 			<unit id="org.junit.jupiter.api" version="0.0.0"/>
 			<unit id="org.junit.jupiter.api.source" version="0.0.0"/>
+			<unit id="org.junit.jupiter.engine" version="0.0.0"/>
+			<unit id="org.junit.jupiter.engine.source" version="0.0.0"/>
 			<unit id="org.junit" version="4.12.0.v201504281640"/>
 			<unit id="org.junit.source" version="4.12.0.v201504281640"/>
 			<unit id="org.mockito" version="0.0.0"/>

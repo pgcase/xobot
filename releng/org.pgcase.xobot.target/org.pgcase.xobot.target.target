@@ -33,10 +33,17 @@
 			<repository location="http://download.eclipse.org/eclipse/updates/4.9/"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.antlr.runtime" version="0.0.0"/>
+			<unit id="org.antlr.runtime.source" version="0.0.0"/>
+			<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180905201904/repository"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.junit.jupiter.api" version="0.0.0"/>
+			<unit id="org.junit.jupiter.api.source" version="0.0.0"/>
 			<unit id="org.junit" version="4.12.0.v201504281640"/>
 			<unit id="org.junit.source" version="4.12.0.v201504281640"/>
-			<unit id="org.mockito" version="2.13.0.v20180426-1843"/>
-			<unit id="org.mockito.source" version="2.13.0.v20180426-1843"/>
+			<unit id="org.mockito" version="0.0.0"/>
+			<unit id="org.mockito.source" version="0.0.0"/>
 			<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180905201904/repository"/>
 		</location>
 	</locations>

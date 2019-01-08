@@ -40,6 +40,8 @@
 		<module>../../bundles/org.pgcase.xobot.e3</module>
 		<module>../../features/org.pgcase.xobot.e3.feature</module>
 
+		<module>../../tests/org.pgcase.xobot.parsers.tests</module>
+
 		<module>../../releng/org.pgcase.xobot.repository</module>
 
 		<module>../../products/org.pgcase.xobot.ide.product</module>

@@ -46,12 +46,20 @@
 			<unit id="org.junit.platform.commons.source" version="0.0.0"/>
 			<unit id="org.junit.platform.engine" version="0.0.0"/>
 			<unit id="org.junit.platform.engine.source" version="0.0.0"/>
+			<unit id="org.junit.platform.runner" version="0.0.0"/>
+			<unit id="org.junit.platform.runner.source" version="0.0.0"/>
+			<unit id="org.junit.platform.suite.api" version="0.0.0"/>
+			<unit id="org.junit.platform.suite.api.source" version="0.0.0"/>
+			<unit id="org.junit.platform.launcher" version="0.0.0"/>
+			<unit id="org.junit.platform.launcher.source" version="0.0.0"/>
 			<unit id="org.junit.jupiter.api" version="0.0.0"/>
 			<unit id="org.junit.jupiter.api.source" version="0.0.0"/>
 			<unit id="org.junit.jupiter.engine" version="0.0.0"/>
 			<unit id="org.junit.jupiter.engine.source" version="0.0.0"/>
 			<unit id="org.junit" version="4.12.0.v201504281640"/>
 			<unit id="org.junit.source" version="4.12.0.v201504281640"/>
+			<unit id="org.hamcrest.core" version="0.0.0"/>
+			<unit id="org.hamcrest.core.source" version="0.0.0"/>
 			<unit id="org.mockito" version="0.0.0"/>
 			<unit id="org.mockito.source" version="0.0.0"/>
 			<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180905201904/repository"/>

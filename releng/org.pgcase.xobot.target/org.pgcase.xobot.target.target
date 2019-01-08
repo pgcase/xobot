@@ -56,6 +56,12 @@
 			<unit id="org.junit.jupiter.api.source" version="0.0.0"/>
 			<unit id="org.junit.jupiter.engine" version="0.0.0"/>
 			<unit id="org.junit.jupiter.engine.source" version="0.0.0"/>
+			<unit id="org.junit.jupiter.params" version="0.0.0"/>
+			<unit id="org.junit.jupiter.params.source" version="0.0.0"/>
+			<unit id="org.junit.jupiter.migrationsupport" version="0.0.0"/>
+			<unit id="org.junit.jupiter.migrationsupport.source" version="0.0.0"/>
+			<unit id="org.junit.vintage.engine" version="0.0.0"/>
+			<unit id="org.junit.vintage.engine.source" version="0.0.0"/>
 			<unit id="org.junit" version="4.12.0.v201504281640"/>
 			<unit id="org.junit.source" version="4.12.0.v201504281640"/>
 			<unit id="org.hamcrest.core" version="0.0.0"/>

@@ -46,8 +46,8 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>src-gen</source>
 								<source>grammar</source>
+								<source>src-gen</source>
 							</sources>
 						</configuration>
 					</execution>

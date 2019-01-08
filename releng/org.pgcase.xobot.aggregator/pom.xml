@@ -33,6 +33,7 @@
 		<module>../../features/org.pgcase.xobot.workspace.feature</module>
 
 		<module>../../bundles/org.pgcase.xobot.runtime</module>
+		<module>../../bundles/org.pgcase.xobot.parsers</module>
 		<module>../../bundles/org.pgcase.xobot.ide</module>
 		<module>../../features/org.pgcase.xobot.ide.feature</module>
 

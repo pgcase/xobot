@@ -16,4 +16,5 @@ Require-Bundle: org.eclipse.core.runtime,
 >>>>>>> 9d0caf8 Antlr version
 Bundle-ActivationPolicy: lazy
 Export-Package: org.pgcase.xobot.parsers.postgres,
- org.pgcase.xobot.parsers.postgres.function
+ org.pgcase.xobot.parsers.postgres.function,
+ org.pgcase.xobot.parsers.postgres.trigger

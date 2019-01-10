@@ -1,4 +1,4 @@
-package org.pgcase.xobot.parsers.postgres.function;
+package org.pgcase.xobot.parsers.postgres.trigger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,10 +11,11 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.pgcase.xobot.parsers.postgres.SqlLexer;
 import org.pgcase.xobot.parsers.postgres.SqlParser;
 import org.pgcase.xobot.parsers.postgres.SyntaxErrorListener;
+import org.pgcase.xobot.parsers.postgres.function.FunctionHeaderVisitor;
+import org.pgcase.xobot.parsers.postgres.function.RawFunctionBase;
 
-public class PGFunctionParseHeader {
-
-	public static RawFunctionBase parse(InputStream in,List<String> errors) throws IOException {
+public class PGTriggerParseHeader {
+	public static RawTriggerBase parse(InputStream in,List<String> errors) throws IOException {
 		
 		final ANTLRInputStream input = new ANTLRInputStream(in);
 
@@ -29,10 +30,9 @@ public class PGFunctionParseHeader {
         parser.addErrorListener(syntaxError);
         parser.addErrorListener(new DiagnosticErrorListener());
 
-
         final ParseTree tree = parser.stmt();
 
-        FunctionHeaderVisitor visitor = new FunctionHeaderVisitor();
+        TriggerHeaderVisitor visitor = new TriggerHeaderVisitor();
         
         visitor.visit(tree);
         
@@ -41,5 +41,4 @@ public class PGFunctionParseHeader {
         return visitor.getResultFunction();
 
 	}
-	
 }

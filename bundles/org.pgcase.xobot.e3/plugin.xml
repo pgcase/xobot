@@ -57,5 +57,62 @@
             modelProviderId="org.pgcase.xobot.e3.xobot">
       </teamContentProvider>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.pgcase.xobot.workspace.compare.ui.CompareToTargetHandler"
+            id="org.pgcase.xobot.e3.command.compare.to.target"
+            name="Compare to Target">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.pgcase.xobot.e3.command.compare.to.target"
+            icon="images/xobot16.png">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="compareWithMenu"
+               label="Comp&amp;are With">
+            <command
+                  commandId="org.pgcase.xobot.e3.command.compare.to.target"
+                  label="Xobot Target..."
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.pgcase.xobot.workspace.core.XElement">
+                     </adapt>
+                  </iterate>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.pgcase.xobot.workspace.core.XElement"
+            class="org.pgcase.xobot.workspace.resources.Xobot2ResourceAdapterFactory">
+         <adapter
+               type="org.eclipse.core.resources.IResource">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.eclipse.core.resources.IResource"
+            class="org.pgcase.xobot.workspace.resources.Resource2XobotAdapterFactory">
+         <adapter
+               type="org.pgcase.xobot.workspace.core.XElement">
+         </adapter>
+      </factory>
+   </extension>
 
 </plugin>

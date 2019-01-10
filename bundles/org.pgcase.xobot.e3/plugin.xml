@@ -57,7 +57,6 @@
             modelProviderId="org.pgcase.xobot.e3.xobot">
       </teamContentProvider>
    </extension>
-<<<<<<< Upstream, based on branch 'add_resource_model' of git@github.com:pgcase/xobot.git
    <extension
          point="org.eclipse.ui.commands">
       <command
@@ -145,7 +144,5 @@
             id="org.pgcase.xobot.e3.wizard.new.project">
       </primaryWizard>
    </extension>
-=======
->>>>>>> b5b9b44 add logical model contributions
 
 </plugin>

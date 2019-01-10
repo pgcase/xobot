@@ -15,5 +15,9 @@ Require-Bundle: org.eclipse.equinox.app,
  org.eclipse.jface,
  org.eclipse.ui.workbench,
  org.eclipse.team.ui,
+<<<<<<< Upstream, based on branch 'add_resource_model' of git@github.com:pgcase/xobot.git
  org.eclipse.ui,
  org.eclipse.ui.ide
+=======
+ org.eclipse.ui
+>>>>>>> 09e5f54 add compare with contributions

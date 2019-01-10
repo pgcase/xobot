@@ -1,4 +1,4 @@
-package org.pgcase.xobot.parsers.postgres.function;
+package org.pgcase.xobot.parsers.postgres;
 
 import java.util.ArrayList;
 import java.util.Collections;

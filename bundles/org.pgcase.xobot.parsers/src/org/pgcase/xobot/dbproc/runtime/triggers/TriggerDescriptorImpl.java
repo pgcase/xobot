@@ -1,13 +1,13 @@
 package org.pgcase.xobot.dbproc.runtime.triggers;
 
-class XTriggerDescriptorImpl implements XTriggerDescriptor {
+class TriggerDescriptorImpl implements XTriggerDescriptor {
 
 	private final String object;
 	private final String name;
 	private final String action;
 	private final String events;
 
-	XTriggerDescriptorImpl(String object, String name, String action, String events) {
+	TriggerDescriptorImpl(String object, String name, String action, String events) {
 		super();
 		this.object = object;
 		this.name = name;
@@ -35,7 +35,7 @@ class XTriggerDescriptorImpl implements XTriggerDescriptor {
 
 	@Override
 	public String toString() {
-		return "XTriggerDescriptorImpl [object=" + object + ", name=" + name + ", action=" + action + ", events=" + events
+		return "TriggerDescriptorImpl [object=" + object + ", name=" + name + ", action=" + action + ", events=" + events
 				+ "]";
 	}
 

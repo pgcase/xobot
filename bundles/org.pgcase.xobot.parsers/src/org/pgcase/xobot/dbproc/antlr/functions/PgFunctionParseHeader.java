@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.DiagnosticErrorListener;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.pgcase.xobot.dbproc.antlr.SyntaxErrorListener;
 import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
+import org.pgcase.xobot.dbproc.runtime.functions.FunctionBuilder;
 import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
 import org.pgcase.xobot.parsers.postgres.SqlLexer;
 import org.pgcase.xobot.parsers.postgres.SqlParser;
@@ -34,9 +35,8 @@ public class PgFunctionParseHeader {
 
 		FunctionHeaderVisitor visitor = new FunctionHeaderVisitor();
 
-		visitor.visit(tree);
-		return visitor.getResultFunction();
-
+		FunctionBuilder builder = visitor.visit(tree);
+		return builder.toFunction();
 	}
 
 }

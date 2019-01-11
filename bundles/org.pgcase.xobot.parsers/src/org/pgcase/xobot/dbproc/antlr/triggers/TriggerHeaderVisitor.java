@@ -1,15 +1,15 @@
 package org.pgcase.xobot.dbproc.antlr.triggers;
 
-import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerBuilder;
+import org.pgcase.xobot.dbproc.runtime.triggers.TriggerBuilder;
 import org.pgcase.xobot.parsers.postgres.SqlBaseVisitor;
 import org.pgcase.xobot.parsers.postgres.SqlParser.CreateTrigStmtContext;
 
-public class TriggerHeaderVisitor extends SqlBaseVisitor<XTriggerBuilder> {
+public class TriggerHeaderVisitor extends SqlBaseVisitor<TriggerBuilder> {
 
-	private final XTriggerBuilder builder = new XTriggerBuilder();
+	private final TriggerBuilder builder = new TriggerBuilder();
 
 	@Override
-	public XTriggerBuilder visitCreateTrigStmt(CreateTrigStmtContext ctx) {
+	public TriggerBuilder visitCreateTrigStmt(CreateTrigStmtContext ctx) {
 		builder.declareObject(ctx.qualified_name().getText());
 		builder.declareName(ctx.func_name().getText());
 		builder.declareActionTime(ctx.triggerActionTime().getText());
@@ -18,7 +18,7 @@ public class TriggerHeaderVisitor extends SqlBaseVisitor<XTriggerBuilder> {
 	}
 	
 	@Override
-	protected XTriggerBuilder defaultResult() {
+	protected TriggerBuilder defaultResult() {
 		return builder;
 	}
 

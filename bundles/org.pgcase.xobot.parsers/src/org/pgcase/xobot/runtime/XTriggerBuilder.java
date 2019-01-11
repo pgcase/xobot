@@ -27,7 +27,7 @@ public class XTriggerBuilder {
 		return this;
 	}
 
-	public XTriggerDescriptor toTriggerBase() {
+	public XTriggerDescriptor toXTrigger() {
 		return new XTriggerBaseImpl(object, name, actionTime, event);
 	}
 }

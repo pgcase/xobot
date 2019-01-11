@@ -1,4 +1,4 @@
-package org.pgcase.xobot.parsers.postgres.function;
+package org.pgcase.xobot.dbproc.antlr.functions;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,12 +8,12 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.DiagnosticErrorListener;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.pgcase.xobot.dbproc.antlr.SyntaxErrorListener;
-import org.pgcase.xobot.dbproc.runtime.XFunctionDescriptor;
 import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
+import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
 import org.pgcase.xobot.parsers.postgres.SqlLexer;
 import org.pgcase.xobot.parsers.postgres.SqlParser;
 
-public class PGFunctionParseHeader {
+public class PgFunctionParseHeader {
 
 	public static XFunctionDescriptor parse(InputStream in, XIssueReporter reporter) throws IOException {
 

@@ -1,6 +1,7 @@
-package org.pgcase.xobot.parsers.postgres.function;
+package org.pgcase.xobot.dbproc.antlr.functions;
 
-import org.pgcase.xobot.dbproc.runtime.XFunctionDescriptor;
+import org.pgcase.xobot.dbproc.runtime.functions.XFunctionBuilder;
+import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
 import org.pgcase.xobot.parsers.postgres.SqlBaseVisitor;
 import org.pgcase.xobot.parsers.postgres.SqlParser.CreateFunctionStmtContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Createfunc_opt_itemContext;
@@ -9,7 +10,7 @@ import org.pgcase.xobot.parsers.postgres.SqlParser.Func_returnContext;
 
 public class FunctionHeaderVisitor extends SqlBaseVisitor<CreateFunctionStmtContext> {
 
-	private final RawFunctionBuilder builder = new RawFunctionBuilder();
+	private final XFunctionBuilder builder = new XFunctionBuilder();
 
 	public XFunctionDescriptor getResultFunction() {
 		return builder.toFunctionBase();

@@ -1,6 +1,6 @@
 package org.pgcase.xobot.dbproc.runtime;
 
-public interface XArgumentsDescriptor {
+public interface XArgumentedDescriptor {
 
 	int getArgumentsCount();
 

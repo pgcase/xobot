@@ -2,14 +2,14 @@ package org.pgcase.xobot.dbproc.runtime.functions;
 
 import org.pgcase.xobot.dbproc.runtime.XArgumentDescriptor;
 
-public class XArgumentDescriptorImpl implements XArgumentDescriptor {
+public class ArgumentDescriptorImpl implements XArgumentDescriptor {
 
 	private final String argClass;
 	private final String argType;
 	private final String argName;
 	private final String argDefault;
 
-	public XArgumentDescriptorImpl(String argClass, String argName, String argType, String argDefault) {
+	public ArgumentDescriptorImpl(String argClass, String argName, String argType, String argDefault) {
 		super();
 		this.argClass = argClass;
 		this.argName = argName;

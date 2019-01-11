@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.pgcase.xobot.dbproc.runtime.XArgumentDescriptor;
 
-public class XFunctionDescriptorImpl implements XFunctionDescriptor {
+public class FunctionDescriptorImpl implements XFunctionDescriptor {
 
-	private final List<XArgumentDescriptorImpl> args;
+	private final List<ArgumentDescriptorImpl> args;
 
 	private final List<String> options;
 
@@ -14,7 +14,7 @@ public class XFunctionDescriptorImpl implements XFunctionDescriptor {
 
 	private final String returning;
 
-	public XFunctionDescriptorImpl(List<XArgumentDescriptorImpl> args, List<String> options, String name, String returning) {
+	public FunctionDescriptorImpl(List<ArgumentDescriptorImpl> args, List<String> options, String name, String returning) {
 		this.args = args;
 		this.options = options;
 		this.name = name;

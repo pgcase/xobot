@@ -1,8 +1,8 @@
-package org.pgcase.xobot.runtime.antlr;
+package org.pgcase.xobot.runtime.antlr.triggers;
 
 import org.pgcase.xobot.parsers.postgres.SqlBaseVisitor;
 import org.pgcase.xobot.parsers.postgres.SqlParser.CreateTrigStmtContext;
-import org.pgcase.xobot.runtime.XTriggerBuilder;
+import org.pgcase.xobot.runtime.triggers.XTriggerBuilder;
 
 public class TriggerHeaderVisitor extends SqlBaseVisitor<XTriggerBuilder> {
 

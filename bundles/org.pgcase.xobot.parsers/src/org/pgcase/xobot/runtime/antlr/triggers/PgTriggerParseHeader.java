@@ -1,4 +1,4 @@
-package org.pgcase.xobot.runtime.antlr;
+package org.pgcase.xobot.runtime.antlr.triggers;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,10 +10,11 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.pgcase.xobot.parsers.postgres.SqlLexer;
 import org.pgcase.xobot.parsers.postgres.SqlParser;
 import org.pgcase.xobot.runtime.XIssueReporter;
-import org.pgcase.xobot.runtime.XTriggerBuilder;
-import org.pgcase.xobot.runtime.XTriggerDescriptor;
+import org.pgcase.xobot.runtime.antlr.SyntaxErrorListener;
+import org.pgcase.xobot.runtime.triggers.XTriggerBuilder;
+import org.pgcase.xobot.runtime.triggers.XTriggerDescriptor;
 
-public class PGTriggerParseHeader {
+public class PgTriggerParseHeader {
 	public static XTriggerDescriptor parse(InputStream in, XIssueReporter reporter) throws IOException {
 
 		final ANTLRInputStream input = new ANTLRInputStream(in);

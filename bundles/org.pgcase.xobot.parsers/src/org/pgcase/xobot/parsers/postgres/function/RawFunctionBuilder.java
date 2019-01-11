@@ -3,6 +3,8 @@ package org.pgcase.xobot.parsers.postgres.function;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pgcase.xobot.runtime.XFunctionDescriptor;
+
 public class RawFunctionBuilder {
 
 	private final List<RawArgument> args = new ArrayList<>();
@@ -45,7 +47,7 @@ public class RawFunctionBuilder {
 
 	}
 
-	public RawFunctionBase toFunctionBase() {
+	public XFunctionDescriptor toFunctionBase() {
 		return new RawFunctionBaseImpl(args, options, name, returning);
 	}
 

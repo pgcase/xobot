@@ -1,6 +1,8 @@
 package org.pgcase.xobot.parsers.postgres.function;
 
-public class RawArgument {
+import org.pgcase.xobot.runtime.XArgumentDescriptor;
+
+public class RawArgument implements XArgumentDescriptor {
 
 	private final String argClass;
 	private final String argType;
@@ -15,19 +17,23 @@ public class RawArgument {
 		this.argDefault = argDefault;
 	}
 
-	public String getArgClass() {
+	@Override
+	public String getArgumentClass() {
 		return argClass;
 	}
 
-	public String getArgType() {
+	@Override
+	public String getArgumentType() {
 		return argType;
 	}
 
-	public String getArgName() {
+	@Override
+	public String getName() {
 		return argName;
 	}
 
-	public String getArgDefault() {
+	@Override
+	public String getDefaultValue() {
 		return argDefault;
 	}
 

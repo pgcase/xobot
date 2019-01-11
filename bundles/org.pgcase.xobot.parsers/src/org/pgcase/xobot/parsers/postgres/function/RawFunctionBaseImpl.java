@@ -2,7 +2,10 @@ package org.pgcase.xobot.parsers.postgres.function;
 
 import java.util.List;
 
-public class RawFunctionBaseImpl implements RawFunctionBase {
+import org.pgcase.xobot.runtime.XArgumentDescriptor;
+import org.pgcase.xobot.runtime.XFunctionDescriptor;
+
+public class RawFunctionBaseImpl implements XFunctionDescriptor {
 
 	private final List<RawArgument> args;
 
@@ -19,11 +22,11 @@ public class RawFunctionBaseImpl implements RawFunctionBase {
 		this.returning = returning;
 	}
 
-	public int getArgsCount() {
+	public int getArgumentsCount() {
 		return args.size();
 	}
 
-	public RawArgument getArg(int i) {
+	public XArgumentDescriptor getArgument(int i) {
 		return args.get(i);
 	}
 
@@ -39,13 +42,13 @@ public class RawFunctionBaseImpl implements RawFunctionBase {
 		return name;
 	}
 
-	public String getReturning() {
+	public String getReturns() {
 		return returning;
 	}
 
 	@Override
 	public String toString() {
-		return "RawFunctionBase [name=" + name + ", returning=" + returning + ", args=" + args + ", options=" + options
+		return "XFunctionDescriptor [name=" + name + ", returning=" + returning + ", args=" + args + ", options=" + options
 				+ "]";
 	}
 

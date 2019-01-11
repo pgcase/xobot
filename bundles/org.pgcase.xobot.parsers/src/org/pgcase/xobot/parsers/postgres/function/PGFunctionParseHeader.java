@@ -9,12 +9,13 @@ import org.antlr.v4.runtime.DiagnosticErrorListener;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.pgcase.xobot.parsers.postgres.SqlLexer;
 import org.pgcase.xobot.parsers.postgres.SqlParser;
+import org.pgcase.xobot.runtime.XFunctionDescriptor;
 import org.pgcase.xobot.runtime.XIssueReporter;
 import org.pgcase.xobot.runtime.antlr.SyntaxErrorListener;
 
 public class PGFunctionParseHeader {
 
-	public static RawFunctionBase parse(InputStream in, XIssueReporter reporter) throws IOException {
+	public static XFunctionDescriptor parse(InputStream in, XIssueReporter reporter) throws IOException {
 
 		final ANTLRInputStream input = new ANTLRInputStream(in);
 

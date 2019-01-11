@@ -1,4 +1,4 @@
-package org.pgcase.xobot.runtime;
+package org.pgcase.xobot.runtime.triggers;
 
 public class XTriggerBuilder {
 

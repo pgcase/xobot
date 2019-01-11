@@ -6,8 +6,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
-import org.pgcase.xobot.runtime.XTriggerDescriptor;
-import org.pgcase.xobot.runtime.antlr.PGTriggerParseHeader;
+import org.pgcase.xobot.runtime.antlr.triggers.PgTriggerParseHeader;
+import org.pgcase.xobot.runtime.triggers.XTriggerDescriptor;
 
 class SimpleTriggerTest {
 
@@ -17,7 +17,7 @@ class SimpleTriggerTest {
 	@Test
 	void testTrigger() throws IOException {
 		FileInputStream in = new FileInputStream(SIMPLE_TRIGGER);
-		XTriggerDescriptor pg_trigger_header = PGTriggerParseHeader.parse(in, new SystemIssueReporter());
+		XTriggerDescriptor pg_trigger_header = PgTriggerParseHeader.parse(in, new SystemIssueReporter());
 		assertEquals("perform_d",pg_trigger_header.getName(),"Incorrect trigger name");
 		assertEquals("tbl2",pg_trigger_header.getObject(),"Incorrect trigger table");
 		assertEquals("after",pg_trigger_header.getAction(),"Incorrect trigger action");

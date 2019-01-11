@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface XTriggerExtractor {
 	
-	Iterable<XTriggerDescriptor> extractTriggers(Object input, Map<String, Object> context, Object reporter);
+	Iterable<XTriggerDescriptor> extractTriggers(Object input, Map<String, Object> context, XIssueReporter reporter);
 
 }

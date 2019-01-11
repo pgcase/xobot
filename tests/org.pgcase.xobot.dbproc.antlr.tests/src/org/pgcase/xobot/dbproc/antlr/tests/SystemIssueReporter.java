@@ -1,4 +1,4 @@
-package org.pgcase.xobot.parsers.tests;
+package org.pgcase.xobot.dbproc.antlr.tests;
 
 import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
 

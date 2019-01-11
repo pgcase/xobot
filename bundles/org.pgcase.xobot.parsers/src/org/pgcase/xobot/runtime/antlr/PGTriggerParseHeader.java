@@ -11,6 +11,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.pgcase.xobot.parsers.postgres.SqlLexer;
 import org.pgcase.xobot.parsers.postgres.SqlParser;
 import org.pgcase.xobot.parsers.postgres.SyntaxErrorListener;
+import org.pgcase.xobot.runtime.XTriggerBuilder;
 import org.pgcase.xobot.runtime.XTriggerDescriptor;
 
 public class PGTriggerParseHeader {
@@ -33,11 +34,11 @@ public class PGTriggerParseHeader {
 
 		TriggerHeaderVisitor visitor = new TriggerHeaderVisitor();
 
-		visitor.visit(tree);
+		XTriggerBuilder builder = visitor.visit(tree);
 
 		errors.addAll(syntaxError.getErrorMessages());
 
-		return visitor.getResultFunction();
+		return builder.toXTrigger();
 
 	}
 }

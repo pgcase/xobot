@@ -19,8 +19,7 @@ class SimpleFunctionTest {
 	@Test
 	void testCount() throws IOException {
 		FileInputStream in = new FileInputStream(SIMPLE_IN_OUT_DEF_FUNC);
-		List<String> errors = new ArrayList<>();
-		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, errors);
+		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, new SystemIssueReporter());
 		assertEquals(4, pg_function_header.getArgsCount(), "Incorrect number of argument");
 		//System.out.println(pg_function_header);
 	}
@@ -28,8 +27,7 @@ class SimpleFunctionTest {
 	@Test
 	void testClasses() throws IOException {
 		FileInputStream in = new FileInputStream(SIMPLE_IN_OUT_DEF_FUNC);
-		List<String> errors = new ArrayList<>();
-		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, errors);
+		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, new SystemIssueReporter());
 		assertEquals("IN",pg_function_header.getArg(0).getArgClass(),"Incorrect class of argument 1");
 		assertEquals("IN",pg_function_header.getArg(1).getArgClass(),"Incorrect class of argument 2");
 		assertEquals("IN",pg_function_header.getArg(2).getArgClass(),"Incorrect class of argument 3");
@@ -40,8 +38,7 @@ class SimpleFunctionTest {
 	@Test
 	void testTypes() throws IOException {
 		FileInputStream in = new FileInputStream(SIMPLE_IN_OUT_DEF_FUNC);
-		List<String> errors = new ArrayList<>();
-		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, errors);
+		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, new SystemIssueReporter());
 		assertEquals("integer",pg_function_header.getArg(0).getArgType().toLowerCase(),"Incorrect type of argument 1");
 		assertEquals("integer",pg_function_header.getArg(1).getArgType().toLowerCase(),"Incorrect type of argument 2");
 		assertEquals("integer",pg_function_header.getArg(2).getArgType().toLowerCase(),"Incorrect type of argument 3");
@@ -52,8 +49,7 @@ class SimpleFunctionTest {
 	@Test
 	void testDefaults() throws IOException {
 		FileInputStream in = new FileInputStream(SIMPLE_IN_OUT_DEF_FUNC);
-		List<String> errors = new ArrayList<>();
-		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, errors);
+		RawFunctionBase pg_function_header = PGFunctionParseHeader.parse(in, new SystemIssueReporter());
 		assertNull(pg_function_header.getArg(0).getArgDefault(),"Incorrect default value of argument 1");
 		assertEquals("100500",pg_function_header.getArg(1).getArgDefault(),"Incorrect default value of argument 2");
 		assertEquals("-1000",pg_function_header.getArg(2).getArgDefault(),"Incorrect default value of argument 3");

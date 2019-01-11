@@ -1,6 +1,5 @@
-package org.pgcase.xobot.parsers.postgres;
+package org.pgcase.xobot.runtime.antlr;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,13 +7,14 @@ import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import org.pgcase.xobot.runtime.XIssueReporter;
 
 public class SyntaxErrorListener extends BaseErrorListener {
 
-	private final List<String> errorMessages = new ArrayList<>();
+	private final XIssueReporter reporter;
 
-	public List<String> getErrorMessages() {
-		return errorMessages;
+	public SyntaxErrorListener(XIssueReporter reporter) {
+		this.reporter = reporter;
 	}
 
 	@Override
@@ -27,12 +27,12 @@ public class SyntaxErrorListener extends BaseErrorListener {
 			final Parser parser = (Parser) recognizer;
 			final List<String> stack = parser.getRuleInvocationStack();
 			Collections.reverse(stack);
-
-			errorMessages.addAll(stack);
-
-			errorMessages.add(String.format("line %d position %d : %s [%s] %s", line, charPositionInLine, msg,
-					offendingSymbol.toString(), e.getMessage()));
-
+			for (String message : stack) {
+				reporter.reportIssue(recognizer, offendingSymbol, message, null);
+			}
+			String message = String.format("line %d position %d : %s [%s] %s", line, charPositionInLine, msg,
+					offendingSymbol.toString(), e.getMessage());
+			reporter.reportIssue(recognizer, offendingSymbol, message, e);
 		}
 
 	}

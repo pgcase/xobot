@@ -1,6 +1,6 @@
-package org.pgcase.xobot.runtime;
+package org.pgcase.xobot.dbproc.runtime;
 
-import org.pgcase.xobot.runtime.triggers.XTriggerDescriptor;
+import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
 
 public interface XNameEncoder {
 	

@@ -1,6 +1,6 @@
 package org.pgcase.xobot.parsers.tests;
 
-import org.pgcase.xobot.runtime.XIssueReporter;
+import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
 
 public class SystemIssueReporter implements XIssueReporter {
 

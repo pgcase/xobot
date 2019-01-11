@@ -1,14 +1,13 @@
-package org.pgcase.xobot.runtime.antlr;
+package org.pgcase.xobot.dbproc.antlr.triggers;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.Map;
 
-import org.pgcase.xobot.runtime.XIssueReporter;
-import org.pgcase.xobot.runtime.antlr.triggers.PgTriggerParseHeader;
-import org.pgcase.xobot.runtime.triggers.XTriggerDescriptor;
-import org.pgcase.xobot.runtime.triggers.XTriggerExtractor;
+import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
+import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
+import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerExtractor;
 
 public class AntlrXTriggerExtractor implements XTriggerExtractor {
 

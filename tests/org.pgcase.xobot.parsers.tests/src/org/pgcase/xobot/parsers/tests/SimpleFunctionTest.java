@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.pgcase.xobot.dbproc.runtime.XFunctionDescriptor;
 import org.pgcase.xobot.parsers.postgres.function.PGFunctionParseHeader;
-import org.pgcase.xobot.runtime.XFunctionDescriptor;
 
 class SimpleFunctionTest {
 	

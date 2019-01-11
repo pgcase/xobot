@@ -1,6 +1,6 @@
 package org.pgcase.xobot.parsers.postgres.function;
 
-import org.pgcase.xobot.runtime.XArgumentDescriptor;
+import org.pgcase.xobot.dbproc.runtime.XArgumentDescriptor;
 
 public class RawArgument implements XArgumentDescriptor {
 

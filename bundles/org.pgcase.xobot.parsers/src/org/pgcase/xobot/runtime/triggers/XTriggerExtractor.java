@@ -1,6 +1,8 @@
-package org.pgcase.xobot.runtime;
+package org.pgcase.xobot.runtime.triggers;
 
 import java.util.Map;
+
+import org.pgcase.xobot.runtime.XIssueReporter;
 
 public interface XTriggerExtractor {
 	

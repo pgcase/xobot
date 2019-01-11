@@ -5,12 +5,13 @@ import org.pgcase.xobot.parsers.postgres.SqlParser.CreateFunctionStmtContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Createfunc_opt_itemContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Func_arg_with_defaultContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Func_returnContext;
+import org.pgcase.xobot.runtime.XFunctionDescriptor;
 
 public class FunctionHeaderVisitor extends SqlBaseVisitor<CreateFunctionStmtContext> {
 
 	private final RawFunctionBuilder builder = new RawFunctionBuilder();
 
-	public RawFunctionBase getResultFunction() {
+	public XFunctionDescriptor getResultFunction() {
 		return builder.toFunctionBase();
 	}
 

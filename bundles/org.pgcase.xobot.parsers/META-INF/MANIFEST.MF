@@ -13,5 +13,7 @@ Require-Bundle:
 Export-Package: org.pgcase.xobot.parsers.postgres,
  org.pgcase.xobot.parsers.postgres.function,
  org.pgcase.xobot.runtime,
- org.pgcase.xobot.runtime.antlr
+ org.pgcase.xobot.runtime.antlr,
+ org.pgcase.xobot.runtime.antlr.triggers,
+ org.pgcase.xobot.runtime.triggers
 Bundle-ActivationPolicy: lazy

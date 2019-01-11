@@ -1,13 +1,13 @@
-package org.pgcase.xobot.parsers.postgres.trigger;
+package org.pgcase.xobot.runtime;
 
-public class RawTriggerBaseImpl implements RawTriggerBase {
+class XTriggerBaseImpl implements XTriggerDescriptor {
 
 	private final String object;
 	private final String name;
 	private final String action;
 	private final String events;
 
-	public RawTriggerBaseImpl(String object, String name, String action, String events) {
+	XTriggerBaseImpl(String object, String name, String action, String events) {
 		super();
 		this.object = object;
 		this.name = name;
@@ -35,7 +35,7 @@ public class RawTriggerBaseImpl implements RawTriggerBase {
 
 	@Override
 	public String toString() {
-		return "RawTriggerBaseImpl [object=" + object + ", name=" + name + ", action=" + action + ", events=" + events
+		return "XTriggerBaseImpl [object=" + object + ", name=" + name + ", action=" + action + ", events=" + events
 				+ "]";
 	}
 

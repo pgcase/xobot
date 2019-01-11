@@ -1,6 +1,6 @@
-package org.pgcase.xobot.parsers.postgres.trigger;
+package org.pgcase.xobot.runtime;
 
-public interface RawTriggerBase {
+public interface XTriggerDescriptor {
 
 	String getObject();
 

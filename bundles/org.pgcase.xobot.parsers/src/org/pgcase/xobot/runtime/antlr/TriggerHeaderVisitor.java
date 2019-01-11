@@ -1,13 +1,15 @@
-package org.pgcase.xobot.parsers.postgres.trigger;
+package org.pgcase.xobot.runtime.antlr;
 
 import org.pgcase.xobot.parsers.postgres.PlPgSqlParser.CreateTrigStmtContext;
+import org.pgcase.xobot.runtime.XTriggerDescriptor;
+import org.pgcase.xobot.runtime.XTriggerBuilder;
 import org.pgcase.xobot.parsers.postgres.SqlBaseVisitor;
 
 public class TriggerHeaderVisitor extends SqlBaseVisitor<CreateTrigStmtContext> {
 
-	private final RawTriggerBuilder builder = new RawTriggerBuilder();
+	private final XTriggerBuilder builder = new XTriggerBuilder();
 
-	public RawTriggerBase getResultFunction() {
+	public XTriggerDescriptor getResultFunction() {
 		return builder.toTriggerBase();
 	}
 

@@ -7,32 +7,30 @@ import org.pgcase.xobot.parsers.postgres.SqlParser.Func_arg_with_defaultContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Func_returnContext;
 
 public class FunctionHeaderVisitor extends SqlBaseVisitor<CreateFunctionStmtContext> {
-	
+
 	private final RawFunctionBuilder builder = new RawFunctionBuilder();
-	
+
 	public RawFunctionBase getResultFunction() {
-		return  builder.toFunctionBase() ;
+		return builder.toFunctionBase();
 	}
 
 	@Override
-	public CreateFunctionStmtContext visitCreateFunctionStmt(CreateFunctionStmtContext ctx) {	
+	public CreateFunctionStmtContext visitCreateFunctionStmt(CreateFunctionStmtContext ctx) {
 		builder.declareName(ctx.func_name().getText());
 		return super.visitCreateFunctionStmt(ctx);
 	}
 
 	@Override
-	public CreateFunctionStmtContext visitFunc_return(Func_returnContext ctx) {	
+	public CreateFunctionStmtContext visitFunc_return(Func_returnContext ctx) {
 		builder.declareReturning(ctx.func_type().getText());
 		return super.visitFunc_return(ctx);
 	}
 
 	@Override
-	public CreateFunctionStmtContext visitFunc_arg_with_default(Func_arg_with_defaultContext ctx) {		
-		builder.addArg(ctx.func_arg().arg_class().getText(), 
-				ctx.func_arg().param_name().getText(), 
-				ctx.func_arg().func_type().getText(), 
-				ctx.a_expr() == null ? null : ctx.a_expr().getText());
-			return super.visitFunc_arg_with_default(ctx);
+	public CreateFunctionStmtContext visitFunc_arg_with_default(Func_arg_with_defaultContext ctx) {
+		builder.addArg(ctx.func_arg().arg_class().getText(), ctx.func_arg().param_name().getText(),
+				ctx.func_arg().func_type().getText(), ctx.a_expr() == null ? null : ctx.a_expr().getText());
+		return super.visitFunc_arg_with_default(ctx);
 	}
 
 	@Override
@@ -44,4 +42,3 @@ public class FunctionHeaderVisitor extends SqlBaseVisitor<CreateFunctionStmtCont
 	}
 
 }
-

@@ -1,16 +1,14 @@
 package org.pgcase.xobot.parsers.postgres.trigger;
 
 import org.pgcase.xobot.parsers.postgres.PlPgSqlParser.CreateTrigStmtContext;
-import org.pgcase.xobot.parsers.postgres.SqlParser.Cursor_nameContext;
-import org.pgcase.xobot.parsers.postgres.SqlParser.Cursor_optionsContext;
 import org.pgcase.xobot.parsers.postgres.SqlBaseVisitor;
 
 public class TriggerHeaderVisitor extends SqlBaseVisitor<CreateTrigStmtContext> {
-	
+
 	private final RawTriggerBuilder builder = new RawTriggerBuilder();
-	
+
 	public RawTriggerBase getResultFunction() {
-		return  builder.toTriggerBase();
+		return builder.toTriggerBase();
 	}
 
 	@Override
@@ -23,7 +21,4 @@ public class TriggerHeaderVisitor extends SqlBaseVisitor<CreateTrigStmtContext> 
 		return super.visitCreateTrigStmt(ctx);
 	}
 
-
-	
-	
 }

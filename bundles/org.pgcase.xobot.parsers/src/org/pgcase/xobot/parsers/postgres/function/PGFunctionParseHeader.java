@@ -14,32 +14,31 @@ import org.pgcase.xobot.parsers.postgres.SyntaxErrorListener;
 
 public class PGFunctionParseHeader {
 
-	public static RawFunctionBase parse(InputStream in,List<String> errors) throws IOException {
-		
+	public static RawFunctionBase parse(InputStream in, List<String> errors) throws IOException {
+
 		final ANTLRInputStream input = new ANTLRInputStream(in);
 
-        SqlLexer lexer = new SqlLexer(input);
+		SqlLexer lexer = new SqlLexer(input);
 
-        final CommonTokenStream tokens = new CommonTokenStream(lexer);
+		final CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-        final SqlParser parser = new SqlParser(tokens);
+		final SqlParser parser = new SqlParser(tokens);
 
-        final SyntaxErrorListener syntaxError = new SyntaxErrorListener();
+		final SyntaxErrorListener syntaxError = new SyntaxErrorListener();
 
-        parser.addErrorListener(syntaxError);
-        parser.addErrorListener(new DiagnosticErrorListener());
+		parser.addErrorListener(syntaxError);
+		parser.addErrorListener(new DiagnosticErrorListener());
 
+		final ParseTree tree = parser.stmt();
 
-        final ParseTree tree = parser.stmt();
+		FunctionHeaderVisitor visitor = new FunctionHeaderVisitor();
 
-        FunctionHeaderVisitor visitor = new FunctionHeaderVisitor();
-        
-        visitor.visit(tree);
-        
-        errors.addAll(syntaxError.getErrorMessages());
-        
-        return visitor.getResultFunction();
+		visitor.visit(tree);
+
+		errors.addAll(syntaxError.getErrorMessages());
+
+		return visitor.getResultFunction();
 
 	}
-	
+
 }

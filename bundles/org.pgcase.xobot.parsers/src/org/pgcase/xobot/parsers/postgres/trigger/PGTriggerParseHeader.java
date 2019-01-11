@@ -11,34 +11,32 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.pgcase.xobot.parsers.postgres.SqlLexer;
 import org.pgcase.xobot.parsers.postgres.SqlParser;
 import org.pgcase.xobot.parsers.postgres.SyntaxErrorListener;
-import org.pgcase.xobot.parsers.postgres.function.FunctionHeaderVisitor;
-import org.pgcase.xobot.parsers.postgres.function.RawFunctionBase;
 
 public class PGTriggerParseHeader {
-	public static RawTriggerBase parse(InputStream in,List<String> errors) throws IOException {
-		
+	public static RawTriggerBase parse(InputStream in, List<String> errors) throws IOException {
+
 		final ANTLRInputStream input = new ANTLRInputStream(in);
 
-        SqlLexer lexer = new SqlLexer(input);
+		SqlLexer lexer = new SqlLexer(input);
 
-        final CommonTokenStream tokens = new CommonTokenStream(lexer);
+		final CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-        final SqlParser parser = new SqlParser(tokens);
+		final SqlParser parser = new SqlParser(tokens);
 
-        final SyntaxErrorListener syntaxError = new SyntaxErrorListener();
+		final SyntaxErrorListener syntaxError = new SyntaxErrorListener();
 
-        parser.addErrorListener(syntaxError);
-        parser.addErrorListener(new DiagnosticErrorListener());
+		parser.addErrorListener(syntaxError);
+		parser.addErrorListener(new DiagnosticErrorListener());
 
-        final ParseTree tree = parser.stmt();
+		final ParseTree tree = parser.stmt();
 
-        TriggerHeaderVisitor visitor = new TriggerHeaderVisitor();
-        
-        visitor.visit(tree);
-        
-        errors.addAll(syntaxError.getErrorMessages());
-        
-        return visitor.getResultFunction();
+		TriggerHeaderVisitor visitor = new TriggerHeaderVisitor();
+
+		visitor.visit(tree);
+
+		errors.addAll(syntaxError.getErrorMessages());
+
+		return visitor.getResultFunction();
 
 	}
 }

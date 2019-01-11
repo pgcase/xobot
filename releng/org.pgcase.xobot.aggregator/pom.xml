@@ -26,6 +26,12 @@
 		<module>../../bundles/org.pgcase.xobot.landscape.runtime</module>
 		<module>../../features/org.pgcase.xobot.landscape.feature</module>
 
+		<module>../../bundles/org.pgcase.xobot.dbproc.runtime</module>
+		<module>../../bundles/org.pgcase.xobot.parsers</module>
+		<module>../../bundles/org.pgcase.xobot.dbproc.antlr</module>
+		<module>../../bundles/org.pgcase.xobot.dbproc.jdbc</module>
+		<module>../../features/org.pgcase.xobot.dbproc.feature</module>
+
 		<module>../../bundles/org.pgcase.xobot.toolchain.runtime</module>
 		<module>../../features/org.pgcase.xobot.toolchain.feature</module>
 
@@ -35,6 +41,8 @@
 		<module>../../bundles/org.pgcase.xobot.runtime</module>
 		<module>../../bundles/org.pgcase.xobot.ide</module>
 		<module>../../features/org.pgcase.xobot.ide.feature</module>
+
+		<module>../../tests/org.pgcase.xobot.dbproc.antlr.tests</module>
 
 		<module>../../releng/org.pgcase.xobot.repository</module>
 

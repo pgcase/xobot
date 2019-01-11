@@ -1,4 +1,4 @@
-package org.pgcase.xobot.runtime.triggers;
+package org.pgcase.xobot.dbproc.runtime.triggers;
 
 public class XTriggerBuilder {
 

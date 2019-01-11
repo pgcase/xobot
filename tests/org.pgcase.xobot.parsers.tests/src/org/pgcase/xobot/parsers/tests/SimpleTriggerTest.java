@@ -6,8 +6,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
-import org.pgcase.xobot.runtime.antlr.triggers.PgTriggerParseHeader;
-import org.pgcase.xobot.runtime.triggers.XTriggerDescriptor;
+import org.pgcase.xobot.dbproc.antlr.triggers.PgTriggerParseHeader;
+import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
 
 class SimpleTriggerTest {
 

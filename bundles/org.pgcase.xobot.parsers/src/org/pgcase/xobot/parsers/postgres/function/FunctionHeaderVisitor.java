@@ -1,11 +1,11 @@
 package org.pgcase.xobot.parsers.postgres.function;
 
+import org.pgcase.xobot.dbproc.runtime.XFunctionDescriptor;
 import org.pgcase.xobot.parsers.postgres.SqlBaseVisitor;
 import org.pgcase.xobot.parsers.postgres.SqlParser.CreateFunctionStmtContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Createfunc_opt_itemContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Func_arg_with_defaultContext;
 import org.pgcase.xobot.parsers.postgres.SqlParser.Func_returnContext;
-import org.pgcase.xobot.runtime.XFunctionDescriptor;
 
 public class FunctionHeaderVisitor extends SqlBaseVisitor<CreateFunctionStmtContext> {
 

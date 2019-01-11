@@ -1,4 +1,4 @@
-package org.pgcase.xobot.runtime.antlr;
+package org.pgcase.xobot.dbproc.antlr;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
-import org.pgcase.xobot.runtime.XIssueReporter;
+import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
 
 public class SyntaxErrorListener extends BaseErrorListener {
 

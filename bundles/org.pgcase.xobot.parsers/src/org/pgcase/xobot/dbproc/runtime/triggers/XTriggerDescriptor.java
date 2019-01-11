@@ -1,6 +1,6 @@
-package org.pgcase.xobot.runtime.triggers;
+package org.pgcase.xobot.dbproc.runtime.triggers;
 
-import org.pgcase.xobot.runtime.XNamedDescriptor;
+import org.pgcase.xobot.dbproc.runtime.XNamedDescriptor;
 
 public interface XTriggerDescriptor extends XNamedDescriptor {
 

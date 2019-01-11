@@ -2,8 +2,8 @@ package org.pgcase.xobot.parsers.postgres.function;
 
 import java.util.List;
 
-import org.pgcase.xobot.runtime.XArgumentDescriptor;
-import org.pgcase.xobot.runtime.XFunctionDescriptor;
+import org.pgcase.xobot.dbproc.runtime.XArgumentDescriptor;
+import org.pgcase.xobot.dbproc.runtime.XFunctionDescriptor;
 
 public class RawFunctionBaseImpl implements XFunctionDescriptor {
 

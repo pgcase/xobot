@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.pgcase.xobot.parsers.postgres.trigger.PGTriggerParseHeader;
-import org.pgcase.xobot.parsers.postgres.trigger.RawTriggerBase;
+import org.pgcase.xobot.runtime.XTriggerDescriptor;
+import org.pgcase.xobot.runtime.antlr.PGTriggerParseHeader;
 
 class SimpleTriggerTest {
 
@@ -20,7 +20,7 @@ class SimpleTriggerTest {
 	void testTrigger() throws IOException {
 		FileInputStream in = new FileInputStream(SIMPLE_TRIGGER);
 		List<String> errors = new ArrayList<>();
-		RawTriggerBase pg_trigger_header = PGTriggerParseHeader.parse(in, errors);
+		XTriggerDescriptor pg_trigger_header = PGTriggerParseHeader.parse(in, errors);
 		assertEquals("perform_d",pg_trigger_header.getName(),"Incorrect trigger name");
 		assertEquals("tbl2",pg_trigger_header.getObject(),"Incorrect trigger table");
 		assertEquals("after",pg_trigger_header.getAction(),"Incorrect trigger action");

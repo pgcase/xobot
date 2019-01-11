@@ -42,7 +42,7 @@
 		<module>../../bundles/org.pgcase.xobot.ide</module>
 		<module>../../features/org.pgcase.xobot.ide.feature</module>
 
-		<module>../../tests/org.pgcase.xobot.parsers.tests</module>
+		<module>../../tests/org.pgcase.xobot.dbproc.antlr.tests</module>
 
 		<module>../../releng/org.pgcase.xobot.repository</module>
 

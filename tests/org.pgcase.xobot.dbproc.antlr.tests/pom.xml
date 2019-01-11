@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.pgcase.xobot.parsers.tests</artifactId>
+	<artifactId>org.pgcase.xobot.dbproc.antlr.tests</artifactId>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -25,7 +25,19 @@
 
 		<dependency>
 			<groupId>org.pgcase.xobot</groupId>
+			<artifactId>org.pgcase.xobot.dbproc.runtime</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.pgcase.xobot</groupId>
 			<artifactId>org.pgcase.xobot.parsers</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.pgcase.xobot</groupId>
+			<artifactId>org.pgcase.xobot.dbproc.antlr</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 

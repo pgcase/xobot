@@ -14,7 +14,7 @@ import org.pgcase.xobot.runtime.XTriggerBuilder;
 import org.pgcase.xobot.runtime.XTriggerDescriptor;
 
 public class PGTriggerParseHeader {
-	public static XTriggerDescriptor parse(InputStream in, XIssueReporter errors) throws IOException {
+	public static XTriggerDescriptor parse(InputStream in, XIssueReporter reporter) throws IOException {
 
 		final ANTLRInputStream input = new ANTLRInputStream(in);
 
@@ -24,7 +24,7 @@ public class PGTriggerParseHeader {
 
 		final SqlParser parser = new SqlParser(tokens);
 
-		final SyntaxErrorListener syntaxError = new SyntaxErrorListener(errors);
+		final SyntaxErrorListener syntaxError = new SyntaxErrorListener(reporter);
 
 		parser.addErrorListener(syntaxError);
 		parser.addErrorListener(new DiagnosticErrorListener());

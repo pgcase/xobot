@@ -11,9 +11,10 @@ Require-Bundle:
  org.antlr.runtime;bundle-version="[4.5.0,4.5.3)";visibility:=reexport,
  org.junit.jupiter.api
 Export-Package: org.pgcase.xobot.dbproc.antlr,
+ org.pgcase.xobot.dbproc.antlr.functions,
  org.pgcase.xobot.dbproc.antlr.triggers,
  org.pgcase.xobot.dbproc.runtime,
+ org.pgcase.xobot.dbproc.runtime.functions,
  org.pgcase.xobot.dbproc.runtime.triggers,
- org.pgcase.xobot.parsers.postgres,
- org.pgcase.xobot.parsers.postgres.function
+ org.pgcase.xobot.parsers.postgres
 Bundle-ActivationPolicy: lazy

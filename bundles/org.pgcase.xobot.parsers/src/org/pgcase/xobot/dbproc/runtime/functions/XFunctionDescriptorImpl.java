@@ -1,13 +1,12 @@
-package org.pgcase.xobot.parsers.postgres.function;
+package org.pgcase.xobot.dbproc.runtime.functions;
 
 import java.util.List;
 
 import org.pgcase.xobot.dbproc.runtime.XArgumentDescriptor;
-import org.pgcase.xobot.dbproc.runtime.XFunctionDescriptor;
 
-public class RawFunctionBaseImpl implements XFunctionDescriptor {
+public class XFunctionDescriptorImpl implements XFunctionDescriptor {
 
-	private final List<RawArgument> args;
+	private final List<XArgumentDescriptorImpl> args;
 
 	private final List<String> options;
 
@@ -15,7 +14,7 @@ public class RawFunctionBaseImpl implements XFunctionDescriptor {
 
 	private final String returning;
 
-	public RawFunctionBaseImpl(List<RawArgument> args, List<String> options, String name, String returning) {
+	public XFunctionDescriptorImpl(List<XArgumentDescriptorImpl> args, List<String> options, String name, String returning) {
 		this.args = args;
 		this.options = options;
 		this.name = name;

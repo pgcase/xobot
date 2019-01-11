@@ -1,6 +1,6 @@
 package org.pgcase.xobot.dbproc.runtime;
 
-public interface XOptionsDescriptor extends XNamedDescriptor {
+public interface XOptionedDescriptor extends XNamedDescriptor {
 
 	int getOptionsSize();
 

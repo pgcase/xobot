@@ -1,15 +1,11 @@
 package org.pgcase.xobot.parsers.postgres.trigger;
 
-
-import java.util.List;
-
 public class RawTriggerBaseImpl implements RawTriggerBase {
-	
+
 	private final String object;
 	private final String name;
-    private final String action;
-    private final String events;
-
+	private final String action;
+	private final String events;
 
 	public RawTriggerBaseImpl(String object, String name, String action, String events) {
 		super();
@@ -42,7 +38,5 @@ public class RawTriggerBaseImpl implements RawTriggerBase {
 		return "RawTriggerBaseImpl [object=" + object + ", name=" + name + ", action=" + action + ", events=" + events
 				+ "]";
 	}
-
-    
 
 }

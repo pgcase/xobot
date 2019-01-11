@@ -20,7 +20,7 @@
 		ArSysOp - initial API and implementation
 -->
 <feature
-      id="org.pgcase.xobot.ide.feature"
+      id="org.pgcase.xobot.dbproc.feature"
       label="%featureName"
       version="0.1.0.qualifier"
       provider-name="%providerName"
@@ -39,27 +39,29 @@
       %license
    </license>
 
-   <includes
-         id="org.pgcase.xobot.landscape.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.pgcase.xobot.toolchain.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.pgcase.xobot.workspace.feature"
-         version="0.0.0"/>
-
    <plugin
-         id="org.pgcase.xobot.runtime"
+         id="org.pgcase.xobot.dbproc.runtime"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.pgcase.xobot.ide"
+         id="org.pgcase.xobot.parsers"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.pgcase.xobot.dbproc.antlr"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.pgcase.xobot.dbproc.jdbc"
          download-size="0"
          install-size="0"
          version="0.0.0"

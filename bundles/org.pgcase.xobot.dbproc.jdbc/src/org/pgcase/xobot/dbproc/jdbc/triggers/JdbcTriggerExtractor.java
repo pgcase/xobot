@@ -7,7 +7,7 @@ import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
 import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
 import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerExtractor;
 
-public class AntlrTriggerExtractor implements XTriggerExtractor {
+public class JdbcTriggerExtractor implements XTriggerExtractor {
 
 	@Override
 	public Iterable<XTriggerDescriptor> extractTriggers(Object input, Map<String, Object> context, XIssueReporter reporter) {

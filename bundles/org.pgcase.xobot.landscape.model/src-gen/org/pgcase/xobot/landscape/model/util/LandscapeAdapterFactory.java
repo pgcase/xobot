@@ -1,6 +1,6 @@
 /**
  */
-package org.pgcase.xobot.landscape.util;
+package org.pgcase.xobot.landscape.model.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,10 +9,8 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.pgcase.xobot.landscape.api.*;
-
-import org.pgcase.xobot.landscape.meta.XLandscapePackage;
-
+import org.pgcase.xobot.landscape.model.api.*;
+import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
@@ -23,7 +21,7 @@ import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.landscape.meta.XLandscapePackage
+ * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage
  * @generated
  */
 public class LandscapeAdapterFactory extends AdapterFactoryImpl {
@@ -183,13 +181,13 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.api.XSourceSet <em>Source Set</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.model.api.XSourceSet <em>Source Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.pgcase.xobot.landscape.api.XSourceSet
+	 * @see org.pgcase.xobot.landscape.model.api.XSourceSet
 	 * @generated
 	 */
 	public Adapter createSourceSetAdapter() {
@@ -197,13 +195,13 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.api.XSource <em>Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.model.api.XSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.pgcase.xobot.landscape.api.XSource
+	 * @see org.pgcase.xobot.landscape.model.api.XSource
 	 * @generated
 	 */
 	public Adapter createSourceAdapter() {
@@ -211,13 +209,13 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.api.XTargetSet <em>Target Set</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.model.api.XTargetSet <em>Target Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.pgcase.xobot.landscape.api.XTargetSet
+	 * @see org.pgcase.xobot.landscape.model.api.XTargetSet
 	 * @generated
 	 */
 	public Adapter createTargetSetAdapter() {
@@ -225,13 +223,13 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.api.XTarget <em>Target</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.model.api.XTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.pgcase.xobot.landscape.api.XTarget
+	 * @see org.pgcase.xobot.landscape.model.api.XTarget
 	 * @generated
 	 */
 	public Adapter createTargetAdapter() {

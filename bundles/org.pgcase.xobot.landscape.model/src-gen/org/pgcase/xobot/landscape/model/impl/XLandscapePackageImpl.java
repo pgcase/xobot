@@ -1,6 +1,6 @@
 /**
  */
-package org.pgcase.xobot.landscape.impl;
+package org.pgcase.xobot.landscape.model.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -8,15 +8,12 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.pgcase.xobot.landscape.api.XSource;
-import org.pgcase.xobot.landscape.api.XSourceSet;
-import org.pgcase.xobot.landscape.api.XTarget;
-import org.pgcase.xobot.landscape.api.XTargetSet;
-
-import org.pgcase.xobot.landscape.meta.XLandscapeFactory;
-import org.pgcase.xobot.landscape.meta.XLandscapePackage;
-
+import org.pgcase.xobot.landscape.model.api.XSource;
+import org.pgcase.xobot.landscape.model.api.XSourceSet;
+import org.pgcase.xobot.landscape.model.api.XTarget;
+import org.pgcase.xobot.landscape.model.api.XTargetSet;
+import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
+import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
@@ -96,7 +93,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.pgcase.xobot.landscape.meta.XLandscapePackage#eNS_URI
+	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

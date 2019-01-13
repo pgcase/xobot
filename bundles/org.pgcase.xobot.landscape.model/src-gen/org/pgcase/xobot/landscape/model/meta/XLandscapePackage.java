@@ -1,6 +1,6 @@
 /**
  */
-package org.pgcase.xobot.landscape.meta;
+package org.pgcase.xobot.landscape.model.meta;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.landscape.meta.XLandscapeFactory
+ * @see org.pgcase.xobot.landscape.model.meta.XLandscapeFactory
  * @model kind="package"
  * @generated
  */
@@ -54,14 +54,14 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XLandscapePackage eINSTANCE = org.pgcase.xobot.landscape.impl.XLandscapePackageImpl.init();
+	XLandscapePackage eINSTANCE = org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor <em>Source Set Descriptor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSourceSetDescriptor()
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceSetDescriptor()
 	 * @generated
 	 */
 	int SOURCE_SET_DESCRIPTOR = 0;
@@ -89,7 +89,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.landscape.runtime.XSourceDescriptor
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSourceDescriptor()
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceDescriptor()
 	 * @generated
 	 */
 	int SOURCE_DESCRIPTOR = 1;
@@ -117,7 +117,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTargetSetDescriptor()
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetSetDescriptor()
 	 * @generated
 	 */
 	int TARGET_SET_DESCRIPTOR = 2;
@@ -145,7 +145,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.landscape.runtime.XTargetDescriptor
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTargetDescriptor()
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetDescriptor()
 	 * @generated
 	 */
 	int TARGET_DESCRIPTOR = 3;
@@ -169,11 +169,11 @@ public interface XLandscapePackage extends EPackage {
 	int TARGET_DESCRIPTOR_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.pgcase.xobot.landscape.impl.XSourceSetImpl <em>Source Set</em>}' class.
+	 * The meta object id for the '{@link org.pgcase.xobot.landscape.model.impl.XSourceSetImpl <em>Source Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.pgcase.xobot.landscape.impl.XSourceSetImpl
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSourceSet()
+	 * @see org.pgcase.xobot.landscape.model.impl.XSourceSetImpl
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceSet()
 	 * @generated
 	 */
 	int SOURCE_SET = 4;
@@ -224,11 +224,11 @@ public interface XLandscapePackage extends EPackage {
 	int SOURCE_SET_OPERATION_COUNT = SOURCE_SET_DESCRIPTOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.pgcase.xobot.landscape.impl.XSourceImpl <em>Source</em>}' class.
+	 * The meta object id for the '{@link org.pgcase.xobot.landscape.model.impl.XSourceImpl <em>Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.pgcase.xobot.landscape.impl.XSourceImpl
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSource()
+	 * @see org.pgcase.xobot.landscape.model.impl.XSourceImpl
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSource()
 	 * @generated
 	 */
 	int SOURCE = 5;
@@ -288,11 +288,11 @@ public interface XLandscapePackage extends EPackage {
 	int SOURCE_OPERATION_COUNT = SOURCE_DESCRIPTOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.pgcase.xobot.landscape.impl.XTargetSetImpl <em>Target Set</em>}' class.
+	 * The meta object id for the '{@link org.pgcase.xobot.landscape.model.impl.XTargetSetImpl <em>Target Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.pgcase.xobot.landscape.impl.XTargetSetImpl
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTargetSet()
+	 * @see org.pgcase.xobot.landscape.model.impl.XTargetSetImpl
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetSet()
 	 * @generated
 	 */
 	int TARGET_SET = 6;
@@ -343,11 +343,11 @@ public interface XLandscapePackage extends EPackage {
 	int TARGET_SET_OPERATION_COUNT = TARGET_SET_DESCRIPTOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.pgcase.xobot.landscape.impl.XTargetImpl <em>Target</em>}' class.
+	 * The meta object id for the '{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl <em>Target</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.pgcase.xobot.landscape.impl.XTargetImpl
-	 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTarget()
+	 * @see org.pgcase.xobot.landscape.model.impl.XTargetImpl
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTarget()
 	 * @generated
 	 */
 	int TARGET = 7;
@@ -452,194 +452,194 @@ public interface XLandscapePackage extends EPackage {
 	EClass getTargetDescriptor();
 
 	/**
-	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.api.XSourceSet <em>Source Set</em>}'.
+	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.model.api.XSourceSet <em>Source Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Source Set</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSourceSet
+	 * @see org.pgcase.xobot.landscape.model.api.XSourceSet
 	 * @generated
 	 */
 	EClass getSourceSet();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XSourceSet#getIdentifier <em>Identifier</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSourceSet#getIdentifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Identifier</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSourceSet#getIdentifier()
+	 * @see org.pgcase.xobot.landscape.model.api.XSourceSet#getIdentifier()
 	 * @see #getSourceSet()
 	 * @generated
 	 */
 	EAttribute getSourceSet_Identifier();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XSourceSet#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSourceSet#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSourceSet#getName()
+	 * @see org.pgcase.xobot.landscape.model.api.XSourceSet#getName()
 	 * @see #getSourceSet()
 	 * @generated
 	 */
 	EAttribute getSourceSet_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.pgcase.xobot.landscape.api.XSourceSet#getSources <em>Sources</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.pgcase.xobot.landscape.model.api.XSourceSet#getSources <em>Sources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Sources</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSourceSet#getSources()
+	 * @see org.pgcase.xobot.landscape.model.api.XSourceSet#getSources()
 	 * @see #getSourceSet()
 	 * @generated
 	 */
 	EReference getSourceSet_Sources();
 
 	/**
-	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.api.XSource <em>Source</em>}'.
+	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.model.api.XSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Source</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSource
+	 * @see org.pgcase.xobot.landscape.model.api.XSource
 	 * @generated
 	 */
 	EClass getSource();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XSource#getIdentifier <em>Identifier</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getIdentifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Identifier</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSource#getIdentifier()
+	 * @see org.pgcase.xobot.landscape.model.api.XSource#getIdentifier()
 	 * @see #getSource()
 	 * @generated
 	 */
 	EAttribute getSource_Identifier();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XSource#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSource#getName()
+	 * @see org.pgcase.xobot.landscape.model.api.XSource#getName()
 	 * @see #getSource()
 	 * @generated
 	 */
 	EAttribute getSource_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XSource#getUri <em>Uri</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getUri <em>Uri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Uri</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSource#getUri()
+	 * @see org.pgcase.xobot.landscape.model.api.XSource#getUri()
 	 * @see #getSource()
 	 * @generated
 	 */
 	EAttribute getSource_Uri();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.pgcase.xobot.landscape.api.XSource#getSourceSet <em>Source Set</em>}'.
+	 * Returns the meta object for the container reference '{@link org.pgcase.xobot.landscape.model.api.XSource#getSourceSet <em>Source Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Source Set</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XSource#getSourceSet()
+	 * @see org.pgcase.xobot.landscape.model.api.XSource#getSourceSet()
 	 * @see #getSource()
 	 * @generated
 	 */
 	EReference getSource_SourceSet();
 
 	/**
-	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.api.XTargetSet <em>Target Set</em>}'.
+	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.model.api.XTargetSet <em>Target Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Target Set</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTargetSet
+	 * @see org.pgcase.xobot.landscape.model.api.XTargetSet
 	 * @generated
 	 */
 	EClass getTargetSet();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XTargetSet#getIdentifier <em>Identifier</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTargetSet#getIdentifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Identifier</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTargetSet#getIdentifier()
+	 * @see org.pgcase.xobot.landscape.model.api.XTargetSet#getIdentifier()
 	 * @see #getTargetSet()
 	 * @generated
 	 */
 	EAttribute getTargetSet_Identifier();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XTargetSet#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTargetSet#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTargetSet#getName()
+	 * @see org.pgcase.xobot.landscape.model.api.XTargetSet#getName()
 	 * @see #getTargetSet()
 	 * @generated
 	 */
 	EAttribute getTargetSet_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.pgcase.xobot.landscape.api.XTargetSet#getTargets <em>Targets</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.pgcase.xobot.landscape.model.api.XTargetSet#getTargets <em>Targets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Targets</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTargetSet#getTargets()
+	 * @see org.pgcase.xobot.landscape.model.api.XTargetSet#getTargets()
 	 * @see #getTargetSet()
 	 * @generated
 	 */
 	EReference getTargetSet_Targets();
 
 	/**
-	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.api.XTarget <em>Target</em>}'.
+	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.model.api.XTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Target</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTarget
+	 * @see org.pgcase.xobot.landscape.model.api.XTarget
 	 * @generated
 	 */
 	EClass getTarget();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XTarget#getIdentifier <em>Identifier</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Identifier</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTarget#getIdentifier()
+	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier()
 	 * @see #getTarget()
 	 * @generated
 	 */
 	EAttribute getTarget_Identifier();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XTarget#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTarget#getName()
+	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getName()
 	 * @see #getTarget()
 	 * @generated
 	 */
 	EAttribute getTarget_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.api.XTarget#getUri <em>Uri</em>}'.
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getUri <em>Uri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Uri</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTarget#getUri()
+	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getUri()
 	 * @see #getTarget()
 	 * @generated
 	 */
 	EAttribute getTarget_Uri();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.pgcase.xobot.landscape.api.XTarget#getTargetSet <em>Target Set</em>}'.
+	 * Returns the meta object for the container reference '{@link org.pgcase.xobot.landscape.model.api.XTarget#getTargetSet <em>Target Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Target Set</em>'.
-	 * @see org.pgcase.xobot.landscape.api.XTarget#getTargetSet()
+	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getTargetSet()
 	 * @see #getTarget()
 	 * @generated
 	 */
@@ -673,7 +673,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSourceSetDescriptor()
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceSetDescriptor()
 		 * @generated
 		 */
 		EClass SOURCE_SET_DESCRIPTOR = eINSTANCE.getSourceSetDescriptor();
@@ -683,7 +683,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.landscape.runtime.XSourceDescriptor
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSourceDescriptor()
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceDescriptor()
 		 * @generated
 		 */
 		EClass SOURCE_DESCRIPTOR = eINSTANCE.getSourceDescriptor();
@@ -693,7 +693,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTargetSetDescriptor()
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetSetDescriptor()
 		 * @generated
 		 */
 		EClass TARGET_SET_DESCRIPTOR = eINSTANCE.getTargetSetDescriptor();
@@ -703,17 +703,17 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.landscape.runtime.XTargetDescriptor
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTargetDescriptor()
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetDescriptor()
 		 * @generated
 		 */
 		EClass TARGET_DESCRIPTOR = eINSTANCE.getTargetDescriptor();
 
 		/**
-		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.impl.XSourceSetImpl <em>Source Set</em>}' class.
+		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.model.impl.XSourceSetImpl <em>Source Set</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.pgcase.xobot.landscape.impl.XSourceSetImpl
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSourceSet()
+		 * @see org.pgcase.xobot.landscape.model.impl.XSourceSetImpl
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceSet()
 		 * @generated
 		 */
 		EClass SOURCE_SET = eINSTANCE.getSourceSet();
@@ -743,11 +743,11 @@ public interface XLandscapePackage extends EPackage {
 		EReference SOURCE_SET__SOURCES = eINSTANCE.getSourceSet_Sources();
 
 		/**
-		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.impl.XSourceImpl <em>Source</em>}' class.
+		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.model.impl.XSourceImpl <em>Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.pgcase.xobot.landscape.impl.XSourceImpl
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getSource()
+		 * @see org.pgcase.xobot.landscape.model.impl.XSourceImpl
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSource()
 		 * @generated
 		 */
 		EClass SOURCE = eINSTANCE.getSource();
@@ -785,11 +785,11 @@ public interface XLandscapePackage extends EPackage {
 		EReference SOURCE__SOURCE_SET = eINSTANCE.getSource_SourceSet();
 
 		/**
-		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.impl.XTargetSetImpl <em>Target Set</em>}' class.
+		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.model.impl.XTargetSetImpl <em>Target Set</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.pgcase.xobot.landscape.impl.XTargetSetImpl
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTargetSet()
+		 * @see org.pgcase.xobot.landscape.model.impl.XTargetSetImpl
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetSet()
 		 * @generated
 		 */
 		EClass TARGET_SET = eINSTANCE.getTargetSet();
@@ -819,11 +819,11 @@ public interface XLandscapePackage extends EPackage {
 		EReference TARGET_SET__TARGETS = eINSTANCE.getTargetSet_Targets();
 
 		/**
-		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.impl.XTargetImpl <em>Target</em>}' class.
+		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl <em>Target</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.pgcase.xobot.landscape.impl.XTargetImpl
-		 * @see org.pgcase.xobot.landscape.impl.XLandscapePackageImpl#getTarget()
+		 * @see org.pgcase.xobot.landscape.model.impl.XTargetImpl
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTarget()
 		 * @generated
 		 */
 		EClass TARGET = eINSTANCE.getTarget();

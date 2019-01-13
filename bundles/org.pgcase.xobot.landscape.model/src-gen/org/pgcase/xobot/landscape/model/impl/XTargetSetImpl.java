@@ -1,6 +1,6 @@
 /**
  */
-package org.pgcase.xobot.landscape.impl;
+package org.pgcase.xobot.landscape.model.impl;
 
 import java.util.Collection;
 
@@ -17,28 +17,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.pgcase.xobot.landscape.api.XSource;
-import org.pgcase.xobot.landscape.api.XSourceSet;
-
-import org.pgcase.xobot.landscape.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.model.api.XTarget;
+import org.pgcase.xobot.landscape.model.api.XTargetSet;
+import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Source Set</b></em>'.
+ * An implementation of the model object '<em><b>Target Set</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.pgcase.xobot.landscape.impl.XSourceSetImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.impl.XSourceSetImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.impl.XSourceSetImpl#getSources <em>Sources</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetSetImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetSetImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetSetImpl#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSourceSet {
+public class XTargetSetImpl extends MinimalEObjectImpl.Container implements XTargetSet {
 	/**
 	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -80,21 +78,21 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSources() <em>Sources</em>}' containment reference list.
+	 * The cached value of the '{@link #getTargets() <em>Targets</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSources()
+	 * @see #getTargets()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<XSource> sources;
+	protected EList<XTarget> targets;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected XSourceSetImpl() {
+	protected XTargetSetImpl() {
 		super();
 	}
 
@@ -105,7 +103,7 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return XLandscapePackage.Literals.SOURCE_SET;
+		return XLandscapePackage.Literals.TARGET_SET;
 	}
 
 	/**
@@ -126,7 +124,7 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 		String oldIdentifier = identifier;
 		identifier = newIdentifier;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.SOURCE_SET__IDENTIFIER, oldIdentifier, identifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.TARGET_SET__IDENTIFIER, oldIdentifier, identifier));
 	}
 
 	/**
@@ -147,7 +145,7 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.SOURCE_SET__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.TARGET_SET__NAME, oldName, name));
 	}
 
 	/**
@@ -155,11 +153,11 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XSource> getSources() {
-		if (sources == null) {
-			sources = new EObjectContainmentWithInverseEList<XSource>(XSource.class, this, XLandscapePackage.SOURCE_SET__SOURCES, XLandscapePackage.SOURCE__SOURCE_SET);
+	public EList<XTarget> getTargets() {
+		if (targets == null) {
+			targets = new EObjectContainmentWithInverseEList<XTarget>(XTarget.class, this, XLandscapePackage.TARGET_SET__TARGETS, XLandscapePackage.TARGET__TARGET_SET);
 		}
-		return sources;
+		return targets;
 	}
 
 	/**
@@ -171,8 +169,8 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case XLandscapePackage.SOURCE_SET__SOURCES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSources()).basicAdd(otherEnd, msgs);
+			case XLandscapePackage.TARGET_SET__TARGETS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTargets()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -185,8 +183,8 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case XLandscapePackage.SOURCE_SET__SOURCES:
-				return ((InternalEList<?>)getSources()).basicRemove(otherEnd, msgs);
+			case XLandscapePackage.TARGET_SET__TARGETS:
+				return ((InternalEList<?>)getTargets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -199,12 +197,12 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XLandscapePackage.SOURCE_SET__IDENTIFIER:
+			case XLandscapePackage.TARGET_SET__IDENTIFIER:
 				return getIdentifier();
-			case XLandscapePackage.SOURCE_SET__NAME:
+			case XLandscapePackage.TARGET_SET__NAME:
 				return getName();
-			case XLandscapePackage.SOURCE_SET__SOURCES:
-				return getSources();
+			case XLandscapePackage.TARGET_SET__TARGETS:
+				return getTargets();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -218,15 +216,15 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XLandscapePackage.SOURCE_SET__IDENTIFIER:
+			case XLandscapePackage.TARGET_SET__IDENTIFIER:
 				setIdentifier((String)newValue);
 				return;
-			case XLandscapePackage.SOURCE_SET__NAME:
+			case XLandscapePackage.TARGET_SET__NAME:
 				setName((String)newValue);
 				return;
-			case XLandscapePackage.SOURCE_SET__SOURCES:
-				getSources().clear();
-				getSources().addAll((Collection<? extends XSource>)newValue);
+			case XLandscapePackage.TARGET_SET__TARGETS:
+				getTargets().clear();
+				getTargets().addAll((Collection<? extends XTarget>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -240,14 +238,14 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XLandscapePackage.SOURCE_SET__IDENTIFIER:
+			case XLandscapePackage.TARGET_SET__IDENTIFIER:
 				setIdentifier(IDENTIFIER_EDEFAULT);
 				return;
-			case XLandscapePackage.SOURCE_SET__NAME:
+			case XLandscapePackage.TARGET_SET__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case XLandscapePackage.SOURCE_SET__SOURCES:
-				getSources().clear();
+			case XLandscapePackage.TARGET_SET__TARGETS:
+				getTargets().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -261,12 +259,12 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XLandscapePackage.SOURCE_SET__IDENTIFIER:
+			case XLandscapePackage.TARGET_SET__IDENTIFIER:
 				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-			case XLandscapePackage.SOURCE_SET__NAME:
+			case XLandscapePackage.TARGET_SET__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case XLandscapePackage.SOURCE_SET__SOURCES:
-				return sources != null && !sources.isEmpty();
+			case XLandscapePackage.TARGET_SET__TARGETS:
+				return targets != null && !targets.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -289,4 +287,4 @@ public class XSourceSetImpl extends MinimalEObjectImpl.Container implements XSou
 		return result.toString();
 	}
 
-} //XSourceSetImpl
+} //XTargetSetImpl

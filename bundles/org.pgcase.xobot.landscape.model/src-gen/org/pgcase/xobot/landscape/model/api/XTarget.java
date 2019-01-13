@@ -1,6 +1,6 @@
 /**
  */
-package org.pgcase.xobot.landscape.api;
+package org.pgcase.xobot.landscape.model.api;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,14 +15,14 @@ import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.pgcase.xobot.landscape.api.XTarget#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.api.XTarget#getName <em>Name</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.api.XTarget#getUri <em>Uri</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.api.XTarget#getTargetSet <em>Target Set</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getName <em>Name</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getTargetSet <em>Target Set</em>}</li>
  * </ul>
  *
- * @see org.pgcase.xobot.landscape.meta.XLandscapePackage#getTarget()
- * @model superTypes="org.pgcase.xobot.landscape.api.TargetDescriptor"
+ * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget()
+ * @model superTypes="org.pgcase.xobot.landscape.model.api.TargetDescriptor"
  * @generated
  */
 public interface XTarget extends EObject, XTargetDescriptor {
@@ -36,14 +36,14 @@ public interface XTarget extends EObject, XTargetDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Identifier</em>' attribute.
 	 * @see #setIdentifier(String)
-	 * @see org.pgcase.xobot.landscape.meta.XLandscapePackage#getTarget_Identifier()
+	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_Identifier()
 	 * @model
 	 * @generated
 	 */
 	String getIdentifier();
 
 	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.api.XTarget#getIdentifier <em>Identifier</em>}' attribute.
+	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Identifier</em>' attribute.
@@ -62,14 +62,14 @@ public interface XTarget extends EObject, XTargetDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.pgcase.xobot.landscape.meta.XLandscapePackage#getTarget_Name()
+	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.api.XTarget#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -88,14 +88,14 @@ public interface XTarget extends EObject, XTargetDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(String)
-	 * @see org.pgcase.xobot.landscape.meta.XLandscapePackage#getTarget_Uri()
+	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_Uri()
 	 * @model
 	 * @generated
 	 */
 	String getUri();
 
 	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.api.XTarget#getUri <em>Uri</em>}' attribute.
+	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getUri <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Uri</em>' attribute.
@@ -106,7 +106,7 @@ public interface XTarget extends EObject, XTargetDescriptor {
 
 	/**
 	 * Returns the value of the '<em><b>Target Set</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.pgcase.xobot.landscape.api.XTargetSet#getTargets <em>Targets</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.pgcase.xobot.landscape.model.api.XTargetSet#getTargets <em>Targets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Set</em>' container reference isn't clear,
@@ -115,15 +115,15 @@ public interface XTarget extends EObject, XTargetDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Set</em>' container reference.
 	 * @see #setTargetSet(XTargetSet)
-	 * @see org.pgcase.xobot.landscape.meta.XLandscapePackage#getTarget_TargetSet()
-	 * @see org.pgcase.xobot.landscape.api.XTargetSet#getTargets
+	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_TargetSet()
+	 * @see org.pgcase.xobot.landscape.model.api.XTargetSet#getTargets
 	 * @model opposite="targets" required="true" transient="false"
 	 * @generated
 	 */
 	XTargetSet getTargetSet();
 
 	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.api.XTarget#getTargetSet <em>Target Set</em>}' container reference.
+	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getTargetSet <em>Target Set</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Target Set</em>' container reference.

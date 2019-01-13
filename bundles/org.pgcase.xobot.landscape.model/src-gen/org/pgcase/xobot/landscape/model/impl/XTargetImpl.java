@@ -1,6 +1,6 @@
 /**
  */
-package org.pgcase.xobot.landscape.impl;
+package org.pgcase.xobot.landscape.model.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -12,11 +12,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.pgcase.xobot.landscape.api.XTarget;
-import org.pgcase.xobot.landscape.api.XTargetSet;
-
-import org.pgcase.xobot.landscape.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.model.api.XTarget;
+import org.pgcase.xobot.landscape.model.api.XTargetSet;
+import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,10 +24,10 @@ import org.pgcase.xobot.landscape.meta.XLandscapePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.pgcase.xobot.landscape.impl.XTargetImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.impl.XTargetImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.impl.XTargetImpl#getUri <em>Uri</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.impl.XTargetImpl#getTargetSet <em>Target Set</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getTargetSet <em>Target Set</em>}</li>
  * </ul>
  *
  * @generated

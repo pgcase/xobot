@@ -1,20 +1,19 @@
 /**
  */
-package org.pgcase.xobot.landscape.meta;
+package org.pgcase.xobot.landscape.model.meta;
 
 import org.eclipse.emf.ecore.EFactory;
-
-import org.pgcase.xobot.landscape.api.XSource;
-import org.pgcase.xobot.landscape.api.XSourceSet;
-import org.pgcase.xobot.landscape.api.XTarget;
-import org.pgcase.xobot.landscape.api.XTargetSet;
+import org.pgcase.xobot.landscape.model.api.XSource;
+import org.pgcase.xobot.landscape.model.api.XSourceSet;
+import org.pgcase.xobot.landscape.model.api.XTarget;
+import org.pgcase.xobot.landscape.model.api.XTargetSet;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.landscape.meta.XLandscapePackage
+ * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage
  * @generated
  */
 public interface XLandscapeFactory extends EFactory {
@@ -24,7 +23,7 @@ public interface XLandscapeFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XLandscapeFactory eINSTANCE = org.pgcase.xobot.landscape.impl.XLandscapeFactoryImpl.init();
+	XLandscapeFactory eINSTANCE = org.pgcase.xobot.landscape.model.impl.XLandscapeFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Source Set</em>'.

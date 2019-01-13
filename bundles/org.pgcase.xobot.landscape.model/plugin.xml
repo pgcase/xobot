@@ -28,7 +28,7 @@
       <!-- @generated landscape -->
       <package
             uri="http://www.pgcase.org/xobot/landscape/0.1.0"
-            class="org.pgcase.xobot.landscape.meta.XLandscapePackage"
+            class="org.pgcase.xobot.landscape.model.meta.XLandscapePackage"
             genModel="model/landscape.genmodel"/>
    </extension>
 

@@ -1,15 +1,15 @@
 /**
  */
-package org.pgcase.xobot.landscape.util;
+package org.pgcase.xobot.landscape.model.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.pgcase.xobot.landscape.api.*;
+import org.pgcase.xobot.landscape.model.api.*;
 
-import org.pgcase.xobot.landscape.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
@@ -26,7 +26,7 @@ import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.landscape.meta.XLandscapePackage
+ * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage
  * @generated
  */
 public class LandscapeSwitch<T> extends Switch<T> {

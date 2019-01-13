@@ -1,6 +1,6 @@
 /**
  */
-package org.pgcase.xobot.landscape.impl;
+package org.pgcase.xobot.landscape.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -9,11 +9,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.pgcase.xobot.landscape.api.*;
-
-import org.pgcase.xobot.landscape.meta.XLandscapeFactory;
-import org.pgcase.xobot.landscape.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.model.api.*;
+import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
+import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 
 /**
  * <!-- begin-user-doc -->

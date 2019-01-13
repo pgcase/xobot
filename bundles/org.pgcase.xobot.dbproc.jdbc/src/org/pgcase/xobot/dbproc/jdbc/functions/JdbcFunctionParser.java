@@ -22,7 +22,7 @@ public class JdbcFunctionParser {
 				resultSet.getInt("pro_oid"), 
 				resultSet.getString("schema_name"), 
 				resultSet.getString("pro_name"), 
-				resultSet.getString("prorettype_name"), 
+				resultSet.getString("pro_return"), 
 				resultSet.getString("proowner_name"), 
 				resultSet.getString("prolang_name"), 
 				args, 

@@ -8,10 +8,11 @@ import java.util.List;
 import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
 import org.pgcase.xobot.dbproc.runtime.functions.ArgumentDescriptorImpl;
 import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
+import org.pgcase.xobot.dbproc.runtime.functions.XJdbcFunctionDescriptor;
 
 public class JdbcFunctionParser {
 
-	public static XFunctionDescriptor parse(Connection jdbcConnection, ResultSet resultSet, XIssueReporter reporter) 
+	public static XJdbcFunctionDescriptor parse(Connection jdbcConnection, ResultSet resultSet, XIssueReporter reporter) 
 			throws SQLException 
 	{
 		

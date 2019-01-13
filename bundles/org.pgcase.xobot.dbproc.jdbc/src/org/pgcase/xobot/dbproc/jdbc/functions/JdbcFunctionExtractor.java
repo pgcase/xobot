@@ -26,7 +26,7 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 			
 			Connection jdbcConnection = (Connection) input;
 			
-			List<XFunctionDescriptor> functions = Collections.emptyList();
+			ArrayList<XFunctionDescriptor> functions = new ArrayList<XFunctionDescriptor>();
 			String schema = context.getOrDefault("schema", (Object)"public").toString();
 			try {				
 				@SuppressWarnings("resource")
@@ -44,7 +44,7 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 				preparedStatement.setString(1, schema);
 				ResultSet resultSet = preparedStatement.executeQuery();			
 				while (resultSet.next()) {
-					XFunctionDescriptor parsed = (XFunctionDescriptor)JdbcFunctionParser.parse(jdbcConnection,resultSet,reporter);
+					XFunctionDescriptor parsed = JdbcFunctionParser.parse(jdbcConnection,resultSet,reporter);
 					functions.add(parsed);
 				}
 				return functions;

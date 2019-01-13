@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.pgcase.xobot.dbproc.jdbc.functions.JdbcFunctionExtractor;
 import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
+import org.pgcase.xobot.dbproc.runtime.functions.XJdbcFunctionDescriptor;
 
 public class DbprocJdbc {
 	
@@ -29,11 +30,11 @@ public class DbprocJdbc {
 			Iterable<XFunctionDescriptor> testExtractFunctions 
 				= extractor.extractFunctions(connection,context,null);
 			
+			System.out.println("JDBC PostgreSQL extract test finished. Function: "+testExtractFunctions.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("JDBC PostgreSQL extract test finished");
 	}
 	*/
 }

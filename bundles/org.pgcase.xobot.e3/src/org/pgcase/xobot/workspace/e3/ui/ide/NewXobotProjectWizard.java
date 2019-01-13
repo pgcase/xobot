@@ -6,7 +6,6 @@ import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 public class NewXobotProjectWizard extends BasicNewProjectResourceWizard implements INewWizard {
 
 	public NewXobotProjectWizard() {
-		setWindowTitle("New Xobot Project");
 	}
-	
+
 }

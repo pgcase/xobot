@@ -24,6 +24,8 @@
 		<module>../../features/org.pgcase.xobot.license.feature</module>
 
 		<module>../../bundles/org.pgcase.xobot.landscape.runtime</module>
+		<module>../../bundles/org.pgcase.xobot.landscape.model.ecore</module>
+		<module>../../bundles/org.pgcase.xobot.landscape.ui.navigator</module>
 		<module>../../features/org.pgcase.xobot.landscape.feature</module>
 
 		<module>../../bundles/org.pgcase.xobot.dbproc.runtime</module>

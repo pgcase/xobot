@@ -18,7 +18,10 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.landscape.runtime;
+package org.pgcase.xobot.landscape.runtime.registry;
+
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
 
 public interface XTargetRegistry {
 	

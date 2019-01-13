@@ -18,7 +18,10 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.landscape.runtime;
+package org.pgcase.xobot.landscape.runtime.registry;
+
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 
 public interface XSourceRegistry {
 	

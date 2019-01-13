@@ -26,6 +26,6 @@ public interface XSourceSetDescriptor {
 
 	String getName();
 	
-	Iterable<XSourceDescriptor> getSources();
+	Iterable<? extends XSourceDescriptor> getSources();
 
 }

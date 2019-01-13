@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.pgcase.xobot.landscape.model/src-gen" creationIcons="false"
+    editDirectory="/org.pgcase.xobot.landscape.model.edit/src-gen" editorDirectory="/org.pgcase.xobot.landscape.model.presentation/src-gen"
+    modelPluginID="org.pgcase.xobot.landscape.model" modelName="Landscape" editPluginClass="landscape.edit.LandscapeEditPlugin"
+    nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" colorProviders="true" fontProviders="true" interfaceNamePattern="X{0}"
+    classNamePattern="X{0}Impl" operationReflection="true" runtimePlatform="RCP" importOrganizing="true"
+    oSGiCompatible="true">
+  <foreignModel>../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore</foreignModel>
+  <genPackages prefix="Landscape" basePackage="org.pgcase.xobot" disposableProviderFactory="true"
+      interfacePackageSuffix="api" metaDataPackageSuffix="meta" providerPackageSuffix="edit.provider"
+      ecorePackage="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#/">
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceSetDescriptor"/>
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceDescriptor"/>
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//TargetSetDescriptor"/>
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//TargetDescriptor"/>
+    <genClasses ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceSet/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceSet/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceSet/sources"/>
+    </genClasses>
+    <genClasses ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Source">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Source/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Source/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Source/uri"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Source/sourceSet"/>
+    </genClasses>
+    <genClasses ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//TargetSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//TargetSet/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//TargetSet/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//TargetSet/targets"/>
+    </genClasses>
+    <genClasses ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Target">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Target/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Target/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Target/uri"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Target/targetSet"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

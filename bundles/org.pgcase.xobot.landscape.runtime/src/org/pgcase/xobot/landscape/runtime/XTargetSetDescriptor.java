@@ -26,6 +26,6 @@ public interface XTargetSetDescriptor {
 
 	String getName();
 	
-	Iterable<XTargetDescriptor> getTargets();
+	Iterable<? extends XTargetDescriptor> getTargets();
 
 }

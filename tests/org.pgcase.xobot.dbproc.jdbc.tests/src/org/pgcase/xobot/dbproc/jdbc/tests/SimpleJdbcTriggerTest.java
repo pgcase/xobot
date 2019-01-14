@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 class SimpleJdbcTriggerTest {
 
 	private static final String CREATE_TEST_TRIGGER = "sql/create_test_trigger1.sql"; //$NON-NLS-1$
-
 	
 	@Test
 	void testTrigger() throws IOException {
@@ -19,6 +18,7 @@ class SimpleJdbcTriggerTest {
 		assertEquals("after",pg_trigger_header.getAction(),"Incorrect trigger action");
         //System.out.println(pg_trigger_header);
          */
+		return;
 	}
 
 }

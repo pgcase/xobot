@@ -1,1 +1,1 @@
-create schema ? authorization ?
+create schema %s

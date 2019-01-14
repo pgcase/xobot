@@ -8,5 +8,6 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="postgresql-42.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-42.2.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

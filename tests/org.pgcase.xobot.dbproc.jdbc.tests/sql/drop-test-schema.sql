@@ -1,1 +1,1 @@
-drop schema if exists ?
+drop schema if exists %s cascade

@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION data.xb_pr_test1(i_par1 bigint, i_par2 text)
+CREATE OR REPLACE FUNCTION %s.xb_pr_test1(i_par1 bigint, i_par2 text)
  RETURNS bigint
  LANGUAGE plpgsql
 AS $function$

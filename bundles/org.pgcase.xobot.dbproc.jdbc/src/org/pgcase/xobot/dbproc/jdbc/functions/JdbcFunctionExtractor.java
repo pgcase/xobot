@@ -1,18 +1,15 @@
 package org.pgcase.xobot.dbproc.jdbc.functions;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
+import org.pgcase.xobot.dbproc.jdbc.DbprocJdbc;
 import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
 import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
 import org.pgcase.xobot.dbproc.runtime.functions.XFunctionExtractor;
@@ -23,23 +20,10 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 	@Override
 	public Iterable<XFunctionDescriptor> extractFunctions(Object input, Map<String, Object> context, XIssueReporter reporter) {
 		if (input instanceof Connection) {
-			
-			Connection jdbcConnection = (Connection) input;
-			
-			ArrayList<XFunctionDescriptor> functions = new ArrayList<XFunctionDescriptor>();
-			String schema = context.getOrDefault("schema", (Object)"public").toString();
-			try {				
-				@SuppressWarnings("resource")
-				BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(SCAN_DBPROC_SQL_FILE)));
-				StringBuilder sb = new StringBuilder();
-		        
-		        String nextLine;
-		        while(null != (nextLine = reader.readLine())) {
-	                sb.append(nextLine);
-	                sb.append('\n');
-		        }
-				String sqlSentence = sb.toString();
-				
+			try (Connection jdbcConnection = (Connection) input) {		
+				ArrayList<XFunctionDescriptor> functions = new ArrayList<XFunctionDescriptor>();
+				String schema = context.getOrDefault("schema", (Object)"public").toString();
+				String sqlSentence = DbprocJdbc.getSql(SCAN_DBPROC_SQL_FILE);			
 				PreparedStatement preparedStatement = jdbcConnection.prepareStatement(sqlSentence);
 				preparedStatement.setString(1, schema);
 				ResultSet resultSet = preparedStatement.executeQuery();			

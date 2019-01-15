@@ -1,4 +1,4 @@
-package org.pgcase.xobot.landscape.ui.navigator;
+package org.pgcase.xobot.basis.ui.navigator;
 
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
@@ -7,8 +7,9 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 
-public abstract class RegistryContentProvider<R> implements ICommonContentProvider {
+public abstract class RegistryContentProvider<R extends BasisRegistry> implements ICommonContentProvider {
 
 	protected static final Object[] NO_CHILDREN = new Object[0];
 

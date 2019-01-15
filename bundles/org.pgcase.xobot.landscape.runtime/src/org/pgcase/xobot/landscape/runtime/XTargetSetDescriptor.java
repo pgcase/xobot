@@ -20,11 +20,9 @@
  *******************************************************************************/
 package org.pgcase.xobot.landscape.runtime;
 
-public interface XTargetSetDescriptor {
-	
-	String getIdentifier();
+import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
 
-	String getName();
+public interface XTargetSetDescriptor extends DescribedDescriptor {
 	
 	Iterable<? extends XTargetDescriptor> getTargets();
 

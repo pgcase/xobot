@@ -1,5 +1,6 @@
 package org.pgcase.xobot.landscape.ui.navigator;
 
+import org.pgcase.xobot.basis.ui.navigator.RegistryNavigator;
 import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
 
 public class SourcesNavigator extends RegistryNavigator<XSourceRegistry> {

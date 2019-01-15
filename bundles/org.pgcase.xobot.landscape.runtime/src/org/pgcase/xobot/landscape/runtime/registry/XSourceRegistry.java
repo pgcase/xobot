@@ -20,10 +20,11 @@
  *******************************************************************************/
 package org.pgcase.xobot.landscape.runtime.registry;
 
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 
-public interface XSourceRegistry {
+public interface XSourceRegistry extends BasisRegistry {
 	
 	Iterable<XSourceSetDescriptor> getSourceSets();
 

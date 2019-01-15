@@ -7,5 +7,7 @@ Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
 Bundle-Copyright: %Bundle-Copyright
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.pgcase.xobot.landscape.runtime,
+Export-Package: org.pgcase.xobot.basis.runtime,
+ org.pgcase.xobot.basis.runtime.registry,
+ org.pgcase.xobot.landscape.runtime,
  org.pgcase.xobot.landscape.runtime.registry

@@ -20,10 +20,11 @@
  *******************************************************************************/
 package org.pgcase.xobot.landscape.runtime.registry;
 
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
 
-public interface XTargetRegistry {
+public interface XTargetRegistry extends BasisRegistry {
 	
 	Iterable<XTargetSetDescriptor> getTargetSets();
 

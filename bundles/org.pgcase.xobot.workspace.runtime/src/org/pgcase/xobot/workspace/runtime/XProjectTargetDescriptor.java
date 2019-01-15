@@ -20,14 +20,12 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime;
 
-import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
-
 //project-specific target configuration
 public interface XProjectTargetDescriptor {
 	
 	XProjectConfigurationDescriptor getProjectConfiguration();
 	
-	XTargetDescriptor getTarget();
+	String getTargetIdentifier();
 
 	String getOptions();
 

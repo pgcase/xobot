@@ -2,6 +2,7 @@ package org.pgcase.xobot.landscape.ui.navigator;
 
 import java.util.stream.StreamSupport;
 
+import org.pgcase.xobot.basis.ui.navigator.RegistryContentProvider;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;

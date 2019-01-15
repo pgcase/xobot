@@ -1,4 +1,4 @@
-package org.pgcase.xobot.landscape.ui.navigator;
+package org.pgcase.xobot.basis.ui.navigator;
 
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
@@ -8,8 +8,9 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 
-public abstract class RegistryNavigator<R> extends CommonNavigator {
+public abstract class RegistryNavigator<R extends BasisRegistry> extends CommonNavigator {
 	
 	private ServiceReference<R> registryReference;
 	private R registry;

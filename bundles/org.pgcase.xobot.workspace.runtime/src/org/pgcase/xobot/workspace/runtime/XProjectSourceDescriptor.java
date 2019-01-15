@@ -20,14 +20,12 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime;
 
-import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
-
 //project-specific source configuration
 public interface XProjectSourceDescriptor {
 	
 	XProjectConfigurationDescriptor getProjectConfiguration();
 	
-	XSourceDescriptor getSource();
+	String getSourceIdentifier();
 
 	String getOptions();
 

@@ -3,7 +3,10 @@ package org.pgcase.xobot.dbproc.jdbc;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import org.pgcase.xobot.dbproc.jdbc.functions.JdbcFunctionExtractor;
 
 public class DbprocJdbc {
 	
@@ -33,4 +36,16 @@ public class DbprocJdbc {
 		}     
 	}
 
+	public static String getBundleSql(String bundleSqlFilename) throws IOException {
+		InputStream is = DbprocJdbc.class.getResourceAsStream(bundleSqlFilename);
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+			StringBuilder sb = new StringBuilder();
+			String nextLine;
+			while(null != (nextLine = reader.readLine())) {
+				sb.append(nextLine);
+				sb.append('\n');
+			}
+			return sb.toString();
+		}
+	}
 }

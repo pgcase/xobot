@@ -41,6 +41,7 @@
 		<module>../../features/org.pgcase.xobot.toolchain.feature</module>
 
 		<module>../../bundles/org.pgcase.xobot.workspace.runtime</module>
+		<module>../../bundles/org.pgcase.xobot.workspace.ui.navigator</module>
 		<module>../../features/org.pgcase.xobot.workspace.feature</module>
 
 		<module>../../bundles/org.pgcase.xobot.runtime</module>

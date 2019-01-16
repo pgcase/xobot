@@ -23,6 +23,10 @@
 		<module>../../releng/org.pgcase.xobot.target</module>
 		<module>../../features/org.pgcase.xobot.license.feature</module>
 
+		<module>../../bundles/org.pgcase.xobot.basis.runtime</module>
+		<module>../../bundles/org.pgcase.xobot.basis.ui.navigator</module>
+		<module>../../features/org.pgcase.xobot.basis.feature</module>
+
 		<module>../../bundles/org.pgcase.xobot.landscape.runtime</module>
 		<module>../../bundles/org.pgcase.xobot.landscape.model.ecore</module>
 		<module>../../bundles/org.pgcase.xobot.landscape.model</module>

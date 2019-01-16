@@ -28,7 +28,7 @@ public interface XSourceRegistry extends BasisRegistry {
 	
 	Iterable<XSourceSetDescriptor> getSourceSets();
 
-	Iterable<XSourceDescriptor> getSources();
+	Iterable<XSourceDescriptor> getResourceIdentifiers();
 
 	void registerSourceSet(XSourceSetDescriptor sourceSet);
 

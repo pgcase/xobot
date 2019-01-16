@@ -18,18 +18,12 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.basis.runtime.registry;
+package org.pgcase.xobot.basis.emf.edit;
 
-import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 
-public interface BasisRegistry {
+public interface ComposedAdapterFactoryProvider {
 	
-	void registerResource(String identifier);
-
-	void unregisterResource(String identifier);
-
-	Iterable<String> getResourceIdentifiers();
-
-	Iterable<? extends DescribedDescriptor> getDescribedRoots();
+	ComposedAdapterFactory getComposedAdapterFactory();
 
 }

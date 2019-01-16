@@ -18,18 +18,19 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.basis.runtime.registry;
+package org.pgcase.xobot.basis.emf.edit;
 
-import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 
-public interface BasisRegistry {
-	
-	void registerResource(String identifier);
+public interface EditingDomainRegistry extends BasisRegistry, IEditingDomainProvider, ComposedAdapterFactoryProvider {
 
-	void unregisterResource(String identifier);
+	EClass getContentClassifier();
 
-	Iterable<String> getResourceIdentifiers();
+	EStructuralFeature getContentIdentifierAttribute();
 
-	Iterable<? extends DescribedDescriptor> getDescribedRoots();
+	EStructuralFeature getContentNameAttribute();
 
 }

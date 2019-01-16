@@ -47,6 +47,20 @@
          unpack="false"/>
 
    <plugin
+         id="org.pgcase.xobot.basis.jface"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.pgcase.xobot.basis.emf.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.pgcase.xobot.basis.ui.navigator"
          download-size="0"
          install-size="0"

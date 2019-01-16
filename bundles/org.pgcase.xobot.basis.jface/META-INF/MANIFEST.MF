@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.pgcase.xobot.basis.jface
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.pgcase.xobot.basis.jface
+Bundle-Version: 0.1.0.qualifier
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Copyright: %Bundle-Copyright
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.pgcase.xobot.basis.jface
+Require-Bundle: org.eclipse.jface
+

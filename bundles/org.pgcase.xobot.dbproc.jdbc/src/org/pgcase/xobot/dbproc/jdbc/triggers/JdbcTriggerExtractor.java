@@ -1,10 +1,8 @@
 package org.pgcase.xobot.dbproc.jdbc.triggers;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
@@ -35,17 +33,11 @@ public class JdbcTriggerExtractor implements XTriggerExtractor {
 					triggers.add(parsed);
 				}
 				return triggers;
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				String message = String.format("Failed to process input with context %s", context);
 				reporter.reportIssue(this, input, message, e);
-			} catch (IOException e1) {
-				String message = String.format("Failed to process input with context %s", context);
-				reporter.reportIssue(this, input, message, e1);
-			} catch (Exception e2) {
-				String message = String.format("Failed to process input with context %s", context);
-				reporter.reportIssue(this, input, message, e2);
 			}
-			}
+		}
 		return Collections.emptyList();
 	}
 	

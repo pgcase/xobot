@@ -39,11 +39,15 @@ public class SystemJdbcConnection implements java.io.Closeable {
 	        connection = DriverManager.getConnection(dbUrl,dbUser,dbPasswd);
 			Statement statement = connection.createStatement();
 			statement.execute(sqlDropSchema);
-			if (!connection.getAutoCommit()) connection.commit();
+			if (!connection.getAutoCommit()) {
+				connection.commit();
+			}
 			
 			statement = connection.createStatement();
 			statement.execute(sqlCreateSchema);
-			if (!connection.getAutoCommit()) connection.commit();
+			if (!connection.getAutoCommit()) {
+				connection.commit();
+			}
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -54,14 +58,14 @@ public class SystemJdbcConnection implements java.io.Closeable {
 	public void close() {
 		try {
 			connection.createStatement().execute(sqlDropSchema);
+			if (!connection.getAutoCommit()) {
+				connection.commit();
+			}
 			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		finally {
-			close();
-		}
 	}
 	
 	public Connection getConnection() {

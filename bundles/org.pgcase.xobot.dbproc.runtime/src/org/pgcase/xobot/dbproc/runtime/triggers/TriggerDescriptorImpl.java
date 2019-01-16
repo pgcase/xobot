@@ -1,13 +1,13 @@
 package org.pgcase.xobot.dbproc.runtime.triggers;
 
-public class TriggerDescriptorImpl implements XTriggerDescriptor {
+	class TriggerDescriptorImpl implements XTriggerDescriptor {
 
 	private final String object;
 	private final String name;
 	private final String action;
 	private final String events;
 
-	public TriggerDescriptorImpl(String object, String name, String action, String events) {
+	TriggerDescriptorImpl(String object, String name, String action, String events) {
 		super();
 		this.object = object;
 		this.name = name;

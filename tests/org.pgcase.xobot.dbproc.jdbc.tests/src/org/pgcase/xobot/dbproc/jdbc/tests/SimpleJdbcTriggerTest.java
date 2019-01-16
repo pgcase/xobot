@@ -10,6 +10,7 @@ class SimpleJdbcTriggerTest {
 	
 	@Test
 	void testTrigger() throws IOException {
+		// TODO
 		/*
 		FileInputStream in = new FileInputStream(SIMPLE_TRIGGER);
 		XTriggerDescriptor pg_trigger_header = PgTriggerParseHeader.parse(in, new SystemIssueReporter());

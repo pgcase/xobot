@@ -26,7 +26,9 @@ class SimpleJdbcFunctionTest {
 		context.put("schema", (Object)conn.getSchema());
 		Statement statement = conn.getConnection().createStatement();
 		statement.execute(DbprocJdbc.getSqlFmt1(CREATE_TEST_FUNC,conn.getSchema()));
-		if (!conn.getConnection().getAutoCommit()) conn.getConnection().commit();
+		if (!conn.getConnection().getAutoCommit()) {
+			conn.getConnection().commit();
+		}
 		
 		JdbcFunctionExtractor extractor = new JdbcFunctionExtractor();
 		Iterable<XFunctionDescriptor> pg_functions 
@@ -35,5 +37,7 @@ class SimpleJdbcFunctionTest {
 		assertEquals(1, ((Collection<?>)pg_functions).size(), "Incorrect count of function name parsed from JDBC");
 		
 		pg_functions.forEach(function -> assertEquals("xb_pr_test1", function.getName(), "Incorrect parsed function name"));
+		
+		conn.close();
 	}
 }

@@ -1,12 +1,11 @@
 package org.pgcase.xobot.dbproc.jdbc.functions;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.pgcase.xobot.dbproc.jdbc.DbprocJdbc;
@@ -22,8 +21,8 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 	public Iterable<XFunctionDescriptor> extractFunctions(Object input, Map<String, Object> context, XIssueReporter reporter) {
 		if (input instanceof Connection) {
 			try (Connection jdbcConnection = (Connection) input) {		
-				ArrayList<XFunctionDescriptor> functions = new ArrayList<XFunctionDescriptor>();
-				String schema = context.getOrDefault("schema", (Object)"public").toString();
+				List<XFunctionDescriptor> functions = new ArrayList<XFunctionDescriptor>();
+				String schema = DbprocJdbc.extractSchema(context);						
 				if (sqlSentence ==null) {
 					sqlSentence = DbprocJdbc.getBundleSql(SCAN_DBPROC_FUNC_SQL_FILE);	
 				}
@@ -35,15 +34,9 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 					functions.add(parsed);
 				}
 				return functions;
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				String message = String.format("Failed to process input with context %s", context);
 				reporter.reportIssue(this, input, message, e);
-			} catch (IOException e1) {
-				String message = String.format("Failed to process input with context %s", context);
-				reporter.reportIssue(this, input, message, e1);
-			} catch (Exception e2) {
-				String message = String.format("Failed to process input with context %s", context);
-				reporter.reportIssue(this, input, message, e2);
 			}
 		}
 		return Collections.emptyList();

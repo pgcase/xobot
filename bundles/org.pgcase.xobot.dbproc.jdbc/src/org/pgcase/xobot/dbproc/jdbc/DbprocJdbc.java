@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.pgcase.xobot.dbproc.jdbc.functions.JdbcFunctionExtractor;
-
 public class DbprocJdbc {
 	
 	public static final String EXTRACTOR_TYPE_JDBC = "JDBC"; //$NON-NLS-1$

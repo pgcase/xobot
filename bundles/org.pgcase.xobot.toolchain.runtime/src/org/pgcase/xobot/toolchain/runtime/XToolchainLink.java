@@ -22,7 +22,7 @@ package org.pgcase.xobot.toolchain.runtime;
 
 public interface XToolchainLink {
 	
-	XToolDescriptor getTool();
+	String getToolIdentifier();
 
 	//let it be just a String for now
 	String getOptions();

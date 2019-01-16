@@ -14,5 +14,5 @@ Export-Package: org.pgcase.xobot.landscape.model.api,
  org.pgcase.xobot.landscape.model.util
 Require-Bundle: org.eclipse.core.runtime;resolution:=optional;x-installation:=greedy,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.pgcase.xobot.landscape.runtime;bundle-version="0.0.0"
+ org.pgcase.xobot.landscape.runtime;bundle-version="0.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -20,7 +20,8 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 	@Override
 	public Iterable<XFunctionDescriptor> extractFunctions(Object input, Map<String, Object> context, XIssueReporter reporter) {
 		if (input instanceof Connection) {
-			try (Connection jdbcConnection = (Connection) input) {		
+			try  {		
+				Connection jdbcConnection = (Connection) input;
 				List<XFunctionDescriptor> functions = new ArrayList<XFunctionDescriptor>();
 				String schema = DbprocJdbc.extractSchema(context);						
 				if (sqlSentence ==null) {

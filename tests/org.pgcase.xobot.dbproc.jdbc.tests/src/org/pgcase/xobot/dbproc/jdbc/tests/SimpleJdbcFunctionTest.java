@@ -33,11 +33,12 @@ class SimpleJdbcFunctionTest {
 		JdbcFunctionExtractor extractor = new JdbcFunctionExtractor();
 		Iterable<XFunctionDescriptor> pg_functions 
 			= extractor.extractFunctions(conn.getConnection(), context, new SystemJdbcTestIssueReporter());
-		
+
+		conn.close();
+
 		assertEquals(1, ((Collection<?>)pg_functions).size(), "Incorrect count of function name parsed from JDBC");
 		
 		pg_functions.forEach(function -> assertEquals("xb_pr_test1", function.getName(), "Incorrect parsed function name"));
 		
-		conn.close();
 	}
 }

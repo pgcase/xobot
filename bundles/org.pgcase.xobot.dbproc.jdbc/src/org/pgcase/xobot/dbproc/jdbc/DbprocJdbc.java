@@ -12,32 +12,23 @@ public class DbprocJdbc {
 	public static final String EXTRACTOR_TYPE_JDBC = "JDBC"; //$NON-NLS-1$
 
 	public static String getSql(String filename) throws IOException {
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename)))) {
-			StringBuilder sb = new StringBuilder();
-			String nextLine;
-			while(null != (nextLine = reader.readLine())) {
-				sb.append(nextLine);
-				sb.append('\n');
-			}
-			return sb.toString();
+		try (InputStream is = new FileInputStream(filename)) {
+			return getSqlRaw(filename, is);
 		}
 	}
 
 	public static String getSqlFmt1(String filename, String addString) throws IOException {
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename)))) {
-			StringBuilder sb = new StringBuilder();
-	        String nextLine;
-	        while(null != (nextLine = reader.readLine())) {
-	            sb.append(nextLine);
-				sb.append('\n');
-	        }
-        	return String.format(sb.toString(),addString);
-		}     
+		return String.format(getSql(filename),addString);
 	}
 
 	public static String getBundleSql(String bundleSqlFilename) throws IOException {
-		InputStream is = DbprocJdbc.class.getResourceAsStream(bundleSqlFilename);
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+		try (InputStream is = DbprocJdbc.class.getResourceAsStream(bundleSqlFilename)) {
+			return getSqlRaw(bundleSqlFilename, is);
+		}
+	}
+	
+	static String getSqlRaw(String filename, InputStream inputStream) throws IOException {
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 			StringBuilder sb = new StringBuilder();
 			String nextLine;
 			while(null != (nextLine = reader.readLine())) {

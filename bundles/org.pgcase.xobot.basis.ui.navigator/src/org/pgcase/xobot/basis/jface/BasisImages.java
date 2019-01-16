@@ -18,12 +18,17 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.runtime;
+package org.pgcase.xobot.basis.jface;
 
-import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
 
-public interface XProjectDescriptor extends DescribedDescriptor {
+public interface BasisImages {
 	
-	Iterable<XProjectConfigurationDescriptor> getProjectConfigurations();
+	String IMG_DEFAULT = "IMG_DEFAULT"; //$NON-NLS-1$
+	
+	Image getDefaultImage();
+	
+	ImageDescriptor getDefaultImageDescriptor();
 
 }

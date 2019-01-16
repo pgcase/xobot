@@ -1,10 +1,13 @@
 package org.pgcase.xobot.workspace.resources;
 
-import org.eclipse.core.resources.IResource;
-import org.pgcase.xobot.workspace.core.XElement;
+import java.util.Collections;
 
-//stub implementation to associate IResource with XElement
-public class XobotResourceElement implements XElement {
+import org.eclipse.core.resources.IResource;
+import org.pgcase.xobot.workspace.runtime.XProjectConfigurationDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+
+//stub implementation to associate IResource with XElement, should be obtained via registry service
+public class XobotResourceElement implements XProjectDescriptor {
 	
 	private final IResource resource;
 
@@ -14,6 +17,22 @@ public class XobotResourceElement implements XElement {
 	
 	public IResource getResource() {
 		return resource;
+	}
+	
+	@Override
+	public String getIdentifier() {
+		return resource.getFullPath().toString();
+	}
+	
+	@Override
+	public String getName() {
+		return resource.getName();
+	}
+	
+	@Override
+	public Iterable<XProjectConfigurationDescriptor> getProjectConfigurations() {
+		// TODO Auto-generated method stub
+		return Collections.emptyList();
 	}
 
 }

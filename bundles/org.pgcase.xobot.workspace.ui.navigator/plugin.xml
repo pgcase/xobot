@@ -25,27 +25,27 @@
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
             activeByDefault="true"
-            contentProvider="org.pgcase.xobot.landscape.ui.navigator.SourcesContentProvider"
+            contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectSourcesContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.sources"
             labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.sources.name">
          <triggerPoints>
             <adapt
-                  type="org.eclipse.core.resources.IProject">
+                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
             </adapt>
          </triggerPoints>
       </navigatorContent>
       <navigatorContent
             activeByDefault="true"
-            contentProvider="org.pgcase.xobot.landscape.ui.navigator.TargetsContentProvider"
+            contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectTargetsContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.targets"
             labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.targets.name">
          <triggerPoints>
             <adapt
-                  type="org.eclipse.core.resources.IProject">
+                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
             </adapt>
          </triggerPoints>
       </navigatorContent>

@@ -17,4 +17,5 @@ Require-Bundle: org.eclipse.equinox.app,
  org.eclipse.team.ui,
  org.eclipse.ui,
  org.eclipse.ui.navigator,
- org.eclipse.ui.ide
+ org.eclipse.ui.ide,
+ org.pgcase.xobot.workspace.runtime;bundle-version="0.0.0"

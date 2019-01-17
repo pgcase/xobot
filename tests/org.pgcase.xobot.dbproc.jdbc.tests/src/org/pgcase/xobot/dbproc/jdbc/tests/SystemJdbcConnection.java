@@ -1,10 +1,13 @@
 package org.pgcase.xobot.dbproc.jdbc.tests;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import org.pgcase.xobot.dbproc.jdbc.DbprocJdbc;
 
@@ -21,15 +24,17 @@ import org.pgcase.xobot.dbproc.jdbc.DbprocJdbc;
 
 public class SystemJdbcConnection implements java.io.Closeable {
 	private Connection connection;
-	//private String dbUrl = "jdbc:postgresql://localhost:5432/postgres"; //$NON-NLS-1$
 	private String dbSchema = "dbproc_test_schema"; //$NON-NLS-1$ 
-	//private String dbUser = "postgres"; //$NON-NLS-1$ 
-	//private String dbPasswd = "postgres"; //$NON-NLS-1$
 	
-	private String dbUrl = "jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u?useSSL=true";
-	private String dbUser = "emdrxnlgxoypnd";
-	private String dbPasswd = "2b60eb62b1856a479f2ee4d023cda6f666ca9b2cb2a352bf7078ba58c65145a4";
+	private static String DB_HOST;		// "ec2-54-75-230-41.eu-west-1.compute.amazonaws.com";
+	private static Integer DB_PORT;		// "5432";
+	private static String DB_DATABASE;	// "d85oais0tvhf9u";
+	private static Boolean DB_USE_SSL;	// "true";
+	private static String DB_URL;
+	private static String DB_USER;		// "emdrxnlgxoypnd";
+	private static String DB_PASSWD;	// "2b60eb62b1856a479f2ee4d023cda6f666ca9b2cb2a352bf7078ba58c65145a4";
 	
+	private static final String FILE_CONN_INI = "config/pg_connection.ini"; //$NON-NLS-1S
 	private static final String FILE_SQL_DROP_SCHEMA = "sql/drop-test-schema.sql"; //$NON-NLS-1S
 	private static final String FILE_SQL_CREATE_SCHEMA = "sql/create-test-schema.sql"; //$NON-NLS-1S
 	private String sqlDropSchema;
@@ -40,7 +45,22 @@ public class SystemJdbcConnection implements java.io.Closeable {
 	        sqlDropSchema = DbprocJdbc.getSqlFmt1(FILE_SQL_DROP_SCHEMA,dbSchema);
 	        sqlCreateSchema = DbprocJdbc.getSqlFmt1(FILE_SQL_CREATE_SCHEMA,dbSchema);
 
-	        connection = DriverManager.getConnection(dbUrl,dbUser,dbPasswd);
+	        Properties props = new Properties();
+			props.load(new FileInputStream(new File(FILE_CONN_INI)));
+			
+			DB_HOST = props.getProperty("host");
+			DB_PORT = Integer.valueOf(props.getProperty("port", "5432"));
+			DB_DATABASE = props.getProperty("database");
+			DB_USE_SSL = Boolean.valueOf(props.getProperty("use_ssl"));
+			DB_USER = props.getProperty("user");
+			DB_PASSWD = props.getProperty("password");
+			
+	        connection = DriverManager.getConnection(
+	        		"jdbc:postgresql://"
+	        		+ DB_HOST + ":" 
+	        		+ String.valueOf(DB_PORT) + "/" + DB_DATABASE
+	        		,DB_USER,DB_PASSWD);
+	        
 			Statement statement = connection.createStatement();
 			statement.execute(sqlDropSchema);
 			if (!connection.getAutoCommit()) {

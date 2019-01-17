@@ -4,7 +4,7 @@ select
   ns.oid schema_oid,       	-- OID пространства имён (схемы), содержащего эту функцию
   ns.nspname schema_name,   -- Имя пространства имён (схемы), содержащего эту функцию
   p.proowner proowner_oid,  -- OID владельца функции
-  au.rolname proowner_name, -- Имя владельца функции
+--  au.rolname proowner_name, -- Имя владельца функции
   p.prolang prolang_oid,    -- OID языка реализации или интерфейса вызова для этой функции
   l.lanname prolang_name,	-- Название языка реализации или интерфейса вызова для этой функции
   p.procost procost,      	-- Примерная стоимость выполнения (в единицах cpu_operator_cost); если установлен признак is_proretset, это стоимость выдачи одной строки
@@ -14,14 +14,14 @@ select
   p.pronargdefaults pronargdefaults,-- Число аргументов, для которых определены значения по умолчанию
   p.prorettype prorettype_oid,    	-- OID nипа данных возвращаемого значения
   t.typname prorettype_name,       	-- Имя типа данных возвращаемого значения
-  case when p.prokind='f' then true when p.prokind='a' then true when p.prokind='w' then true else false end 
-    as is_function,   	-- Является функцией
-  case when p.prokind='p' then true else false end 
-    as is_procedure,    -- Является процедурой
-  case when p.prokind='a' then true else false end 
-    as is_aggregate,    -- Является агрегатной (функцией)
-  case when p.prokind='w' then true else false end 
-    as is_window,      	-- Является оконной (функцией)
+--  case when p.prokind='f' then true when p.prokind='a' then true when p.prokind='w' then true else false end 
+--    as is_function,   	-- Является функцией
+--  case when p.prokind='p' then true else false end 
+--    as is_procedure,    -- Является процедурой
+--  case when p.prokind='a' then true else false end 
+--    as is_aggregate,    -- Является агрегатной (функцией)
+--  case when p.prokind='w' then true else false end 
+--    as is_window,      	-- Является оконной (функцией)
   case when p.provolatile='i' then true else false end
     as is_immutable,    -- Является постоянной функцией («immutable»), которая всегда возвращают один результат для одних и тех же аргументов
   case when p.provolatile='s' then true else false end
@@ -48,7 +48,7 @@ select
   --, p.*
 from pg_catalog.pg_proc p 
   join pg_catalog.pg_namespace ns on ns.oid=p.pronamespace
-  join pg_catalog.pg_authid au on au.oid=p.proowner
+--  join pg_catalog.pg_authid au on au.oid=p.proowner
   join pg_catalog.pg_language l on l.oid=p.prolang
   left join pg_catalog.pg_type t on t.oid=p.prorettype
 where 

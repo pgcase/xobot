@@ -29,9 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -55,7 +53,7 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 
 	private AdapterFactoryEditingDomain editingDomain;
 
-	private final List<String> sources = new ArrayList<>();
+	private final List<String> resourceIdentifiers = new ArrayList<>();
 
 	private EContentAdapter contentAdapter;
 
@@ -96,7 +94,7 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 		editingDomain.getResourceSet().eAdapters().add(contentAdapter);
 	}
 
-	protected abstract EContentAdapter createContentAdapter();
+	protected abstract DomainContentAdapter<? extends EditingDomainRegistry> createContentAdapter();
 
 	protected void deactivate(Map<String, Object> properties) {
 		editingDomain.getResourceSet().eAdapters().remove(contentAdapter);
@@ -120,46 +118,40 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 		return new HashMap<>();
 	}
 
-	public void loadSource(String source) throws Exception {
+	public void loadResource(String source) throws Exception {
 		URI uri = createURI(source);
 		ResourceSet resourceSet = editingDomain.getResourceSet();
 		Resource resource = resourceSet.createResource(uri);
 		resource.load(getLoadOptions());
-		afterLoad(resource.getContents());
 	}
 
-	protected abstract void afterLoad(EList<EObject> contents);
-
-	public void unloadSource(String source) throws Exception {
+	public void unloadResource(String source) throws Exception {
 		URI uri = createURI(source);
 		ResourceSet resourceSet = editingDomain.getResourceSet();
 		Resource resource = resourceSet.getResource(uri, false);
-		beforeUnload(resource.getContents());
 		resource.unload();
 		resourceSet.getResources().remove(resource);
 	}
-
-	protected abstract void beforeUnload(EList<EObject> contents);
 
 	protected URI createURI(String source) {
 		return URI.createFileURI(source);
 	}
 
 	@Override
-	public void registerResource(String source) {
-		sources.add(source);
+	public void registerResource(String identifier) {
+		resourceIdentifiers.add(identifier);
 		try {
-			loadSource(source);
+			loadResource(identifier);
 		} catch (Exception e) {
 			Logger.getLogger(this.getClass().getName()).log(Level.FINER, e.getMessage(), e);
 		}
 	}
 
 	@Override
-	public void unregisterResource(String source) {
-		sources.remove(source);
+	public void unregisterResource(String identifier) {
+		resourceIdentifiers.remove(identifier);
 		try {
-			unloadSource(source);
+			unloadResource(identifier);
 		} catch (Exception e) {
 			Logger.getLogger(this.getClass().getName()).log(Level.FINER, e.getMessage(), e);
 		}
@@ -167,7 +159,7 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 
 	@Override
 	public Iterable<String> getResourceIdentifiers() {
-		return Collections.unmodifiableList(sources);
+		return Collections.unmodifiableList(resourceIdentifiers);
 	}
 
 	protected static Event createEvent(String topic, Object data) {

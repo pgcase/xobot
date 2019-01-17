@@ -21,8 +21,9 @@
 package org.pgcase.xobot.toolchain.runtime;
 
 import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public interface XToolDescriptor extends DescribedDescriptor {
+public interface XToolDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 
 	String getVendor();
 	

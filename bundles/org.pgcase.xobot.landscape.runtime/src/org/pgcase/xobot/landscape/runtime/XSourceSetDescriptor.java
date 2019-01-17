@@ -21,8 +21,9 @@
 package org.pgcase.xobot.landscape.runtime;
 
 import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public interface XSourceSetDescriptor extends DescribedDescriptor {
+public interface XSourceSetDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 	
 	Iterable<? extends XSourceDescriptor> getSources();
 

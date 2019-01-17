@@ -21,8 +21,9 @@
 package org.pgcase.xobot.workspace.runtime;
 
 import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public interface XProjectDescriptor extends DescribedDescriptor {
+public interface XProjectDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 	
 	Iterable<XProjectConfigurationDescriptor> getProjectConfigurations();
 

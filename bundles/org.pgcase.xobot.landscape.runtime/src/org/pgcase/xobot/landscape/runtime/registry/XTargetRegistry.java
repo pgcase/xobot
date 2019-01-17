@@ -32,6 +32,10 @@ public interface XTargetRegistry extends BasisRegistry {
 
 	void registerTargetSet(XTargetSetDescriptor targetSet);
 
-	void unregisterTargetSet(XTargetSetDescriptor targetSet);
+	void unregisterTargetSet(String targetSetIdentifier);
+
+	void registerTarget(XTargetDescriptor target);
+
+	void unregisterTarget(String targetIdentifier);
 
 }

@@ -21,8 +21,9 @@
 package org.pgcase.xobot.landscape.runtime;
 
 import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public interface XTargetSetDescriptor extends DescribedDescriptor {
+public interface XTargetSetDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 	
 	Iterable<? extends XTargetDescriptor> getTargets();
 

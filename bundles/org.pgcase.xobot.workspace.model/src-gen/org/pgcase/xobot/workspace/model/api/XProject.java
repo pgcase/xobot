@@ -24,7 +24,7 @@ import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProject#getProjectTargets <em>Project Targets</em>}</li>
  * </ul>
  *
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProject()
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProject()
  * @model superTypes="org.pgcase.xobot.workspace.model.api.ProjectDescriptor"
  * @generated
  */
@@ -39,7 +39,7 @@ public interface XProject extends EObject, XProjectDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Identifier</em>' attribute.
 	 * @see #setIdentifier(String)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProject_Identifier()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProject_Identifier()
 	 * @model
 	 * @generated
 	 */
@@ -65,7 +65,7 @@ public interface XProject extends EObject, XProjectDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProject_Name()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProject_Name()
 	 * @model
 	 * @generated
 	 */
@@ -92,7 +92,7 @@ public interface XProject extends EObject, XProjectDescriptor {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Project Folders</em>' containment reference list.
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProject_ProjectFolders()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProject_ProjectFolders()
 	 * @see org.pgcase.xobot.workspace.model.api.XProjectFolder#getProject
 	 * @model opposite="project" containment="true"
 	 * @generated
@@ -110,7 +110,7 @@ public interface XProject extends EObject, XProjectDescriptor {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Project Sources</em>' containment reference list.
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProject_ProjectSources()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProject_ProjectSources()
 	 * @see org.pgcase.xobot.workspace.model.api.XProjectSource#getProject
 	 * @model opposite="project" containment="true"
 	 * @generated
@@ -128,7 +128,7 @@ public interface XProject extends EObject, XProjectDescriptor {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Project Targets</em>' containment reference list.
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProject_ProjectTargets()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProject_ProjectTargets()
 	 * @see org.pgcase.xobot.workspace.model.api.XProjectTarget#getProject
 	 * @model opposite="project" containment="true"
 	 * @generated

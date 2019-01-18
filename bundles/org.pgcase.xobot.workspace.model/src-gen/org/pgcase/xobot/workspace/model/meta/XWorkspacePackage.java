@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapeFactory
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspaceFactory
  * @model kind="package"
  * @generated
  */
-public interface XLandscapePackage extends EPackage {
+public interface XWorkspacePackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -54,14 +54,14 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XLandscapePackage eINSTANCE = org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl.init();
+	XWorkspacePackage eINSTANCE = org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.pgcase.xobot.workspace.runtime.XProjectDescriptor <em>Project Descriptor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.runtime.XProjectDescriptor
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectDescriptor()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectDescriptor()
 	 * @generated
 	 */
 	int PROJECT_DESCRIPTOR = 0;
@@ -89,7 +89,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectFolderDescriptor()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectFolderDescriptor()
 	 * @generated
 	 */
 	int PROJECT_FOLDER_DESCRIPTOR = 1;
@@ -117,7 +117,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectSourceDescriptor()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectSourceDescriptor()
 	 * @generated
 	 */
 	int PROJECT_SOURCE_DESCRIPTOR = 2;
@@ -145,7 +145,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectTargetDescriptor()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectTargetDescriptor()
 	 * @generated
 	 */
 	int PROJECT_TARGET_DESCRIPTOR = 3;
@@ -173,7 +173,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.model.impl.XProjectImpl
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProject()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProject()
 	 * @generated
 	 */
 	int PROJECT = 4;
@@ -246,7 +246,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.model.impl.XProjectFolderImpl
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectFolder()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectFolder()
 	 * @generated
 	 */
 	int PROJECT_FOLDER = 5;
@@ -310,7 +310,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.model.impl.XProjectSourceImpl
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectSource()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectSource()
 	 * @generated
 	 */
 	int PROJECT_SOURCE = 6;
@@ -356,7 +356,7 @@ public interface XLandscapePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.pgcase.xobot.workspace.model.impl.XProjectTargetImpl
-	 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectTarget()
+	 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectTarget()
 	 * @generated
 	 */
 	int PROJECT_TARGET = 7;
@@ -632,7 +632,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	XLandscapeFactory getLandscapeFactory();
+	XWorkspaceFactory getWorkspaceFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -653,7 +653,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.runtime.XProjectDescriptor
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectDescriptor()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectDescriptor()
 		 * @generated
 		 */
 		EClass PROJECT_DESCRIPTOR = eINSTANCE.getProjectDescriptor();
@@ -663,7 +663,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectFolderDescriptor()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectFolderDescriptor()
 		 * @generated
 		 */
 		EClass PROJECT_FOLDER_DESCRIPTOR = eINSTANCE.getProjectFolderDescriptor();
@@ -673,7 +673,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectSourceDescriptor()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectSourceDescriptor()
 		 * @generated
 		 */
 		EClass PROJECT_SOURCE_DESCRIPTOR = eINSTANCE.getProjectSourceDescriptor();
@@ -683,7 +683,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectTargetDescriptor()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectTargetDescriptor()
 		 * @generated
 		 */
 		EClass PROJECT_TARGET_DESCRIPTOR = eINSTANCE.getProjectTargetDescriptor();
@@ -693,7 +693,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.model.impl.XProjectImpl
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProject()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProject()
 		 * @generated
 		 */
 		EClass PROJECT = eINSTANCE.getProject();
@@ -743,7 +743,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.model.impl.XProjectFolderImpl
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectFolder()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectFolder()
 		 * @generated
 		 */
 		EClass PROJECT_FOLDER = eINSTANCE.getProjectFolder();
@@ -785,7 +785,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.model.impl.XProjectSourceImpl
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectSource()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectSource()
 		 * @generated
 		 */
 		EClass PROJECT_SOURCE = eINSTANCE.getProjectSource();
@@ -811,7 +811,7 @@ public interface XLandscapePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.pgcase.xobot.workspace.model.impl.XProjectTargetImpl
-		 * @see org.pgcase.xobot.workspace.model.impl.XLandscapePackageImpl#getProjectTarget()
+		 * @see org.pgcase.xobot.workspace.model.impl.XWorkspacePackageImpl#getProjectTarget()
 		 * @generated
 		 */
 		EClass PROJECT_TARGET = eINSTANCE.getProjectTarget();
@@ -834,4 +834,4 @@ public interface XLandscapePackage extends EPackage {
 
 	}
 
-} //XLandscapePackage
+} //XWorkspacePackage

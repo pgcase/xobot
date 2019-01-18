@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.pgcase.xobot.workspace.model.api.*;
 
-import org.pgcase.xobot.workspace.model.meta.XLandscapeFactory;
-import org.pgcase.xobot.workspace.model.meta.XLandscapePackage;
+import org.pgcase.xobot.workspace.model.meta.XWorkspaceFactory;
+import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,24 +21,24 @@ import org.pgcase.xobot.workspace.model.meta.XLandscapePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class XLandscapeFactoryImpl extends EFactoryImpl implements XLandscapeFactory {
+public class XWorkspaceFactoryImpl extends EFactoryImpl implements XWorkspaceFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static XLandscapeFactory init() {
+	public static XWorkspaceFactory init() {
 		try {
-			XLandscapeFactory theLandscapeFactory = (XLandscapeFactory)EPackage.Registry.INSTANCE.getEFactory(XLandscapePackage.eNS_URI);
-			if (theLandscapeFactory != null) {
-				return theLandscapeFactory;
+			XWorkspaceFactory theWorkspaceFactory = (XWorkspaceFactory)EPackage.Registry.INSTANCE.getEFactory(XWorkspacePackage.eNS_URI);
+			if (theWorkspaceFactory != null) {
+				return theWorkspaceFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new XLandscapeFactoryImpl();
+		return new XWorkspaceFactoryImpl();
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class XLandscapeFactoryImpl extends EFactoryImpl implements XLandscapeFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XLandscapeFactoryImpl() {
+	public XWorkspaceFactoryImpl() {
 		super();
 	}
 
@@ -59,10 +59,10 @@ public class XLandscapeFactoryImpl extends EFactoryImpl implements XLandscapeFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case XLandscapePackage.PROJECT: return createProject();
-			case XLandscapePackage.PROJECT_FOLDER: return createProjectFolder();
-			case XLandscapePackage.PROJECT_SOURCE: return createProjectSource();
-			case XLandscapePackage.PROJECT_TARGET: return createProjectTarget();
+			case XWorkspacePackage.PROJECT: return createProject();
+			case XWorkspacePackage.PROJECT_FOLDER: return createProjectFolder();
+			case XWorkspacePackage.PROJECT_SOURCE: return createProjectSource();
+			case XWorkspacePackage.PROJECT_TARGET: return createProjectTarget();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -113,8 +113,8 @@ public class XLandscapeFactoryImpl extends EFactoryImpl implements XLandscapeFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XLandscapePackage getLandscapePackage() {
-		return (XLandscapePackage)getEPackage();
+	public XWorkspacePackage getWorkspacePackage() {
+		return (XWorkspacePackage)getEPackage();
 	}
 
 	/**
@@ -124,8 +124,8 @@ public class XLandscapeFactoryImpl extends EFactoryImpl implements XLandscapeFac
 	 * @generated
 	 */
 	@Deprecated
-	public static XLandscapePackage getPackage() {
-		return XLandscapePackage.eINSTANCE;
+	public static XWorkspacePackage getPackage() {
+		return XWorkspacePackage.eINSTANCE;
 	}
 
-} //XLandscapeFactoryImpl
+} //XWorkspaceFactoryImpl

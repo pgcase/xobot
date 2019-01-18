@@ -19,7 +19,7 @@ import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectSource#getProject <em>Project</em>}</li>
  * </ul>
  *
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectSource()
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectSource()
  * @model superTypes="org.pgcase.xobot.workspace.model.api.ProjectSourceDescriptor"
  * @generated
  */
@@ -34,7 +34,7 @@ public interface XProjectSource extends EObject, XProjectSourceDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source Identifier</em>' attribute.
 	 * @see #setSourceIdentifier(String)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectSource_SourceIdentifier()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectSource_SourceIdentifier()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ public interface XProjectSource extends EObject, XProjectSourceDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Project</em>' container reference.
 	 * @see #setProject(XProject)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectSource_Project()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectSource_Project()
 	 * @see org.pgcase.xobot.workspace.model.api.XProject#getProjectSources
 	 * @model opposite="projectSources" required="true" transient="false"
 	 * @generated

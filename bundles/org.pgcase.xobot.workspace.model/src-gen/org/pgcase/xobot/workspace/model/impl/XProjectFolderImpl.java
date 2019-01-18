@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.pgcase.xobot.workspace.model.api.XProject;
 import org.pgcase.xobot.workspace.model.api.XProjectFolder;
-
-import org.pgcase.xobot.workspace.model.meta.XLandscapePackage;
+import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,7 +110,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return XLandscapePackage.Literals.PROJECT_FOLDER;
+		return XWorkspacePackage.Literals.PROJECT_FOLDER;
 	}
 
 	/**
@@ -132,7 +131,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 		String oldIdentifier = identifier;
 		identifier = newIdentifier;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.PROJECT_FOLDER__IDENTIFIER, oldIdentifier, identifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_FOLDER__IDENTIFIER, oldIdentifier, identifier));
 	}
 
 	/**
@@ -153,7 +152,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.PROJECT_FOLDER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_FOLDER__NAME, oldName, name));
 	}
 
 	/**
@@ -174,7 +173,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 		String oldOrigin = origin;
 		origin = newOrigin;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.PROJECT_FOLDER__ORIGIN, oldOrigin, origin));
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_FOLDER__ORIGIN, oldOrigin, origin));
 	}
 
 	/**
@@ -183,7 +182,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public XProject getProject() {
-		if (eContainerFeatureID() != XLandscapePackage.PROJECT_FOLDER__PROJECT) return null;
+		if (eContainerFeatureID() != XWorkspacePackage.PROJECT_FOLDER__PROJECT) return null;
 		return (XProject)eInternalContainer();
 	}
 
@@ -193,7 +192,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetProject(XProject newProject, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newProject, XLandscapePackage.PROJECT_FOLDER__PROJECT, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newProject, XWorkspacePackage.PROJECT_FOLDER__PROJECT, msgs);
 		return msgs;
 	}
 
@@ -203,19 +202,19 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public void setProject(XProject newProject) {
-		if (newProject != eInternalContainer() || (eContainerFeatureID() != XLandscapePackage.PROJECT_FOLDER__PROJECT && newProject != null)) {
+		if (newProject != eInternalContainer() || (eContainerFeatureID() != XWorkspacePackage.PROJECT_FOLDER__PROJECT && newProject != null)) {
 			if (EcoreUtil.isAncestor(this, newProject))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newProject != null)
-				msgs = ((InternalEObject)newProject).eInverseAdd(this, XLandscapePackage.PROJECT__PROJECT_FOLDERS, XProject.class, msgs);
+				msgs = ((InternalEObject)newProject).eInverseAdd(this, XWorkspacePackage.PROJECT__PROJECT_FOLDERS, XProject.class, msgs);
 			msgs = basicSetProject(newProject, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.PROJECT_FOLDER__PROJECT, newProject, newProject));
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_FOLDER__PROJECT, newProject, newProject));
 	}
 
 	/**
@@ -226,7 +225,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_FOLDER__PROJECT:
+			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetProject((XProject)otherEnd, msgs);
@@ -242,7 +241,7 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_FOLDER__PROJECT:
+			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				return basicSetProject(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -256,8 +255,8 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case XLandscapePackage.PROJECT_FOLDER__PROJECT:
-				return eInternalContainer().eInverseRemove(this, XLandscapePackage.PROJECT__PROJECT_FOLDERS, XProject.class, msgs);
+			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
+				return eInternalContainer().eInverseRemove(this, XWorkspacePackage.PROJECT__PROJECT_FOLDERS, XProject.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -270,13 +269,13 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_FOLDER__IDENTIFIER:
+			case XWorkspacePackage.PROJECT_FOLDER__IDENTIFIER:
 				return getIdentifier();
-			case XLandscapePackage.PROJECT_FOLDER__NAME:
+			case XWorkspacePackage.PROJECT_FOLDER__NAME:
 				return getName();
-			case XLandscapePackage.PROJECT_FOLDER__ORIGIN:
+			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				return getOrigin();
-			case XLandscapePackage.PROJECT_FOLDER__PROJECT:
+			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				return getProject();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -290,16 +289,16 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_FOLDER__IDENTIFIER:
+			case XWorkspacePackage.PROJECT_FOLDER__IDENTIFIER:
 				setIdentifier((String)newValue);
 				return;
-			case XLandscapePackage.PROJECT_FOLDER__NAME:
+			case XWorkspacePackage.PROJECT_FOLDER__NAME:
 				setName((String)newValue);
 				return;
-			case XLandscapePackage.PROJECT_FOLDER__ORIGIN:
+			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				setOrigin((String)newValue);
 				return;
-			case XLandscapePackage.PROJECT_FOLDER__PROJECT:
+			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				setProject((XProject)newValue);
 				return;
 		}
@@ -314,16 +313,16 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_FOLDER__IDENTIFIER:
+			case XWorkspacePackage.PROJECT_FOLDER__IDENTIFIER:
 				setIdentifier(IDENTIFIER_EDEFAULT);
 				return;
-			case XLandscapePackage.PROJECT_FOLDER__NAME:
+			case XWorkspacePackage.PROJECT_FOLDER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case XLandscapePackage.PROJECT_FOLDER__ORIGIN:
+			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				setOrigin(ORIGIN_EDEFAULT);
 				return;
-			case XLandscapePackage.PROJECT_FOLDER__PROJECT:
+			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				setProject((XProject)null);
 				return;
 		}
@@ -338,13 +337,13 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_FOLDER__IDENTIFIER:
+			case XWorkspacePackage.PROJECT_FOLDER__IDENTIFIER:
 				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-			case XLandscapePackage.PROJECT_FOLDER__NAME:
+			case XWorkspacePackage.PROJECT_FOLDER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case XLandscapePackage.PROJECT_FOLDER__ORIGIN:
+			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				return ORIGIN_EDEFAULT == null ? origin != null : !ORIGIN_EDEFAULT.equals(origin);
-			case XLandscapePackage.PROJECT_FOLDER__PROJECT:
+			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				return getProject() != null;
 		}
 		return super.eIsSet(featureID);

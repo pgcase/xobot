@@ -19,7 +19,7 @@ import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectTarget#getProject <em>Project</em>}</li>
  * </ul>
  *
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectTarget()
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectTarget()
  * @model superTypes="org.pgcase.xobot.workspace.model.api.ProjectTargetDescriptor"
  * @generated
  */
@@ -34,7 +34,7 @@ public interface XProjectTarget extends EObject, XProjectTargetDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Identifier</em>' attribute.
 	 * @see #setTargetIdentifier(String)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectTarget_TargetIdentifier()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectTarget_TargetIdentifier()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ public interface XProjectTarget extends EObject, XProjectTargetDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Project</em>' container reference.
 	 * @see #setProject(XProject)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectTarget_Project()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectTarget_Project()
 	 * @see org.pgcase.xobot.workspace.model.api.XProject#getProjectTargets
 	 * @model opposite="projectTargets" required="true" transient="false"
 	 * @generated

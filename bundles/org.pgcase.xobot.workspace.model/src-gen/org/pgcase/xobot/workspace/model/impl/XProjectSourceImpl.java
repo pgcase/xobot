@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.pgcase.xobot.workspace.model.api.XProject;
 import org.pgcase.xobot.workspace.model.api.XProjectSource;
-
-import org.pgcase.xobot.workspace.model.meta.XLandscapePackage;
+import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +68,7 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return XLandscapePackage.Literals.PROJECT_SOURCE;
+		return XWorkspacePackage.Literals.PROJECT_SOURCE;
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 		String oldSourceIdentifier = sourceIdentifier;
 		sourceIdentifier = newSourceIdentifier;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER, oldSourceIdentifier, sourceIdentifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER, oldSourceIdentifier, sourceIdentifier));
 	}
 
 	/**
@@ -99,7 +98,7 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public XProject getProject() {
-		if (eContainerFeatureID() != XLandscapePackage.PROJECT_SOURCE__PROJECT) return null;
+		if (eContainerFeatureID() != XWorkspacePackage.PROJECT_SOURCE__PROJECT) return null;
 		return (XProject)eInternalContainer();
 	}
 
@@ -109,7 +108,7 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetProject(XProject newProject, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newProject, XLandscapePackage.PROJECT_SOURCE__PROJECT, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newProject, XWorkspacePackage.PROJECT_SOURCE__PROJECT, msgs);
 		return msgs;
 	}
 
@@ -119,19 +118,19 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public void setProject(XProject newProject) {
-		if (newProject != eInternalContainer() || (eContainerFeatureID() != XLandscapePackage.PROJECT_SOURCE__PROJECT && newProject != null)) {
+		if (newProject != eInternalContainer() || (eContainerFeatureID() != XWorkspacePackage.PROJECT_SOURCE__PROJECT && newProject != null)) {
 			if (EcoreUtil.isAncestor(this, newProject))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newProject != null)
-				msgs = ((InternalEObject)newProject).eInverseAdd(this, XLandscapePackage.PROJECT__PROJECT_SOURCES, XProject.class, msgs);
+				msgs = ((InternalEObject)newProject).eInverseAdd(this, XWorkspacePackage.PROJECT__PROJECT_SOURCES, XProject.class, msgs);
 			msgs = basicSetProject(newProject, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.PROJECT_SOURCE__PROJECT, newProject, newProject));
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_SOURCE__PROJECT, newProject, newProject));
 	}
 
 	/**
@@ -142,7 +141,7 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_SOURCE__PROJECT:
+			case XWorkspacePackage.PROJECT_SOURCE__PROJECT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetProject((XProject)otherEnd, msgs);
@@ -158,7 +157,7 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_SOURCE__PROJECT:
+			case XWorkspacePackage.PROJECT_SOURCE__PROJECT:
 				return basicSetProject(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -172,8 +171,8 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case XLandscapePackage.PROJECT_SOURCE__PROJECT:
-				return eInternalContainer().eInverseRemove(this, XLandscapePackage.PROJECT__PROJECT_SOURCES, XProject.class, msgs);
+			case XWorkspacePackage.PROJECT_SOURCE__PROJECT:
+				return eInternalContainer().eInverseRemove(this, XWorkspacePackage.PROJECT__PROJECT_SOURCES, XProject.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -186,9 +185,9 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
+			case XWorkspacePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
 				return getSourceIdentifier();
-			case XLandscapePackage.PROJECT_SOURCE__PROJECT:
+			case XWorkspacePackage.PROJECT_SOURCE__PROJECT:
 				return getProject();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -202,10 +201,10 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
+			case XWorkspacePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
 				setSourceIdentifier((String)newValue);
 				return;
-			case XLandscapePackage.PROJECT_SOURCE__PROJECT:
+			case XWorkspacePackage.PROJECT_SOURCE__PROJECT:
 				setProject((XProject)newValue);
 				return;
 		}
@@ -220,10 +219,10 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
+			case XWorkspacePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
 				setSourceIdentifier(SOURCE_IDENTIFIER_EDEFAULT);
 				return;
-			case XLandscapePackage.PROJECT_SOURCE__PROJECT:
+			case XWorkspacePackage.PROJECT_SOURCE__PROJECT:
 				setProject((XProject)null);
 				return;
 		}
@@ -238,9 +237,9 @@ public class XProjectSourceImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XLandscapePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
+			case XWorkspacePackage.PROJECT_SOURCE__SOURCE_IDENTIFIER:
 				return SOURCE_IDENTIFIER_EDEFAULT == null ? sourceIdentifier != null : !SOURCE_IDENTIFIER_EDEFAULT.equals(sourceIdentifier);
-			case XLandscapePackage.PROJECT_SOURCE__PROJECT:
+			case XWorkspacePackage.PROJECT_SOURCE__PROJECT:
 				return getProject() != null;
 		}
 		return super.eIsSet(featureID);

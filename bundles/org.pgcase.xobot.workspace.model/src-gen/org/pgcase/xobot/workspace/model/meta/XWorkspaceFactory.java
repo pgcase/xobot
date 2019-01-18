@@ -14,17 +14,17 @@ import org.pgcase.xobot.workspace.model.api.XProjectTarget;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage
  * @generated
  */
-public interface XLandscapeFactory extends EFactory {
+public interface XWorkspaceFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XLandscapeFactory eINSTANCE = org.pgcase.xobot.workspace.model.impl.XLandscapeFactoryImpl.init();
+	XWorkspaceFactory eINSTANCE = org.pgcase.xobot.workspace.model.impl.XWorkspaceFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Project</em>'.
@@ -69,6 +69,6 @@ public interface XLandscapeFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	XLandscapePackage getLandscapePackage();
+	XWorkspacePackage getWorkspacePackage();
 
-} //XLandscapeFactory
+} //XWorkspaceFactory

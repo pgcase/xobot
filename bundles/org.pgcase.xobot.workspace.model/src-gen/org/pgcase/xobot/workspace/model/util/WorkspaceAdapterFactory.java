@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.pgcase.xobot.workspace.model.api.*;
 
-import org.pgcase.xobot.workspace.model.meta.XLandscapePackage;
+import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
 
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
@@ -23,17 +23,17 @@ import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage
  * @generated
  */
-public class LandscapeAdapterFactory extends AdapterFactoryImpl {
+public class WorkspaceAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static XLandscapePackage modelPackage;
+	protected static XWorkspacePackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -41,9 +41,9 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LandscapeAdapterFactory() {
+	public WorkspaceAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = XLandscapePackage.eINSTANCE;
+			modelPackage = XWorkspacePackage.eINSTANCE;
 		}
 	}
 
@@ -72,8 +72,8 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LandscapeSwitch<Adapter> modelSwitch =
-		new LandscapeSwitch<Adapter>() {
+	protected WorkspaceSwitch<Adapter> modelSwitch =
+		new WorkspaceSwitch<Adapter>() {
 			@Override
 			public Adapter caseProjectDescriptor(XProjectDescriptor object) {
 				return createProjectDescriptorAdapter();
@@ -250,4 +250,4 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //LandscapeAdapterFactory
+} //WorkspaceAdapterFactory

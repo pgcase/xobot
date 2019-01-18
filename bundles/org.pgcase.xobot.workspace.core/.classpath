@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
-
 <!--
 	Copyright (c) 2018 ArSysOp
 
@@ -21,15 +19,9 @@
 	Contributors:
 		ArSysOp - initial API and implementation
 -->
-
-<plugin>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated workspace -->
-      <package
-            uri="http://www.pgcase.org/xobot/workspace/0.1.0"
-            class="org.pgcase.xobot.workspace.model.meta.XWorkspacePackage"
-            genModel="model/workspace.genmodel"/>
-   </extension>
-
-</plugin>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

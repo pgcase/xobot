@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.pgcase.xobot.workspace.model.api.*;
 
-import org.pgcase.xobot.workspace.model.meta.XLandscapePackage;
+import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
 
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
@@ -26,17 +26,17 @@ import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage
  * @generated
  */
-public class LandscapeSwitch<T> extends Switch<T> {
+public class WorkspaceSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static XLandscapePackage modelPackage;
+	protected static XWorkspacePackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -44,9 +44,9 @@ public class LandscapeSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LandscapeSwitch() {
+	public WorkspaceSwitch() {
 		if (modelPackage == null) {
-			modelPackage = XLandscapePackage.eINSTANCE;
+			modelPackage = XWorkspacePackage.eINSTANCE;
 		}
 	}
 
@@ -73,52 +73,52 @@ public class LandscapeSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case XLandscapePackage.PROJECT_DESCRIPTOR: {
+			case XWorkspacePackage.PROJECT_DESCRIPTOR: {
 				XProjectDescriptor projectDescriptor = (XProjectDescriptor)theEObject;
 				T result = caseProjectDescriptor(projectDescriptor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XLandscapePackage.PROJECT_FOLDER_DESCRIPTOR: {
+			case XWorkspacePackage.PROJECT_FOLDER_DESCRIPTOR: {
 				XProjectFolderDescriptor projectFolderDescriptor = (XProjectFolderDescriptor)theEObject;
 				T result = caseProjectFolderDescriptor(projectFolderDescriptor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XLandscapePackage.PROJECT_SOURCE_DESCRIPTOR: {
+			case XWorkspacePackage.PROJECT_SOURCE_DESCRIPTOR: {
 				XProjectSourceDescriptor projectSourceDescriptor = (XProjectSourceDescriptor)theEObject;
 				T result = caseProjectSourceDescriptor(projectSourceDescriptor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XLandscapePackage.PROJECT_TARGET_DESCRIPTOR: {
+			case XWorkspacePackage.PROJECT_TARGET_DESCRIPTOR: {
 				XProjectTargetDescriptor projectTargetDescriptor = (XProjectTargetDescriptor)theEObject;
 				T result = caseProjectTargetDescriptor(projectTargetDescriptor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XLandscapePackage.PROJECT: {
+			case XWorkspacePackage.PROJECT: {
 				XProject project = (XProject)theEObject;
 				T result = caseProject(project);
 				if (result == null) result = caseProjectDescriptor(project);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XLandscapePackage.PROJECT_FOLDER: {
+			case XWorkspacePackage.PROJECT_FOLDER: {
 				XProjectFolder projectFolder = (XProjectFolder)theEObject;
 				T result = caseProjectFolder(projectFolder);
 				if (result == null) result = caseProjectFolderDescriptor(projectFolder);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XLandscapePackage.PROJECT_SOURCE: {
+			case XWorkspacePackage.PROJECT_SOURCE: {
 				XProjectSource projectSource = (XProjectSource)theEObject;
 				T result = caseProjectSource(projectSource);
 				if (result == null) result = caseProjectSourceDescriptor(projectSource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XLandscapePackage.PROJECT_TARGET: {
+			case XWorkspacePackage.PROJECT_TARGET: {
 				XProjectTarget projectTarget = (XProjectTarget)theEObject;
 				T result = caseProjectTarget(projectTarget);
 				if (result == null) result = caseProjectTargetDescriptor(projectTarget);
@@ -265,4 +265,4 @@ public class LandscapeSwitch<T> extends Switch<T> {
 		return null;
 	}
 
-} //LandscapeSwitch
+} //WorkspaceSwitch

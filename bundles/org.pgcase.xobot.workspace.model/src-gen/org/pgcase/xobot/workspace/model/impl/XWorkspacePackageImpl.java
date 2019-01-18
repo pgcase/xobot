@@ -14,8 +14,8 @@ import org.pgcase.xobot.workspace.model.api.XProjectFolder;
 import org.pgcase.xobot.workspace.model.api.XProjectSource;
 import org.pgcase.xobot.workspace.model.api.XProjectTarget;
 
-import org.pgcase.xobot.workspace.model.meta.XLandscapeFactory;
-import org.pgcase.xobot.workspace.model.meta.XLandscapePackage;
+import org.pgcase.xobot.workspace.model.meta.XWorkspaceFactory;
+import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
 
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
@@ -28,7 +28,7 @@ import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePackage {
+public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,12 +96,12 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#eNS_URI
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private XLandscapePackageImpl() {
-		super(eNS_URI, XLandscapeFactory.eINSTANCE);
+	private XWorkspacePackageImpl() {
+		super(eNS_URI, XWorkspaceFactory.eINSTANCE);
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 *
-	 * <p>This method is used to initialize {@link XLandscapePackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link XWorkspacePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -123,27 +123,27 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static XLandscapePackage init() {
-		if (isInited) return (XLandscapePackage)EPackage.Registry.INSTANCE.getEPackage(XLandscapePackage.eNS_URI);
+	public static XWorkspacePackage init() {
+		if (isInited) return (XWorkspacePackage)EPackage.Registry.INSTANCE.getEPackage(XWorkspacePackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredLandscapePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		XLandscapePackageImpl theLandscapePackage = registeredLandscapePackage instanceof XLandscapePackageImpl ? (XLandscapePackageImpl)registeredLandscapePackage : new XLandscapePackageImpl();
+		Object registeredWorkspacePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		XWorkspacePackageImpl theWorkspacePackage = registeredWorkspacePackage instanceof XWorkspacePackageImpl ? (XWorkspacePackageImpl)registeredWorkspacePackage : new XWorkspacePackageImpl();
 
 		isInited = true;
 
 		// Create package meta-data objects
-		theLandscapePackage.createPackageContents();
+		theWorkspacePackage.createPackageContents();
 
 		// Initialize created meta-data
-		theLandscapePackage.initializePackageContents();
+		theWorkspacePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theLandscapePackage.freeze();
+		theWorkspacePackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(XLandscapePackage.eNS_URI, theLandscapePackage);
-		return theLandscapePackage;
+		EPackage.Registry.INSTANCE.put(XWorkspacePackage.eNS_URI, theWorkspacePackage);
+		return theWorkspacePackage;
 	}
 
 	/**
@@ -340,8 +340,8 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XLandscapeFactory getLandscapeFactory() {
-		return (XLandscapeFactory)getEFactoryInstance();
+	public XWorkspaceFactory getWorkspaceFactory() {
+		return (XWorkspaceFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -460,4 +460,4 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 		createResource(eNS_URI);
 	}
 
-} //XLandscapePackageImpl
+} //XWorkspacePackageImpl

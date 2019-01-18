@@ -21,7 +21,7 @@ import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getProject <em>Project</em>}</li>
  * </ul>
  *
- * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectFolder()
+ * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectFolder()
  * @model superTypes="org.pgcase.xobot.workspace.model.api.ProjectFolderDescriptor"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface XProjectFolder extends EObject, XProjectFolderDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Identifier</em>' attribute.
 	 * @see #setIdentifier(String)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectFolder_Identifier()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectFolder_Identifier()
 	 * @model
 	 * @generated
 	 */
@@ -62,7 +62,7 @@ public interface XProjectFolder extends EObject, XProjectFolderDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectFolder_Name()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectFolder_Name()
 	 * @model
 	 * @generated
 	 */
@@ -88,7 +88,7 @@ public interface XProjectFolder extends EObject, XProjectFolderDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Origin</em>' attribute.
 	 * @see #setOrigin(String)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectFolder_Origin()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectFolder_Origin()
 	 * @model
 	 * @generated
 	 */
@@ -115,7 +115,7 @@ public interface XProjectFolder extends EObject, XProjectFolderDescriptor {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Project</em>' container reference.
 	 * @see #setProject(XProject)
-	 * @see org.pgcase.xobot.workspace.model.meta.XLandscapePackage#getProjectFolder_Project()
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectFolder_Project()
 	 * @see org.pgcase.xobot.workspace.model.api.XProject#getProjectFolders
 	 * @model opposite="projectFolders" required="true" transient="false"
 	 * @generated

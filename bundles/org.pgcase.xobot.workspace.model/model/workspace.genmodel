@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.pgcase.xobot.workspace.model/src-gen" creationIcons="false"
+    editDirectory="/org.pgcase.xobot.workspace.model.edit/src-gen" editorDirectory="/org.pgcase.xobot.workspace.model.presentation/src-gen"
+    modelPluginID="org.pgcase.xobot.workspace.model" modelName="Workspace" editPluginClass="org.pgcase.xobot.workspace.model.edit.LandscapeEditPlugin"
+    editorPluginClass="org.pgcase.xobot.workspace.model.presentation.LandscapeEditorPlugin"
+    nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" colorProviders="true" fontProviders="true" interfaceNamePattern="X{0}"
+    classNamePattern="X{0}Impl" operationReflection="true" runtimePlatform="RCP" importOrganizing="true"
+    oSGiCompatible="true">
+  <foreignModel>../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore</foreignModel>
+  <genPackages prefix="Workspace" basePackage="org.pgcase.xobot" disposableProviderFactory="true"
+      interfacePackageSuffix="model.api" metaDataPackageSuffix="model.meta" classPackageSuffix="model.impl"
+      utilityPackageSuffix="model.util" providerPackageSuffix="model.edit.provider"
+      presentationPackageSuffix="model.presentation" testsPackageSuffix="model.tests"
+      ecorePackage="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#/">
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectDescriptor"/>
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolderDescriptor"/>
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectSourceDescriptor"/>
+    <genClasses image="false" ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectTargetDescriptor"/>
+    <genClasses ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/projectFolders"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/projectSources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/projectTargets"/>
+    </genClasses>
+    <genClasses ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/origin"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/project"/>
+    </genClasses>
+    <genClasses ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectSource/sourceIdentifier"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectSource/project"/>
+    </genClasses>
+    <genClasses ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectTarget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectTarget/targetIdentifier"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectTarget/project"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -42,4 +42,5 @@ public class DbprocJdbc {
 	public static String extractSchema(Map<String, Object> context) {
 		return String.valueOf(context.getOrDefault("schema", (Object)"public"));
 	}
+
 }

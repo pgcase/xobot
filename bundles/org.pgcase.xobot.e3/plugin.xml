@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+	Copyright (c) 2018 ArSysOp
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+	SPDX-License-Identifier: Apache-2.0
+
+	Contributors:
+		ArSysOp - initial API and implementation
+-->
+<plugin>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="%product.name">
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.core.filesystem.filesystems">
+      <filesystem
+            scheme="xobot">
+         <run
+               class="org.pgcase.xobot.workspace.filesystem.XobotFileSystem">
+         </run>
+      </filesystem>
+   </extension>
+   <extension
+         id="xobot"
+         name="%modelProvider.xobot.name"
+         point="org.eclipse.core.resources.modelProviders">
+      <modelProvider
+            class="org.pgcase.xobot.workspace.resources.XobotModelProvider">
+      </modelProvider>
+      <extends-model
+            id="org.eclipse.core.resources.modelProvider">
+      </extends-model>
+   </extension>
+   <extension
+         point="org.eclipse.team.ui.teamContentProviders">
+      <teamContentProvider
+            contentExtensionId="org.eclipse.ui.navigator.resourceContent"
+            icon="images/xobot16.png"
+            modelProviderId="org.pgcase.xobot.e3.xobot">
+      </teamContentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.pgcase.xobot.workspace.compare.ui.CompareToTargetHandler"
+            id="org.pgcase.xobot.e3.command.compare.to.target"
+            name="Compare to Target">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.pgcase.xobot.e3.command.compare.to.target"
+            icon="images/xobot16.png">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="compareWithMenu"
+               label="Comp&amp;are With">
+            <command
+                  commandId="org.pgcase.xobot.e3.command.compare.to.target"
+                  label="Xobot Target..."
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+                     </adapt>
+                  </iterate>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.pgcase.xobot.workspace.runtime.XProjectDescriptor"
+            class="org.pgcase.xobot.workspace.resources.Xobot2ResourceAdapterFactory">
+         <adapter
+               type="org.eclipse.core.resources.IProject">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.eclipse.core.resources.IProject"
+            class="org.pgcase.xobot.workspace.resources.Resource2XobotAdapterFactory">
+         <adapter
+               type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+         </adapter>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.filesystemSupport">
+      <filesystemContributor
+            class="org.pgcase.xobot.workspace.e3.ui.ide.XobotFileSystemContributor"
+            label="Xobot File System"
+            scheme="xobot">
+      </filesystemContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.pgcase.xobot.e3.category.xobot"
+            name="Xobot">
+      </category>
+      <wizard
+            category="org.pgcase.xobot.e3.category.xobot"
+            class="org.pgcase.xobot.workspace.e3.ui.ide.NewXobotProjectWizard"
+            descriptionImage="images/xobot16.png"
+            icon="images/xobot16.png"
+            id="org.pgcase.xobot.e3.wizard.new.project"
+            name="Xobot Project"
+            project="true">
+         <description>
+            Creates new Xobot project using Xobot file system
+         </description>
+      </wizard>
+      <primaryWizard
+            id="org.pgcase.xobot.e3.wizard.new.project">
+      </primaryWizard>
+   </extension>
+
+</plugin>

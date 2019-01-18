@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="workspace" nsURI="http://www.pgcase.org/xobot/workspace/0.1.0"
+    nsPrefix="workspace">
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectDescriptor" instanceClassName="org.pgcase.xobot.workspace.runtime.XProjectDescriptor"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectFolderDescriptor" instanceClassName="org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectSourceDescriptor" instanceClassName="org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectTargetDescriptor" instanceClassName="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Project" eSuperTypes="#//ProjectDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projectFolders" upperBound="-1"
+        eType="#//ProjectFolder" containment="true" eOpposite="#//ProjectFolder/project"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projectSources" upperBound="-1"
+        eType="#//ProjectSource" containment="true" eOpposite="#//ProjectSource/project"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projectTargets" upperBound="-1"
+        eType="#//ProjectTarget" containment="true" eOpposite="#//ProjectTarget/project"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectFolder" eSuperTypes="#//ProjectFolderDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="origin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="project" lowerBound="1"
+        eType="#//Project" eOpposite="#//Project/projectFolders"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectSource" eSuperTypes="#//ProjectSourceDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceIdentifier" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="project" lowerBound="1"
+        eType="#//Project" eOpposite="#//Project/projectSources"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectTarget" eSuperTypes="#//ProjectTargetDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetIdentifier" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="project" lowerBound="1"
+        eType="#//Project" eOpposite="#//Project/projectTargets"/>
+  </eClassifiers>
+</ecore:EPackage>

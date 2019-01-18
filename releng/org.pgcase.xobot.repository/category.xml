@@ -25,6 +25,12 @@
 		id="org.pgcase.xobot.license.feature"
 		version="0.1.0.qualifier" />
 	<feature
+		url="features/org.pgcase.xobot.basis.feature_0.1.0.qualifier.jar"
+		id="org.pgcase.xobot.basis.feature"
+		version="0.1.0.qualifier">
+		<category name="org.pgcase.xobot.category" />
+	</feature>
+	<feature
 		url="features/org.pgcase.xobot.landscape.feature_0.1.0.qualifier.jar"
 		id="org.pgcase.xobot.landscape.feature"
 		version="0.1.0.qualifier">
@@ -51,6 +57,12 @@
 	<feature
 		url="features/org.pgcase.xobot.ide.feature_0.1.0.qualifier.jar"
 		id="org.pgcase.xobot.ide.feature"
+		version="0.1.0.qualifier">
+		<category name="org.pgcase.xobot.category" />
+	</feature>
+	<feature
+		url="features/org.pgcase.xobot.e3.feature_0.1.0.qualifier.jar"
+		id="org.pgcase.xobot.e3.feature"
 		version="0.1.0.qualifier">
 		<category name="org.pgcase.xobot.category" />
 	</feature>

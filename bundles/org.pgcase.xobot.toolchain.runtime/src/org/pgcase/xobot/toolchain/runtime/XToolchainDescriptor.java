@@ -26,6 +26,6 @@ public interface XToolchainDescriptor {
 
 	String getName();
 	
-	Iterable<XToolchainLink> getToolchainLinks();
+	Iterable<? extends XToolchainLink> getToolchainLinks();
 
 }

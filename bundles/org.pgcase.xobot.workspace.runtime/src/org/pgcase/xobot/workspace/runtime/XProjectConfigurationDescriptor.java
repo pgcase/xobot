@@ -20,7 +20,7 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime;
 
-//source-toolchain-target transformation configuration goes here
+//source-toolchain-target transformation configuration goes here, needs discussions
 public interface XProjectConfigurationDescriptor {
 	
 	XProjectSourceDescriptor getSource();

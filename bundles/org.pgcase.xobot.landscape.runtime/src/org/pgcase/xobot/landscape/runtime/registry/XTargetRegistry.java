@@ -18,9 +18,13 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.landscape.runtime;
+package org.pgcase.xobot.landscape.runtime.registry;
 
-public interface XTargetRegistry {
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
+
+public interface XTargetRegistry extends BasisRegistry {
 	
 	Iterable<XTargetSetDescriptor> getTargetSets();
 
@@ -28,6 +32,10 @@ public interface XTargetRegistry {
 
 	void registerTargetSet(XTargetSetDescriptor targetSet);
 
-	void unregisterTargetSet(XTargetSetDescriptor targetSet);
+	void unregisterTargetSet(String targetSetIdentifier);
+
+	void registerTarget(XTargetDescriptor target);
+
+	void unregisterTarget(String targetIdentifier);
 
 }

@@ -18,16 +18,19 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.landscape.runtime;
+package org.pgcase.xobot.basis.emf.edit;
 
-public interface XSourceRegistry {
-	
-	Iterable<XSourceSetDescriptor> getSourceSets();
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 
-	Iterable<XSourceDescriptor> getSources();
+public interface EditingDomainRegistry extends BasisRegistry, IEditingDomainProvider, ComposedAdapterFactoryProvider {
 
-	void registerSourceSet(XSourceSetDescriptor sourceSet);
+	EClass getContentClassifier();
 
-	void unregisterSourceSet(XSourceSetDescriptor sourceSet);
+	EStructuralFeature getContentIdentifierAttribute();
+
+	EStructuralFeature getContentNameAttribute();
 
 }

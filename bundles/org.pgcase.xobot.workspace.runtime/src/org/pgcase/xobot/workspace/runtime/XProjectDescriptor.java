@@ -20,12 +20,15 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime;
 
-public interface XProjectDescriptor {
+import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+
+public interface XProjectDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 	
-	String getIdentifier();
+	Iterable<? extends XProjectFolderDescriptor> getProjectFolders();
+	
+	Iterable<? extends XProjectSourceDescriptor> getProjectSources();
 
-	String getName();
-
-	Iterable<XProjectConfigurationDescriptor> getProjectConfigurations();
+	Iterable<? extends XProjectTargetDescriptor> getProjectTargets();
 
 }

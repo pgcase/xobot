@@ -61,16 +61,18 @@ public class SystemJdbcConnection implements java.io.Closeable {
 	        		+ String.valueOf(DB_PORT) + "/" + DB_DATABASE
 	        		,DB_USER,DB_PASSWD);
 	        
-			Statement statement = connection.createStatement();
-			statement.execute(sqlDropSchema);
-			if (!connection.getAutoCommit()) {
-				connection.commit();
+			try (Statement statement = connection.createStatement()) {
+				statement.execute(sqlDropSchema);
+				if (!connection.getAutoCommit()) {
+					connection.commit();
+				}
 			}
 			
-			statement = connection.createStatement();
-			statement.execute(sqlCreateSchema);
-			if (!connection.getAutoCommit()) {
-				connection.commit();
+			try (Statement statement = connection.createStatement()) {
+				statement.execute(sqlCreateSchema);
+				if (!connection.getAutoCommit()) {
+					connection.commit();
+				}
 			}
 			
 		} catch (Exception e) {

@@ -20,11 +20,13 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime;
 
-//project-specific source configuration
-public interface XProjectSourceDescriptor {
+import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
+import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+
+public interface XProjectFolderDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 	
 	XProjectDescriptor getProject();
 	
-	String getSourceIdentifier();
+	String getOrigin();
 
 }

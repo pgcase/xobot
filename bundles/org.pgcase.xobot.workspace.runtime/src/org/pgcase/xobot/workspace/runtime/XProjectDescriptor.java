@@ -25,6 +25,8 @@ import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
 public interface XProjectDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 	
+	Iterable<? extends XProjectFolderDescriptor> getProjectFolders();
+	
 	Iterable<? extends XProjectSourceDescriptor> getProjectSources();
 
 	Iterable<? extends XProjectTargetDescriptor> getProjectTargets();

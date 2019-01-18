@@ -47,6 +47,20 @@
          unpack="false"/>
 
    <plugin
+         id="org.pgcase.xobot.workspace.model.ecore"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.pgcase.xobot.workspace.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.pgcase.xobot.workspace.ui.navigator"
          download-size="0"
          install-size="0"

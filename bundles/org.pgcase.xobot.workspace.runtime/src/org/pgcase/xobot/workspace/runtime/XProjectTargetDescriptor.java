@@ -27,6 +27,4 @@ public interface XProjectTargetDescriptor {
 	
 	String getTargetIdentifier();
 
-	String getOptions();
-
 }

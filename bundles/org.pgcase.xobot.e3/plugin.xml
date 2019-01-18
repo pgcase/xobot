@@ -89,7 +89,7 @@
                   <iterate
                         ifEmpty="false">
                      <adapt
-                           type="org.pgcase.xobot.workspace.core.XElement">
+                           type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
                      </adapt>
                   </iterate>
                </visibleWhen>

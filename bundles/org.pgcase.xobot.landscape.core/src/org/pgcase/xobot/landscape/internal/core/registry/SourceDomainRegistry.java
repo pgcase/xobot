@@ -1,4 +1,4 @@
-package org.pgcase.xobot.landscape.core;
+package org.pgcase.xobot.landscape.internal.core.registry;
 
 import java.util.HashMap;
 import java.util.Map;

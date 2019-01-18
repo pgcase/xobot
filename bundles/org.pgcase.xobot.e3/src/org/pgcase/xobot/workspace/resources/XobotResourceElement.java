@@ -3,8 +3,9 @@ package org.pgcase.xobot.workspace.resources;
 import java.util.Collections;
 
 import org.eclipse.core.resources.IResource;
-import org.pgcase.xobot.workspace.runtime.XProjectConfigurationDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
 
 //stub implementation to associate IResource with XElement, should be obtained via registry service
 public class XobotResourceElement implements XProjectDescriptor {
@@ -30,7 +31,13 @@ public class XobotResourceElement implements XProjectDescriptor {
 	}
 	
 	@Override
-	public Iterable<XProjectConfigurationDescriptor> getProjectConfigurations() {
+	public Iterable<? extends XProjectSourceDescriptor> getProjectSources() {
+		// TODO Auto-generated method stub
+		return Collections.emptyList();
+	}
+
+	@Override
+	public Iterable<? extends XProjectTargetDescriptor> getProjectTargets() {
 		// TODO Auto-generated method stub
 		return Collections.emptyList();
 	}

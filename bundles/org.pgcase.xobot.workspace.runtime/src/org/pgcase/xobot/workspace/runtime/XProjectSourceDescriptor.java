@@ -23,7 +23,7 @@ package org.pgcase.xobot.workspace.runtime;
 //project-specific source configuration
 public interface XProjectSourceDescriptor {
 	
-	XProjectConfigurationDescriptor getProjectConfiguration();
+	XProjectDescriptor getProject();
 	
 	String getSourceIdentifier();
 

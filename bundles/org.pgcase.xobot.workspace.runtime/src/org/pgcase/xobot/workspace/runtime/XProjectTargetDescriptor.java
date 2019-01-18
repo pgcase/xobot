@@ -23,7 +23,7 @@ package org.pgcase.xobot.workspace.runtime;
 //project-specific target configuration
 public interface XProjectTargetDescriptor {
 	
-	XProjectConfigurationDescriptor getProjectConfiguration();
+	XProjectDescriptor getProject();
 	
 	String getTargetIdentifier();
 

@@ -18,15 +18,19 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.runtime;
+package org.pgcase.xobot.workspace.runtime.registry;
 
-import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 
-public interface XProjectDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
+public interface XProjectRegistry extends BasisRegistry {
 	
-	Iterable<? extends XProjectSourceDescriptor> getProjectSources();
+	Iterable<XProjectDescriptor> getProjects();
+	
+	XProjectDescriptor getProject(String projectIdentifier);
 
-	Iterable<? extends XProjectTargetDescriptor> getProjectTargets();
+	void registerProject(XProjectDescriptor project);
+
+	void unregisterProject(String projectIdentifier);
 
 }

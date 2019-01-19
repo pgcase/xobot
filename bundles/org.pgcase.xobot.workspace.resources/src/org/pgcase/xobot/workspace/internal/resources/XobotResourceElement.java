@@ -18,7 +18,7 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.resources;
+package org.pgcase.xobot.workspace.internal.resources;
 
 import java.util.Collections;
 

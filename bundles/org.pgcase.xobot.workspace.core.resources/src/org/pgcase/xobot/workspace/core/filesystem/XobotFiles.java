@@ -1,4 +1,4 @@
-package org.pgcase.xobot.workspace.filesystem;
+package org.pgcase.xobot.workspace.core.filesystem;
 
 import java.net.URI;
 import java.net.URL;

@@ -18,7 +18,7 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.filesystem;
+package org.pgcase.xobot.workspace.core.filesystem;
 
 import java.io.File;
 import java.net.URI;

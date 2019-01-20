@@ -26,7 +26,7 @@
       <filesystem
             scheme="xobot">
          <run
-               class="org.pgcase.xobot.workspace.filesystem.XobotFileSystem">
+               class="org.pgcase.xobot.workspace.core.filesystem.XobotFileSystem">
          </run>
       </filesystem>
    </extension>
@@ -35,27 +35,27 @@
          name="%modelProvider.xobot.name"
          point="org.eclipse.core.resources.modelProviders">
       <modelProvider
-            class="org.pgcase.xobot.workspace.resources.mappings.XobotModelProvider">
+            class="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider">
       </modelProvider>
       <extends-model
             id="org.eclipse.core.resources.modelProvider">
       </extends-model>
       <enablement>
-          <test property="org.eclipse.core.resources.projectNature" value="org.pgcase.xobot.workspace.resources.xobot" />
+          <test property="org.eclipse.core.resources.projectNature" value="org.pgcase.xobot.workspace.core.resources.xobot" />
       </enablement>
    </extension>
    <extension
          point="org.eclipse.core.runtime.adapters">
       <factory
             adaptableType="org.pgcase.xobot.workspace.runtime.XProjectDescriptor"
-            class="org.pgcase.xobot.workspace.internal.resources.Xobot2ResourceAdapterFactory">
+            class="org.pgcase.xobot.workspace.internal.core.resources.Xobot2ResourceAdapterFactory">
          <adapter
                type="org.eclipse.core.resources.IProject">
          </adapter>
       </factory>
       <factory
             adaptableType="org.eclipse.core.resources.IProject"
-            class="org.pgcase.xobot.workspace.internal.resources.Resource2XobotAdapterFactory">
+            class="org.pgcase.xobot.workspace.internal.core.resources.Resource2XobotAdapterFactory">
          <adapter
                type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
          </adapter>
@@ -66,7 +66,7 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.pgcase.xobot.workspace.resources.XobotProjectNature">
+               class="org.pgcase.xobot.workspace.core.resources.XobotProjectNature">
          </run>
       </runtime>
    </extension>

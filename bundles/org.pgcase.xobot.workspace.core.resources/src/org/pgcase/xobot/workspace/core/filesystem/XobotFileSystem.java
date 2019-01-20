@@ -18,29 +18,30 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.internal.resources;
+package org.pgcase.xobot.workspace.core.filesystem;
 
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.IAdapterFactory;
-import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import java.io.File;
+import java.net.URI;
+import java.nio.file.Paths;
 
-public class Resource2XobotAdapterFactory implements IAdapterFactory {
+import org.eclipse.core.filesystem.IFileStore;
+import org.eclipse.core.filesystem.provider.FileSystem;
+import org.eclipse.core.runtime.IPath;
 
-	@Override
-	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {
-		if (XProjectDescriptor.class.equals(adapterType)) {
-			if (adaptableObject instanceof IResource) {
-				IResource resource = (IResource) adaptableObject;
-				XProjectDescriptor element = new XobotResourceElement(resource);
-				return adapterType.cast(element);
-			}
-		}
-		return null;
+public class XobotFileSystem extends FileSystem {
+	
+	private final File root;
+
+	public XobotFileSystem() {
+		IPath rootPath = XobotFiles.resolveInstallLocationRoot();
+		root = new File(rootPath.toString());
 	}
 
 	@Override
-	public Class<?>[] getAdapterList() {
-		return new Class[] {XProjectDescriptor.class};
+	public IFileStore getStore(URI uri) {
+		String path = uri.getPath();
+		File file = Paths.get(root.getPath(), path.split("/")).toFile();
+		return new XobotFile(this, uri, file);
 	}
 
 }

@@ -18,26 +18,29 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.resources.mappings;
+package org.pgcase.xobot.workspace.internal.core.resources;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.mapping.ModelProvider;
-import org.eclipse.core.resources.mapping.ResourceMapping;
-import org.eclipse.core.resources.mapping.ResourceMappingContext;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IAdapterFactory;
 
-public class XobotModelProvider extends ModelProvider {
-	
-	public static final String XOBOT_MODEL_PROVIDER_ID= "org.pgcase.xobot.workspace.resources.xobot"; //$NON-NLS-1$
+public class Xobot2ResourceAdapterFactory implements IAdapterFactory {
 
 	@Override
-	public ResourceMapping[] getMappings(IResource resource, ResourceMappingContext context, IProgressMonitor monitor)
-			throws CoreException {
-		final Object adapted= resource.getAdapter(ResourceMapping.class);
-		if (adapted instanceof ResourceMapping) {
-			return new ResourceMapping[] { ((ResourceMapping) adapted)};
+	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {
+		if (IProject.class.equals(adapterType)) {
+			if (adaptableObject instanceof XobotResourceElement) {
+				XobotResourceElement element = (XobotResourceElement) adaptableObject;
+				IProject resource = element.getResource().getProject();
+				return adapterType.cast(resource);
+			}
 		}
-		return new ResourceMapping[] { new XobotResourceMapping(resource)};
+		return null;
 	}
+
+	@Override
+	public Class<?>[] getAdapterList() {
+		return new Class[] {IResource.class};
+	}
+
 }

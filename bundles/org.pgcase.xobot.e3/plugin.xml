@@ -34,7 +34,7 @@
       <teamContentProvider
             contentExtensionId="org.eclipse.ui.navigator.resourceContent"
             icon="images/xobot16.png"
-            modelProviderId="org.pgcase.xobot.workspace.resources.xobot">
+            modelProviderId="org.pgcase.xobot.workspace.core.resources.xobot">
       </teamContentProvider>
    </extension>
    <extension

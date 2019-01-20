@@ -40,8 +40,8 @@ import org.eclipse.team.core.RepositoryProvider;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
-import org.pgcase.xobot.workspace.filesystem.XobotFiles;
-import org.pgcase.xobot.workspace.resources.XobotProjectNature;
+import org.pgcase.xobot.workspace.core.filesystem.XobotFiles;
+import org.pgcase.xobot.workspace.core.resources.XobotProjectNature;
 import org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider;
 
 public class NewXobotProjectWizard extends BasicNewResourceWizard implements INewWizard {
@@ -96,7 +96,8 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 				projectName = txtName.getText();
 				setPageComplete(validatePage());
 			});
-			txtName.setText("new_xobot_project");
+			String proposedName = "";
+			txtName.setText(proposedName);
 
 			setPageComplete(validatePage());
 			setControl(composite);
@@ -116,6 +117,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 	}
 
 	public NewXobotProjectWizard() {
+		setNeedsProgressMonitor(true);
 	}
 	
 	@Override

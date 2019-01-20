@@ -1,4 +1,4 @@
-package org.pgcase.xobot.workspace.resources.mappings;
+package org.pgcase.xobot.workspace.core.resources.mappings;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;

@@ -20,19 +20,28 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.filesystem;
 
+import java.io.File;
 import java.net.URI;
+import java.nio.file.Paths;
 
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.filesystem.provider.FileSystem;
+import org.eclipse.core.runtime.IPath;
 
 public class XobotFileSystem extends FileSystem {
+	
+	private final File root;
 
 	public XobotFileSystem() {
+		IPath rootPath = XobotFiles.resolveInstallLocationRoot();
+		root = new File(rootPath.toString());
 	}
 
 	@Override
 	public IFileStore getStore(URI uri) {
-		return new XobotFile(uri);
+		String path = uri.getPath();
+		File file = Paths.get(root.getPath(), path.split("/")).toFile();
+		return new XobotFile(this, uri, file);
 	}
 
 }

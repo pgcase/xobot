@@ -20,63 +20,65 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.filesystem;
 
-import java.io.InputStream;
+import java.io.File;
 import java.net.URI;
 
-import org.eclipse.core.filesystem.IFileInfo;
 import org.eclipse.core.filesystem.IFileStore;
-import org.eclipse.core.filesystem.provider.FileStore;
+import org.eclipse.core.filesystem.IFileSystem;
+import org.eclipse.core.internal.filesystem.local.LocalFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 
-public class XobotFile extends FileStore {
-
+public class XobotFile extends LocalFile {
+	
+	private final XobotFileSystem fileSystem;
 	private final URI uri;
+	private final File file;
 
-	public XobotFile(URI uri) {
+	public XobotFile(XobotFileSystem fileSystem, URI uri, File file) {
+		super(file);
+		this.fileSystem = fileSystem;
 		this.uri = uri;
+		this.file = file;
 	}
-
-	@Override
-	public String[] childNames(int options, IProgressMonitor monitor) throws CoreException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IFileInfo fetchInfo(int options, IProgressMonitor monitor) throws CoreException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IFileStore getChild(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IFileStore getParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InputStream openInputStream(int options, IProgressMonitor monitor) throws CoreException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public URI toURI() {
-		// TODO Auto-generated method stub
+	
+	public URI getUri() {
 		return uri;
+	}
+	
+	@Override
+	public IFileStore getChild(String name) {	
+		URI childUri = URI.create(uri.toString() + '/' + name);
+		// TODO Auto-generated method stub
+		File childFile = new File(file, name);
+		return new XobotFile(fileSystem, childUri,  childFile);
+	}
+	
+	@Deprecated
+	@Override
+	public IFileStore getChild(IPath path) {
+		URI childUri = URI.create(uri.toString() + '/' + path.toString());
+		File childFile = new File(file, path.toOSString());
+		return new XobotFile(fileSystem, childUri,  childFile);
+	}
+
+	@Override
+	public IFileStore getFileStore(IPath path) {
+		URI childUri = URI.create(uri.toString() + new Path("/").append(path).toString());
+		File childFile = new Path(file.getPath()).append(path).toFile();
+		return new XobotFile(fileSystem, childUri,  childFile);
+	}
+	
+	@Override
+	public IFileSystem getFileSystem() {
+		return fileSystem;
+	}
+	
+	@Override
+	public File toLocalFile(int options, IProgressMonitor monitor) throws CoreException {
+		return null;
 	}
 
 }

@@ -78,14 +78,6 @@
       </menuContribution>
    </extension>
    <extension
-         point="org.eclipse.ui.ide.filesystemSupport">
-      <filesystemContributor
-            class="org.pgcase.xobot.workspace.e3.ui.ide.XobotFileSystemContributor"
-            label="Xobot File System"
-            scheme="xobot">
-      </filesystemContributor>
-   </extension>
-   <extension
          point="org.eclipse.ui.newWizards">
       <category
             id="org.pgcase.xobot.e3.category.xobot"
@@ -106,6 +98,14 @@
       <primaryWizard
             id="org.pgcase.xobot.e3.wizard.new.project">
       </primaryWizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.team.core.repository">
+      <repository
+            class="org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider"
+            id="org.pgcase.xobot.workspace.team.core.xobot">
+      </repository>
    </extension>
 
 </plugin>

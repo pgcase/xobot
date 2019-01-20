@@ -36,13 +36,11 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.team.core.RepositoryProvider;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 import org.pgcase.xobot.workspace.core.filesystem.XobotFiles;
 import org.pgcase.xobot.workspace.core.resources.XobotProjectNature;
-import org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider;
 
 public class NewXobotProjectWizard extends BasicNewResourceWizard implements INewWizard {
 
@@ -144,7 +142,6 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 				project.open(monitor);
 				project.getFolder("functions").create(true, true, monitor);
 				project.getFolder("triggers").create(true, true, monitor);
-				RepositoryProvider.map(project, XobotRepositoryProvider.REPOSITORY_PROVIDER_XOBOT);
 			}
 		};
 		try {

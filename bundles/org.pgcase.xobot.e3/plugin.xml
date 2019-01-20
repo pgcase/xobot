@@ -100,12 +100,4 @@
       </primaryWizard>
    </extension>
 
-   <extension
-         point="org.eclipse.team.core.repository">
-      <repository
-            class="org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider"
-            id="org.pgcase.xobot.workspace.team.core.xobot">
-      </repository>
-   </extension>
-
 </plugin>

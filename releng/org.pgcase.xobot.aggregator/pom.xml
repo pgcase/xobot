@@ -69,6 +69,7 @@
 		<module>../../bundles/org.pgcase.xobot.workspace.core</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.core.resources</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.ui.navigator</module>
+		<module>../../bundles/org.pgcase.xobot.workspace.team.core</module>
 		<module>../../features/org.pgcase.xobot.workspace.feature</module>
 
 		<module>../../bundles/org.pgcase.xobot.runtime</module>

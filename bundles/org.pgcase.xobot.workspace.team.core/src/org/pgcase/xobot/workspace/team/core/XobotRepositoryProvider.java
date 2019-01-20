@@ -5,7 +5,7 @@ import org.eclipse.team.core.RepositoryProvider;
 
 public class XobotRepositoryProvider extends RepositoryProvider {
 
-	public static final String REPOSITORY_PROVIDER_XOBOT = "org.pgcase.xobot.workspace.team.core.xobot";
+	public static final String REPOSITORY_PROVIDER_XOBOT = "org.pgcase.xobot.workspace.team.core.xobot"; //$NON-NLS-1$
 
 	public XobotRepositoryProvider() {
 		super();

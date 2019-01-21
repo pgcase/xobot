@@ -20,10 +20,9 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime;
 
-import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
 import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public interface XProjectDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
+public interface XProjectDescriptor extends XWorkspaceElementDescriptor, IdentifiedDescriptor {
 	
 	Iterable<? extends XProjectFolderDescriptor> getProjectFolders();
 	

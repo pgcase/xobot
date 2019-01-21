@@ -52,6 +52,7 @@ import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
  * <ul>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectImpl#getProjectFolders <em>Project Folders</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectImpl#getProjectSources <em>Project Sources</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectImpl#getProjectTargets <em>Project Targets</em>}</li>
@@ -99,6 +100,26 @@ public class XProjectImpl extends MinimalEObjectImpl.Container implements XProje
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String path = PATH_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getProjectFolders() <em>Project Folders</em>}' containment reference list.
@@ -196,6 +217,27 @@ public class XProjectImpl extends MinimalEObjectImpl.Container implements XProje
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getPath() {
+		return path;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPath(String newPath) {
+		String oldPath = path;
+		path = newPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT__PATH, oldPath, path));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<XProjectFolder> getProjectFolders() {
 		if (projectFolders == null) {
 			projectFolders = new EObjectContainmentWithInverseEList<XProjectFolder>(XProjectFolder.class, this, XWorkspacePackage.PROJECT__PROJECT_FOLDERS, XWorkspacePackage.PROJECT_FOLDER__PROJECT);
@@ -276,6 +318,8 @@ public class XProjectImpl extends MinimalEObjectImpl.Container implements XProje
 				return getIdentifier();
 			case XWorkspacePackage.PROJECT__NAME:
 				return getName();
+			case XWorkspacePackage.PROJECT__PATH:
+				return getPath();
 			case XWorkspacePackage.PROJECT__PROJECT_FOLDERS:
 				return getProjectFolders();
 			case XWorkspacePackage.PROJECT__PROJECT_SOURCES:
@@ -300,6 +344,9 @@ public class XProjectImpl extends MinimalEObjectImpl.Container implements XProje
 				return;
 			case XWorkspacePackage.PROJECT__NAME:
 				setName((String)newValue);
+				return;
+			case XWorkspacePackage.PROJECT__PATH:
+				setPath((String)newValue);
 				return;
 			case XWorkspacePackage.PROJECT__PROJECT_FOLDERS:
 				getProjectFolders().clear();
@@ -331,6 +378,9 @@ public class XProjectImpl extends MinimalEObjectImpl.Container implements XProje
 			case XWorkspacePackage.PROJECT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case XWorkspacePackage.PROJECT__PATH:
+				setPath(PATH_EDEFAULT);
+				return;
 			case XWorkspacePackage.PROJECT__PROJECT_FOLDERS:
 				getProjectFolders().clear();
 				return;
@@ -356,6 +406,8 @@ public class XProjectImpl extends MinimalEObjectImpl.Container implements XProje
 				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
 			case XWorkspacePackage.PROJECT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case XWorkspacePackage.PROJECT__PATH:
+				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 			case XWorkspacePackage.PROJECT__PROJECT_FOLDERS:
 				return projectFolders != null && !projectFolders.isEmpty();
 			case XWorkspacePackage.PROJECT__PROJECT_SOURCES:
@@ -380,6 +432,8 @@ public class XProjectImpl extends MinimalEObjectImpl.Container implements XProje
 		result.append(identifier);
 		result.append(", name: "); //$NON-NLS-1$
 		result.append(name);
+		result.append(", path: "); //$NON-NLS-1$
+		result.append(path);
 		result.append(')');
 		return result.toString();
 	}

@@ -37,6 +37,7 @@ import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
  * <ul>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProject#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProject#getName <em>Name</em>}</li>
+ *   <li>{@link org.pgcase.xobot.workspace.model.api.XProject#getPath <em>Path</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProject#getProjectFolders <em>Project Folders</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProject#getProjectSources <em>Project Sources</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProject#getProjectTargets <em>Project Targets</em>}</li>
@@ -98,6 +99,32 @@ public interface XProject extends EObject, XProjectDescriptor {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Path</em>' attribute.
+	 * @see #setPath(String)
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProject_Path()
+	 * @model
+	 * @generated
+	 */
+	String getPath();
+
+	/**
+	 * Sets the value of the '{@link org.pgcase.xobot.workspace.model.api.XProject#getPath <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Path</em>' attribute.
+	 * @see #getPath()
+	 * @generated
+	 */
+	void setPath(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Project Folders</b></em>' containment reference list.

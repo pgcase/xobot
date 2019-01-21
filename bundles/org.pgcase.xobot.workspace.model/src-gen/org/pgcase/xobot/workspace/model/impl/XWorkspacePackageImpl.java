@@ -232,8 +232,8 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProject_ProjectFolders() {
-		return (EReference)projectEClass.getEStructuralFeatures().get(2);
+	public EAttribute getProject_Path() {
+		return (EAttribute)projectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProject_ProjectSources() {
+	public EReference getProject_ProjectFolders() {
 		return (EReference)projectEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -250,8 +250,17 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProject_ProjectTargets() {
+	public EReference getProject_ProjectSources() {
 		return (EReference)projectEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProject_ProjectTargets() {
+		return (EReference)projectEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -295,8 +304,17 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProjectFolder_Path() {
+		return (EAttribute)projectFolderEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getProjectFolder_Project() {
-		return (EReference)projectFolderEClass.getEStructuralFeatures().get(3);
+		return (EReference)projectFolderEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -392,6 +410,7 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 		projectEClass = createEClass(PROJECT);
 		createEAttribute(projectEClass, PROJECT__IDENTIFIER);
 		createEAttribute(projectEClass, PROJECT__NAME);
+		createEAttribute(projectEClass, PROJECT__PATH);
 		createEReference(projectEClass, PROJECT__PROJECT_FOLDERS);
 		createEReference(projectEClass, PROJECT__PROJECT_SOURCES);
 		createEReference(projectEClass, PROJECT__PROJECT_TARGETS);
@@ -400,6 +419,7 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 		createEAttribute(projectFolderEClass, PROJECT_FOLDER__IDENTIFIER);
 		createEAttribute(projectFolderEClass, PROJECT_FOLDER__NAME);
 		createEAttribute(projectFolderEClass, PROJECT_FOLDER__ORIGIN);
+		createEAttribute(projectFolderEClass, PROJECT_FOLDER__PATH);
 		createEReference(projectFolderEClass, PROJECT_FOLDER__PROJECT);
 
 		projectSourceEClass = createEClass(PROJECT_SOURCE);
@@ -456,6 +476,7 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 		initEClass(projectEClass, XProject.class, "Project", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getProject_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getProject_Name(), ecorePackage.getEString(), "name", null, 0, 1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getProject_Path(), ecorePackage.getEString(), "path", null, 0, 1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getProject_ProjectFolders(), this.getProjectFolder(), this.getProjectFolder_Project(), "projectFolders", null, 0, -1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getProject_ProjectSources(), this.getProjectSource(), this.getProjectSource_Project(), "projectSources", null, 0, -1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getProject_ProjectTargets(), this.getProjectTarget(), this.getProjectTarget_Project(), "projectTargets", null, 0, -1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -464,6 +485,7 @@ public class XWorkspacePackageImpl extends EPackageImpl implements XWorkspacePac
 		initEAttribute(getProjectFolder_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, XProjectFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getProjectFolder_Name(), ecorePackage.getEString(), "name", null, 0, 1, XProjectFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getProjectFolder_Origin(), ecorePackage.getEString(), "origin", null, 0, 1, XProjectFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getProjectFolder_Path(), ecorePackage.getEString(), "path", null, 0, 1, XProjectFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getProjectFolder_Project(), this.getProject(), this.getProject_ProjectFolders(), "project", null, 1, 1, XProjectFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(projectSourceEClass, XProjectSource.class, "ProjectSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

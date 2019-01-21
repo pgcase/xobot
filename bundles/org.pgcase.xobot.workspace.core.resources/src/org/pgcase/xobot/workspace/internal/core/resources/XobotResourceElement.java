@@ -69,4 +69,9 @@ public class XobotResourceElement implements XProjectDescriptor {
 		return Collections.emptyList();
 	}
 
+	@Override
+	public String getPath() {
+		return resource.getFullPath().toString();
+	}
+
 }

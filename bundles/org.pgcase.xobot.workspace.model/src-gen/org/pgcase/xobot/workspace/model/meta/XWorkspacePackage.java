@@ -215,13 +215,22 @@ public interface XWorkspacePackage extends EPackage {
 	int PROJECT__NAME = PROJECT_DESCRIPTOR_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT__PATH = PROJECT_DESCRIPTOR_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Project Folders</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT__PROJECT_FOLDERS = PROJECT_DESCRIPTOR_FEATURE_COUNT + 2;
+	int PROJECT__PROJECT_FOLDERS = PROJECT_DESCRIPTOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Project Sources</b></em>' containment reference list.
@@ -230,7 +239,7 @@ public interface XWorkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT__PROJECT_SOURCES = PROJECT_DESCRIPTOR_FEATURE_COUNT + 3;
+	int PROJECT__PROJECT_SOURCES = PROJECT_DESCRIPTOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Project Targets</b></em>' containment reference list.
@@ -239,7 +248,7 @@ public interface XWorkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT__PROJECT_TARGETS = PROJECT_DESCRIPTOR_FEATURE_COUNT + 4;
+	int PROJECT__PROJECT_TARGETS = PROJECT_DESCRIPTOR_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Project</em>' class.
@@ -248,7 +257,7 @@ public interface XWorkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_FEATURE_COUNT = PROJECT_DESCRIPTOR_FEATURE_COUNT + 5;
+	int PROJECT_FEATURE_COUNT = PROJECT_DESCRIPTOR_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Project</em>' class.
@@ -297,13 +306,22 @@ public interface XWorkspacePackage extends EPackage {
 	int PROJECT_FOLDER__ORIGIN = PROJECT_FOLDER_DESCRIPTOR_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_FOLDER__PATH = PROJECT_FOLDER_DESCRIPTOR_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Project</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_FOLDER__PROJECT = PROJECT_FOLDER_DESCRIPTOR_FEATURE_COUNT + 3;
+	int PROJECT_FOLDER__PROJECT = PROJECT_FOLDER_DESCRIPTOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Project Folder</em>' class.
@@ -312,7 +330,7 @@ public interface XWorkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_FOLDER_FEATURE_COUNT = PROJECT_FOLDER_DESCRIPTOR_FEATURE_COUNT + 4;
+	int PROJECT_FOLDER_FEATURE_COUNT = PROJECT_FOLDER_DESCRIPTOR_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Project Folder</em>' class.
@@ -493,6 +511,17 @@ public interface XWorkspacePackage extends EPackage {
 	EAttribute getProject_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.workspace.model.api.XProject#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.pgcase.xobot.workspace.model.api.XProject#getPath()
+	 * @see #getProject()
+	 * @generated
+	 */
+	EAttribute getProject_Path();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.pgcase.xobot.workspace.model.api.XProject#getProjectFolders <em>Project Folders</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -567,6 +596,17 @@ public interface XWorkspacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProjectFolder_Origin();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.pgcase.xobot.workspace.model.api.XProjectFolder#getPath()
+	 * @see #getProjectFolder()
+	 * @generated
+	 */
+	EAttribute getProjectFolder_Path();
 
 	/**
 	 * Returns the meta object for the container reference '{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getProject <em>Project</em>}'.
@@ -733,6 +773,14 @@ public interface XWorkspacePackage extends EPackage {
 		EAttribute PROJECT__NAME = eINSTANCE.getProject_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT__PATH = eINSTANCE.getProject_Path();
+
+		/**
 		 * The meta object literal for the '<em><b>Project Folders</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -789,6 +837,14 @@ public interface XWorkspacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROJECT_FOLDER__ORIGIN = eINSTANCE.getProjectFolder_Origin();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_FOLDER__PATH = eINSTANCE.getProjectFolder_Path();
 
 		/**
 		 * The meta object literal for the '<em><b>Project</b></em>' container reference feature.

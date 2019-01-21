@@ -260,8 +260,8 @@ public class XobotConfigurationMainPage extends WizardPage {
 		}
 		File file = new File(location);
 		if(!file.exists() || !file.isDirectory()) {
-			setErrorMessage("Что-то пошло не так");
-			setPageComplete(false);
+			setErrorMessage("Похоже, что такой папки нет. Но это пока допустимо. Пока.");
+			setPageComplete(true);
 			return;				
 		}
 		setErrorMessage(null);

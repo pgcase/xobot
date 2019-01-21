@@ -58,7 +58,7 @@ public class XobotModelProvider extends ModelProvider {
 							problems.add(status);
 						}
 					}
-					if (WorkspaceCoreResources.isDefinitionFile(resource)) {
+					if (WorkspaceCoreResources.isIndexFile(resource)) {
 						// Removal may leave unreferenced body files around
 						if (delta.getKind() == IResourceDelta.REMOVED) {
 							IStatus status = new ModelStatus(IStatus.WARNING, WorkspaceCoreResources.ID, getDescriptor().getId(), 

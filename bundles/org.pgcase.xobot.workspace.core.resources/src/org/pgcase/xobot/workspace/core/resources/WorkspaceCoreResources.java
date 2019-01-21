@@ -83,7 +83,7 @@ public class WorkspaceCoreResources {
 		return resource instanceof IFile && WorkspaceCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION.equals(resource.getFileExtension());
 	}
 
-	public static boolean isDefinitionFile(IResource resource) {
+	public static boolean isIndexFile(IResource resource) {
 		if (resource instanceof IFile) {
 			String fileExtension = resource.getFileExtension();
 			if (fileExtension != null) {

@@ -22,17 +22,35 @@ package org.pgcase.xobot.workspace.internal.core.resources;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdapterFactory;
-import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
+import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
 public class Resource2XobotAdapterFactory implements IAdapterFactory {
 
+	private final XWorkspaceElementService service = WorkspaceCoreResources.geWorkspaceElementService();
+	
 	@Override
 	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {
-		if (XProjectDescriptor.class.equals(adapterType)) {
+		if (adapterType.isInstance(adaptableObject)) {
+			return adapterType.cast(adaptableObject);
+		}
+		if (XWorkspaceElementDescriptor.class.equals(adapterType)) {
 			if (adaptableObject instanceof IResource) {
 				IResource resource = (IResource) adaptableObject;
-				XProjectDescriptor element = new XobotResourceElement(resource);
-				return adapterType.cast(element);
+				int type = resource.getType();
+				switch (type) {
+				case IResource.FILE:
+					return adapterType.cast(service.getWorkspaceElement(resource.getFullPath()));
+				case IResource.FOLDER:
+					return adapterType.cast(service.getProjectFolder(resource.getProject().getName(), resource.getProjectRelativePath().toString()));
+				case IResource.PROJECT:
+					return adapterType.cast(service.getProject(resource.getProject().getName()));
+				case IResource.ROOT:
+					return adapterType.cast(WorkspaceRoot.INSTANCE);
+				default:
+					break;
+				}
 			}
 		}
 		return null;
@@ -40,7 +58,7 @@ public class Resource2XobotAdapterFactory implements IAdapterFactory {
 
 	@Override
 	public Class<?>[] getAdapterList() {
-		return new Class[] {XProjectDescriptor.class};
+		return new Class[] {XWorkspaceElementDescriptor.class};
 	}
 
 }

@@ -20,27 +20,52 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.internal.core.resources;
 
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IAdapterFactory;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
+import org.pgcase.xobot.workspace.core.resources.XWorkspaceResource;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 
 public class Xobot2ResourceAdapterFactory implements IAdapterFactory {
 
 	@Override
 	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {
-		if (IProject.class.equals(adapterType)) {
-			if (adaptableObject instanceof XobotResourceElement) {
-				XobotResourceElement element = (XobotResourceElement) adaptableObject;
-				IProject resource = element.getResource().getProject();
-				return adapterType.cast(resource);
+		if (IResource.class.equals(adapterType)) {
+			if (adaptableObject instanceof XProjectDescriptor) {
+				XProjectDescriptor element = (XProjectDescriptor) adaptableObject;
+				IProject project = extractProject(element);
+				return adapterType.cast(project);
+			}
+			if (adaptableObject instanceof XProjectFolderDescriptor) {
+				XProjectFolderDescriptor element = (XProjectFolderDescriptor) adaptableObject;
+				IProject project = extractProject(element.getProject());
+				IPath path = new Path(element.getPath());
+				IFolder folder = project.getFolder(path);
+				return adapterType.cast(folder);
+			}
+			if (adaptableObject instanceof XWorkspaceResource) {
+				XWorkspaceResource element = (XWorkspaceResource) adaptableObject;
+				return adapterType.cast(element.getResource());
 			}
 		}
 		return null;
 	}
 
+	protected IProject extractProject(XProjectDescriptor element) {
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		IProject project = root.getProject(element.getIdentifier());
+		return project;
+	}
+
 	@Override
 	public Class<?>[] getAdapterList() {
-		return new Class[] {IResource.class};
+		return new Class[] { IResource.class };
 	}
 
 }

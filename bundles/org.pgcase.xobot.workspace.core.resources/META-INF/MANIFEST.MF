@@ -16,3 +16,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.pgcase.xobot.workspace.core.filesystem,
  org.pgcase.xobot.workspace.core.resources,
  org.pgcase.xobot.workspace.core.resources.mappings
+Bundle-Activator: org.pgcase.xobot.workspace.internal.core.resources.WorkspaceCoreResourcesActivator
+Service-Component: OSGI-INF/org.pgcase.xobot.workspace.internal.core.resources.WorkspaceElementService.xml

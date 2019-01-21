@@ -20,34 +20,20 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.core.resources;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectNature;
-import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.resources.IFile;
 
-public class XobotProjectNature implements IProjectNature {
+//FIXME: Temporary, just to not loose the functionality of logic model
+public class XFunctionDefinitionBody extends XWorkspaceResource {
+
+	private final XFunctionDefinitionIndex functionDefintionIndex;
+
+	public XFunctionDefinitionBody(XFunctionDefinitionIndex parent, IFile file) {
+		super(file);
+		this.functionDefintionIndex = parent;
+	}
+
+	public XFunctionDefinitionIndex getFunctionDefinitionIndex() {
+		return functionDefintionIndex;
+	}
 	
-	public static final String XOBOT_NATURE_ID= "org.pgcase.xobot.workspace.core.resources.xobot"; //$NON-NLS-1$
-
-	private IProject project;
-
-	@Override
-	public void configure() throws CoreException {
-		// TODO add builder
-	}
-
-	@Override
-	public void deconfigure() throws CoreException {
-		// TODO remove builder
-	}
-
-	@Override
-	public IProject getProject() {
-		return project;
-	}
-
-	@Override
-	public void setProject(IProject project) {
-		this.project = project;
-	}
-
 }

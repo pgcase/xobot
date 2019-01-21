@@ -20,34 +20,27 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.core.resources;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectNature;
-import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.resources.IResource;
+import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public class XobotProjectNature implements IProjectNature {
-	
-	public static final String XOBOT_NATURE_ID= "org.pgcase.xobot.workspace.core.resources.xobot"; //$NON-NLS-1$
+public abstract class XWorkspaceResource implements XWorkspaceElementDescriptor {
 
-	private IProject project;
+	private final IResource resource;
 
-	@Override
-	public void configure() throws CoreException {
-		// TODO add builder
+	protected XWorkspaceResource(IResource resource) {
+		this.resource = resource;
 	}
 
-	@Override
-	public void deconfigure() throws CoreException {
-		// TODO remove builder
+	public IResource getResource() {
+		return resource;
 	}
 
-	@Override
-	public IProject getProject() {
-		return project;
+	public String getName() {
+		return resource.getName();
 	}
 
-	@Override
-	public void setProject(IProject project) {
-		this.project = project;
+	public String getPath() {
+		return resource.getFullPath().makeRelative().toString();
 	}
 
 }

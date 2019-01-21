@@ -18,36 +18,27 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.core.resources;
+package org.pgcase.xobot.workspace.runtime.registry;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
+import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public class XobotProjectNature implements IProjectNature {
+public interface XWorkspaceElementService {
+
+	XProjectRegistry getProjectRegistry();
 	
-	public static final String XOBOT_NATURE_ID= "org.pgcase.xobot.workspace.core.resources.xobot"; //$NON-NLS-1$
+	Iterable<?> getFolderItems(XProjectFolderDescriptor folder);
 
-	private IProject project;
+	void delete(XWorkspaceElementDescriptor element, IProgressMonitor monitor) throws CoreException;
+	
+	XProjectDescriptor getProject(String name);
 
-	@Override
-	public void configure() throws CoreException {
-		// TODO add builder
-	}
+	XProjectFolderDescriptor getProjectFolder(String name, String path);
 
-	@Override
-	public void deconfigure() throws CoreException {
-		// TODO remove builder
-	}
-
-	@Override
-	public IProject getProject() {
-		return project;
-	}
-
-	@Override
-	public void setProject(IProject project) {
-		this.project = project;
-	}
+	XWorkspaceElementDescriptor getWorkspaceElement(IPath path);
 
 }

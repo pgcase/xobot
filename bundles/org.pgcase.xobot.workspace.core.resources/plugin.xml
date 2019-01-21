@@ -47,17 +47,17 @@
    <extension
          point="org.eclipse.core.runtime.adapters">
       <factory
-            adaptableType="org.pgcase.xobot.workspace.runtime.XProjectDescriptor"
+            adaptableType="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor"
             class="org.pgcase.xobot.workspace.internal.core.resources.Xobot2ResourceAdapterFactory">
          <adapter
-               type="org.eclipse.core.resources.IProject">
+               type="org.eclipse.core.resources.IResource">
          </adapter>
       </factory>
       <factory
-            adaptableType="org.eclipse.core.resources.IProject"
+            adaptableType="org.eclipse.core.resources.IResource"
             class="org.pgcase.xobot.workspace.internal.core.resources.Resource2XobotAdapterFactory">
          <adapter
-               type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+               type="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
          </adapter>
       </factory>
    </extension>

@@ -25,13 +25,13 @@
          point="org.eclipse.ui.views">
       <view
             class="org.pgcase.xobot.landscape.ui.navigator.SourcesNavigator"
-            icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.sources"
             name="%views.sources.name">
       </view>
       <view
             class="org.pgcase.xobot.landscape.ui.navigator.TargetsNavigator"
-            icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.targets"
             name="%views.targets.name">
       </view>
@@ -41,7 +41,7 @@
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.pgcase.xobot.landscape.ui.navigator.SourcesContentProvider"
-            icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.sources"
             name="%navigatorContent.sources.name">
          <triggerPoints>
@@ -53,7 +53,7 @@
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.pgcase.xobot.landscape.ui.navigator.TargetsContentProvider"
-            icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.targets"
             name="%navigatorContent.targets.name">
          <triggerPoints>

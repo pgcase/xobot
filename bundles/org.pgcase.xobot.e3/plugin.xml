@@ -29,14 +29,7 @@
             name="%product.name">
       </product>
    </extension>
-   <extension
-         point="org.eclipse.team.ui.teamContentProviders">
-      <teamContentProvider
-            contentExtensionId="org.eclipse.ui.navigator.resourceContent"
-            icon="images/xobot16.png"
-            modelProviderId="org.pgcase.xobot.workspace.core.resources.xobot">
-      </teamContentProvider>
-   </extension>
+
    <extension
          point="org.eclipse.ui.commands">
       <command

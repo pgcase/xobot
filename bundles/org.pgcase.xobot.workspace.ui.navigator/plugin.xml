@@ -26,7 +26,7 @@
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectSourcesContentProvider"
-            icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.sources"
             labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.sources.name">
@@ -39,7 +39,7 @@
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectTargetsContentProvider"
-            icon="platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.targets"
             labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.targets.name">

@@ -55,7 +55,7 @@ public class BasisImagesImplementation extends BasicImageService implements Basi
 
 	@Override
 	protected void registerImages() {
-		register(IMG_DEFAULT, "platform:/plugin/org.pgcase.xobot.e3/images/xobot16.png"); //$NON-NLS-1$
+		register(IMG_DEFAULT, "platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"); //$NON-NLS-1$
 	}
 
 }

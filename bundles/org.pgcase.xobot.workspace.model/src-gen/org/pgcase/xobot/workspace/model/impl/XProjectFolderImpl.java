@@ -46,6 +46,7 @@ import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectFolderImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectFolderImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectFolderImpl#getOrigin <em>Origin</em>}</li>
+ *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectFolderImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.impl.XProjectFolderImpl#getProject <em>Project</em>}</li>
  * </ul>
  *
@@ -111,6 +112,26 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected String origin = ORIGIN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String path = PATH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,6 +213,27 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 		origin = newOrigin;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_FOLDER__ORIGIN, oldOrigin, origin));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPath() {
+		return path;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPath(String newPath) {
+		String oldPath = path;
+		path = newPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XWorkspacePackage.PROJECT_FOLDER__PATH, oldPath, path));
 	}
 
 	/**
@@ -293,6 +335,8 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 				return getName();
 			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				return getOrigin();
+			case XWorkspacePackage.PROJECT_FOLDER__PATH:
+				return getPath();
 			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				return getProject();
 		}
@@ -315,6 +359,9 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				setOrigin((String)newValue);
+				return;
+			case XWorkspacePackage.PROJECT_FOLDER__PATH:
+				setPath((String)newValue);
 				return;
 			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				setProject((XProject)newValue);
@@ -340,6 +387,9 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				setOrigin(ORIGIN_EDEFAULT);
 				return;
+			case XWorkspacePackage.PROJECT_FOLDER__PATH:
+				setPath(PATH_EDEFAULT);
+				return;
 			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				setProject((XProject)null);
 				return;
@@ -361,6 +411,8 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case XWorkspacePackage.PROJECT_FOLDER__ORIGIN:
 				return ORIGIN_EDEFAULT == null ? origin != null : !ORIGIN_EDEFAULT.equals(origin);
+			case XWorkspacePackage.PROJECT_FOLDER__PATH:
+				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 			case XWorkspacePackage.PROJECT_FOLDER__PROJECT:
 				return getProject() != null;
 		}
@@ -383,6 +435,8 @@ public class XProjectFolderImpl extends MinimalEObjectImpl.Container implements 
 		result.append(name);
 		result.append(", origin: "); //$NON-NLS-1$
 		result.append(origin);
+		result.append(", path: "); //$NON-NLS-1$
+		result.append(path);
 		result.append(')');
 		return result.toString();
 	}

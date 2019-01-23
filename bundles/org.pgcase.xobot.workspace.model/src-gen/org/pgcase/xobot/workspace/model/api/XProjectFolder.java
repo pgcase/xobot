@@ -36,6 +36,7 @@ import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getName <em>Name</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getOrigin <em>Origin</em>}</li>
+ *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getPath <em>Path</em>}</li>
  *   <li>{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getProject <em>Project</em>}</li>
  * </ul>
  *
@@ -121,6 +122,32 @@ public interface XProjectFolder extends EObject, XProjectFolderDescriptor {
 	 * @generated
 	 */
 	void setOrigin(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Path</em>' attribute.
+	 * @see #setPath(String)
+	 * @see org.pgcase.xobot.workspace.model.meta.XWorkspacePackage#getProjectFolder_Path()
+	 * @model
+	 * @generated
+	 */
+	String getPath();
+
+	/**
+	 * Sets the value of the '{@link org.pgcase.xobot.workspace.model.api.XProjectFolder#getPath <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Path</em>' attribute.
+	 * @see #getPath()
+	 * @generated
+	 */
+	void setPath(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Project</b></em>' container reference.

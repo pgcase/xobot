@@ -23,6 +23,7 @@
     <genClasses ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/identifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/path"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/projectFolders"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/projectSources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//Project/projectTargets"/>
@@ -31,6 +32,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/identifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/origin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/path"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectFolder/project"/>
     </genClasses>
     <genClasses ecoreClass="../../org.pgcase.xobot.workspace.model.ecore/model/workspace.ecore#//ProjectSource">

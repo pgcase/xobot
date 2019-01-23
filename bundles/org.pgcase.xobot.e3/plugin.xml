@@ -29,34 +29,7 @@
             name="%product.name">
       </product>
    </extension>
-   <extension
-         point="org.eclipse.core.filesystem.filesystems">
-      <filesystem
-            scheme="xobot">
-         <run
-               class="org.pgcase.xobot.workspace.filesystem.XobotFileSystem">
-         </run>
-      </filesystem>
-   </extension>
-   <extension
-         id="xobot"
-         name="%modelProvider.xobot.name"
-         point="org.eclipse.core.resources.modelProviders">
-      <modelProvider
-            class="org.pgcase.xobot.workspace.resources.XobotModelProvider">
-      </modelProvider>
-      <extends-model
-            id="org.eclipse.core.resources.modelProvider">
-      </extends-model>
-   </extension>
-   <extension
-         point="org.eclipse.team.ui.teamContentProviders">
-      <teamContentProvider
-            contentExtensionId="org.eclipse.ui.navigator.resourceContent"
-            icon="images/xobot16.png"
-            modelProviderId="org.pgcase.xobot.e3.xobot">
-      </teamContentProvider>
-   </extension>
+
    <extension
          point="org.eclipse.ui.commands">
       <command
@@ -69,7 +42,7 @@
          point="org.eclipse.ui.commandImages">
       <image
             commandId="org.pgcase.xobot.e3.command.compare.to.target"
-            icon="images/xobot16.png">
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png">
       </image>
    </extension>
    <extension
@@ -98,31 +71,6 @@
       </menuContribution>
    </extension>
    <extension
-         point="org.eclipse.core.runtime.adapters">
-      <factory
-            adaptableType="org.pgcase.xobot.workspace.runtime.XProjectDescriptor"
-            class="org.pgcase.xobot.workspace.resources.Xobot2ResourceAdapterFactory">
-         <adapter
-               type="org.eclipse.core.resources.IProject">
-         </adapter>
-      </factory>
-      <factory
-            adaptableType="org.eclipse.core.resources.IProject"
-            class="org.pgcase.xobot.workspace.resources.Resource2XobotAdapterFactory">
-         <adapter
-               type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-         </adapter>
-      </factory>
-   </extension>
-   <extension
-         point="org.eclipse.ui.ide.filesystemSupport">
-      <filesystemContributor
-            class="org.pgcase.xobot.workspace.e3.ui.ide.XobotFileSystemContributor"
-            label="Xobot File System"
-            scheme="xobot">
-      </filesystemContributor>
-   </extension>
-   <extension
          point="org.eclipse.ui.newWizards">
       <category
             id="org.pgcase.xobot.e3.category.xobot"
@@ -131,8 +79,8 @@
       <wizard
             category="org.pgcase.xobot.e3.category.xobot"
             class="org.pgcase.xobot.workspace.e3.ui.ide.NewXobotProjectWizard"
-            descriptionImage="images/xobot16.png"
-            icon="images/xobot16.png"
+            descriptionImage="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.e3.wizard.new.project"
             name="Xobot Project"
             project="true">

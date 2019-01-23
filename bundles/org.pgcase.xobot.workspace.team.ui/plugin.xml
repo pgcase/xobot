@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+	Copyright (c) 2018-2019 ArSysOp
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+	SPDX-License-Identifier: Apache-2.0
+
+	Contributors:
+		ArSysOp - initial API and implementation
+-->
+<plugin>
+
+   <extension
+         point="org.eclipse.team.ui.configurationWizards">
+      <wizard
+            name="Протянуть Хобот"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+            class="org.pgcase.xobot.workspace.team.ui.XobotConfigurationWizard"
+            id="org.pgcase.xobot.workspace.team.ui.ConfigurationWizard">
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.mapping.ResourceMapping"
+            adaptable="true"
+            id="org.pgcase.xobot.workspace.team.ui.ResourceContributions">
+         <enablement>
+               <adapt type="org.eclipse.core.resources.mapping.ResourceMapping">
+                   <test property="org.eclipse.core.resources.projectPersistentProperty"
+                         args="org.eclipse.team.core.repository,org.pgcase.xobot.workspace.team.core.xobot"/>
+               </adapt>
+         </enablement>
+         <action
+               class="org.pgcase.xobot.workspace.team.ui.XobotSynchronizeAction"
+               icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+               id="org.pgcase.xobot.workspace.team.ui.synchronize"
+               label="%Synchronize.name"
+               menubarPath="team.main/group1"
+               tooltip="%Synchronize.tooltip">
+         </action>
+      </objectContribution>
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            adaptable="true"
+            id="org.pgcase.xobot.workspace.team.ui.ProjectContributions">
+         <filter
+               name="projectPersistentProperty"
+               value="org.eclipse.team.core.repository=org.pgcase.xobot.workspace.team.core.xobot">
+         </filter>
+         <action
+               class="org.pgcase.xobot.workspace.team.ui.XobotDisconnectAction"
+               icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+               id="org.pgcase.xobot.workspace.team.ui.unmanage"
+               label="%Unmanage.name"
+               menubarPath="team.main/group2"
+               tooltip="%Unmanage.tooltip">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.pgcase.xobot.workspace.team.ui.fileContribution"
+            objectClass="org.eclipse.core.resources.IFile">
+          <enablement>
+            <adapt type="org.eclipse.core.resources.mapping.ResourceMapping">
+              <test property="org.eclipse.core.resources.projectPersistentProperty"
+              args="org.eclipse.team.core.repository,org.pgcase.xobot.workspace.team.core.xobot"/>
+            </adapt>
+         </enablement>
+         <action
+               class="org.pgcase.xobot.workspace.team.ui.ShowHistoryAction"
+               icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+               id="org.pgcase.xobot.workspace.team.ui.showHistory"
+               label="Show History"
+               menubarPath="team.main/group4">
+         </action>
+      </objectContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+       <viewer
+           viewerId="org.pgcase.xobot.workspace.team.ui.syncViewer">
+           <popupMenu
+                allowsPlatformContributions="false"
+                id="org.pgcase.xobot.workspace.team.ui.syncViewer#PopupMenu">  
+             <insertionPoint name="file"/>  
+             <insertionPoint name="edit"/>          
+             <insertionPoint name="synchronize"/>
+             <insertionPoint
+                   name="navigate"
+                   separator="true"/>
+             <insertionPoint
+                   name="merge"
+                   separator="true"/>
+             <insertionPoint
+                   name="put"
+                   separator="false"/>
+             <insertionPoint
+                   name="overwrite"
+                   separator="true"/> 
+             <insertionPoint
+                   name="other"
+                   separator="true"/> 
+             <insertionPoint
+                   name="sort"
+                   separator="true"/>
+             <insertionPoint
+                   name="additions"
+                   separator="true"/>              
+             <insertionPoint
+                   name="properties"
+                   separator="true"/>
+          </popupMenu>
+       </viewer>
+   </extension>
+
+   <extension
+         point="org.eclipse.team.ui.synchronizeParticipants">
+      <participant
+            class="org.pgcase.xobot.workspace.team.ui.XobotSynchronizeParticipant"
+            icon="images/xobot16.png"
+            id="org.pgcase.xobot.workspace.team.ui.xobot"
+            name="Xobot Repository"
+            persistent="false">
+      </participant>
+   </extension>
+   <extension
+         point="org.eclipse.team.ui.synchronizeWizards">
+      <wizard
+            class="org.pgcase.xobot.workspace.team.ui.XobotSynchronizeWizard"
+            description="Провести синхронизацию со стэндами"
+            icon="images/xobot16.png"
+            id="org.pgcase.xobot.workspace.team.ui.sync.xobot"
+            name="Синхронизировать Хоботом">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorContentProvider"
+            icon="images/xobot16.png"
+            id="org.pgcase.xobot.workspace.team.ui.navigatorContent.model"
+            labelProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorLabelProvider"
+            name="Xobot Model"
+            providesSaveables="true">
+         <triggerPoints>
+            <or>
+               <adapt
+                     type="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
+               </adapt>
+               <adapt
+                     type="org.eclipse.core.resources.IWorkspaceRoot">
+               </adapt>
+            </or></triggerPoints>
+         <possibleChildren>
+            <instanceof
+                  value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
+            </instanceof>
+         </possibleChildren>
+         <override
+               policy="InvokeAlwaysRegardlessOfSuppressedExt"
+               suppressedExtensionId="org.eclipse.ui.navigator.resourceContent">
+         </override>
+         <actionProvider
+               class="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorActionProvider"
+               id="org.pgcase.xobot.workspace.team.ui.navigator.model.action.provider">
+         </actionProvider>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  pattern="org.pgcase.xobot.workspace.team.ui.navigatorContent.model">
+            </contentExtension></includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            contentProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotSyncContentProvider"
+            icon="images/xobot16.png"
+            id="org.pgcase.xobot.workspace.team.ui.navigatorContent.xobot"
+            labelProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotSyncLabelProvider"
+            name="Xobot Sync"
+            priority="normal">
+         <actionProvider
+               class="org.pgcase.xobot.workspace.team.ui.navigator.XobotSyncActionProvider">
+         </actionProvider>
+         <override
+               policy="InvokeAlwaysRegardlessOfSuppressedExt"
+               suppressedExtensionId="org.eclipse.team.ui.resourceContent">
+         </override>
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="org.eclipse.team.core.mapping.ISynchronizationScope">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.team.core.mapping.ISynchronizationContext">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider">
+               </instanceof>
+            </or></triggerPoints>
+         <possibleChildren>
+            <instanceof
+                  value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
+            </instanceof>
+            <instanceof
+                  value="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider">
+            </instanceof></possibleChildren>
+         <actionProvider
+               class="org.pgcase.xobot.workspace.team.ui.navigator.XobotThirdPartyActionProvider"
+               id="org.pgcase.xobot.workspace.team.ui.navigator.ThirdPartyActionProvider">
+            <enablement>
+               <adapt
+                     type="org.eclipse.core.resources.mapping.ResourceMapping">
+               </adapt></enablement>
+         </actionProvider>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.team.ui.teamContentProviders">
+      <teamContentProvider
+            contentExtensionId="org.pgcase.xobot.workspace.team.ui.navigatorContent.xobot"
+            icon="images/xobot16.png"
+            modelProviderId="org.pgcase.xobot.workspace.core.resources.xobot">
+      </teamContentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor"
+            class="org.pgcase.xobot.workspace.team.ui.navigator.XWorkspaceElementAdapterFactory">
+         <adapter
+               type="org.eclipse.ui.model.IWorkbenchAdapter">
+         </adapter>
+         <adapter
+               type="org.eclipse.core.resources.mapping.ResourceMapping">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider"
+            class="org.pgcase.xobot.workspace.team.ui.navigator.XWorkspaceElementAdapterFactory">
+         <adapter
+               type="org.eclipse.team.core.mapping.IResourceMappingMerger">
+         </adapter>
+         <adapter
+               type="org.eclipse.team.ui.mapping.ISynchronizationCompareAdapter">
+         </adapter>
+      </factory>
+   </extension>
+
+</plugin>

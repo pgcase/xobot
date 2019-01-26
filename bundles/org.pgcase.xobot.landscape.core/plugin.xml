@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.pgcase.xobot.landscape.internal.core.XSourcePropertyTester"
+            id="org.pgcase.xobot.landscape.core.propertyTesters.propertyTester.source"
+            namespace="org.pgcase.xobot.landscape.core"
+            properties="origin"
+            type="org.pgcase.xobot.landscape.runtime.XSourceDescriptor">
+      </propertyTester>
+      <propertyTester
+            class="org.pgcase.xobot.landscape.internal.core.XTargetPropertyTester"
+            id="org.pgcase.xobot.landscape.core.propertyTesters.propertyTester.target"
+            namespace="org.pgcase.xobot.landscape.core"
+            properties="origin"
+            type="org.pgcase.xobot.landscape.runtime.XTargetDescriptor">
+      </propertyTester>
+   </extension>
+
+</plugin>

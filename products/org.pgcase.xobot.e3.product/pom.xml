@@ -53,7 +53,8 @@
 				<configuration>
 					<products>
 						<product>
-							<archiveFileName>${artifactId}-${version}</archiveFileName>
+							<id>org.pgcase.xobot.e3.product</id>
+							<archiveFileName>${project.artifactId}-${project.version}</archiveFileName>
 						</product>
 					</products>
 				</configuration>

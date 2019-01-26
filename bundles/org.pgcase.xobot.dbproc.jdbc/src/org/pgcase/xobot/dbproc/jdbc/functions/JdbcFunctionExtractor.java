@@ -50,12 +50,14 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 				if (sqlSentence == null) {
 					sqlSentence = DbprocJdbc.getBundleSql(SCAN_DBPROC_FUNC_SQL_FILE);
 				}
-				PreparedStatement preparedStatement = jdbcConnection.prepareStatement(sqlSentence);
-				preparedStatement.setString(1, schema);
-				ResultSet resultSet = preparedStatement.executeQuery();
-				while (resultSet.next()) {
-					XFunctionDescriptor parsed = JdbcFunctionParser.parse(jdbcConnection, resultSet, reporter);
-					functions.add(parsed);
+				try (PreparedStatement preparedStatement = jdbcConnection.prepareStatement(sqlSentence)) {
+					preparedStatement.setString(1, schema);
+					try (ResultSet resultSet = preparedStatement.executeQuery()) {
+						while (resultSet.next()) {
+							XFunctionDescriptor parsed = JdbcFunctionParser.parse(jdbcConnection, resultSet, reporter);
+							functions.add(parsed);
+						}
+					}
 				}
 				return functions;
 			} catch (Exception e) {

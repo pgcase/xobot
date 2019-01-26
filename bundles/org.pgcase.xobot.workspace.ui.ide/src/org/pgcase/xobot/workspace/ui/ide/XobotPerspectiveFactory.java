@@ -25,58 +25,58 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.wizards.newresource.BasicNewFileResourceWizard;
 import org.eclipse.ui.wizards.newresource.BasicNewFolderResourceWizard;
+import org.pgcase.xobot.landscape.ui.navigator.LandscapeUiNavigator;
 
 public class XobotPerspectiveFactory implements IPerspectiveFactory {
 
 	@Override
 	public void createInitialLayout(IPageLayout layout) {
-        defineActions(layout);
-        defineLayout(layout);
+		defineActions(layout);
+		defineLayout(layout);
 	}
 
-    public void defineActions(IPageLayout layout) {
-        // Add "new wizards".
-        layout.addNewWizardShortcut(XobotUiIde.WIZARD_PROJECT_XOBOT);
-        layout.addNewWizardShortcut(BasicNewFolderResourceWizard.WIZARD_ID);
-        layout.addNewWizardShortcut(BasicNewFileResourceWizard.WIZARD_ID);
+	public void defineActions(IPageLayout layout) {
+		// Add "new wizards".
+		layout.addNewWizardShortcut(XobotUiIde.WIZARD_PROJECT_XOBOT);
+		layout.addNewWizardShortcut(BasicNewFolderResourceWizard.WIZARD_ID);
+		layout.addNewWizardShortcut(BasicNewFileResourceWizard.WIZARD_ID);
 
-        // Add "show views".
+		// Add "show views".
 		layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
-        layout.addShowViewShortcut(IPageLayout.ID_BOOKMARKS);
-        layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
-        layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
-        layout.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
-        layout.addShowViewShortcut(IPageLayout.ID_PROGRESS_VIEW);
-        layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
+		layout.addShowViewShortcut(IPageLayout.ID_BOOKMARKS);
+		layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
+		layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
+		layout.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
+		layout.addShowViewShortcut(IPageLayout.ID_PROGRESS_VIEW);
+		layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
 
-        layout.addActionSet(IPageLayout.ID_NAVIGATE_ACTION_SET);
-    }
+		layout.addActionSet(IPageLayout.ID_NAVIGATE_ACTION_SET);
+	}
 
-    public void defineLayout(IPageLayout layout) {
-        // Editors are placed for free.
-        String editorArea = layout.getEditorArea();
+	public void defineLayout(IPageLayout layout) {
+		String editorArea = layout.getEditorArea();
 
-        // Top left.
-        IFolderLayout topLeft = layout.createFolder(
-                "topLeft", IPageLayout.LEFT, (float) 0.26, editorArea);//$NON-NLS-1$
-		topLeft.addView(IPageLayout.ID_PROJECT_EXPLORER);
-        topLeft.addPlaceholder(IPageLayout.ID_BOOKMARKS);
+		String explorers = "org.pgcase.xobot.workspace.ui.ide.explorers";
+		IFolderLayout explorersFolder = layout.createFolder(explorers, IPageLayout.LEFT, 0.26f, editorArea);
+		explorersFolder.addView(IPageLayout.ID_PROJECT_EXPLORER);
+		explorersFolder.addPlaceholder(IPageLayout.ID_BOOKMARKS);
 
-        // Add a placeholder for the old navigator to maintain compatibility
-        topLeft.addPlaceholder("org.eclipse.ui.views.ResourceNavigator"); //$NON-NLS-1$
+		String outlines = "org.pgcase.xobot.workspace.ui.ide.outlines";
+		IFolderLayout outlinesFolder = layout.createFolder(outlines, IPageLayout.BOTTOM, 0.50f, explorers);
+		outlinesFolder.addPlaceholder(IPageLayout.ID_OUTLINE);
 
-        // Bottom left.
-        IFolderLayout bottomLeft = layout.createFolder(
-                "bottomLeft", IPageLayout.BOTTOM, (float) 0.50,//$NON-NLS-1$
-                "topLeft");//$NON-NLS-1$
-        bottomLeft.addView(IPageLayout.ID_OUTLINE);
+		String sources = "org.pgcase.xobot.workspace.ui.ide.sources";
+		IFolderLayout sourcesFolder = layout.createFolder(sources, IPageLayout.RIGHT, 0.66f, editorArea);
+		sourcesFolder.addView(LandscapeUiNavigator.VIEW_SOURCES);
 
-        // Bottom right.
-		IFolderLayout bottomRight = layout.createFolder(
-                "bottomRight", IPageLayout.BOTTOM, (float) 0.66,//$NON-NLS-1$
-                editorArea);
+		String targets = "org.pgcase.xobot.workspace.ui.ide.targets";
+		IFolderLayout targetsFolder = layout.createFolder(targets, IPageLayout.BOTTOM, 0.50f, sources);
+		targetsFolder.addView(LandscapeUiNavigator.VIEW_TARGTETS);
 
-		bottomRight.addView(IPageLayout.ID_TASK_LIST);
+		String messages = "org.pgcase.xobot.workspace.ui.ide.messages";
+		IFolderLayout messagesFolder = layout.createFolder(messages, IPageLayout.BOTTOM, 0.66f, editorArea);
+		messagesFolder.addView(IPageLayout.ID_PROBLEM_VIEW);
+		messagesFolder.addView(IPageLayout.ID_TASK_LIST);
 
-    }
+	}
 }

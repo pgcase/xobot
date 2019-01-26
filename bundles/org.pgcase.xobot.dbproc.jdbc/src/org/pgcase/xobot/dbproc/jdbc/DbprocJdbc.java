@@ -29,7 +29,15 @@ import java.util.Map;
 
 public class DbprocJdbc {
 	
+	public static final String CONTEXT_SCHEMA_PUBLIC = "public"; //$NON-NLS-1$
+
+	public static final String CONTEXT_SCHEMA_KEY = "schema"; //$NON-NLS-1$
+
 	public static final String EXTRACTOR_TYPE_JDBC = "JDBC"; //$NON-NLS-1$
+	
+	private DbprocJdbc() {
+		//block
+	}
 
 	public static String getSql(String filename) throws IOException {
 		try (InputStream is = new FileInputStream(filename)) {
@@ -60,7 +68,7 @@ public class DbprocJdbc {
 	}
 	
 	public static String extractSchema(Map<String, Object> context) {
-		return String.valueOf(context.getOrDefault("schema", (Object)"public"));
+		return String.valueOf(context.getOrDefault(CONTEXT_SCHEMA_KEY, (Object)CONTEXT_SCHEMA_PUBLIC));
 	}
 
 }

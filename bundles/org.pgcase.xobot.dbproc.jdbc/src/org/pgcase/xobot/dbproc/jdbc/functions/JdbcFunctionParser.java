@@ -29,13 +29,16 @@ import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
 
 public class JdbcFunctionParser {
 
-	public static XFunctionDescriptor parse(Connection jdbcConnection, ResultSet resultSet, XIssueReporter reporter) 
-			throws SQLException 
-	{
+	private JdbcFunctionParser() {
+		// block
+	}
+
+	public static XFunctionDescriptor parse(Connection jdbcConnection, ResultSet resultSet, XIssueReporter reporter)
+			throws SQLException {
 		FunctionBuilder builder = new FunctionBuilder();
-		builder
-			.declareName(resultSet.getString("pro_name"))
-			.declareReturning(resultSet.getString("pro_return"));
+		builder //
+				.declareName(resultSet.getString("pro_name")) //$NON-NLS-1$
+				.declareReturning(resultSet.getString("pro_return")); //$NON-NLS-1$
 
 		return builder.toFunction();
 	}

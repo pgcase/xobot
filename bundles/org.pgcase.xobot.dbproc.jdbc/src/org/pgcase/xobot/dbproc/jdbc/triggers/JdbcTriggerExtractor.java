@@ -20,13 +20,12 @@
  *******************************************************************************/
 package org.pgcase.xobot.dbproc.jdbc.triggers;
 
-import static org.pgcase.xobot.dbproc.jdbc.DbprocJdbc.*;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.pgcase.xobot.dbproc.jdbc.DbprocJdbc;
@@ -44,20 +43,19 @@ public class JdbcTriggerExtractor implements XTriggerExtractor {
 	public Iterable<XTriggerDescriptor> extractTriggers(Object input, Map<String, Object> context,
 			XIssueReporter reporter) {
 		if (input instanceof Connection) {
-			try (Connection jdbcConnection = (Connection) input) {
-				ArrayList<XTriggerDescriptor> triggers = new ArrayList<XTriggerDescriptor>();
-				String schema = extractSchema(context);
+			try {
+				Connection jdbcConnection = (Connection) input;
+				List<XTriggerDescriptor> triggers = new ArrayList<XTriggerDescriptor>();
+				String schema = DbprocJdbc.extractSchema(context);
 				if (sqlSentence == null) {
 					sqlSentence = DbprocJdbc.getBundleSql(SCAN_DBPROC_TRIG_SQL_FILE);
 				}
-				try (PreparedStatement preparedStatement = jdbcConnection.prepareStatement(sqlSentence)) {
-					preparedStatement.setString(1, schema);
-					try (ResultSet resultSet = preparedStatement.executeQuery()) {
-						while (resultSet.next()) {
-							XTriggerDescriptor parsed = JdbcTriggerParser.parse(jdbcConnection, resultSet, reporter);
-							triggers.add(parsed);
-						}
-					}
+				PreparedStatement preparedStatement = jdbcConnection.prepareStatement(sqlSentence);
+				preparedStatement.setString(1, schema);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					XTriggerDescriptor parsed = JdbcTriggerParser.parse(jdbcConnection, resultSet, reporter);
+					triggers.add(parsed);
 				}
 				return triggers;
 			} catch (Exception e) {

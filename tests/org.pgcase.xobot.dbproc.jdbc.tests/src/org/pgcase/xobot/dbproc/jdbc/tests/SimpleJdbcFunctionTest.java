@@ -42,7 +42,7 @@ class SimpleJdbcFunctionTest {
 	void testFunction() throws IOException, SQLException {
 		try (SystemJdbcConnection conn = new SystemJdbcConnection()) {
 			Map<String, Object> context = new HashMap<String, Object>();
-			context.put("schema", (Object)conn.getSchema());
+			context.put(DbprocJdbc.CONTEXT_SCHEMA_KEY, (Object)conn.getSchema());
 			try (Statement statement = conn.getConnection().createStatement()) {
 				statement.execute(DbprocJdbc.getSqlFmt1(CREATE_TEST_FUNC,conn.getSchema()));
 				if (!conn.getConnection().getAutoCommit()) {

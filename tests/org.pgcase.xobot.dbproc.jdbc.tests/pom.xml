@@ -45,8 +45,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.pgcase.brc</groupId>
-			<artifactId>org.pgcase.brc.drivers.postgresql</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<version>${postgresql.driver.version}</version>
 		</dependency>
 

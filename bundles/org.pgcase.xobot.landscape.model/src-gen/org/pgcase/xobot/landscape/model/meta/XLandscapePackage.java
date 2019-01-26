@@ -270,13 +270,22 @@ public interface XLandscapePackage extends EPackage {
 	int SOURCE__NAME = SOURCE_DESCRIPTOR_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Origin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE__ORIGIN = SOURCE_DESCRIPTOR_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__URI = SOURCE_DESCRIPTOR_FEATURE_COUNT + 2;
+	int SOURCE__URI = SOURCE_DESCRIPTOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Source Set</b></em>' container reference.
@@ -285,7 +294,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__SOURCE_SET = SOURCE_DESCRIPTOR_FEATURE_COUNT + 3;
+	int SOURCE__SOURCE_SET = SOURCE_DESCRIPTOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Source</em>' class.
@@ -294,7 +303,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FEATURE_COUNT = SOURCE_DESCRIPTOR_FEATURE_COUNT + 4;
+	int SOURCE_FEATURE_COUNT = SOURCE_DESCRIPTOR_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Source</em>' class.
@@ -389,13 +398,22 @@ public interface XLandscapePackage extends EPackage {
 	int TARGET__NAME = TARGET_DESCRIPTOR_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Origin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TARGET__ORIGIN = TARGET_DESCRIPTOR_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET__URI = TARGET_DESCRIPTOR_FEATURE_COUNT + 2;
+	int TARGET__URI = TARGET_DESCRIPTOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Target Set</b></em>' container reference.
@@ -404,7 +422,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET__TARGET_SET = TARGET_DESCRIPTOR_FEATURE_COUNT + 3;
+	int TARGET__TARGET_SET = TARGET_DESCRIPTOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Target</em>' class.
@@ -413,7 +431,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET_FEATURE_COUNT = TARGET_DESCRIPTOR_FEATURE_COUNT + 4;
+	int TARGET_FEATURE_COUNT = TARGET_DESCRIPTOR_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Target</em>' class.
@@ -545,6 +563,17 @@ public interface XLandscapePackage extends EPackage {
 	EAttribute getSource_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getOrigin <em>Origin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Origin</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XSource#getOrigin()
+	 * @see #getSource()
+	 * @generated
+	 */
+	EAttribute getSource_Origin();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getUri <em>Uri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -640,6 +669,17 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTarget_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getOrigin <em>Origin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Origin</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getOrigin()
+	 * @see #getTarget()
+	 * @generated
+	 */
+	EAttribute getTarget_Origin();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getUri <em>Uri</em>}'.
@@ -787,6 +827,14 @@ public interface XLandscapePackage extends EPackage {
 		EAttribute SOURCE__NAME = eINSTANCE.getSource_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Origin</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOURCE__ORIGIN = eINSTANCE.getSource_Origin();
+
+		/**
 		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -861,6 +909,14 @@ public interface XLandscapePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TARGET__NAME = eINSTANCE.getTarget_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Origin</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TARGET__ORIGIN = eINSTANCE.getTarget_Origin();
 
 		/**
 		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.

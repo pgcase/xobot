@@ -35,6 +35,7 @@ import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
  * <ul>
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XSource#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XSource#getName <em>Name</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.api.XSource#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XSource#getUri <em>Uri</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XSource#getSourceSet <em>Source Set</em>}</li>
  * </ul>
@@ -95,6 +96,32 @@ public interface XSource extends EObject, XSourceDescriptor {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Origin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Origin</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Origin</em>' attribute.
+	 * @see #setOrigin(String)
+	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getSource_Origin()
+	 * @model
+	 * @generated
+	 */
+	String getOrigin();
+
+	/**
+	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XSource#getOrigin <em>Origin</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Origin</em>' attribute.
+	 * @see #getOrigin()
+	 * @generated
+	 */
+	void setOrigin(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Uri</b></em>' attribute.

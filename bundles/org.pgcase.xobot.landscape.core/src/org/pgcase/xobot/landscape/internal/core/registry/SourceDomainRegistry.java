@@ -23,6 +23,7 @@ package org.pgcase.xobot.landscape.internal.core.registry;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.service.component.annotations.Activate;
@@ -30,6 +31,7 @@ import org.osgi.service.component.annotations.Component;
 import org.pgcase.xobot.basis.emf.edit.DomainContentAdapter;
 import org.pgcase.xobot.basis.emf.edit.EditingDomainBasedRegistry;
 import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+import org.pgcase.xobot.landscape.model.api.XSource;
 import org.pgcase.xobot.landscape.model.api.XSourceSet;
 import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
@@ -46,8 +48,15 @@ public class SourceDomainRegistry extends EditingDomainBasedRegistry implements 
 	@Activate
 	public void activate() {
 		XSourceSet set1 = XLandscapeFactory.eINSTANCE.createSourceSet();
-		set1.setIdentifier("id1");
-		set1.setName("Source Set 1");
+		set1.setIdentifier("org.pgcase");
+		set1.setName("PgCase Sources");
+		EList<XSource> set1Sources = set1.getSources();
+		XSource set1source1 = XLandscapeFactory.eINSTANCE.createSource();
+		set1source1.setIdentifier("org.pgcase.pgconf.russia.2019");
+		set1source1.setName("PgConf.Russia 2019");
+		set1source1.setOrigin("git");
+		set1source1.setUri("https://github.com/pgcase/pgconf");
+		set1Sources.add(set1source1);
 		registerSourceSet(set1);
 	}
 

@@ -44,6 +44,7 @@ import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
  * <ul>
  *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.impl.XTargetImpl#getTargetSet <em>Target Set</em>}</li>
  * </ul>
@@ -90,6 +91,26 @@ public class XTargetImpl extends MinimalEObjectImpl.Container implements XTarget
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOrigin() <em>Origin</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrigin()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ORIGIN_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOrigin() <em>Origin</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrigin()
+	 * @generated
+	 * @ordered
+	 */
+	protected String origin = ORIGIN_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
@@ -170,6 +191,27 @@ public class XTargetImpl extends MinimalEObjectImpl.Container implements XTarget
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.TARGET__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOrigin() {
+		return origin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrigin(String newOrigin) {
+		String oldOrigin = origin;
+		origin = newOrigin;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.TARGET__ORIGIN, oldOrigin, origin));
 	}
 
 	/**
@@ -290,6 +332,8 @@ public class XTargetImpl extends MinimalEObjectImpl.Container implements XTarget
 				return getIdentifier();
 			case XLandscapePackage.TARGET__NAME:
 				return getName();
+			case XLandscapePackage.TARGET__ORIGIN:
+				return getOrigin();
 			case XLandscapePackage.TARGET__URI:
 				return getUri();
 			case XLandscapePackage.TARGET__TARGET_SET:
@@ -311,6 +355,9 @@ public class XTargetImpl extends MinimalEObjectImpl.Container implements XTarget
 				return;
 			case XLandscapePackage.TARGET__NAME:
 				setName((String)newValue);
+				return;
+			case XLandscapePackage.TARGET__ORIGIN:
+				setOrigin((String)newValue);
 				return;
 			case XLandscapePackage.TARGET__URI:
 				setUri((String)newValue);
@@ -336,6 +383,9 @@ public class XTargetImpl extends MinimalEObjectImpl.Container implements XTarget
 			case XLandscapePackage.TARGET__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case XLandscapePackage.TARGET__ORIGIN:
+				setOrigin(ORIGIN_EDEFAULT);
+				return;
 			case XLandscapePackage.TARGET__URI:
 				setUri(URI_EDEFAULT);
 				return;
@@ -358,6 +408,8 @@ public class XTargetImpl extends MinimalEObjectImpl.Container implements XTarget
 				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
 			case XLandscapePackage.TARGET__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case XLandscapePackage.TARGET__ORIGIN:
+				return ORIGIN_EDEFAULT == null ? origin != null : !ORIGIN_EDEFAULT.equals(origin);
 			case XLandscapePackage.TARGET__URI:
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 			case XLandscapePackage.TARGET__TARGET_SET:
@@ -380,6 +432,8 @@ public class XTargetImpl extends MinimalEObjectImpl.Container implements XTarget
 		result.append(identifier);
 		result.append(", name: "); //$NON-NLS-1$
 		result.append(name);
+		result.append(", origin: "); //$NON-NLS-1$
+		result.append(origin);
 		result.append(", uri: "); //$NON-NLS-1$
 		result.append(uri);
 		result.append(')');

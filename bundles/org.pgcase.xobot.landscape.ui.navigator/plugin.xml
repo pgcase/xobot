@@ -43,11 +43,17 @@
             contentProvider="org.pgcase.xobot.landscape.ui.navigator.SourcesContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.sources"
+            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.sources.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry">
-            </adapt>
+            <or>
+               <adapt
+                     type="org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry">
+               </adapt>
+               <instanceof
+                     value="org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry">
+               </instanceof>
+            </or>
          </triggerPoints>
       </navigatorContent>
       <navigatorContent
@@ -55,6 +61,7 @@
             contentProvider="org.pgcase.xobot.landscape.ui.navigator.TargetsContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.targets"
+            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.targets.name">
          <triggerPoints>
             <adapt
@@ -72,8 +79,8 @@
             viewerId="org.pgcase.xobot.landscape.ui.navigator.views.view.sources">
          <includes>
             <contentExtension
-                  isRoot="false"
-                  pattern="org.pgcase.xobot.landscape.ui.navigator.contentExtension.sources*">
+                  isRoot="true"
+                  pattern="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.sources*">
             </contentExtension>
          </includes>
       </viewerContentBinding>
@@ -88,7 +95,7 @@
          <includes>
             <contentExtension
                   isRoot="false"
-                  pattern="org.pgcase.xobot.landscape.ui.navigator.contentExtension.targets*">
+                  pattern="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.targets*">
             </contentExtension>
          </includes>
       </viewerContentBinding>

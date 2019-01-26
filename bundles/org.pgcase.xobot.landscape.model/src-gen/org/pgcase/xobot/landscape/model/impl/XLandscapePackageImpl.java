@@ -265,7 +265,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSource_Uri() {
+	public EAttribute getSource_Origin() {
 		return (EAttribute)sourceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -274,8 +274,17 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSource_Uri() {
+		return (EAttribute)sourceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getSource_SourceSet() {
-		return (EReference)sourceEClass.getEStructuralFeatures().get(3);
+		return (EReference)sourceEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -346,7 +355,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTarget_Uri() {
+	public EAttribute getTarget_Origin() {
 		return (EAttribute)targetEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -355,8 +364,17 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTarget_Uri() {
+		return (EAttribute)targetEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getTarget_TargetSet() {
-		return (EReference)targetEClass.getEStructuralFeatures().get(3);
+		return (EReference)targetEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -403,6 +421,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 		sourceEClass = createEClass(SOURCE);
 		createEAttribute(sourceEClass, SOURCE__IDENTIFIER);
 		createEAttribute(sourceEClass, SOURCE__NAME);
+		createEAttribute(sourceEClass, SOURCE__ORIGIN);
 		createEAttribute(sourceEClass, SOURCE__URI);
 		createEReference(sourceEClass, SOURCE__SOURCE_SET);
 
@@ -414,6 +433,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 		targetEClass = createEClass(TARGET);
 		createEAttribute(targetEClass, TARGET__IDENTIFIER);
 		createEAttribute(targetEClass, TARGET__NAME);
+		createEAttribute(targetEClass, TARGET__ORIGIN);
 		createEAttribute(targetEClass, TARGET__URI);
 		createEReference(targetEClass, TARGET__TARGET_SET);
 	}
@@ -468,6 +488,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 		initEClass(sourceEClass, XSource.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getSource_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, XSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getSource_Name(), ecorePackage.getEString(), "name", null, 0, 1, XSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getSource_Origin(), ecorePackage.getEString(), "origin", null, 0, 1, XSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getSource_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, XSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSource_SourceSet(), this.getSourceSet(), this.getSourceSet_Sources(), "sourceSet", null, 1, 1, XSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -479,6 +500,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 		initEClass(targetEClass, XTarget.class, "Target", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getTarget_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, XTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getTarget_Name(), ecorePackage.getEString(), "name", null, 0, 1, XTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getTarget_Origin(), ecorePackage.getEString(), "origin", null, 0, 1, XTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getTarget_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, XTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getTarget_TargetSet(), this.getTargetSet(), this.getTargetSet_Targets(), "targetSet", null, 1, 1, XTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 

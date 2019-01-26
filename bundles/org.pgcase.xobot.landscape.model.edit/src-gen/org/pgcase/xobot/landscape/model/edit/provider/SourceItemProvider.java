@@ -83,6 +83,7 @@ public class SourceItemProvider
 
 			addIdentifierPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addOriginPropertyDescriptor(object);
 			addUriPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -124,6 +125,28 @@ public class SourceItemProvider
 				 getString("_UI_Source_name_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Source_name_feature", "_UI_Source_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 XLandscapePackage.Literals.SOURCE__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Origin feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOriginPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Source_origin_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Source_origin_feature", "_UI_Source_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 XLandscapePackage.Literals.SOURCE__ORIGIN,
 				 true,
 				 false,
 				 false,
@@ -179,14 +202,26 @@ public class SourceItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((XSource)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Source_type") : //$NON-NLS-1$
-			getString("_UI_Source_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		XSource source = (XSource)object;
+		String name = source.getName();
+		if (name == null || name.length() == 0) {
+			return getString("_UI_Source_type"); //$NON-NLS-1$
+		}
+		StringBuilder sb = new StringBuilder();
+		String origin = source.getOrigin();
+		if (origin != null) {
+			sb.append('[').append(origin).append(']').append(':');
+		}
+		sb.append(name);
+		String uri = source.getUri();
+		if (uri != null) {
+			sb.append(' ').append('(').append(uri).append(')');
+		}
+		return sb.toString();
 	}
 
 
@@ -204,6 +239,7 @@ public class SourceItemProvider
 		switch (notification.getFeatureID(XSource.class)) {
 			case XLandscapePackage.SOURCE__IDENTIFIER:
 			case XLandscapePackage.SOURCE__NAME:
+			case XLandscapePackage.SOURCE__ORIGIN:
 			case XLandscapePackage.SOURCE__URI:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

@@ -25,6 +25,8 @@ import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
 public interface XSourceDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
 	
+	String getOrigin();
+	
 	String getUri();
 	
 	XSourceSetDescriptor getSourceSet();

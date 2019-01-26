@@ -20,6 +20,11 @@
  *******************************************************************************/
 package org.pgcase.xobot.basis.ui.navigator;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory.Descriptor.Registry;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
@@ -27,51 +32,54 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
-import org.pgcase.xobot.basis.internal.ui.navigator.BasisUiNavigatorActivator;
-import org.pgcase.xobot.basis.jface.BasisImages;
 import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
 
 public class RegistryLabelProvider implements ICommonLabelProvider {
-	
-	private final BasisImages images = BasisUiNavigatorActivator.getActivator().getBasisImages();
 
-	private ILabelProvider delegate;
-	
+	private AdapterFactoryLabelProvider emfDelegate;
+	private ILabelProvider workbenchDelegate;
+
 	@Override
 	public Image getImage(Object element) {
-		if (element instanceof DescribedDescriptor) {
-			return images.getDefaultImage();
+		if (element instanceof EObject) {
+			return emfDelegate.getImage(element);
 		}
-		return delegate.getImage(element);
+		return workbenchDelegate.getImage(element);
 	}
 
 	@Override
 	public String getText(Object element) {
-		if (element instanceof DescribedDescriptor) {
-			DescribedDescriptor descriptor = (DescribedDescriptor) element;
-			return  descriptor.getName();
+		if (element instanceof EObject) {
+			return emfDelegate.getText(element);
 		}
-		return delegate.getText(element);
+		return workbenchDelegate.getText(element);
 	}
 
 	@Override
 	public void addListener(ILabelProviderListener listener) {
-		delegate.addListener(listener);
+		emfDelegate.addListener(listener);
+		workbenchDelegate.addListener(listener);
 	}
 
 	@Override
 	public void dispose() {
-		delegate = null;
+		workbenchDelegate = null;
+		emfDelegate.dispose();
+		emfDelegate = null;
 	}
 
 	@Override
 	public boolean isLabelProperty(Object element, String property) {
-		return delegate.isLabelProperty(element, property);
+		if (element instanceof EObject) {
+			return emfDelegate.isLabelProperty(element, property);
+		}
+		return workbenchDelegate.isLabelProperty(element, property);
 	}
 
 	@Override
 	public void removeListener(ILabelProviderListener listener) {
-		delegate.removeListener(listener);
+		emfDelegate.removeListener(listener);
+		workbenchDelegate.removeListener(listener);
 	}
 
 	@Override
@@ -93,7 +101,10 @@ public class RegistryLabelProvider implements ICommonLabelProvider {
 
 	@Override
 	public void init(ICommonContentExtensionSite aConfig) {
-		delegate = WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider();
+		Registry registry = ComposedAdapterFactory.Descriptor.Registry.INSTANCE;
+		ComposeableAdapterFactory adapterFactory = new ComposedAdapterFactory(registry);
+		emfDelegate = new AdapterFactoryLabelProvider(adapterFactory);
+		workbenchDelegate = WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider();
 	}
 
 }

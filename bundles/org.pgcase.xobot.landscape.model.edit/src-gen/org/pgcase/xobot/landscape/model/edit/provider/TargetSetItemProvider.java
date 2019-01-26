@@ -189,14 +189,18 @@ public class TargetSetItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((XTargetSet)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TargetSet_type") : //$NON-NLS-1$
-			getString("_UI_TargetSet_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		XTargetSet targetSet = (XTargetSet)object;
+		String name = targetSet.getName();
+		if (name == null || name.length() == 0) {
+			return getString("_UI_TargetSet_type"); //$NON-NLS-1$
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append(name);
+		return sb.toString();
 	}
 
 

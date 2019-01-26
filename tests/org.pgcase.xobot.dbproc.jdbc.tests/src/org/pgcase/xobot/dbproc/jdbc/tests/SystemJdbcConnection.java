@@ -24,7 +24,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -78,11 +77,6 @@ public class SystemJdbcConnection implements java.io.Closeable {
 
 			String pattern = "jdbc:postgresql://%s:%s/%s"; //$NON-NLS-1$
 			String url = String.format(pattern, DB_HOST, DB_PORT, DB_DATABASE);
-			Driver driver = DriverManager.getDriver(url);
-			if (driver == null) {
-				driver = new org.postgresql.Driver();
-				DriverManager.registerDriver(driver);
-			}
 			connection = DriverManager.getConnection(url, DB_USER, DB_PASSWD);
 
 			try (Statement statement = connection.createStatement()) {

@@ -45,9 +45,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.pgcase.xobot</groupId>
-			<artifactId>org.pgcase.xobot.parsers</artifactId>
-			<version>${project.parent.version}</version>
+			<groupId>org.pgcase.brc</groupId>
+			<artifactId>org.pgcase.brc.drivers.postgresql</artifactId>
+			<version>${postgresql.driver.version}</version>
 		</dependency>
 
 		<dependency>

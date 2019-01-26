@@ -86,7 +86,9 @@
 
 		<module>../../releng/org.pgcase.xobot.repository</module>
 
+<!-- 
 		<module>../../products/org.pgcase.xobot.ide.product</module>
+ -->
 		<module>../../products/org.pgcase.xobot.e3.product</module>
 
 	</modules>

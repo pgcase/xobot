@@ -44,5 +44,14 @@
             id="org.pgcase.xobot.workspace.ui.ide.newWizards.wizard.project.xobot">
       </primaryWizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.pgcase.xobot.workspace.ui.ide.XobotPerspectiveFactory"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+            id="org.pgcase.xobot.workspace.ui.ide.perspectives.perspective.xobot"
+            name="Xobot">
+      </perspective>
+   </extension>
 
 </plugin>

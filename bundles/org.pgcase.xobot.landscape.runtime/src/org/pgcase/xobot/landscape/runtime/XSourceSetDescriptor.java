@@ -20,11 +20,12 @@
  *******************************************************************************/
 package org.pgcase.xobot.landscape.runtime;
 
-import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
 import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public interface XSourceSetDescriptor extends IdentifiedDescriptor, DescribedDescriptor {
+public interface XSourceSetDescriptor extends IdentifiedDescriptor {
 	
+	String getName();
+
 	Iterable<? extends XSourceDescriptor> getSources();
 
 }

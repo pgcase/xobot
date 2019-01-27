@@ -26,14 +26,14 @@
       <view
             class="org.pgcase.xobot.landscape.ui.navigator.SourcesNavigator"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
-            id="org.pgcase.xobot.landscape.ui.navigator.sources"
-            name="%views.sources.name">
+            id="org.pgcase.xobot.landscape.ui.navigator.views.view.sources"
+            name="%views.view.sources.name">
       </view>
       <view
             class="org.pgcase.xobot.landscape.ui.navigator.TargetsNavigator"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
-            id="org.pgcase.xobot.landscape.ui.navigator.targets"
-            name="%views.targets.name">
+            id="org.pgcase.xobot.landscape.ui.navigator.views.view.targets"
+            name="%views.view.targets.name">
       </view>
    </extension>
    <extension
@@ -43,37 +43,70 @@
             contentProvider="org.pgcase.xobot.landscape.ui.navigator.SourcesContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.sources"
+            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.sources.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry">
-            </adapt>
+            <or>
+               <adapt
+                     type="org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry">
+               </adapt>
+               <instanceof
+                     value="org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry">
+               </instanceof>
+            </or>
          </triggerPoints>
+         <actionProvider
+               class="org.pgcase.xobot.basis.ui.navigator.RegistryActionProvider">
+         </actionProvider>
+         <possibleChildren>
+            <or>
+               <instanceof
+                     value="org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.landscape.runtime.XSourceDescriptor">
+               </instanceof>
+            </or>
+         </possibleChildren>
       </navigatorContent>
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.pgcase.xobot.landscape.ui.navigator.TargetsContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.targets"
+            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.targets.name">
          <triggerPoints>
             <adapt
                   type="org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry">
             </adapt>
          </triggerPoints>
+         <actionProvider
+               class="org.pgcase.xobot.basis.ui.navigator.RegistryActionProvider">
+         </actionProvider>
+         <possibleChildren>
+            <or>
+               <instanceof
+                     value="org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.landscape.runtime.XTargetDescriptor">
+               </instanceof>
+            </or>
+         </possibleChildren>
       </navigatorContent>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewer
-            viewerId="org.pgcase.xobot.landscape.ui.navigator.sources">
+            viewerId="org.pgcase.xobot.landscape.ui.navigator.views.view.sources">
       </viewer>
       <viewerContentBinding
-            viewerId="org.pgcase.xobot.landscape.ui.navigator.sources">
+            viewerId="org.pgcase.xobot.landscape.ui.navigator.views.view.sources">
          <includes>
             <contentExtension
-                  isRoot="false"
-                  pattern="org.pgcase.xobot.landscape.ui.navigator.contentExtension.sources*">
+                  isRoot="true"
+                  pattern="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.sources*">
             </contentExtension>
          </includes>
       </viewerContentBinding>
@@ -81,14 +114,14 @@
    <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewer
-            viewerId="org.pgcase.xobot.landscape.ui.navigator.targets">
+            viewerId="org.pgcase.xobot.landscape.ui.navigator.views.view.targets">
       </viewer>
       <viewerContentBinding
-            viewerId="org.pgcase.xobot.landscape.ui.navigator.targets">
+            viewerId="org.pgcase.xobot.landscape.ui.navigator.views.view.targets">
          <includes>
             <contentExtension
                   isRoot="false"
-                  pattern="org.pgcase.xobot.landscape.ui.navigator.contentExtension.targets*">
+                  pattern="org.pgcase.xobot.landscape.ui.navigator.navigatorContent.targets*">
             </contentExtension>
          </includes>
       </viewerContentBinding>

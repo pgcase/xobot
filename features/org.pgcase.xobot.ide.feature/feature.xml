@@ -39,18 +39,6 @@
       %license
    </license>
 
-   <includes
-         id="org.pgcase.xobot.landscape.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.pgcase.xobot.toolchain.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.pgcase.xobot.workspace.feature"
-         version="0.0.0"/>
-
    <plugin
          id="org.pgcase.xobot.runtime"
          download-size="0"

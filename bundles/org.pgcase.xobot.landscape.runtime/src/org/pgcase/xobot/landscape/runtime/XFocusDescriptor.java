@@ -18,21 +18,20 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.dbproc.jdbc.functions;
+package org.pgcase.xobot.landscape.runtime;
 
-import java.util.Collections;
-import java.util.Map;
+import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
-import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
-import org.pgcase.xobot.dbproc.runtime.functions.XFunctionExtractor;
+public interface XFocusDescriptor extends IdentifiedDescriptor {
 
-public class AntlrFunctionExtractor implements XFunctionExtractor {
+	String getName();
 
-	@Override
-	public Iterable<XFunctionDescriptor> extractFunctions(Object input, Map<String, Object> context, XIssueReporter reporter) {
-		// TODO Auto-generated method stub
-		return Collections.emptyList();
-	}
+	String getMaturity();
 	
+	String getOrigin();
+	
+	String getUri();
+
+	String getFork();
+
 }

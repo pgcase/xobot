@@ -18,21 +18,12 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.dbproc.jdbc.triggers;
+package org.pgcase.xobot.landscape.ui.navigator;
 
-import java.util.Collections;
-import java.util.Map;
-
-import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
-import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
-import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerExtractor;
-
-public class AntlrTriggerExtractor implements XTriggerExtractor {
-
-	@Override
-	public Iterable<XTriggerDescriptor> extractTriggers(Object input, Map<String, Object> context, XIssueReporter reporter) {
-		// TODO Auto-generated method stub
-		return Collections.emptyList();
-	}
+public class LandscapeUiNavigator {
 	
+	public static final String VIEW_SOURCES = "org.pgcase.xobot.landscape.ui.navigator.views.view.sources"; //$NON-NLS-1$
+
+	public static final String VIEW_TARGTETS = "org.pgcase.xobot.landscape.ui.navigator.views.view.targets"; //$NON-NLS-1$
+
 }

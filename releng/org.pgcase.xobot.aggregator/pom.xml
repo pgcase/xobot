@@ -68,6 +68,7 @@
 		<module>../../bundles/org.pgcase.xobot.workspace.model</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.core</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.core.resources</module>
+		<module>../../bundles/org.pgcase.xobot.workspace.ui.ide</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.ui.navigator</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.team.core</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.team.ui</module>
@@ -81,10 +82,14 @@
 		<module>../../features/org.pgcase.xobot.e3.feature</module>
 
 		<module>../../tests/org.pgcase.xobot.dbproc.antlr.tests</module>
+		<module>../../tests/org.pgcase.xobot.dbproc.jdbc.tests</module>
 
 		<module>../../releng/org.pgcase.xobot.repository</module>
 
+<!-- 
 		<module>../../products/org.pgcase.xobot.ide.product</module>
+ -->
+		<module>../../products/org.pgcase.xobot.e3.product</module>
 
 	</modules>
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.pgcase.xobot.landscape.internal.core.XFocusPropertyTester"
+            id="org.pgcase.xobot.landscape.core.propertyTesters.propertyTester.focus"
+            namespace="org.pgcase.xobot.landscape.core"
+            properties="origin,maturity"
+            type="org.pgcase.xobot.landscape.runtime.XFocusDescriptor">
+      </propertyTester>
+   </extension>
+
+</plugin>

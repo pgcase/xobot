@@ -25,6 +25,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.pgcase.xobot.dbproc.jdbc.DbprocJdbc;
@@ -33,23 +34,27 @@ import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
 import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerExtractor;
 
 public class JdbcTriggerExtractor implements XTriggerExtractor {
+
 	private static final String SCAN_DBPROC_TRIG_SQL_FILE = "/sql/dbproc_jdbc_triggers.sql"; //$NON-NLS-1$
-	private static String sqlSentence = null;	
+
+	private String sqlSentence = null;
 
 	@Override
-	public Iterable<XTriggerDescriptor> extractTriggers(Object input, Map<String, Object> context, XIssueReporter reporter) {
+	public Iterable<XTriggerDescriptor> extractTriggers(Object input, Map<String, Object> context,
+			XIssueReporter reporter) {
 		if (input instanceof Connection) {
-			try (Connection jdbcConnection = (Connection) input) {		
-				ArrayList<XTriggerDescriptor> triggers = new ArrayList<XTriggerDescriptor>();
-				String schema = context.getOrDefault("schema", (Object)"public").toString();
-				if (sqlSentence ==null) {
-					sqlSentence = DbprocJdbc.getBundleSql(SCAN_DBPROC_TRIG_SQL_FILE);	
+			try {
+				Connection jdbcConnection = (Connection) input;
+				List<XTriggerDescriptor> triggers = new ArrayList<XTriggerDescriptor>();
+				String schema = DbprocJdbc.extractSchema(context);
+				if (sqlSentence == null) {
+					sqlSentence = DbprocJdbc.getBundleSql(SCAN_DBPROC_TRIG_SQL_FILE);
 				}
 				try (PreparedStatement preparedStatement = jdbcConnection.prepareStatement(sqlSentence)) {
 					preparedStatement.setString(1, schema);
-					try (ResultSet resultSet = preparedStatement.executeQuery()) {			
+					try (ResultSet resultSet = preparedStatement.executeQuery()) {
 						while (resultSet.next()) {
-							XTriggerDescriptor parsed = JdbcTriggerParser.parse(jdbcConnection,resultSet,reporter);
+							XTriggerDescriptor parsed = JdbcTriggerParser.parse(jdbcConnection, resultSet, reporter);
 							triggers.add(parsed);
 						}
 					}
@@ -62,5 +67,5 @@ public class JdbcTriggerExtractor implements XTriggerExtractor {
 		}
 		return Collections.emptyList();
 	}
-	
+
 }

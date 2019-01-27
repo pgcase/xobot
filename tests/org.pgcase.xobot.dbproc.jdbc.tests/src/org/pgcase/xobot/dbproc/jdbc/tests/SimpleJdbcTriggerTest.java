@@ -20,25 +20,43 @@
  *******************************************************************************/
 package org.pgcase.xobot.dbproc.jdbc.tests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.pgcase.xobot.dbproc.jdbc.DbprocJdbc;
+import org.pgcase.xobot.dbproc.jdbc.triggers.JdbcTriggerExtractor;
+import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
 
 class SimpleJdbcTriggerTest {
 
-//	private static final String CREATE_TEST_TRIGGER = "sql/create_test_trigger1.sql"; //$NON-NLS-1$
+	private static final String CREATE_TEST_TRIGGER = "sql/create_test_trigger1.sql"; //$NON-NLS-1$
 	
 	@Test
-	void testTrigger() throws IOException {
-		// TODO
-		/*
-		FileInputStream in = new FileInputStream(SIMPLE_TRIGGER);
-		XTriggerDescriptor pg_trigger_header = PgTriggerParseHeader.parse(in, new SystemIssueReporter());
-		assertEquals("perform_d",pg_trigger_header.getName(),"Incorrect trigger name");
-		assertEquals("tbl2",pg_trigger_header.getObject(),"Incorrect trigger table");
-		assertEquals("after",pg_trigger_header.getAction(),"Incorrect trigger action");
-        //System.out.println(pg_trigger_header);
-         */
+	void testTrigger() throws IOException, SQLException {
+		try (SystemJdbcConnection conn = new SystemJdbcConnection()) {
+			Map<String, Object> context = new HashMap<String, Object>();
+			context.put(DbprocJdbc.CONTEXT_SCHEMA_KEY, (Object)conn.getSchema());
+			try (Statement statement = conn.getConnection().createStatement()) {
+				statement.execute(DbprocJdbc.getSqlFmt1(CREATE_TEST_TRIGGER,conn.getSchema()));
+				if (!conn.getConnection().getAutoCommit()) {
+					conn.getConnection().commit();
+				}
+			}
+			
+			JdbcTriggerExtractor extractor = new JdbcTriggerExtractor();
+			Iterable<XTriggerDescriptor> pg_triggers 
+				= extractor.extractTriggers(conn.getConnection(), context, new SystemJdbcTestIssueReporter());
+
+			assertEquals(1, ((Collection<?>)pg_triggers).size(), "Incorrect count of function name parsed from JDBC");
+			pg_triggers.forEach(trigger -> assertEquals("xobot_test_before_insert_trigger", trigger.getName(), "Incorrect parsed function name"));
+		}
 		return;
 	}
 

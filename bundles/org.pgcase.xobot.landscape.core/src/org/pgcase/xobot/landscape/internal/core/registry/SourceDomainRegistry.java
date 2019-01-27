@@ -23,6 +23,7 @@ package org.pgcase.xobot.landscape.internal.core.registry;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.service.component.annotations.Activate;
@@ -30,9 +31,11 @@ import org.osgi.service.component.annotations.Component;
 import org.pgcase.xobot.basis.emf.edit.DomainContentAdapter;
 import org.pgcase.xobot.basis.emf.edit.EditingDomainBasedRegistry;
 import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+import org.pgcase.xobot.landscape.model.api.XSource;
 import org.pgcase.xobot.landscape.model.api.XSourceSet;
 import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.runtime.FocusDescriptors;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
@@ -46,9 +49,80 @@ public class SourceDomainRegistry extends EditingDomainBasedRegistry implements 
 	@Activate
 	public void activate() {
 		XSourceSet set1 = XLandscapeFactory.eINSTANCE.createSourceSet();
-		set1.setIdentifier("id1");
-		set1.setName("Source Set 1");
+		set1.setIdentifier("ru.pgcase.xobot.official");
+		set1.setName("PgCase Xobot Official");
+		EList<XSource> set1Sources = set1.getSources();
+		XSource set1source1 = XLandscapeFactory.eINSTANCE.createSource();
+		set1source1.setIdentifier("ru.pgcase.xobot.official.v0.1.0");
+		set1source1.setName("PgCase Xobot 0.1.0");
+		set1source1.setMaturity(FocusDescriptors.MATURITY_OFFICIAL);
+		set1source1.setOrigin("git");
+		set1source1.setUri("https://github.com/pgcase/pgconf");
+		set1source1.setFork("master");
+		set1Sources.add(set1source1);
 		registerSourceSet(set1);
+
+		XSourceSet set2 = XLandscapeFactory.eINSTANCE.createSourceSet();
+		set2.setIdentifier("ru.pgcase.xobot.stable");
+		set2.setName("PgCase Xobot Stable");
+		EList<XSource> set2Sources = set2.getSources();
+		XSource set2source1 = XLandscapeFactory.eINSTANCE.createSource();
+		set2source1.setIdentifier("ru.pgcase.xobot.official.v0.1.1");
+		set2source1.setName("PgCase Xobot 0.1.1");
+		set2source1.setMaturity(FocusDescriptors.MATURITY_STABLE);
+		set2source1.setOrigin("git");
+		set2source1.setUri("https://github.com/pgcase/pgconf");
+		set2source1.setFork("master");
+		set2Sources.add(set2source1);
+		registerSourceSet(set2);
+
+		XSourceSet set3 = XLandscapeFactory.eINSTANCE.createSourceSet();
+		set3.setIdentifier("ru.pgcase.xobot.integration");
+		set3.setName("PgCase Xobot Integration");
+		EList<XSource> set3Sources = set3.getSources();
+		XSource set3source1 = XLandscapeFactory.eINSTANCE.createSource();
+		set3source1.setIdentifier("ru.pgcase.xobot.integration.v0.1.2-SNAPSHOT");
+		set3source1.setName("PgCase Xobot 0.1.2-SNAPSHOT");
+		set3source1.setMaturity(FocusDescriptors.MATURITY_INTEGRATION);
+		set3source1.setOrigin("git");
+		set3source1.setUri("https://github.com/pgcase/pgconf");
+		set3source1.setFork("develop");
+		set3Sources.add(set3source1);
+		registerSourceSet(set3);
+
+		XSourceSet set4 = XLandscapeFactory.eINSTANCE.createSourceSet();
+		set4.setIdentifier("ru.pgcase.xobot.sandbox");
+		set4.setName("PgCase Xobot Sandbox");
+		EList<XSource> set4Sources = set4.getSources();
+		XSource set4source1 = XLandscapeFactory.eINSTANCE.createSource();
+		set4source1.setIdentifier("ru.pgcase.xobot.sandbox.dbpro");
+		set4source1.setName("PgCase Xobot dbpro");
+		set4source1.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
+		set4source1.setOrigin("git");
+		set4source1.setUri("https://github.com/pgcase/pgconf");
+		set4source1.setFork("feature/dbpro");
+		set4Sources.add(set4source1);
+
+		XSource set4source2 = XLandscapeFactory.eINSTANCE.createSource();
+		set4source2.setIdentifier("ru.pgcase.xobot.sandbox.parse");
+		set4source2.setName("PgCase Xobot parse");
+		set4source2.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
+		set4source2.setOrigin("git");
+		set4source2.setUri("https://github.com/pgcase/pgconf");
+		set4source2.setFork("feature/parse");
+		set4Sources.add(set4source2);
+
+		XSource set4source3 = XLandscapeFactory.eINSTANCE.createSource();
+		set4source3.setIdentifier("ru.pgcase.xobot.sandbox.model");
+		set4source3.setName("PgCase Xobot model");
+		set4source3.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
+		set4source3.setOrigin("git");
+		set4source3.setUri("https://github.com/pgcase/pgconf");
+		set4source3.setFork("feature/model");
+		set4Sources.add(set4source3);
+
+		registerSourceSet(set4);
+
 	}
 
 	@Override

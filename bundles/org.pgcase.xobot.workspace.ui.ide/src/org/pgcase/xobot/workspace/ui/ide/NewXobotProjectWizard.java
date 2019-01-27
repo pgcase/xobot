@@ -18,7 +18,7 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.e3.ui.ide;
+package org.pgcase.xobot.workspace.ui.ide;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;

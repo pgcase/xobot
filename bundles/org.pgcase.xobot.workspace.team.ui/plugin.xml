@@ -271,5 +271,18 @@
          </adapter>
       </factory>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.pgcase.xobot.workspace.ui.ide.perspectives.perspective.xobot">
+         <view
+               id="org.eclipse.team.sync.views.SynchronizeView"
+               minimized="false"
+               relationship="stack"
+               relative="org.pgcase.xobot.workspace.ui.ide.outlines"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
 
 </plugin>

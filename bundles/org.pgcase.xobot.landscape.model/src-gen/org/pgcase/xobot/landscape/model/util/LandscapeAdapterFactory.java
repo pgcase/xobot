@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.pgcase.xobot.landscape.model.api.*;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.runtime.XFocusDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
@@ -91,6 +92,10 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	protected LandscapeSwitch<Adapter> modelSwitch =
 		new LandscapeSwitch<Adapter>() {
 			@Override
+			public Adapter caseFocusDescriptor(XFocusDescriptor object) {
+				return createFocusDescriptorAdapter();
+			}
+			@Override
 			public Adapter caseSourceSetDescriptor(XSourceSetDescriptor object) {
 				return createSourceSetDescriptorAdapter();
 			}
@@ -105,6 +110,10 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTargetDescriptor(XTargetDescriptor object) {
 				return createTargetDescriptorAdapter();
+			}
+			@Override
+			public Adapter caseFocus(XFocus object) {
+				return createFocusAdapter();
 			}
 			@Override
 			public Adapter caseSourceSet(XSourceSet object) {
@@ -141,6 +150,20 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.runtime.XFocusDescriptor <em>Focus Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pgcase.xobot.landscape.runtime.XFocusDescriptor
+	 * @generated
+	 */
+	public Adapter createFocusDescriptorAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor <em>Source Set Descriptor</em>}'.
@@ -195,6 +218,20 @@ public class LandscapeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTargetDescriptorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pgcase.xobot.landscape.model.api.XFocus <em>Focus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus
+	 * @generated
+	 */
+	public Adapter createFocusAdapter() {
 		return null;
 	}
 

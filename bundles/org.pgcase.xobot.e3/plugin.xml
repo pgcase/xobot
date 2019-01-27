@@ -70,27 +70,5 @@
          </menu>
       </menuContribution>
    </extension>
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <category
-            id="org.pgcase.xobot.e3.category.xobot"
-            name="Xobot">
-      </category>
-      <wizard
-            category="org.pgcase.xobot.e3.category.xobot"
-            class="org.pgcase.xobot.workspace.e3.ui.ide.NewXobotProjectWizard"
-            descriptionImage="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
-            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
-            id="org.pgcase.xobot.e3.wizard.new.project"
-            name="Xobot Project"
-            project="true">
-         <description>
-            Creates new Xobot project using Xobot file system
-         </description>
-      </wizard>
-      <primaryWizard
-            id="org.pgcase.xobot.e3.wizard.new.project">
-      </primaryWizard>
-   </extension>
 
 </plugin>

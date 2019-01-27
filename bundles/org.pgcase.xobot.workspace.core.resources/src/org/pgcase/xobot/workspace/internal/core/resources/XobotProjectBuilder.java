@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.internal.core.resources;
 
-import java.io.ByteArrayInputStream;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -46,14 +45,11 @@ public class XobotProjectBuilder extends IncrementalProjectBuilder {
 	@Override
 	protected IProject[] build(int kind, Map<String, String> args, IProgressMonitor monitor) throws CoreException {
 		IProject project = getProject();
-		IFile file = project.getFile(".xobot");
-		if (!file.exists()) {
-			file.create(new ByteArrayInputStream(new byte[0]), true, monitor);
-		}
-		createProblem(file, "Не указан экспериментальный стэнд", IMarker.SEVERITY_ERROR);
-		createProblem(file, "Не указан интеграционный стэнд", IMarker.SEVERITY_ERROR);
-		createProblem(file, "Не указан стабильный стэнд", IMarker.SEVERITY_WARNING);
-		createProblem(file, "Не указан официальный стэнд", IMarker.SEVERITY_WARNING);
+//		IFile file = project.getFile(".xobot");
+		createProblem(project, "Не указан экспериментальный стэнд", IMarker.SEVERITY_ERROR);
+		createProblem(project, "Не указан интеграционный стэнд", IMarker.SEVERITY_ERROR);
+		createProblem(project, "Не указан стабильный стэнд", IMarker.SEVERITY_WARNING);
+		createProblem(project, "Не указан официальный стэнд", IMarker.SEVERITY_WARNING);
 		return null;
 	}
 

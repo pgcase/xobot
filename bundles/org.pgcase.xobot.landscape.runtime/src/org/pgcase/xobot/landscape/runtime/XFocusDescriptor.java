@@ -32,4 +32,6 @@ public interface XFocusDescriptor extends IdentifiedDescriptor {
 	
 	String getUri();
 
+	String getFork();
+
 }

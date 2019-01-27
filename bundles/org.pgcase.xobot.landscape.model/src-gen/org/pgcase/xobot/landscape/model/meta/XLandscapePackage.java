@@ -270,13 +270,22 @@ public interface XLandscapePackage extends EPackage {
 	int FOCUS__URI = FOCUS_DESCRIPTOR_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Fork</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS__FORK = FOCUS_DESCRIPTOR_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Focus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FOCUS_FEATURE_COUNT = FOCUS_DESCRIPTOR_FEATURE_COUNT + 5;
+	int FOCUS_FEATURE_COUNT = FOCUS_DESCRIPTOR_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Focus</em>' class.
@@ -396,6 +405,15 @@ public interface XLandscapePackage extends EPackage {
 	 * @ordered
 	 */
 	int SOURCE__URI = FOCUS__URI;
+
+	/**
+	 * The feature id for the '<em><b>Fork</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE__FORK = FOCUS__FORK;
 
 	/**
 	 * The feature id for the '<em><b>Source Set</b></em>' container reference.
@@ -533,6 +551,15 @@ public interface XLandscapePackage extends EPackage {
 	 * @ordered
 	 */
 	int TARGET__URI = FOCUS__URI;
+
+	/**
+	 * The feature id for the '<em><b>Fork</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TARGET__FORK = FOCUS__FORK;
 
 	/**
 	 * The feature id for the '<em><b>Target Set</b></em>' container reference.
@@ -681,6 +708,17 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFocus_Uri();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XFocus#getFork <em>Fork</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fork</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus#getFork()
+	 * @see #getFocus()
+	 * @generated
+	 */
+	EAttribute getFocus_Fork();
 
 	/**
 	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.model.api.XSourceSet <em>Source Set</em>}'.
@@ -932,6 +970,14 @@ public interface XLandscapePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FOCUS__URI = eINSTANCE.getFocus_Uri();
+
+		/**
+		 * The meta object literal for the '<em><b>Fork</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOCUS__FORK = eINSTANCE.getFocus_Fork();
 
 		/**
 		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.model.impl.XSourceSetImpl <em>Source Set</em>}' class.

@@ -281,6 +281,15 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFocus_Fork() {
+		return (EAttribute)focusEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSourceSet() {
 		return sourceSetEClass;
 	}
@@ -428,6 +437,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 		createEAttribute(focusEClass, FOCUS__MATURITY);
 		createEAttribute(focusEClass, FOCUS__ORIGIN);
 		createEAttribute(focusEClass, FOCUS__URI);
+		createEAttribute(focusEClass, FOCUS__FORK);
 
 		sourceSetEClass = createEClass(SOURCE_SET);
 		createEAttribute(sourceSetEClass, SOURCE_SET__IDENTIFIER);
@@ -499,6 +509,7 @@ public class XLandscapePackageImpl extends EPackageImpl implements XLandscapePac
 		initEAttribute(getFocus_Maturity(), ecorePackage.getEString(), "maturity", null, 0, 1, XFocus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getFocus_Origin(), ecorePackage.getEString(), "origin", null, 0, 1, XFocus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getFocus_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, XFocus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getFocus_Fork(), ecorePackage.getEString(), "fork", null, 0, 1, XFocus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(sourceSetEClass, XSourceSet.class, "SourceSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getSourceSet_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, XSourceSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$

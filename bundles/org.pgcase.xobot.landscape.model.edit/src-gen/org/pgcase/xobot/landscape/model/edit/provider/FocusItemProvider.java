@@ -72,6 +72,7 @@ public class FocusItemProvider
 			addMaturityPropertyDescriptor(object);
 			addOriginPropertyDescriptor(object);
 			addUriPropertyDescriptor(object);
+			addForkPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -187,6 +188,28 @@ public class FocusItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Fork feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addForkPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Focus_fork_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Focus_fork_feature", "_UI_Focus_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 XLandscapePackage.Literals.FOCUS__FORK,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -200,14 +223,33 @@ public class FocusItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((XFocus)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Focus_type") : //$NON-NLS-1$
-			getString("_UI_Focus_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		XFocus focus = (XFocus)object;
+		String name = focus.getName();
+		if (name == null || name.length() == 0) {
+			return getString("_UI_Focus_type"); //$NON-NLS-1$
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append('[');
+		String origin = focus.getOrigin();
+		String fork = focus.getFork();
+		if (origin != null) {
+			sb.append(origin);
+		}
+		sb.append(':');
+		if (fork != null) {
+			sb.append(fork);
+		}
+		sb.append(']').append(' ');
+		sb.append(name);
+		String uri = focus.getUri();
+		if (uri != null) {
+			sb.append(' ').append('(').append(uri).append(')');
+		}
+		return sb.toString();
 	}
 
 
@@ -228,6 +270,7 @@ public class FocusItemProvider
 			case XLandscapePackage.FOCUS__MATURITY:
 			case XLandscapePackage.FOCUS__ORIGIN:
 			case XLandscapePackage.FOCUS__URI:
+			case XLandscapePackage.FOCUS__FORK:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

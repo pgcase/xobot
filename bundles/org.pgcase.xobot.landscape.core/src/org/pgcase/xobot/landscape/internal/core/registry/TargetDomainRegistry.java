@@ -60,6 +60,7 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set1target1.setMaturity(FocusDescriptors.MATURITY_OFFICIAL);
 		set1target1.setOrigin("jdbc");
 		set1target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set1target1.setFork("official");
 		set1Targets.add(set1target1);
 
 		registerTargetSet(set1);
@@ -75,6 +76,7 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set2target1.setMaturity(FocusDescriptors.MATURITY_STABLE);
 		set2target1.setOrigin("jdbc");
 		set2target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set2target1.setFork("stable");
 		set2Targets.add(set2target1);
 
 		registerTargetSet(set2);
@@ -90,6 +92,7 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set3target1.setMaturity(FocusDescriptors.MATURITY_INTEGRATION);
 		set3target1.setOrigin("jdbc");
 		set3target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set3target1.setFork("integration");
 		set3Targets.add(set3target1);
 
 		registerTargetSet(set3);
@@ -105,6 +108,7 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set4target1.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
 		set4target1.setOrigin("jdbc");
 		set4target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set4target1.setFork("sandbox_dbpro");
 		set4Targets.add(set4target1);
 
 		XTarget set4target2 = XLandscapeFactory.eINSTANCE.createTarget();
@@ -113,6 +117,7 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set4target2.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
 		set4target2.setOrigin("jdbc");
 		set4target2.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set4target2.setFork("sandbox_parse");
 		set4Targets.add(set4target2);
 
 		XTarget set4target3 = XLandscapeFactory.eINSTANCE.createTarget();
@@ -121,6 +126,7 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set4target3.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
 		set4target3.setOrigin("jdbc");
 		set4target3.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set4target3.setFork("sandbox_model");
 		set4Targets.add(set4target3);
 
 		registerTargetSet(set4);

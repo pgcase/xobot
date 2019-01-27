@@ -95,17 +95,7 @@ public class TargetItemProvider
 		if (name == null || name.length() == 0) {
 			return getString("_UI_Target_type"); //$NON-NLS-1$
 		}
-		StringBuilder sb = new StringBuilder();
-		String origin = target.getOrigin();
-		if (origin != null) {
-			sb.append('[').append(origin).append(']').append(':');
-		}
-		sb.append(name);
-		String uri = target.getUri();
-		if (uri != null) {
-			sb.append(' ').append('(').append(uri).append(')');
-		}
-		return sb.toString();
+		return super.getText(object);
 	}
 
 

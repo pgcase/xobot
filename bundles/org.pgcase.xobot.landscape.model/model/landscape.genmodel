@@ -27,6 +27,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Focus/maturity"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Focus/origin"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Focus/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//Focus/fork"/>
     </genClasses>
     <genClasses ecoreClass="../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceSet">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.pgcase.xobot.landscape.model.ecore/model/landscape.ecore#//SourceSet/identifier"/>

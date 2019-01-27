@@ -21,6 +21,7 @@ import org.pgcase.xobot.landscape.runtime.XFocusDescriptor;
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XFocus#getMaturity <em>Maturity</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XFocus#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XFocus#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.api.XFocus#getFork <em>Fork</em>}</li>
  * </ul>
  *
  * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getFocus()
@@ -157,5 +158,31 @@ public interface XFocus extends EObject, XFocusDescriptor {
 	 * @generated
 	 */
 	void setUri(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Fork</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fork</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fork</em>' attribute.
+	 * @see #setFork(String)
+	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getFocus_Fork()
+	 * @model
+	 * @generated
+	 */
+	String getFork();
+
+	/**
+	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XFocus#getFork <em>Fork</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fork</em>' attribute.
+	 * @see #getFork()
+	 * @generated
+	 */
+	void setFork(String value);
 
 } // XFocus

@@ -27,6 +27,7 @@ import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
  *   <li>{@link org.pgcase.xobot.landscape.model.impl.XFocusImpl#getMaturity <em>Maturity</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.impl.XFocusImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.impl.XFocusImpl#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.pgcase.xobot.landscape.model.impl.XFocusImpl#getFork <em>Fork</em>}</li>
  * </ul>
  *
  * @generated
@@ -131,6 +132,26 @@ public abstract class XFocusImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected String uri = URI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFork() <em>Fork</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFork()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FORK_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFork() <em>Fork</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFork()
+	 * @generated
+	 * @ordered
+	 */
+	protected String fork = FORK_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -261,6 +282,27 @@ public abstract class XFocusImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getFork() {
+		return fork;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFork(String newFork) {
+		String oldFork = fork;
+		fork = newFork;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XLandscapePackage.FOCUS__FORK, oldFork, fork));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -274,6 +316,8 @@ public abstract class XFocusImpl extends MinimalEObjectImpl.Container implements
 				return getOrigin();
 			case XLandscapePackage.FOCUS__URI:
 				return getUri();
+			case XLandscapePackage.FOCUS__FORK:
+				return getFork();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -300,6 +344,9 @@ public abstract class XFocusImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case XLandscapePackage.FOCUS__URI:
 				setUri((String)newValue);
+				return;
+			case XLandscapePackage.FOCUS__FORK:
+				setFork((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -328,6 +375,9 @@ public abstract class XFocusImpl extends MinimalEObjectImpl.Container implements
 			case XLandscapePackage.FOCUS__URI:
 				setUri(URI_EDEFAULT);
 				return;
+			case XLandscapePackage.FOCUS__FORK:
+				setFork(FORK_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -350,6 +400,8 @@ public abstract class XFocusImpl extends MinimalEObjectImpl.Container implements
 				return ORIGIN_EDEFAULT == null ? origin != null : !ORIGIN_EDEFAULT.equals(origin);
 			case XLandscapePackage.FOCUS__URI:
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
+			case XLandscapePackage.FOCUS__FORK:
+				return FORK_EDEFAULT == null ? fork != null : !FORK_EDEFAULT.equals(fork);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -374,6 +426,8 @@ public abstract class XFocusImpl extends MinimalEObjectImpl.Container implements
 		result.append(origin);
 		result.append(", uri: "); //$NON-NLS-1$
 		result.append(uri);
+		result.append(", fork: "); //$NON-NLS-1$
+		result.append(fork);
 		result.append(')');
 		return result.toString();
 	}

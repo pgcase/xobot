@@ -75,6 +75,34 @@ public interface XLandscapePackage extends EPackage {
 	XLandscapePackage eINSTANCE = org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.pgcase.xobot.landscape.runtime.XFocusDescriptor <em>Focus Descriptor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.pgcase.xobot.landscape.runtime.XFocusDescriptor
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getFocusDescriptor()
+	 * @generated
+	 */
+	int FOCUS_DESCRIPTOR = 0;
+
+	/**
+	 * The number of structural features of the '<em>Focus Descriptor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS_DESCRIPTOR_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Focus Descriptor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS_DESCRIPTOR_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor <em>Source Set Descriptor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,7 +110,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceSetDescriptor()
 	 * @generated
 	 */
-	int SOURCE_SET_DESCRIPTOR = 0;
+	int SOURCE_SET_DESCRIPTOR = 1;
 
 	/**
 	 * The number of structural features of the '<em>Source Set Descriptor</em>' class.
@@ -110,7 +138,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceDescriptor()
 	 * @generated
 	 */
-	int SOURCE_DESCRIPTOR = 1;
+	int SOURCE_DESCRIPTOR = 2;
 
 	/**
 	 * The number of structural features of the '<em>Source Descriptor</em>' class.
@@ -138,7 +166,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetSetDescriptor()
 	 * @generated
 	 */
-	int TARGET_SET_DESCRIPTOR = 2;
+	int TARGET_SET_DESCRIPTOR = 3;
 
 	/**
 	 * The number of structural features of the '<em>Target Set Descriptor</em>' class.
@@ -166,7 +194,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetDescriptor()
 	 * @generated
 	 */
-	int TARGET_DESCRIPTOR = 3;
+	int TARGET_DESCRIPTOR = 4;
 
 	/**
 	 * The number of structural features of the '<em>Target Descriptor</em>' class.
@@ -187,6 +215,79 @@ public interface XLandscapePackage extends EPackage {
 	int TARGET_DESCRIPTOR_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.pgcase.xobot.landscape.model.impl.XFocusImpl <em>Focus</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.pgcase.xobot.landscape.model.impl.XFocusImpl
+	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getFocus()
+	 * @generated
+	 */
+	int FOCUS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS__IDENTIFIER = FOCUS_DESCRIPTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS__NAME = FOCUS_DESCRIPTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Maturity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS__MATURITY = FOCUS_DESCRIPTOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Origin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS__ORIGIN = FOCUS_DESCRIPTOR_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS__URI = FOCUS_DESCRIPTOR_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Focus</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS_FEATURE_COUNT = FOCUS_DESCRIPTOR_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Focus</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOCUS_OPERATION_COUNT = FOCUS_DESCRIPTOR_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.pgcase.xobot.landscape.model.impl.XSourceSetImpl <em>Source Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,7 +295,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSourceSet()
 	 * @generated
 	 */
-	int SOURCE_SET = 4;
+	int SOURCE_SET = 6;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -249,7 +350,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getSource()
 	 * @generated
 	 */
-	int SOURCE = 5;
+	int SOURCE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -258,7 +359,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__IDENTIFIER = SOURCE_DESCRIPTOR_FEATURE_COUNT + 0;
+	int SOURCE__IDENTIFIER = FOCUS__IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -267,7 +368,16 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__NAME = SOURCE_DESCRIPTOR_FEATURE_COUNT + 1;
+	int SOURCE__NAME = FOCUS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Maturity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE__MATURITY = FOCUS__MATURITY;
 
 	/**
 	 * The feature id for the '<em><b>Origin</b></em>' attribute.
@@ -276,7 +386,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__ORIGIN = SOURCE_DESCRIPTOR_FEATURE_COUNT + 2;
+	int SOURCE__ORIGIN = FOCUS__ORIGIN;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -285,7 +395,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__URI = SOURCE_DESCRIPTOR_FEATURE_COUNT + 3;
+	int SOURCE__URI = FOCUS__URI;
 
 	/**
 	 * The feature id for the '<em><b>Source Set</b></em>' container reference.
@@ -294,7 +404,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__SOURCE_SET = SOURCE_DESCRIPTOR_FEATURE_COUNT + 4;
+	int SOURCE__SOURCE_SET = FOCUS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Source</em>' class.
@@ -303,7 +413,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FEATURE_COUNT = SOURCE_DESCRIPTOR_FEATURE_COUNT + 5;
+	int SOURCE_FEATURE_COUNT = FOCUS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Source</em>' class.
@@ -312,7 +422,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_OPERATION_COUNT = SOURCE_DESCRIPTOR_OPERATION_COUNT + 0;
+	int SOURCE_OPERATION_COUNT = FOCUS_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.pgcase.xobot.landscape.model.impl.XTargetSetImpl <em>Target Set</em>}' class.
@@ -322,7 +432,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTargetSet()
 	 * @generated
 	 */
-	int TARGET_SET = 6;
+	int TARGET_SET = 8;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -377,7 +487,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getTarget()
 	 * @generated
 	 */
-	int TARGET = 7;
+	int TARGET = 9;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -386,7 +496,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET__IDENTIFIER = TARGET_DESCRIPTOR_FEATURE_COUNT + 0;
+	int TARGET__IDENTIFIER = FOCUS__IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -395,7 +505,16 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET__NAME = TARGET_DESCRIPTOR_FEATURE_COUNT + 1;
+	int TARGET__NAME = FOCUS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Maturity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TARGET__MATURITY = FOCUS__MATURITY;
 
 	/**
 	 * The feature id for the '<em><b>Origin</b></em>' attribute.
@@ -404,7 +523,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET__ORIGIN = TARGET_DESCRIPTOR_FEATURE_COUNT + 2;
+	int TARGET__ORIGIN = FOCUS__ORIGIN;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -413,7 +532,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET__URI = TARGET_DESCRIPTOR_FEATURE_COUNT + 3;
+	int TARGET__URI = FOCUS__URI;
 
 	/**
 	 * The feature id for the '<em><b>Target Set</b></em>' container reference.
@@ -422,7 +541,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET__TARGET_SET = TARGET_DESCRIPTOR_FEATURE_COUNT + 4;
+	int TARGET__TARGET_SET = FOCUS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Target</em>' class.
@@ -431,7 +550,7 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET_FEATURE_COUNT = TARGET_DESCRIPTOR_FEATURE_COUNT + 5;
+	int TARGET_FEATURE_COUNT = FOCUS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Target</em>' class.
@@ -440,8 +559,19 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TARGET_OPERATION_COUNT = TARGET_DESCRIPTOR_OPERATION_COUNT + 0;
+	int TARGET_OPERATION_COUNT = FOCUS_OPERATION_COUNT + 0;
 
+
+	/**
+	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.runtime.XFocusDescriptor <em>Focus Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Focus Descriptor</em>'.
+	 * @see org.pgcase.xobot.landscape.runtime.XFocusDescriptor
+	 * @model instanceClass="org.pgcase.xobot.landscape.runtime.XFocusDescriptor"
+	 * @generated
+	 */
+	EClass getFocusDescriptor();
 
 	/**
 	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor <em>Source Set Descriptor</em>}'.
@@ -486,6 +616,71 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTargetDescriptor();
+
+	/**
+	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.model.api.XFocus <em>Focus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Focus</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus
+	 * @generated
+	 */
+	EClass getFocus();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XFocus#getIdentifier <em>Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Identifier</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus#getIdentifier()
+	 * @see #getFocus()
+	 * @generated
+	 */
+	EAttribute getFocus_Identifier();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XFocus#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus#getName()
+	 * @see #getFocus()
+	 * @generated
+	 */
+	EAttribute getFocus_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XFocus#getMaturity <em>Maturity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Maturity</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus#getMaturity()
+	 * @see #getFocus()
+	 * @generated
+	 */
+	EAttribute getFocus_Maturity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XFocus#getOrigin <em>Origin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Origin</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus#getOrigin()
+	 * @see #getFocus()
+	 * @generated
+	 */
+	EAttribute getFocus_Origin();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XFocus#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see org.pgcase.xobot.landscape.model.api.XFocus#getUri()
+	 * @see #getFocus()
+	 * @generated
+	 */
+	EAttribute getFocus_Uri();
 
 	/**
 	 * Returns the meta object for class '{@link org.pgcase.xobot.landscape.model.api.XSourceSet <em>Source Set</em>}'.
@@ -539,50 +734,6 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSource();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getIdentifier <em>Identifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Identifier</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XSource#getIdentifier()
-	 * @see #getSource()
-	 * @generated
-	 */
-	EAttribute getSource_Identifier();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XSource#getName()
-	 * @see #getSource()
-	 * @generated
-	 */
-	EAttribute getSource_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getOrigin <em>Origin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Origin</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XSource#getOrigin()
-	 * @see #getSource()
-	 * @generated
-	 */
-	EAttribute getSource_Origin();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XSource#getUri <em>Uri</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uri</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XSource#getUri()
-	 * @see #getSource()
-	 * @generated
-	 */
-	EAttribute getSource_Uri();
 
 	/**
 	 * Returns the meta object for the container reference '{@link org.pgcase.xobot.landscape.model.api.XSource#getSourceSet <em>Source Set</em>}'.
@@ -649,50 +800,6 @@ public interface XLandscapePackage extends EPackage {
 	EClass getTarget();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier <em>Identifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Identifier</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier()
-	 * @see #getTarget()
-	 * @generated
-	 */
-	EAttribute getTarget_Identifier();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getName()
-	 * @see #getTarget()
-	 * @generated
-	 */
-	EAttribute getTarget_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getOrigin <em>Origin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Origin</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getOrigin()
-	 * @see #getTarget()
-	 * @generated
-	 */
-	EAttribute getTarget_Origin();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.pgcase.xobot.landscape.model.api.XTarget#getUri <em>Uri</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uri</em>'.
-	 * @see org.pgcase.xobot.landscape.model.api.XTarget#getUri()
-	 * @see #getTarget()
-	 * @generated
-	 */
-	EAttribute getTarget_Uri();
-
-	/**
 	 * Returns the meta object for the container reference '{@link org.pgcase.xobot.landscape.model.api.XTarget#getTargetSet <em>Target Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -726,6 +833,16 @@ public interface XLandscapePackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.runtime.XFocusDescriptor <em>Focus Descriptor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.pgcase.xobot.landscape.runtime.XFocusDescriptor
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getFocusDescriptor()
+		 * @generated
+		 */
+		EClass FOCUS_DESCRIPTOR = eINSTANCE.getFocusDescriptor();
+
 		/**
 		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor <em>Source Set Descriptor</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -765,6 +882,56 @@ public interface XLandscapePackage extends EPackage {
 		 * @generated
 		 */
 		EClass TARGET_DESCRIPTOR = eINSTANCE.getTargetDescriptor();
+
+		/**
+		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.model.impl.XFocusImpl <em>Focus</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.pgcase.xobot.landscape.model.impl.XFocusImpl
+		 * @see org.pgcase.xobot.landscape.model.impl.XLandscapePackageImpl#getFocus()
+		 * @generated
+		 */
+		EClass FOCUS = eINSTANCE.getFocus();
+
+		/**
+		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOCUS__IDENTIFIER = eINSTANCE.getFocus_Identifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOCUS__NAME = eINSTANCE.getFocus_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Maturity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOCUS__MATURITY = eINSTANCE.getFocus_Maturity();
+
+		/**
+		 * The meta object literal for the '<em><b>Origin</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOCUS__ORIGIN = eINSTANCE.getFocus_Origin();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOCUS__URI = eINSTANCE.getFocus_Uri();
 
 		/**
 		 * The meta object literal for the '{@link org.pgcase.xobot.landscape.model.impl.XSourceSetImpl <em>Source Set</em>}' class.
@@ -809,38 +976,6 @@ public interface XLandscapePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SOURCE = eINSTANCE.getSource();
-
-		/**
-		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SOURCE__IDENTIFIER = eINSTANCE.getSource_Identifier();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SOURCE__NAME = eINSTANCE.getSource_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Origin</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SOURCE__ORIGIN = eINSTANCE.getSource_Origin();
-
-		/**
-		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SOURCE__URI = eINSTANCE.getSource_Uri();
 
 		/**
 		 * The meta object literal for the '<em><b>Source Set</b></em>' container reference feature.
@@ -893,38 +1028,6 @@ public interface XLandscapePackage extends EPackage {
 		 * @generated
 		 */
 		EClass TARGET = eINSTANCE.getTarget();
-
-		/**
-		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TARGET__IDENTIFIER = eINSTANCE.getTarget_Identifier();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TARGET__NAME = eINSTANCE.getTarget_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Origin</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TARGET__ORIGIN = eINSTANCE.getTarget_Origin();
-
-		/**
-		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TARGET__URI = eINSTANCE.getTarget_Uri();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Set</b></em>' container reference feature.

@@ -2,6 +2,8 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="landscape" nsURI="http://www.pgcase.org/xobot/landscape/0.1.0"
     nsPrefix="landscape">
+  <eClassifiers xsi:type="ecore:EClass" name="FocusDescriptor" instanceClassName="org.pgcase.xobot.landscape.runtime.XFocusDescriptor"
+      abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="SourceSetDescriptor" instanceClassName="org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor"
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="SourceDescriptor" instanceClassName="org.pgcase.xobot.landscape.runtime.XSourceDescriptor"
@@ -10,17 +12,20 @@
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="TargetDescriptor" instanceClassName="org.pgcase.xobot.landscape.runtime.XTargetDescriptor"
       abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Focus" abstract="true" eSuperTypes="#//FocusDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maturity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="origin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceSet" eSuperTypes="#//SourceSetDescriptor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
         eType="#//Source" containment="true" eOpposite="#//Source/sourceSet"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Source" eSuperTypes="#//SourceDescriptor">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="origin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Source" eSuperTypes="#//Focus #//SourceDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceSet" lowerBound="1"
         eType="#//SourceSet" eOpposite="#//SourceSet/sources"/>
   </eClassifiers>
@@ -30,11 +35,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
         eType="#//Target" containment="true" eOpposite="#//Target/targetSet"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Target" eSuperTypes="#//TargetDescriptor">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="origin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Target" eSuperTypes="#//Focus #//TargetDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetSet" lowerBound="1"
         eType="#//TargetSet" eOpposite="#//TargetSet/targets"/>
   </eClassifiers>

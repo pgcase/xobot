@@ -4,18 +4,11 @@
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
       <propertyTester
-            class="org.pgcase.xobot.landscape.internal.core.XSourcePropertyTester"
-            id="org.pgcase.xobot.landscape.core.propertyTesters.propertyTester.source"
+            class="org.pgcase.xobot.landscape.internal.core.XFocusPropertyTester"
+            id="org.pgcase.xobot.landscape.core.propertyTesters.propertyTester.focus"
             namespace="org.pgcase.xobot.landscape.core"
-            properties="origin"
-            type="org.pgcase.xobot.landscape.runtime.XSourceDescriptor">
-      </propertyTester>
-      <propertyTester
-            class="org.pgcase.xobot.landscape.internal.core.XTargetPropertyTester"
-            id="org.pgcase.xobot.landscape.core.propertyTesters.propertyTester.target"
-            namespace="org.pgcase.xobot.landscape.core"
-            properties="origin"
-            type="org.pgcase.xobot.landscape.runtime.XTargetDescriptor">
+            properties="origin,maturity"
+            type="org.pgcase.xobot.landscape.runtime.XFocusDescriptor">
       </propertyTester>
    </extension>
 

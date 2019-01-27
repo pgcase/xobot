@@ -36,6 +36,7 @@ import org.pgcase.xobot.landscape.model.api.XTarget;
 import org.pgcase.xobot.landscape.model.api.XTargetSet;
 import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.runtime.FocusDescriptors;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
@@ -49,47 +50,81 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 	@Activate
 	public void activate() {
 		XTargetSet set1 = XLandscapeFactory.eINSTANCE.createTargetSet();
-		set1.setIdentifier("ru.pgconf.2019.test");
-		set1.setName("PgConf.Russia 2019 Tests");
+		set1.setIdentifier("ru.pgconf.2019.xobot.official");
+		set1.setName("PgConf.Russia 2019 Official");
 
-		EList<XTarget> set1Sources = set1.getTargets();
-		XTarget set1source1 = XLandscapeFactory.eINSTANCE.createTarget();
-		set1source1.setIdentifier("ru.pgconf.2019.test.xobot");
-		set1source1.setName("Xobot Test");
-		set1source1.setOrigin("jdbc");
-		set1source1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
-		set1Sources.add(set1source1);
+		EList<XTarget> set1Targets = set1.getTargets();
+		XTarget set1target1 = XLandscapeFactory.eINSTANCE.createTarget();
+		set1target1.setIdentifier("ru.pgconf.2019.xobot.official.v0.1.0");
+		set1target1.setName("Xobot v0.1.0");
+		set1target1.setMaturity(FocusDescriptors.MATURITY_OFFICIAL);
+		set1target1.setOrigin("jdbc");
+		set1target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set1Targets.add(set1target1);
 
 		registerTargetSet(set1);
 
 		XTargetSet set2 = XLandscapeFactory.eINSTANCE.createTargetSet();
-		set2.setIdentifier("ru.pgconf.2019.dev");
-		set2.setName("PgConf.Russia 2019 Dev");
+		set2.setIdentifier("ru.pgconf.2019.xobot.stable");
+		set2.setName("PgConf.Russia 2019 Stable");
 
-		EList<XTarget> set2Sources = set2.getTargets();
-		XTarget set2source2 = XLandscapeFactory.eINSTANCE.createTarget();
-		set2source2.setIdentifier("ru.pgconf.2019.dev.xobot");
-		set2source2.setName("Xobot Dev");
-		set2source2.setOrigin("jdbc");
-		set2source2.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
-		set2Sources.add(set2source2);
+		EList<XTarget> set2Targets = set2.getTargets();
+		XTarget set2target1 = XLandscapeFactory.eINSTANCE.createTarget();
+		set2target1.setIdentifier("ru.pgconf.2019.xobot.stable.v0.1.1");
+		set2target1.setName("Xobot Stable");
+		set2target1.setMaturity(FocusDescriptors.MATURITY_STABLE);
+		set2target1.setOrigin("jdbc");
+		set2target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set2Targets.add(set2target1);
 
 		registerTargetSet(set2);
 
 		XTargetSet set3 = XLandscapeFactory.eINSTANCE.createTargetSet();
-		set3.setIdentifier("ru.pgconf.2019.prod");
-		set3.setName("PgConf.Russia 2019 Prod");
+		set3.setIdentifier("ru.pgconf.2019.xobot.integration");
+		set3.setName("PgConf.Russia 2019 Integration");
 
-		EList<XTarget> set3Sources = set3.getTargets();
-		XTarget set3source3 = XLandscapeFactory.eINSTANCE.createTarget();
-		set3source3.setIdentifier("ru.pgconf.2019.prod.xobot");
-		set3source3.setName("Xobot Prod");
-		set3source3.setOrigin("jdbc");
-		set3source3.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
-		set3Sources.add(set3source3);
+		EList<XTarget> set3Targets = set3.getTargets();
+		XTarget set3target1 = XLandscapeFactory.eINSTANCE.createTarget();
+		set3target1.setIdentifier("ru.pgconf.2019.xobot.integration.v0.1.1-SNAPSHOT");
+		set3target1.setName("Xobot Integration");
+		set3target1.setMaturity(FocusDescriptors.MATURITY_INTEGRATION);
+		set3target1.setOrigin("jdbc");
+		set3target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set3Targets.add(set3target1);
 
 		registerTargetSet(set3);
-	}
+
+		XTargetSet set4 = XLandscapeFactory.eINSTANCE.createTargetSet();
+		set4.setIdentifier("ru.pgconf.2019.xobot.sandbox");
+		set4.setName("PgConf.Russia 2019 Sandbox");
+		EList<XTarget> set4Targets = set4.getTargets();
+		
+		XTarget set4target1 = XLandscapeFactory.eINSTANCE.createTarget();
+		set4target1.setIdentifier("ru.pgconf.2019.xobot.sandbox.dbpro");
+		set4target1.setName("Xobot Sandbox dbpro");
+		set4target1.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
+		set4target1.setOrigin("jdbc");
+		set4target1.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set4Targets.add(set4target1);
+
+		XTarget set4target2 = XLandscapeFactory.eINSTANCE.createTarget();
+		set4target2.setIdentifier("ru.pgconf.2019.xobot.sandbox.parse");
+		set4target2.setName("Xobot Sandbox parse");
+		set4target2.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
+		set4target2.setOrigin("jdbc");
+		set4target2.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set4Targets.add(set4target2);
+
+		XTarget set4target3 = XLandscapeFactory.eINSTANCE.createTarget();
+		set4target3.setIdentifier("ru.pgconf.2019.xobot.sandbox.model");
+		set4target3.setName("Xobot Sandbox model");
+		set4target3.setMaturity(FocusDescriptors.MATURITY_SANDBOX);
+		set4target3.setOrigin("jdbc");
+		set4target3.setUri("jdbc:postgresql://ec2-54-75-230-41.eu-west-1.compute.amazonaws.com:5432/d85oais0tvhf9u");
+		set4Targets.add(set4target3);
+
+		registerTargetSet(set4);
+}
 
 	@Override
 	public Iterable<? extends IdentifiedDescriptor> getIdentifiedContent() {

@@ -20,8 +20,6 @@
  *******************************************************************************/
 package org.pgcase.xobot.landscape.model.api;
 
-import org.eclipse.emf.ecore.EObject;
-
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 
 /**
@@ -33,122 +31,14 @@ import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getName <em>Name</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getOrigin <em>Origin</em>}</li>
- *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getUri <em>Uri</em>}</li>
  *   <li>{@link org.pgcase.xobot.landscape.model.api.XTarget#getTargetSet <em>Target Set</em>}</li>
  * </ul>
  *
  * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget()
- * @model superTypes="org.pgcase.xobot.landscape.model.api.TargetDescriptor"
+ * @model superTypes="org.pgcase.xobot.landscape.model.api.Focus org.pgcase.xobot.landscape.model.api.TargetDescriptor"
  * @generated
  */
-public interface XTarget extends EObject, XTargetDescriptor {
-	/**
-	 * Returns the value of the '<em><b>Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Identifier</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Identifier</em>' attribute.
-	 * @see #setIdentifier(String)
-	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_Identifier()
-	 * @model
-	 * @generated
-	 */
-	String getIdentifier();
-
-	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getIdentifier <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Identifier</em>' attribute.
-	 * @see #getIdentifier()
-	 * @generated
-	 */
-	void setIdentifier(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Origin</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Origin</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Origin</em>' attribute.
-	 * @see #setOrigin(String)
-	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_Origin()
-	 * @model
-	 * @generated
-	 */
-	String getOrigin();
-
-	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getOrigin <em>Origin</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Origin</em>' attribute.
-	 * @see #getOrigin()
-	 * @generated
-	 */
-	void setOrigin(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Uri</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uri</em>' attribute.
-	 * @see #setUri(String)
-	 * @see org.pgcase.xobot.landscape.model.meta.XLandscapePackage#getTarget_Uri()
-	 * @model
-	 * @generated
-	 */
-	String getUri();
-
-	/**
-	 * Sets the value of the '{@link org.pgcase.xobot.landscape.model.api.XTarget#getUri <em>Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Uri</em>' attribute.
-	 * @see #getUri()
-	 * @generated
-	 */
-	void setUri(String value);
-
+public interface XTarget extends XFocus, XTargetDescriptor {
 	/**
 	 * Returns the value of the '<em><b>Target Set</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.pgcase.xobot.landscape.model.api.XTargetSet#getTargets <em>Targets</em>}'.

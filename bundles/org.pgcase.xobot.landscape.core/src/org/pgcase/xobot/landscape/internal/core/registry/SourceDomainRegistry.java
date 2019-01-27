@@ -35,6 +35,7 @@ import org.pgcase.xobot.landscape.model.api.XSource;
 import org.pgcase.xobot.landscape.model.api.XSourceSet;
 import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.runtime.FocusDescriptors;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
@@ -56,6 +57,7 @@ public class SourceDomainRegistry extends EditingDomainBasedRegistry implements 
 		set1source1.setName("PgConf.Russia 2019");
 		set1source1.setOrigin("git");
 		set1source1.setUri("https://github.com/pgcase/pgconf");
+		set1source1.setMaturity(FocusDescriptors.MATURITY_INTEGRATION);
 		set1Sources.add(set1source1);
 		registerSourceSet(set1);
 	}

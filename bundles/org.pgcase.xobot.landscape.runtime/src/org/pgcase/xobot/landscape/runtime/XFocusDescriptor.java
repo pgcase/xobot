@@ -18,14 +18,18 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.toolchain.runtime;
+package org.pgcase.xobot.landscape.runtime;
 
 import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public interface XToolDescriptor extends IdentifiedDescriptor {
+public interface XFocusDescriptor extends IdentifiedDescriptor {
 
 	String getName();
 
-	String getVendor();
+	String getMaturity();
 	
+	String getOrigin();
+	
+	String getUri();
+
 }

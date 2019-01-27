@@ -25,19 +25,23 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory.Descriptor.Registry;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.DecoratingLabelProvider;
+import org.eclipse.jface.viewers.IColorProvider;
+import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMemento;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
-import org.pgcase.xobot.basis.runtime.DescribedDescriptor;
 
-public class RegistryLabelProvider implements ICommonLabelProvider {
+public class RegistryLabelProvider implements ICommonLabelProvider, IColorProvider, IFontProvider {
 
 	private AdapterFactoryLabelProvider emfDelegate;
-	private ILabelProvider workbenchDelegate;
+	private DecoratingLabelProvider workbenchDelegate;
 
 	@Override
 	public Image getImage(Object element) {
@@ -63,6 +67,7 @@ public class RegistryLabelProvider implements ICommonLabelProvider {
 
 	@Override
 	public void dispose() {
+		workbenchDelegate.dispose();
 		workbenchDelegate = null;
 		emfDelegate.dispose();
 		emfDelegate = null;
@@ -92,11 +97,8 @@ public class RegistryLabelProvider implements ICommonLabelProvider {
 
 	@Override
 	public String getDescription(Object anElement) {
-		if (anElement instanceof DescribedDescriptor) {
-			DescribedDescriptor descriptor = (DescribedDescriptor) anElement;
-			return descriptor.getName();
-		}
-		return null;
+		//FIXME: need adapter for this
+		return getText(anElement);
 	}
 
 	@Override
@@ -104,7 +106,33 @@ public class RegistryLabelProvider implements ICommonLabelProvider {
 		Registry registry = ComposedAdapterFactory.Descriptor.Registry.INSTANCE;
 		ComposeableAdapterFactory adapterFactory = new ComposedAdapterFactory(registry);
 		emfDelegate = new AdapterFactoryLabelProvider(adapterFactory);
-		workbenchDelegate = WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider();
+		workbenchDelegate = new DecoratingLabelProvider(new WorkbenchLabelProvider(),
+                PlatformUI.getWorkbench().getDecoratorManager()
+                .getLabelDecorator());
+	}
+
+	@Override
+	public Font getFont(Object element) {
+		if (element instanceof EObject) {
+			return emfDelegate.getFont(element);
+		}
+		return workbenchDelegate.getFont(element);
+	}
+
+	@Override
+	public Color getForeground(Object element) {
+		if (element instanceof EObject) {
+			return emfDelegate.getForeground(element);
+		}
+		return workbenchDelegate.getForeground(element);
+	}
+
+	@Override
+	public Color getBackground(Object element) {
+		if (element instanceof EObject) {
+			return emfDelegate.getBackground(element);
+		}
+		return workbenchDelegate.getBackground(element);
 	}
 
 }

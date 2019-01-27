@@ -18,10 +18,13 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.basis.runtime;
+package org.pgcase.xobot.landscape.runtime;
 
-public interface DescribedDescriptor {
-
-	String getName();
+public class FocusDescriptors {
+	
+	public static final String MATURITY_OFFICIAL = "official"; //$NON-NLS-1$
+	public static final String MATURITY_STABLE = "stable"; //$NON-NLS-1$
+	public static final String MATURITY_INTEGRATION = "integration"; //$NON-NLS-1$
+	public static final String MATURITY_SANDBOX = "sandbox"; //$NON-NLS-1$
 
 }

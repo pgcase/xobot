@@ -29,6 +29,7 @@ import org.pgcase.xobot.landscape.model.api.*;
 
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 
+import org.pgcase.xobot.landscape.runtime.XFocusDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
@@ -91,6 +92,12 @@ public class LandscapeSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case XLandscapePackage.FOCUS_DESCRIPTOR: {
+				XFocusDescriptor focusDescriptor = (XFocusDescriptor)theEObject;
+				T result = caseFocusDescriptor(focusDescriptor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case XLandscapePackage.SOURCE_SET_DESCRIPTOR: {
 				XSourceSetDescriptor sourceSetDescriptor = (XSourceSetDescriptor)theEObject;
 				T result = caseSourceSetDescriptor(sourceSetDescriptor);
@@ -115,6 +122,13 @@ public class LandscapeSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case XLandscapePackage.FOCUS: {
+				XFocus focus = (XFocus)theEObject;
+				T result = caseFocus(focus);
+				if (result == null) result = caseFocusDescriptor(focus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case XLandscapePackage.SOURCE_SET: {
 				XSourceSet sourceSet = (XSourceSet)theEObject;
 				T result = caseSourceSet(sourceSet);
@@ -125,7 +139,9 @@ public class LandscapeSwitch<T> extends Switch<T> {
 			case XLandscapePackage.SOURCE: {
 				XSource source = (XSource)theEObject;
 				T result = caseSource(source);
+				if (result == null) result = caseFocus(source);
 				if (result == null) result = caseSourceDescriptor(source);
+				if (result == null) result = caseFocusDescriptor(source);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -139,12 +155,29 @@ public class LandscapeSwitch<T> extends Switch<T> {
 			case XLandscapePackage.TARGET: {
 				XTarget target = (XTarget)theEObject;
 				T result = caseTarget(target);
+				if (result == null) result = caseFocus(target);
 				if (result == null) result = caseTargetDescriptor(target);
+				if (result == null) result = caseFocusDescriptor(target);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Focus Descriptor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Focus Descriptor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFocusDescriptor(XFocusDescriptor object) {
+		return null;
 	}
 
 	/**
@@ -204,6 +237,21 @@ public class LandscapeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTargetDescriptor(XTargetDescriptor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Focus</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Focus</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFocus(XFocus object) {
 		return null;
 	}
 

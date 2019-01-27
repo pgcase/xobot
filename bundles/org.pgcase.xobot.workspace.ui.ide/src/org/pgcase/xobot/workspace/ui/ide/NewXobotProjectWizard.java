@@ -40,7 +40,7 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 import org.pgcase.xobot.workspace.core.filesystem.XobotFiles;
-import org.pgcase.xobot.workspace.core.resources.XobotProjectNature;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 
 public class NewXobotProjectWizard extends BasicNewResourceWizard implements INewWizard {
 
@@ -81,7 +81,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 				data.horizontalSpan = 1;
 				nameFieldILabel.setLayoutData(data);
 			}
-			
+
 			txtName = new Text(composite, SWT.BORDER);
 			{
 				GridData data = new GridData();
@@ -108,7 +108,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 			}
 			return true;
 		}
-		
+
 		public String getProjectName() {
 			return projectName;
 		}
@@ -117,7 +117,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 	public NewXobotProjectWizard() {
 		setNeedsProgressMonitor(true);
 	}
-	
+
 	@Override
 	public void addPages() {
 		mainPage = new NewXobotProjectWizardPage("main");
@@ -132,16 +132,12 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		URI locatiionUri = XobotFiles.composeInstallLocationRoot(projectName);
 		description.setLocationURI(locatiionUri);
 		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
-			
+
 			@Override
 			protected void execute(IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
 				IProject project = workspace.getRoot().getProject(projectName);
-				description.setNatureIds(new String[] {XobotProjectNature.XOBOT_NATURE_ID});
-				project.create(description, monitor);
-				project.open(monitor);
-				project.getFolder("functions").create(true, true, monitor);
-				project.getFolder("triggers").create(true, true, monitor);
+				WorkspaceCoreResources.createXobotProject(project, description, monitor);
 			}
 		};
 		try {

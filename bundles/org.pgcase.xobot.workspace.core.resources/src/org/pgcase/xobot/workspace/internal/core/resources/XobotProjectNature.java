@@ -18,26 +18,39 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.core.resources;
+package org.pgcase.xobot.workspace.internal.core.resources;
 
+import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 
 public class XobotProjectNature implements IProjectNature {
-	
-	public static final String XOBOT_NATURE_ID= "org.pgcase.xobot.workspace.core.resources.xobot"; //$NON-NLS-1$
 
 	private IProject project;
 
 	@Override
 	public void configure() throws CoreException {
-		// TODO add builder
+		IProjectDescription description = project.getDescription();
+		WorkspaceCoreResources.addBuilder(description);
+		project.setDescription(description, null);
 	}
 
 	@Override
 	public void deconfigure() throws CoreException {
-		// TODO remove builder
+		IProjectDescription description = this.project.getDescription();
+		ICommand[] commands = description.getBuildSpec();
+		for (int i = 0; i < commands.length; ++i) {
+			if (commands[i].getBuilderName().equals(WorkspaceCoreResources.BUILDER_ID)) {
+				ICommand[] newCommands = new ICommand[commands.length - 1];
+				System.arraycopy(commands, 0, newCommands, 0, i);
+				System.arraycopy(commands, i + 1, newCommands, i, commands.length - i - 1);
+				description.setBuildSpec(newCommands);
+				project.setDescription(description, null);
+			}
+		}
 	}
 
 	@Override

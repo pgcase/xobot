@@ -22,53 +22,13 @@
 -->
 <plugin>
    <extension
+
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.ui.ide.workbench"
             name="%product.name">
       </product>
-   </extension>
-
-   <extension
-         point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="org.pgcase.xobot.workspace.compare.ui.CompareToTargetHandler"
-            id="org.pgcase.xobot.e3.command.compare.to.target"
-            name="Compare to Target">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.commandImages">
-      <image
-            commandId="org.pgcase.xobot.e3.command.compare.to.target"
-            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png">
-      </image>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
-         <menu
-               id="compareWithMenu"
-               label="Comp&amp;are With">
-            <command
-                  commandId="org.pgcase.xobot.e3.command.compare.to.target"
-                  label="Xobot Target..."
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <iterate
-                        ifEmpty="false">
-                     <adapt
-                           type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-                     </adapt>
-                  </iterate>
-               </visibleWhen>
-            </command>
-         </menu>
-      </menuContribution>
    </extension>
 
 </plugin>

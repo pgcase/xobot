@@ -7,6 +7,7 @@ import org.eclipse.core.resources.mapping.ResourceMappingContext;
 import org.eclipse.core.resources.mapping.ResourceTraversal;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 
 public class XobotResourceMapping extends ResourceMapping {
 
@@ -23,7 +24,7 @@ public class XobotResourceMapping extends ResourceMapping {
 
 	@Override
 	public String getModelProviderId() {
-		return XobotModelProvider.XOBOT_MODEL_PROVIDER_ID;
+		return WorkspaceCoreResources.MODEL_PROVIDER_ID;
 	}
 
 	@Override

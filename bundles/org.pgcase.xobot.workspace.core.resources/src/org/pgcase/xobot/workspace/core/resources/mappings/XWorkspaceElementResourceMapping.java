@@ -24,6 +24,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.mapping.ResourceMapping;
 import org.eclipse.core.runtime.Adapters;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
@@ -66,7 +67,7 @@ public abstract class XWorkspaceElementResourceMapping extends ResourceMapping {
 	}
 	
 	public String getModelProviderId() {
-		return XobotModelProvider.XOBOT_MODEL_PROVIDER_ID;
+		return WorkspaceCoreResources.MODEL_PROVIDER_ID;
 	}
 
 	public IProject[] getProjects() {

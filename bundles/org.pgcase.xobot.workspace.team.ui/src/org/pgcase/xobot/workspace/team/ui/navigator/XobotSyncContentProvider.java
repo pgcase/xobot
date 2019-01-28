@@ -61,7 +61,6 @@ import org.eclipse.ui.navigator.PipelinedViewerUpdate;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionIndex;
-import org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
@@ -91,7 +90,7 @@ public class XobotSyncContentProvider extends SynchronizationContentProvider imp
 	}
 
 	protected String getModelProviderId() {
-		return XobotModelProvider.XOBOT_MODEL_PROVIDER_ID;
+		return WorkspaceCoreResources.MODEL_PROVIDER_ID;
 	}
 
 	protected Object getModelRoot() {

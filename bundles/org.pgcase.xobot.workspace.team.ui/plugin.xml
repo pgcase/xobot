@@ -245,7 +245,7 @@
       <teamContentProvider
             contentExtensionId="org.pgcase.xobot.workspace.team.ui.navigatorContent.xobot"
             icon="images/xobot16.png"
-            modelProviderId="org.pgcase.xobot.workspace.core.resources.xobot">
+            modelProviderId="org.pgcase.xobot.workspace.core.resources.model">
       </teamContentProvider>
    </extension>
    <extension

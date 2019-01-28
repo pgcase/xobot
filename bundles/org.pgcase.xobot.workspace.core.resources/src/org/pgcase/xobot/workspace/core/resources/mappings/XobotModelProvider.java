@@ -41,8 +41,6 @@ import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
 public class XobotModelProvider extends ModelProvider {
 	
-	public static final String XOBOT_MODEL_PROVIDER_ID= "org.pgcase.xobot.workspace.core.resources.xobot"; //$NON-NLS-1$
-
 	public IStatus validateChange(IResourceDelta delta, IProgressMonitor monitor) {
 		// Visit the changes in the delta to look for changes we care about
 		final List<IStatus> problems = new ArrayList<>();

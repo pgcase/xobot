@@ -31,7 +31,7 @@
       </filesystem>
    </extension>
    <extension
-         id="xobot"
+         id="model"
          name="%modelProvider.xobot.name"
          point="org.eclipse.core.resources.modelProviders">
       <modelProvider
@@ -41,7 +41,7 @@
             id="org.eclipse.core.resources.modelProvider">
       </extends-model>
       <enablement>
-          <test property="org.eclipse.core.resources.projectNature" value="org.pgcase.xobot.workspace.core.resources.xobot" />
+          <test property="org.eclipse.core.resources.projectNature" value="org.pgcase.xobot.workspace.core.resources.nature" />
       </enablement>
    </extension>
    <extension
@@ -62,13 +62,34 @@
       </factory>
    </extension>
    <extension
-         id="xobot"
+         id="nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.pgcase.xobot.workspace.core.resources.XobotProjectNature">
+               class="org.pgcase.xobot.workspace.internal.core.resources.XobotProjectNature">
          </run>
       </runtime>
+      <builder
+            id="org.pgcase.xobot.workspace.core.resources.builder">
+      </builder>
+   </extension>
+   <extension
+         id="builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.pgcase.xobot.workspace.internal.core.resources.XobotProjectBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="problem"
+         name="%markers.problem.name"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
    </extension>
 
 </plugin>

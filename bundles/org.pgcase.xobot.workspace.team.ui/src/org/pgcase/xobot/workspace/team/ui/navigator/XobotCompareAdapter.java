@@ -44,7 +44,7 @@ public class XobotCompareAdapter extends SynchronizationCompareAdapter {
 	private static final String MEMENTO_INDEX_PATH = "index"; //$NON-NLS-1$
 	private static final String MEMENTO_RESOURCE_PATH = "resource"; //$NON-NLS-1$
 
-	private static final String CTX_MODEL_MAPPINGS = XobotModelProvider.XOBOT_MODEL_PROVIDER_ID;
+	private static final String CTX_MODEL_MAPPINGS = WorkspaceCoreResources.MODEL_PROVIDER_ID;
 	
 	private final XobotModelProvider provider;
 

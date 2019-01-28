@@ -28,6 +28,22 @@
       <product
             application="org.eclipse.ui.ide.workbench"
             name="%product.name">
+         <property
+               name="windowImages"
+               value="images/xobot16.png,images/xobot32.png,images/xobot48.png,images/xobot64.png,images/xobot128.png">
+         </property>
+         <property
+               name="aboutImage"
+               value="images/xobot_lg.png">
+         </property>
+         <property
+               name="aboutText"
+               value="%aboutText">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
       </product>
    </extension>
 

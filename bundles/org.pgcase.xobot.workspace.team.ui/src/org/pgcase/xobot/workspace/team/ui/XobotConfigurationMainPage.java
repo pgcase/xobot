@@ -30,6 +30,7 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.wizard.IWizardContainer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -42,6 +43,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 public class XobotConfigurationMainPage extends WizardPage {
@@ -53,14 +55,17 @@ public class XobotConfigurationMainPage extends WizardPage {
 	String sourceLocation;
 	Combo sourceCombo;
 	
-	String testLocation;
-	Combo testCombo;
+	String sandboxLocation;
+	Combo sandboxCombo;
 
-	String developLocation;
-	Combo developCombo;
+	String integrationLocation;
+	Combo integrationCombo;
 
-	String prodLocation;
-	Combo prodCombo;
+	String stableLocation;
+	Combo stableCombo;
+
+	String officialLocation;
+	Combo officialCombo;
 
 	public XobotConfigurationMainPage(String pageName, String title, String description, ImageDescriptor titleImage) {
 		super(pageName, title, titleImage);
@@ -159,24 +164,31 @@ public class XobotConfigurationMainPage extends WizardPage {
 				XobotConfigurationMainPage.this.validateFields();		
 			}
 		});
-		testCombo = createGroup(composite, "Тестовый стэнд", "Конфигурация тестового стэнда");
-		testCombo.addListener(SWT.Modify, new Listener() {
+		sandboxCombo = createGroup(composite, "Экспериментальный стэнд", "Конфигурация экспериментальный стэнда");
+		sandboxCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				testLocation = ((Combo)e.widget).getText();
+				sandboxLocation = ((Combo)e.widget).getText();
 				XobotConfigurationMainPage.this.validateFields();		
 			}
 		});
-		developCombo = createGroup(composite, "Интеграционный стэнд", "Конфигурация интеграционного стэнда");
-		developCombo.addListener(SWT.Modify, new Listener() {
+		integrationCombo = createGroup(composite, "Интеграционный стэнд", "Конфигурация интеграционного стэнда");
+		integrationCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				developLocation = ((Combo)e.widget).getText();
+				integrationLocation = ((Combo)e.widget).getText();
 				XobotConfigurationMainPage.this.validateFields();		
 			}
 		});
-		prodCombo = createGroup(composite, "Ахтунг! Прод!", "И не валите всё потом на Хобот");
-		prodCombo.addListener(SWT.Modify, new Listener() {
+		stableCombo = createGroup(composite, "Стабильный стэнд", "Конфигурация стабильного стэнда");
+		stableCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				prodLocation = ((Combo)e.widget).getText();
+				stableLocation = ((Combo)e.widget).getText();
+				XobotConfigurationMainPage.this.validateFields();		
+			}
+		});
+		officialCombo = createGroup(composite, "Ахтунг! Прод!", "И не валите всё потом на Хобот");
+		officialCombo.addListener(SWT.Modify, new Listener() {
+			public void handleEvent(Event e) {
+				officialLocation = ((Combo)e.widget).getText();
 				XobotConfigurationMainPage.this.validateFields();		
 			}
 		});

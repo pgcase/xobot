@@ -46,10 +46,10 @@ public class XobotProjectBuilder extends IncrementalProjectBuilder {
 	protected IProject[] build(int kind, Map<String, String> args, IProgressMonitor monitor) throws CoreException {
 		IProject project = getProject();
 //		IFile file = project.getFile(".xobot");
-		createProblem(project, "Не указан экспериментальный стэнд", IMarker.SEVERITY_ERROR);
-		createProblem(project, "Не указан интеграционный стэнд", IMarker.SEVERITY_ERROR);
-		createProblem(project, "Не указан стабильный стэнд", IMarker.SEVERITY_WARNING);
-		createProblem(project, "Не указан официальный стэнд", IMarker.SEVERITY_WARNING);
+		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_sandbox, IMarker.SEVERITY_ERROR);
+		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_integration, IMarker.SEVERITY_ERROR);
+		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_stable, IMarker.SEVERITY_WARNING);
+		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_official, IMarker.SEVERITY_WARNING);
 		return null;
 	}
 
@@ -57,7 +57,7 @@ public class XobotProjectBuilder extends IncrementalProjectBuilder {
 		IMarker marker = resource.createMarker(WorkspaceCoreResources.MARKER_PROBLEM_ID);
 		marker.setAttribute(IMarker.MESSAGE, message);
 		marker.setAttribute(IMarker.SEVERITY, severity);
-		marker.setAttribute(IMarker.LOCATION, "Источники/Приемники");
+		marker.setAttribute(IMarker.LOCATION, WorkspaceCoreResourcesMessages.XobotProjectBuilder_location_sources_targets);
 	}
 	
 }

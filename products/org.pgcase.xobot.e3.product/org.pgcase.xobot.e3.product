@@ -23,7 +23,7 @@
 <product name="Xobot IDE" uid="org.pgcase.xobot.e3.product" id="org.pgcase.xobot.e3.product" application="org.eclipse.ui.ide.workbench" version="0.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.pgcase.xobot.ide/images/xobot_lg.png"/>
+      <image path="/org.pgcase.xobot.e3/images/xobot_lg.png"/>
    </aboutInfo>
 
    <configIni use="default">
@@ -36,10 +36,10 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.pgcase.xobot.ide/images/xobot16.png" i32="/org.pgcase.xobot.ide/images/xobot32.png" i48="/org.pgcase.xobot.ide/images/xobot48.png" i64="/org.pgcase.xobot.ide/images/xobot64.png" i128="/org.pgcase.xobot.ide/images/xobot128.png"/>
+   <windowImages i16="/org.pgcase.xobot.e3/images/xobot16.png" i32="/org.pgcase.xobot.e3/images/xobot32.png" i48="/org.pgcase.xobot.e3/images/xobot48.png" i64="/org.pgcase.xobot.e3/images/xobot64.png" i128="/org.pgcase.xobot.e3/images/xobot128.png"/>
 
    <splash
-      location="org.pgcase.xobot.ide" />
+      location="org.pgcase.xobot.e3" />
    <launcher name="XobotIDE">
       <win useIco="true">
          <ico path="./ico/xobot.ico"/>
@@ -63,7 +63,7 @@
    <features>
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.emf.ecore"/>
-      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.eclipse.platform"/>
       <feature id="org.pgcase.xobot.basis.feature"/>
       <feature id="org.pgcase.xobot.landscape.feature"/>
       <feature id="org.pgcase.xobot.toolchain.feature"/>

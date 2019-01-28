@@ -134,7 +134,7 @@
             class="org.pgcase.xobot.workspace.team.ui.XobotSynchronizeParticipant"
             icon="images/xobot16.png"
             id="org.pgcase.xobot.workspace.team.ui.xobot"
-            name="Xobot Repository"
+            name="Пастбище Хобота"
             persistent="false">
       </participant>
    </extension>
@@ -283,6 +283,89 @@
                visible="true">
          </view>
       </perspectiveExtension>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.pgcase.xobot.workspace.team.ui.CompareToTargetHandler"
+            id="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
+            name="Compare to Target">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="compareWithMenu"
+               label="%compare.menu.label">
+            <command
+                  commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
+                  label="Экспериментальный стэнд..."
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                     </adapt>
+                  </iterate>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
+                  label="Интеграционный стэнд..."
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                     </adapt>
+                  </iterate>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
+                  label="Стабильный стэнд..."
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                     </adapt>
+                  </iterate>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
+                  label="%compare.official.label"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                     </adapt>
+                  </iterate>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
    </extension>
 
 </plugin>

@@ -52,9 +52,9 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 
 		public NewXobotProjectWizardPage(String pageName) {
 			super(pageName);
-			setTitle("New Xobot Project");
-			setDescription("Xobot Project");
-			setMessage("Project name must be specified");
+			setTitle(Messages.NewXobotProjectWizard_Title);
+			setDescription(Messages.NewXobotProjectWizard_Description);
+			setMessage(Messages.NewXobotProjectWizard_Messages);
 		}
 
 		@Override

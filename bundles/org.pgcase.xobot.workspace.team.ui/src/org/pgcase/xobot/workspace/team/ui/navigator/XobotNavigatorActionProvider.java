@@ -38,6 +38,7 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.window.Window;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
@@ -46,6 +47,7 @@ import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
+import org.pgcase.xobot.workspace.team.ui.Messages;
 
 //FIXME: move to non-team bundle
 public class XobotNavigatorActionProvider extends CommonActionProvider {
@@ -59,23 +61,24 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 	public XobotNavigatorActionProvider() {
 		super();
 	}
-	
+
 	public void init(ICommonActionExtensionSite aSite) {
 		super.init(aSite);
 		createActions();
 	}
 
 	private void createActions() {
-		deleteAction = new Action("Delete") {
+		deleteAction = new Action(Messages.XobotNavigatorActionProvider_Action_Delete) {
 			public void run() {
-				IStructuredSelection selection = (IStructuredSelection)getContext().getSelection();
+				IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 				try {
 					for (Iterator iter = selection.iterator(); iter.hasNext();) {
 						Object object = iter.next();
 						if (object instanceof XWorkspaceElementDescriptor) {
 							XWorkspaceElementDescriptor element = (XWorkspaceElementDescriptor) object;
-							//FIXME: progress
-							WorkspaceCoreResources.geWorkspaceElementService().delete(element, new NullProgressMonitor());
+							// FIXME: progress
+							WorkspaceCoreResources.geWorkspaceElementService().delete(element,
+									new NullProgressMonitor());
 						}
 					}
 				} catch (CoreException e) {
@@ -83,7 +86,7 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 				}
 			}
 		};
-		newFolderAction = new Action("Create Folder") {
+		newFolderAction = new Action(Messages.XobotNavigatorActionProvider_Action_CreateFolder) {
 			public void run() {
 				IContainer container = getSelectedContainer();
 				if (container != null) {
@@ -100,7 +103,10 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 			}
 
 			private String promptForName() {
-				InputDialog dialog = new InputDialog(getShell(), "Enter Name", "Enter the name of the new folder", "New Folder", null);
+				InputDialog dialog = new InputDialog(getShell(),
+						Messages.XobotNavigatorActionProvider_InputDialogFolder_Title,
+						Messages.XobotNavigatorActionProvider_InputDialogFolder_Description,
+						Messages.XobotNavigatorActionProvider_InputDialogFolder_Init, null);
 				int result = dialog.open();
 				if (result == Window.OK) {
 					return dialog.getValue();
@@ -108,7 +114,7 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 				return null;
 			}
 		};
-		newFunctionIndexAction = new Action("Create Function Index") {
+		newFunctionIndexAction = new Action(Messages.XobotNavigatorActionProvider_Action_CreateFunctionIndex) {
 			public void run() {
 				IContainer container = getSelectedContainer();
 				if (container != null) {
@@ -129,7 +135,10 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 			}
 
 			private String promptForName() {
-				InputDialog dialog = new InputDialog(getShell(), "Enter Name", "Enter the name of the new function index", "New Function Index", null);
+				InputDialog dialog = new InputDialog(getShell(),
+						Messages.XobotNavigatorActionProvider_InputDialogFuctionIndex_Title,
+						Messages.XobotNavigatorActionProvider_InputDialogFuctionIndex_Description,
+						Messages.XobotNavigatorActionProvider_InputDialogFuctionIndex_Init, null);
 				int result = dialog.open();
 				if (result == Window.OK) {
 					return dialog.getValue();
@@ -137,7 +146,7 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 				return null;
 			}
 		};
-		newFunctionBodyAction = new Action("Create Function Body") {
+		newFunctionBodyAction = new Action(Messages.XobotNavigatorActionProvider_Action_CreateFunctionBody) {
 			public void run() {
 				XFunctionDefinitionIndex functionIndex = getSelectedFunctionFile();
 				if (functionIndex != null) {
@@ -161,13 +170,17 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 							ErrorDialog.openError(getShell(), null, null, e.getStatus());
 						}
 					} else {
-						//FIXME: error
+						// FIXME: error
 					}
 				}
 			}
 
 			private String promptForPath(XProjectFolderDescriptor parent) {
-				InputDialog dialog = new InputDialog(getShell(), "Enter Path", "Enter the path of the new function body relative to " + parent.getPath(), "New Function Body", null);
+				String msg = NLS.bind(Messages.XobotNavigatorActionProvider_InputDialogFuctionBody_Description,
+						parent.getPath());
+				InputDialog dialog = new InputDialog(getShell(),
+						Messages.XobotNavigatorActionProvider_InputDialogFuctionBody_Title, msg,
+						Messages.XobotNavigatorActionProvider_InputDialogFuctionBody_Init, null);
 				int result = dialog.open();
 				if (result == Window.OK) {
 					return dialog.getValue();
@@ -175,9 +188,9 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 				return null;
 			}
 		};
-		makeDirty = new Action("Make Dirty") {
+		makeDirty = new Action(Messages.XobotNavigatorActionProvider_Action_MakeDirty) {
 			public void run() {
-				IStructuredSelection selection = (IStructuredSelection)getContext().getSelection();
+				IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					Object element = iter.next();
 					if (element instanceof XFunctionDefinitionIndex) {
@@ -189,12 +202,13 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 			}
 
 			private XobotSaveablesProvider getSaveablesProvider() {
-				ITreeContentProvider provider = getActionSite().getContentService().getContentExtensionById("org.eclipse.team.examples.model.navigator").getContentProvider();
-				return (XobotSaveablesProvider)Adapters.adapt(provider, SaveablesProvider.class);
+				ITreeContentProvider provider = getActionSite().getContentService()
+						.getContentExtensionById("org.eclipse.team.examples.model.navigator").getContentProvider();
+				return (XobotSaveablesProvider) Adapters.adapt(provider, SaveablesProvider.class);
 			}
 		};
 	}
-	
+
 	protected Shell getShell() {
 		return getActionSite().getViewSite().getShell();
 	}
@@ -215,7 +229,7 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	IContainer getSelectedContainer() {
-		IStructuredSelection selection = (IStructuredSelection)getContext().getSelection();
+		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 		if (selection.size() == 1) {
 			Object o = selection.getFirstElement();
 			IResource adapted = Adapters.adapt(o, IResource.class);
@@ -225,9 +239,9 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 		}
 		return null;
 	}
-	
+
 	XFunctionDefinitionIndex getSelectedFunctionFile() {
-		IStructuredSelection selection = (IStructuredSelection)getContext().getSelection();
+		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 		if (selection.size() == 1) {
 			Object o = selection.getFirstElement();
 			if (o instanceof XFunctionDefinitionIndex) {

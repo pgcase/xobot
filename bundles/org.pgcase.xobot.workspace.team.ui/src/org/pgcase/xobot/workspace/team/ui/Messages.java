@@ -47,7 +47,24 @@ public class Messages extends NLS {
 	public static String XobotConfigurationWizard_MainPage_DialogError_Message;
 	
 	public static String XobotSynchronizeWizard_PageTitle;
-
+	//
+	public static String XobotNavigatorActionProvider_Action_Delete;
+	public static String XobotNavigatorActionProvider_Action_CreateFolder;
+	public static String XobotNavigatorActionProvider_Action_CreateFunctionIndex;
+	public static String XobotNavigatorActionProvider_Action_CreateFunctionBody;
+	public static String XobotNavigatorActionProvider_Action_MakeDirty;
+	
+	public static String XobotNavigatorActionProvider_InputDialogFolder_Title;
+	public static String XobotNavigatorActionProvider_InputDialogFolder_Description;
+	public static String XobotNavigatorActionProvider_InputDialogFolder_Init;
+	
+	public static String XobotNavigatorActionProvider_InputDialogFuctionIndex_Title;
+	public static String XobotNavigatorActionProvider_InputDialogFuctionIndex_Description;
+	public static String XobotNavigatorActionProvider_InputDialogFuctionIndex_Init;
+	
+	public static String XobotNavigatorActionProvider_InputDialogFuctionBody_Title;
+	public static String XobotNavigatorActionProvider_InputDialogFuctionBody_Description;
+	public static String XobotNavigatorActionProvider_InputDialogFuctionBody_Init;
 	static {
 		// load message values from bundle file
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

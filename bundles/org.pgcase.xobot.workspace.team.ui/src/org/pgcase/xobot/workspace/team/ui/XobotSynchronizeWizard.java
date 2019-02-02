@@ -46,7 +46,7 @@ public class XobotSynchronizeWizard extends ModelParticipantWizard {
 	}
 
 	protected String getPageTitle() {
-		return "Синхронизировать Хоботом";
+		return Messages.XobotSynchronizeWizard_PageTitle;
 	}
 
 	protected IResource[] getRootResources() {

@@ -30,7 +30,6 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.wizard.IWizardContainer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -43,18 +42,17 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 public class XobotConfigurationMainPage extends WizardPage {
-	
+
 	private static final String STORE_LOCATION = "XobotConfigurationMainPage.STORE_LOCATION";//$NON-NLS-1$
 
 	private static final int COMBO_HISTORY_LENGTH = 5;
-	
+
 	String sourceLocation;
 	Combo sourceCombo;
-	
+
 	String sandboxLocation;
 	Combo sandboxCombo;
 
@@ -72,7 +70,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		setDescription(description);
 		setTitle(title);
 	}
-		
+
 	protected Button createCheckBox(Composite group, String label) {
 		Button button = new Button(group, SWT.CHECK | SWT.LEFT);
 		button.setText(label);
@@ -81,7 +79,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		button.setLayoutData(data);
 		return button;
 	}
-	
+
 	protected Combo createCombo(Composite parent) {
 		Combo combo = new Combo(parent, SWT.READ_ONLY);
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
@@ -89,21 +87,21 @@ public class XobotConfigurationMainPage extends WizardPage {
 		combo.setLayoutData(data);
 		return combo;
 	}
-	
+
 	protected Composite createComposite(Composite parent, int numColumns) {
 		Composite composite = new Composite(parent, SWT.NULL);
-	
+
 		GridLayout layout = new GridLayout();
 		layout.numColumns = numColumns;
 		composite.setLayout(layout);
-	
+
 		GridData data = new GridData();
 		data.verticalAlignment = GridData.FILL;
 		data.horizontalAlignment = GridData.FILL;
 		composite.setLayoutData(data);
 		return composite;
 	}
-	
+
 	protected Label createLabel(Composite parent, String text) {
 		Label label = new Label(parent, SWT.LEFT);
 		label.setText(text);
@@ -113,7 +111,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		label.setLayoutData(data);
 		return label;
 	}
-	
+
 	protected Text createTextField(Composite parent) {
 		Text text = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
@@ -123,7 +121,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		text.setLayoutData(data);
 		return text;
 	}
-	
+
 	protected String[] addToHistory(String[] history, String newEntry) {
 		List<String> l = new ArrayList<>(Arrays.asList(history));
 		addToHistory(l, newEntry);
@@ -131,16 +129,16 @@ public class XobotConfigurationMainPage extends WizardPage {
 		l.toArray(r);
 		return r;
 	}
-	
+
 	protected void addToHistory(List<String> history, String newEntry) {
 		history.remove(newEntry);
-		history.add(0,newEntry);
-	
+		history.add(0, newEntry);
+
 		if (history.size() > COMBO_HISTORY_LENGTH) {
 			history.remove(COMBO_HISTORY_LENGTH);
 		}
 	}
-	
+
 	protected Combo createEditableCombo(Composite parent) {
 		Combo combo = new Combo(parent, SWT.NULL);
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
@@ -148,7 +146,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		combo.setLayoutData(data);
 		return combo;
 	}
-	
+
 	public void createControl(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NULL);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -156,40 +154,45 @@ public class XobotConfigurationMainPage extends WizardPage {
 		layout.numColumns = 1;
 		composite.setLayout(layout);
 		setControl(composite);
-		
-		sourceCombo = createGroup(composite, "Исходный код", "Путь к Git репозиторию");
+
+		sourceCombo = createGroup(composite, Messages.XobotConfigurationMainPage_Src,
+				Messages.XobotConfigurationMainPage_PathtoSrc);
 		sourceCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				sourceLocation = ((Combo)e.widget).getText();
-				XobotConfigurationMainPage.this.validateFields();		
+				sourceLocation = ((Combo) e.widget).getText();
+				XobotConfigurationMainPage.this.validateFields();
 			}
 		});
-		sandboxCombo = createGroup(composite, "Экспериментальный стэнд", "Конфигурация экспериментальный стэнда");
+		sandboxCombo = createGroup(composite, Messages.XobotConfigurationMainPage_Stend_Exp,
+				Messages.XobotConfigurationMainPage_Config_Stend_Exp);
 		sandboxCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				sandboxLocation = ((Combo)e.widget).getText();
-				XobotConfigurationMainPage.this.validateFields();		
+				sandboxLocation = ((Combo) e.widget).getText();
+				XobotConfigurationMainPage.this.validateFields();
 			}
 		});
-		integrationCombo = createGroup(composite, "Интеграционный стэнд", "Конфигурация интеграционного стэнда");
+		integrationCombo = createGroup(composite, Messages.XobotConfigurationMainPage_Stend_Itg,
+				Messages.XobotConfigurationMainPage_Config_Stend_Itg);
 		integrationCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				integrationLocation = ((Combo)e.widget).getText();
-				XobotConfigurationMainPage.this.validateFields();		
+				integrationLocation = ((Combo) e.widget).getText();
+				XobotConfigurationMainPage.this.validateFields();
 			}
 		});
-		stableCombo = createGroup(composite, "Стабильный стэнд", "Конфигурация стабильного стэнда");
+		stableCombo = createGroup(composite, Messages.XobotConfigurationMainPage_Stend_Stable,
+				Messages.XobotConfigurationMainPage_Config_Stend_Stable);
 		stableCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				stableLocation = ((Combo)e.widget).getText();
-				XobotConfigurationMainPage.this.validateFields();		
+				stableLocation = ((Combo) e.widget).getText();
+				XobotConfigurationMainPage.this.validateFields();
 			}
 		});
-		officialCombo = createGroup(composite, "Ахтунг! Прод!", "И не валите всё потом на Хобот");
+		officialCombo = createGroup(composite, Messages.XobotConfigurationMainPage_Stend_Production,
+				Messages.XobotConfigurationMainPage_Config_Stend_Production);
 		officialCombo.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event e) {
-				officialLocation = ((Combo)e.widget).getText();
-				XobotConfigurationMainPage.this.validateFields();		
+				officialLocation = ((Combo) e.widget).getText();
+				XobotConfigurationMainPage.this.validateFields();
 			}
 		});
 
@@ -197,7 +200,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		initializeValues();
 		validateFields();
 	}
-	
+
 	private Combo createGroup(Composite composite, String groupText, String labelText) {
 		Group group = new Group(composite, SWT.NONE);
 		group.setText(groupText);
@@ -209,7 +212,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		Label label = new Label(group, SWT.NULL);
 		label.setText(labelText);
 		label.setLayoutData(new GridData());
-		
+
 		Combo combo = createEditableCombo(group);
 		combo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		new Label(group, SWT.NULL);
@@ -220,9 +223,9 @@ public class XobotConfigurationMainPage extends WizardPage {
 			public void handleEvent(Event event) {
 				DirectoryDialog d = new DirectoryDialog(getShell());
 				String directory = d.open();
-				if(directory!=null) {
+				if (directory != null) {
 					combo.setText(directory);
-				}			
+				}
 			}
 		});
 		return combo;
@@ -236,6 +239,7 @@ public class XobotConfigurationMainPage extends WizardPage {
 		saveWidgetValues();
 		return true;
 	}
+
 	/**
 	 * Initializes states of the controls.
 	 */
@@ -252,17 +256,18 @@ public class XobotConfigurationMainPage extends WizardPage {
 		}
 	}
 
-	//FIXME: store all combos
+	// FIXME: store all combos
 	private void saveWidgetValues() {
 		IDialogSettings settings = getDialogSettings();
 		if (settings != null) {
 			String[] locations = settings.getArray(STORE_LOCATION);
-			if (locations == null) locations = new String[0];
+			if (locations == null)
+				locations = new String[0];
 			locations = addToHistory(locations, sourceCombo.getText());
-			settings.put(STORE_LOCATION, locations);	
+			settings.put(STORE_LOCATION, locations);
 		}
 	}
-	
+
 	void validateFields() {
 		String location = sourceCombo.getText();
 		if (location.length() == 0) {
@@ -271,10 +276,10 @@ public class XobotConfigurationMainPage extends WizardPage {
 			return;
 		}
 		File file = new File(location);
-		if(!file.exists() || !file.isDirectory()) {
+		if (!file.exists() || !file.isDirectory()) {
 			setErrorMessage("Похоже, что такой папки нет. Но это пока допустимо. Пока.");
 			setPageComplete(true);
-			return;				
+			return;
 		}
 		setErrorMessage(null);
 		setPageComplete(true);

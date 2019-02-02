@@ -35,10 +35,10 @@ public class CompareToTargetHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Shell shell = HandlerUtil.getActiveShell(event);
 		IStructuredSelection selection = HandlerUtil.getCurrentStructuredSelection(event);
-		String bind = "Here we should compare {0} to target";
 		Object[] selected = selection.toArray();
-		MessageDialog.openInformation(shell, "Compare to Target", NLS.bind(bind, selected ));
-		// TODO Auto-generated method stub
+		MessageDialog.openInformation(shell, Messages.XobotTeamUI_CompareToTarget_Title,
+				NLS.bind(Messages.XobotTeamUI_CompareToTarget_Message, selected));
+		
 		return null;
 	}
 

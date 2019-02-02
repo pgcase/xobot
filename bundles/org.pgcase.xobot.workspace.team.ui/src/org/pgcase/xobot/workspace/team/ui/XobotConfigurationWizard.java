@@ -58,9 +58,9 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 
 	public void addPages() {
 		mainPage = new XobotConfigurationMainPage(
-			"XobotConfigurationMainPage", //$NON-NLS-1$
-			"Протянуть Хобот",
-			"Хобот поможет организовать работу с процедурными расширениями",
+			Messages.XobotConfigurationWizard_MainPage_Name,
+			Messages.XobotConfigurationWizard_MainPage_Title,
+			Messages.XobotConfigurationWizard_MainPage_Description,
 			null);
 		addPage(mainPage);
 	}
@@ -78,8 +78,8 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 		} catch (TeamException e) {
 			ErrorDialog.openError(
 				getShell(),
-				"Хобот Устал",
-				"Не получается протянуть Хобот",
+				Messages.XobotConfigurationWizard_MainPage_DialogError_Title,
+				Messages.XobotConfigurationWizard_MainPage_DialogError_Message,
 				e.getStatus());
 			return false;
 		}

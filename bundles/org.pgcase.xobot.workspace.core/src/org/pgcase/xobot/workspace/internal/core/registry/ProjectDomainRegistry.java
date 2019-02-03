@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.internal.core.registry;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -48,8 +47,6 @@ import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 @Component
 public class ProjectDomainRegistry extends EditingDomainBasedRegistry<XProjectDescriptor> implements XProjectRegistry {
 
-	private final Map<String, XProjectDescriptor> projectIndex = new HashMap<>();
-
 	@Activate
 	@Override
 	public void activate(Map<String, Object> properties) {
@@ -68,18 +65,13 @@ public class ProjectDomainRegistry extends EditingDomainBasedRegistry<XProjectDe
 	}
 
 	@Override
-	public Iterable<? extends XProjectDescriptor> getRegistryContent() {
-		return getProjects();
-	}
-
-	@Override
-	public Iterable<XProjectDescriptor> getProjects() {
-		return projectIndex.values();
+	public Iterable<? extends XProjectDescriptor> getProjects() {
+		return getRegistryContent();
 	}
 
 	@Override
 	public XProjectDescriptor getProject(String projectIdentifier) {
-		return projectIndex.get(projectIdentifier);
+		return getRegistryContent(projectIdentifier);
 	}
 
 	@Override

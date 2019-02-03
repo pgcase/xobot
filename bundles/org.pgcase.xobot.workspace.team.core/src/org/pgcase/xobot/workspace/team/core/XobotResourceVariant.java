@@ -26,7 +26,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.logging.Logger;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -35,35 +37,34 @@ import org.eclipse.team.core.TeamException;
 import org.eclipse.team.core.variants.CachedResourceVariant;
 
 public class XobotResourceVariant extends CachedResourceVariant {
-	
+
 	private java.io.File ioFile;
 	private byte[] bytes;
-	
+
 	public XobotResourceVariant(java.io.File file) {
 		this.ioFile = file;
 	}
-	
+
 	public XobotResourceVariant(java.io.File file, byte[] bytes) {
 		this.ioFile = file;
 		this.bytes = bytes;
 	}
-	
+
 	protected void fetchContents(IProgressMonitor monitor) throws TeamException {
 		setContents(getContents(), monitor);
 	}
-	
+
 	protected String getCachePath() {
 		return getFilePath() + String.valueOf(' ') + ioFile.lastModified();
 	}
-	
+
 	private String getFilePath() {
 		try {
 			return ioFile.getCanonicalPath();
 		} catch (IOException e) {
-			IStatus status = new Status(IStatus.ERROR, TeamCore.ID, 0, 
-					"Failed to obtain canonical path for " + ioFile.getAbsolutePath(), e);
-			//FIXME: report
-			e.printStackTrace();
+			String msg = NLS.bind(Messages.XobotResourceVariant_GetFilePath_Error, ioFile.getAbsolutePath());
+			IStatus status = new Status(IStatus.ERROR, TeamCore.ID, 0, msg, e);
+			ResourcesPlugin.getPlugin().getLog().log(status);
 			return ioFile.getAbsolutePath();
 		}
 	}
@@ -71,25 +72,25 @@ public class XobotResourceVariant extends CachedResourceVariant {
 	protected String getCacheId() {
 		return TeamCore.ID;
 	}
-	
+
 	public String getName() {
 		return ioFile.getName();
 	}
-	
+
 	public boolean isContainer() {
 		return ioFile.isDirectory();
 	}
-	
+
 	public String getContentIdentifier() {
-		//FIXME: rework
+		// FIXME: rework
 		return new Date(ioFile.lastModified()).toString();
 	}
-	
+
 	public byte[] asBytes() {
 		if (bytes == null) {
-			//FIXME: rework
+			// FIXME: rework
 			bytes = Long.toString(ioFile.lastModified()).getBytes();
-		} 
+		}
 		return bytes;
 	}
 
@@ -117,8 +118,8 @@ public class XobotResourceVariant extends CachedResourceVariant {
 			throw new TeamException(message, e);
 		}
 	}
-	
-	public java.io.File getFile(){
+
+	public java.io.File getFile() {
 		return ioFile;
 	}
 }

@@ -24,6 +24,7 @@ import java.io.File;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceRuleFactory;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.team.ResourceRuleFactory;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -41,9 +42,9 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 
 	private static final ResourceRuleFactory RESOURCE_RULE_FACTORY = new ResourceRuleFactory() {
 	};
-	
+
 	private IPath root;
-	
+
 	private static QualifiedName FILESYSTEM_REPO_LOC = new QualifiedName(TeamCore.ID, "disk_location"); //$NON-NLS-1$
 
 	public XobotRepositoryProvider() {
@@ -62,24 +63,24 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 	public String getID() {
 		return REPOSITORY_PROVIDER_XOBOT;
 	}
-		
+
 	public void setTargetLocation(String location) throws TeamException {
-		
+
 		root = new Path(location);
-		
+
 		File file = new File(location);
 		if (file.exists() && !file.isDirectory()) {
-			String message = NLS.bind("Location {0} must be a folder", location);
+			String message = NLS.bind(Messages.XobotRepositoryProvider_TargetLocation_Error, location);
 			throw new TeamException(message);
 		}
-		
+
 		try {
 			getProject().setPersistentProperty(FILESYSTEM_REPO_LOC, location);
 		} catch (CoreException e) {
 			throw TeamCore.wrapException(e);
 		}
 	}
-	
+
 	public IPath getRoot() {
 		if (root == null) {
 			try {
@@ -89,9 +90,7 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 				}
 				root = new Path(location);
 			} catch (CoreException e) {
-				// log the problem and carry on
-				//FIXME:
-				e.printStackTrace();
+				ResourcesPlugin.getPlugin().getLog().log(e.getStatus());
 				return null;
 			}
 		}
@@ -99,18 +98,21 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 	}
 
 	public IResourceVariant getResourceVariant(IResource resource, byte[] bytes) {
-		if (bytes == null) return null;
+		if (bytes == null)
+			return null;
 		File file = getFile(resource);
-		if (file == null) return null;
+		if (file == null)
+			return null;
 		return new XobotResourceVariant(file, bytes);
 	}
-	
+
 	public IResourceVariant getResourceVariant(IResource resource) {
 		File file = getFile(resource);
-		if (file == null || !file.exists()) return null;
+		if (file == null || !file.exists())
+			return null;
 		return new XobotResourceVariant(file);
 	}
-	
+
 	public java.io.File getFile(IResource resource) {
 		if (resource.getProject().equals(getProject())) {
 			IPath rootdir = getRoot();
@@ -118,10 +120,9 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 		}
 		return null;
 	}
-	
+
 	public IResourceRuleFactory getRuleFactory() {
 		return RESOURCE_RULE_FACTORY;
 	}
-	
-	
+
 }

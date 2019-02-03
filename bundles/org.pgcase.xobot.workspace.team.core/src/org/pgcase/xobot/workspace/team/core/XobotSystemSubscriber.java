@@ -66,7 +66,7 @@ public class XobotSystemSubscriber extends ThreeWaySubscriber {
 	}
 
 	public String getName() {
-		return "Xobot Subscriber";
+		return Messages.XobotSystemSubscriber_Name;
 	}
 
 	public IResource[] roots() {

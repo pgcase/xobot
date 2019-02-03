@@ -65,6 +65,7 @@ public class Messages extends NLS {
 	public static String XobotNavigatorActionProvider_InputDialogFuctionBody_Title;
 	public static String XobotNavigatorActionProvider_InputDialogFuctionBody_Description;
 	public static String XobotNavigatorActionProvider_InputDialogFuctionBody_Init;
+	
 	static {
 		// load message values from bundle file
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

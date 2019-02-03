@@ -66,12 +66,12 @@ public class XobotModelMerger extends ResourceMappingMerger {
 	protected org.eclipse.core.resources.mapping.ModelProvider getModelProvider() {
 		return provider;
 	}
-	
+
 	public IStatus merge(IMergeContext mergeContext, IProgressMonitor monitor) throws CoreException {
 		try {
 			IStatus status;
 			if (mergeContext.getType() == SynchronizationContext.THREE_WAY) {
-				monitor.beginTask("Merging Xobot elements", 100);
+				monitor.beginTask(Messages.XobotModelMerger_Merge_Text, 100);
 				status = mergeModelElements(mergeContext, SubMonitor.convert(monitor, 50));
 				if (!status.isOK())
 					return status;
@@ -102,7 +102,8 @@ public class XobotModelMerger extends ResourceMappingMerger {
 				}
 			}
 			if (failures.size() > 0) {
-				return new MergeStatus(TeamCore.ID, "Several objects could not be merged", getMappings(failures));
+				return new MergeStatus(TeamCore.ID, Messages.XobotModelMerger_MergeModelElements_Error,
+						getMappings(failures));
 			}
 			return Status.OK_STATUS;
 		} finally {
@@ -114,7 +115,8 @@ public class XobotModelMerger extends ResourceMappingMerger {
 		List<ResourceMapping> mappings = new ArrayList<>();
 		for (IDiff diff : failures) {
 			IResource resource = ResourceDiffTree.getResourceFor(diff);
-			XFunctionDefinitionIndex file = (XFunctionDefinitionIndex) Adapters.adapt(resource, XWorkspaceElementDescriptor.class);
+			XFunctionDefinitionIndex file = (XFunctionDefinitionIndex) Adapters.adapt(resource,
+					XWorkspaceElementDescriptor.class);
 			ResourceMapping mapping = Adapters.adapt(file, ResourceMapping.class);
 			mappings.add(mapping);
 		}
@@ -131,7 +133,7 @@ public class XobotModelMerger extends ResourceMappingMerger {
 				}
 				return true;
 			}
-		
+
 		});
 		return (IDiff[]) result.toArray(new IDiff[result.size()]);
 	}
@@ -147,60 +149,64 @@ public class XobotModelMerger extends ResourceMappingMerger {
 		}
 		if (modelProjects.isEmpty())
 			return new ResourceTraversal[0];
-		return new ResourceTraversal[] { 
-			new ResourceTraversal((IResource[]) modelProjects.toArray(new IResource[modelProjects.size()]), 
-					IResource.DEPTH_INFINITE, IResource.NONE)	
-		};
+		return new ResourceTraversal[] {
+				new ResourceTraversal((IResource[]) modelProjects.toArray(new IResource[modelProjects.size()]),
+						IResource.DEPTH_INFINITE, IResource.NONE) };
 	}
 
-	private boolean mergeModelElement(IMergeContext mergeContext, IDiff diff, IProgressMonitor monitor) throws CoreException {
+	private boolean mergeModelElement(IMergeContext mergeContext, IDiff diff, IProgressMonitor monitor)
+			throws CoreException {
 		if (diff instanceof IThreeWayDiff) {
 			IThreeWayDiff twd = (IThreeWayDiff) diff;
-			if (twd.getDirection() == IThreeWayDiff.INCOMING
-					|| twd.getDirection() == IThreeWayDiff.CONFLICTING) {
+			if (twd.getDirection() == IThreeWayDiff.INCOMING || twd.getDirection() == IThreeWayDiff.CONFLICTING) {
 				IResource resource = ResourceDiffTree.getResourceFor(diff);
-				
+
 				if (twd.getDirection() == IThreeWayDiff.CONFLICTING) {
 					if (!resource.exists()) {
 						return false;
 					}
-					if (((IResourceDiff)twd.getRemoteChange()).getAfterState() == null) {
+					if (((IResourceDiff) twd.getRemoteChange()).getAfterState() == null) {
 						return false;
 					}
 				}
-				
-				IResourceDiff remoteChange = (IResourceDiff)twd.getRemoteChange();
+
+				IResourceDiff remoteChange = (IResourceDiff) twd.getRemoteChange();
 				IResource[] localElements = getReferencedResources(resource);
-				IResource[] baseElements = getReferencedResources(resource.getProject().getName(), remoteChange.getBeforeState(), monitor);
-				IResource[] remoteElements = getReferencedResources(resource.getProject().getName(), remoteChange.getAfterState(), monitor);
+				IResource[] baseElements = getReferencedResources(resource.getProject().getName(),
+						remoteChange.getBeforeState(), monitor);
+				IResource[] remoteElements = getReferencedResources(resource.getProject().getName(),
+						remoteChange.getAfterState(), monitor);
 				IResource[] addedElements = getAddedElements(baseElements, remoteElements);
 
 				IResource[] removedElements = getAddedElements(remoteElements, baseElements);
-				
+
 				if (hasOutgoingChanges(mergeContext, removedElements)) {
 					return false;
 				}
-				
+
 				Set<IResource> elementFiles = new HashSet<>();
 				elementFiles.addAll(Arrays.asList(baseElements));
 				elementFiles.addAll(Arrays.asList(localElements));
 				elementFiles.addAll(Arrays.asList(remoteElements));
-				if (!mergeElementFiles(mergeContext, (IResource[]) elementFiles.toArray(new IResource[elementFiles.size()]), monitor)) {
+				if (!mergeElementFiles(mergeContext,
+						(IResource[]) elementFiles.toArray(new IResource[elementFiles.size()]), monitor)) {
 					return false;
 				}
-				
+
 				if (!resource.exists()) {
 					IStatus status = mergeContext.merge(diff, false, monitor);
 					if (!status.isOK())
 						return false;
 				} else {
-					XFunctionDefinitionIndex indexFile = (XFunctionDefinitionIndex) Adapters.adapt(resource, XWorkspaceElementDescriptor.class);
+					XFunctionDefinitionIndex indexFile = (XFunctionDefinitionIndex) Adapters.adapt(resource,
+							XWorkspaceElementDescriptor.class);
 					elementFiles = new HashSet<>();
 					elementFiles.addAll(Arrays.asList(localElements));
 					elementFiles.addAll(Arrays.asList(addedElements));
 					elementFiles.removeAll(Arrays.asList(removedElements));
 					IFile file = (IFile) indexFile.getResource();
-					XFunctionDefinitionIndex.setElements(file, (IResource[]) elementFiles.toArray(new IResource[elementFiles.size()]));
+					XFunctionDefinitionIndex.setElements(file,
+							(IResource[]) elementFiles.toArray(new IResource[elementFiles.size()]));
 					mergeContext.markAsMerged(diff, false, monitor);
 				}
 			}
@@ -208,7 +214,8 @@ public class XobotModelMerger extends ResourceMappingMerger {
 		return true;
 	}
 
-	private boolean mergeElementFiles(IMergeContext mergeContext, IResource[] resources, IProgressMonitor monitor) throws CoreException {
+	private boolean mergeElementFiles(IMergeContext mergeContext, IResource[] resources, IProgressMonitor monitor)
+			throws CoreException {
 		IDiff[] diffs = getDiffs(mergeContext, resources);
 		IStatus status = mergeContext.merge(diffs, false, monitor);
 		return status.isOK();
@@ -229,15 +236,16 @@ public class XobotModelMerger extends ResourceMappingMerger {
 			public boolean select(IDiff diff) {
 				if (diff instanceof IThreeWayDiff) {
 					IThreeWayDiff twd = (IThreeWayDiff) diff;
-					return twd.getDirection() == IThreeWayDiff.OUTGOING || twd.getDirection() == IThreeWayDiff.CONFLICTING;
+					return twd.getDirection() == IThreeWayDiff.OUTGOING
+							|| twd.getDirection() == IThreeWayDiff.CONFLICTING;
 				}
 				return false;
 			}
 		};
 		for (int i = 0; i < removedElements.length; i++) {
 			IResource resource = removedElements[i];
-			if  (mergeContext.getDiffTree().hasMatchingDiffs(resource.getFullPath(), fastDiffFilter))
-				return true;	
+			if (mergeContext.getDiffTree().hasMatchingDiffs(resource.getFullPath(), fastDiffFilter))
+				return true;
 		}
 		return false;
 	}
@@ -263,11 +271,12 @@ public class XobotModelMerger extends ResourceMappingMerger {
 		}
 		return new IResource[0];
 	}
-	
-	private IResource[] getReferencedResources(String projectName, IFileRevision revision, IProgressMonitor monitor) throws CoreException {
+
+	private IResource[] getReferencedResources(String projectName, IFileRevision revision, IProgressMonitor monitor)
+			throws CoreException {
 		if (revision != null) {
 			return XFunctionDefinitionIndex.getReferencedResources(projectName, revision.getStorage(monitor));
-		} 
+		}
 		return new IResource[0];
 	}
 

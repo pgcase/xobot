@@ -20,9 +20,9 @@
  *******************************************************************************/
 package org.pgcase.xobot.toolchain.runtime;
 
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+public interface XToolDescriptor {
 
-public interface XToolDescriptor extends IdentifiedDescriptor {
+	String getIdentifier();
 
 	String getName();
 

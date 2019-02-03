@@ -23,7 +23,7 @@ public class XWorkspaceElementWorkbenchAdapter implements IWorkbenchAdapter {
 	private final XWorkspaceElementService workspaceElementService;
 	
 	public XWorkspaceElementWorkbenchAdapter() {
-		workspaceElementService = WorkspaceCoreResources.geWorkspaceElementService();
+		workspaceElementService = WorkspaceCoreResources.getWorkspaceElementService();
 	}
 
 	public Object[] getChildren(Object o) {
@@ -48,8 +48,7 @@ public class XWorkspaceElementWorkbenchAdapter implements IWorkbenchAdapter {
 		}
 		if (o instanceof XProjectRegistry) {
 			XProjectRegistry projectRegistry = (XProjectRegistry) o;
-			Iterable<XProjectDescriptor> iterable = projectRegistry.getProjects();
-			return StreamSupport.stream(iterable.spliterator(), false).toArray();
+			return StreamSupport.stream(projectRegistry.getProjects().spliterator(), false).toArray();
 		}
 		return new Object[0];
 	}

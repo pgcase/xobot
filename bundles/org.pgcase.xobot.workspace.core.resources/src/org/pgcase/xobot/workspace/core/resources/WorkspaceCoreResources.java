@@ -25,17 +25,17 @@ import java.util.List;
 
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.pgcase.xobot.landscape.runtime.XPileDescriptor;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.workspace.internal.core.resources.WorkspaceCoreResourcesActivator;
-import org.pgcase.xobot.workspace.model.api.XProject;
-import org.pgcase.xobot.workspace.model.api.XProjectFolder;
-import org.pgcase.xobot.workspace.model.meta.XWorkspaceFactory;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
 public class WorkspaceCoreResources {
@@ -60,7 +60,7 @@ public class WorkspaceCoreResources {
 		}
 	}
 
-	public static XWorkspaceElementService geWorkspaceElementService() {
+	public static XWorkspaceElementService getWorkspaceElementService() {
 		return WorkspaceCoreResourcesActivator.getActivator().getWorkspaceElementService();
 	}
 
@@ -105,28 +105,6 @@ public class WorkspaceCoreResources {
 		return false;
 	}
 
-	public static XProjectDescriptor restoreProject(IProject project) {
-		// FIXME: throws CoreException
-		String name = project.getName();
-		XProject created = XWorkspaceFactory.eINSTANCE.createProject();
-		created.setIdentifier(name);
-		created.setName(name);
-		restoreProjectFolder(project, created, FUNCTION_FOLDER_NAME);
-		restoreProjectFolder(project, created, TRIGGER_FOLDER_NAME);
-		return created;
-	}
-
-	protected static void restoreProjectFolder(IProject project, XProject created, String folderName) {
-		IFolder folder = project.getFolder(folderName);
-		if (folder.exists()) {
-			XProjectFolder projectFolder = XWorkspaceFactory.eINSTANCE.createProjectFolder();
-			projectFolder.setIdentifier(folderName);
-			projectFolder.setName(folderName);
-			projectFolder.setPath(folder.getProjectRelativePath().toString());
-			created.getProjectFolders().add(projectFolder);
-		}
-	}
-
 	public static void createXobotProject(IProject project, final IProjectDescription description,
 			IProgressMonitor monitor) throws CoreException {
 		description.setNatureIds(new String[] { NATURE_ID });
@@ -135,6 +113,20 @@ public class WorkspaceCoreResources {
 		project.open(monitor);
 		project.getFolder(FUNCTION_FOLDER_NAME).create(true, true, monitor);
 		project.getFolder(TRIGGER_FOLDER_NAME).create(true, true, monitor);
+		XProjectRegistry projectRegistry = getWorkspaceElementService().getProjectRegistry();
+		
+		List<XSourceDescriptor> sources = new ArrayList<>();
+		List<XTargetDescriptor> targets = new ArrayList<>();
+		List<XPileDescriptor> folders = new ArrayList<>();
+		XProjectDescriptor xobot = projectRegistry.createProject(project.getName(), sources , targets, folders);
+		projectRegistry.registerProject(xobot);
+	}
+	
+	public static IFile getXobotProjectSpecification(IProject project) {
+		if (project == null || !project.isAccessible()) {
+			return null;
+		}
+		return project.getFile(".xobot");
 	}
 
 	public static void addBuilder(IProjectDescription description) {
@@ -153,5 +145,5 @@ public class WorkspaceCoreResources {
 		newCommands[0] = newCommand;
 		description.setBuildSpec(newCommands);
 	}
-
+	
 }

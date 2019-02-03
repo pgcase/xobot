@@ -28,23 +28,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.event.EventAdmin;
 import org.pgcase.xobot.basis.emf.edit.DomainContentAdapter;
 import org.pgcase.xobot.basis.emf.edit.EditingDomainBasedRegistry;
-import org.pgcase.xobot.basis.emf.edit.EditingDomainRegistry;
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 import org.pgcase.xobot.landscape.model.api.XTarget;
 import org.pgcase.xobot.landscape.model.api.XTargetSet;
 import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 import org.pgcase.xobot.landscape.runtime.FocusDescriptors;
+import org.pgcase.xobot.landscape.runtime.XLandscapeEvents;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
 
 @Component
-public class TargetDomainRegistry extends EditingDomainBasedRegistry implements XTargetRegistry {
-	
-	private final Map<String, XTargetSetDescriptor> targetSets = new HashMap<>();
+public class TargetDomainRegistry extends EditingDomainBasedRegistry<XTargetSetDescriptor> implements XTargetRegistry {
+
 	private final Map<String, XTargetDescriptor> targets = new HashMap<>();
 
 	@Activate
@@ -101,7 +101,7 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set4.setIdentifier("ru.pgconf.2019.xobot.sandbox");
 		set4.setName("PgConf.Russia 2019 Sandbox");
 		EList<XTarget> set4Targets = set4.getTargets();
-		
+
 		XTarget set4target1 = XLandscapeFactory.eINSTANCE.createTarget();
 		set4target1.setIdentifier("ru.pgconf.2019.xobot.sandbox.dbpro");
 		set4target1.setName("Xobot Sandbox dbpro");
@@ -130,27 +130,22 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 		set4Targets.add(set4target3);
 
 		registerTargetSet(set4);
-}
+	}
 
+	@Reference
 	@Override
-	public Iterable<? extends IdentifiedDescriptor> getIdentifiedContent() {
-		return getTargetSets();
+	public void bindEventAdmin(EventAdmin eventAdmin) {
+		super.bindEventAdmin(eventAdmin);
+	}
+	
+	@Override
+	public void unbindEventAdmin(EventAdmin eventAdmin) {
+		super.unbindEventAdmin(eventAdmin);
 	}
 
 	@Override
-	public void registerContent(IdentifiedDescriptor content) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void unregisterContent(String identifier) {
-		unregisterTargetSet(identifier);
-	}
-
-	@Override
-	public Iterable<XTargetSetDescriptor> getTargetSets() {
-		return targetSets.values();
+	public Iterable<? extends XTargetSetDescriptor> getTargetSets() {
+		return getRegistryContent();
 	}
 
 	@Override
@@ -160,26 +155,30 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 
 	@Override
 	public void registerTargetSet(XTargetSetDescriptor targetSet) {
-		String identifier = targetSet.getIdentifier();
-		targetSets.put(identifier, targetSet);
+		registerContent(targetSet);
 	}
 
 	@Override
 	public void unregisterTargetSet(String targetSetIdentifier) {
-		// TODO Auto-generated method stub
-	
+		unregisterContent(targetSetIdentifier);
 	}
-	
+
 	@Override
 	public void registerTarget(XTargetDescriptor target) {
+		String identifier = target.getIdentifier();
+		targets.put(identifier, target);
 		// TODO Auto-generated method stub
-		
 	}
-	
+
 	@Override
 	public void unregisterTarget(String targetIdentifier) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public Class<XTargetSetDescriptor> getContentClass() {
+		return XTargetSetDescriptor.class;
 	}
 
 	@Override
@@ -198,8 +197,31 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry implements 
 	}
 
 	@Override
-	protected DomainContentAdapter<? extends EditingDomainRegistry> createContentAdapter() {
+	protected DomainContentAdapter<XTargetSetDescriptor, TargetDomainRegistry> createContentAdapter() {
 		return new TargetDomainRegistryTracker(this);
+	}
+
+	@Override
+	public String resolveIdentifier(XTargetSetDescriptor content) {
+		if (content == null) {
+			return null;
+		}
+		return content.getIdentifier();
+	}
+
+	@Override
+	public String getContentCreateTopic() {
+		return XLandscapeEvents.TARGET_SET_CREATE;
+	}
+
+	@Override
+	public String getContentUpdateTopic() {
+		return XLandscapeEvents.TARGET_SET_UPDATE;
+	}
+
+	@Override
+	public String getContentDeleteTopic() {
+		return XLandscapeEvents.TARGET_SET_DELETE;
 	}
 
 }

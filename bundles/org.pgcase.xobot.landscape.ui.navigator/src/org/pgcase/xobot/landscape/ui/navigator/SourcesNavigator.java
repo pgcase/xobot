@@ -29,5 +29,5 @@ public class SourcesNavigator extends RegistryNavigator<XSourceRegistry> {
 	protected Class<XSourceRegistry> getRegistryClass() {
 		return XSourceRegistry.class;
 	}
-	
+
 }

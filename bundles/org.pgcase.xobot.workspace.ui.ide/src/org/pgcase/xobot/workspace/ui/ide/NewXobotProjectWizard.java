@@ -131,17 +131,18 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		final IProjectDescription description = workspace.newProjectDescription(projectName);
 		URI locatiionUri = XobotFiles.composeInstallLocationRoot(projectName);
 		description.setLocationURI(locatiionUri);
+		IProject project = workspace.getRoot().getProject(projectName);
 		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
 
 			@Override
 			protected void execute(IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
-				IProject project = workspace.getRoot().getProject(projectName);
 				WorkspaceCoreResources.createXobotProject(project, description, monitor);
 			}
 		};
 		try {
 			getContainer().run(true, false, operation);
+			selectAndReveal(project);
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

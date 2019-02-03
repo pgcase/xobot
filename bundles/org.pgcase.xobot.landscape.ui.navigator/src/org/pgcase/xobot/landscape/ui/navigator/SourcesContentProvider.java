@@ -22,6 +22,7 @@ package org.pgcase.xobot.landscape.ui.navigator;
 
 import java.util.stream.StreamSupport;
 
+import org.pgcase.xobot.basis.runtime.BasisEvents;
 import org.pgcase.xobot.basis.ui.navigator.RegistryContentProvider;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
@@ -31,15 +32,15 @@ public class SourcesContentProvider extends RegistryContentProvider<XSourceRegis
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		if (parentElement instanceof XSourceRegistry) {
-			XSourceRegistry registry = (XSourceRegistry) parentElement;
-			Iterable<XSourceSetDescriptor> sets = registry.getSourceSets();
-			return StreamSupport.stream(sets.spliterator(), false).toArray();
-		}
 		if (parentElement instanceof XSourceSetDescriptor) {
 			XSourceSetDescriptor set = (XSourceSetDescriptor) parentElement;
 			Iterable<? extends XSourceDescriptor> sources = set.getSources();
 			return StreamSupport.stream(sources.spliterator(), false).toArray();
+		}
+		if (parentElement instanceof XSourceRegistry) {
+			XSourceRegistry registry = (XSourceRegistry) parentElement;
+			Iterable<? extends XSourceSetDescriptor> sets = registry.getRegistryContent();
+			return StreamSupport.stream(sets.spliterator(), false).toArray();
 		}
 		return NO_CHILDREN;
 	}
@@ -61,4 +62,10 @@ public class SourcesContentProvider extends RegistryContentProvider<XSourceRegis
 		return XSourceRegistry.class;
 	}
 
+	@Override
+	protected String getTopic() {
+		// TODO Auto-generated method stub
+		return BasisEvents.ALL_SUB_TOPICS;
+	}
+	
 }

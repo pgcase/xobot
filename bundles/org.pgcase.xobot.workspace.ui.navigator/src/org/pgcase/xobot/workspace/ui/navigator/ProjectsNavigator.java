@@ -18,14 +18,16 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.landscape.runtime;
+package org.pgcase.xobot.workspace.ui.navigator;
 
-public interface XTargetSetDescriptor {
-	
-	String getIdentifier();
+import org.pgcase.xobot.basis.ui.navigator.RegistryNavigator;
+import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 
-	String getName();
+public class ProjectsNavigator extends RegistryNavigator<XProjectRegistry> {
 
-	Iterable<? extends XTargetDescriptor> getTargets();
+	@Override
+	protected Class<XProjectRegistry> getRegistryClass() {
+		return XProjectRegistry.class;
+	}
 
 }

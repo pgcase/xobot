@@ -24,9 +24,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 
-public abstract class DomainContentAdapter<R extends EditingDomainRegistry> extends EContentAdapter {
+public abstract class DomainContentAdapter<C, R extends EditingDomainRegistry<C>> extends EContentAdapter {
 	
 	protected final R registry;
 	
@@ -82,16 +81,19 @@ public abstract class DomainContentAdapter<R extends EditingDomainRegistry> exte
 	}
 
 	protected void processResourceContentsAdded(Resource resource, Object newValue) {
-		if (newValue instanceof IdentifiedDescriptor) {
-			IdentifiedDescriptor identified = (IdentifiedDescriptor) newValue;
-			registry.registerContent(identified);
+		Class<C> contentClass = registry.getContentClass();
+		if (contentClass.isInstance(newValue)) {
+			C content = contentClass.cast(newValue);
+			registry.registerContent(content);
 		}
 	}
 
 	protected void processResourceContentsRemoved(Resource resource, Object oldValue) {
-		if (oldValue instanceof IdentifiedDescriptor) {
-			IdentifiedDescriptor identified = (IdentifiedDescriptor) oldValue;
-			registry.unregisterContent(identified.getIdentifier());
+		Class<C> contentClass = registry.getContentClass();
+		if (contentClass.isInstance(oldValue)) {
+			C content = contentClass.cast(oldValue);
+			String identifier = registry.resolveIdentifier(content);
+			registry.unregisterContent(identifier);
 		}
 	}
 

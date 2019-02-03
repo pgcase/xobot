@@ -22,6 +22,7 @@ package org.pgcase.xobot.landscape.ui.navigator;
 
 import java.util.stream.StreamSupport;
 
+import org.pgcase.xobot.basis.runtime.BasisEvents;
 import org.pgcase.xobot.basis.ui.navigator.RegistryContentProvider;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
@@ -31,15 +32,14 @@ public class TargetsContentProvider extends RegistryContentProvider<XTargetRegis
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		if (parentElement instanceof XTargetRegistry) {
-			XTargetRegistry registry = (XTargetRegistry) parentElement;
-			Iterable<XTargetSetDescriptor> sets = registry.getTargetSets();
-			return StreamSupport.stream(sets.spliterator(), false).toArray();
-		}
 		if (parentElement instanceof XTargetSetDescriptor) {
 			XTargetSetDescriptor set = (XTargetSetDescriptor) parentElement;
 			Iterable<? extends XTargetDescriptor> targets = set.getTargets();
 			return StreamSupport.stream(targets.spliterator(), false).toArray();
+		}
+		if (parentElement instanceof XTargetRegistry) {
+			XTargetRegistry registry = (XTargetRegistry) parentElement;
+			return StreamSupport.stream(registry.getTargetSets().spliterator(), false).toArray();
 		}
 		return NO_CHILDREN;
 	}
@@ -59,6 +59,12 @@ public class TargetsContentProvider extends RegistryContentProvider<XTargetRegis
 	@Override
 	protected Class<XTargetRegistry> getRegistryClass() {
 		return XTargetRegistry.class;
+	}
+
+	@Override
+	protected String getTopic() {
+		// TODO Auto-generated method stub
+		return BasisEvents.ALL_SUB_TOPICS;
 	}
 
 }

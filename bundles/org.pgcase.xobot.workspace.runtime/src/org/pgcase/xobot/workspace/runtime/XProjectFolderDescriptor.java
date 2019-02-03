@@ -20,10 +20,10 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime;
 
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
-
-public interface XProjectFolderDescriptor extends XWorkspaceElementDescriptor, IdentifiedDescriptor {
+public interface XProjectFolderDescriptor extends XWorkspaceElementDescriptor {
 	
+	String getIdentifier();
+
 	XProjectDescriptor getProject();
 
 	String getOrigin();

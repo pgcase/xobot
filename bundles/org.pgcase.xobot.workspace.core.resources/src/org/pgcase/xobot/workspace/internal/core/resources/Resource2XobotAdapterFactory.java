@@ -28,7 +28,7 @@ import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
 public class Resource2XobotAdapterFactory implements IAdapterFactory {
 
-	private final XWorkspaceElementService service = WorkspaceCoreResources.geWorkspaceElementService();
+	private final XWorkspaceElementService service = WorkspaceCoreResources.getWorkspaceElementService();
 	
 	@Override
 	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {

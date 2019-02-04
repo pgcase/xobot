@@ -20,56 +20,68 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.internal.core.registry;
 
-import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.event.EventAdmin;
 import org.pgcase.xobot.basis.emf.edit.DomainContentAdapter;
 import org.pgcase.xobot.basis.emf.edit.EditingDomainBasedRegistry;
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+import org.pgcase.xobot.landscape.runtime.XPileDescriptor;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.workspace.model.api.XProject;
+import org.pgcase.xobot.workspace.model.api.XProjectFolder;
+import org.pgcase.xobot.workspace.model.api.XProjectSource;
+import org.pgcase.xobot.workspace.model.api.XProjectTarget;
+import org.pgcase.xobot.workspace.model.meta.XWorkspaceFactory;
 import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XWorkspaceEvents;
 import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 
 @Component
-public class ProjectDomainRegistry extends EditingDomainBasedRegistry implements XProjectRegistry {
-	
-	private final Map<String, XProjectDescriptor> projects = new HashMap<>();
-	
+public class ProjectDomainRegistry extends EditingDomainBasedRegistry<XProjectDescriptor> implements XProjectRegistry {
+
 	@Activate
 	@Override
 	public void activate(Map<String, Object> properties) {
 		super.activate(properties);
 	}
-	
+
+	@Reference
 	@Override
-	public Iterable<? extends IdentifiedDescriptor> getIdentifiedContent() {
-		return getProjects();
+	public void bindEventAdmin(EventAdmin eventAdmin) {
+		super.bindEventAdmin(eventAdmin);
 	}
 
 	@Override
-	public Iterable<XProjectDescriptor> getProjects() {
-		return projects.values();
+	public void unbindEventAdmin(EventAdmin eventAdmin) {
+		super.unbindEventAdmin(eventAdmin);
 	}
-	
+
+	@Override
+	public Iterable<? extends XProjectDescriptor> getProjects() {
+		return getRegistryContent();
+	}
+
 	@Override
 	public XProjectDescriptor getProject(String projectIdentifier) {
-		return projects.get(projectIdentifier);
+		return getRegistryContent(projectIdentifier);
 	}
 
 	@Override
 	public void registerProject(XProjectDescriptor project) {
-		// TODO Auto-generated method stub
-		
+		registerContent(project);
 	}
 
 	@Override
 	public void unregisterProject(String projectIdentifier) {
-		// TODO Auto-generated method stub
-		
+		unregisterContent(projectIdentifier);
 	}
 
 	@Override
@@ -88,24 +100,73 @@ public class ProjectDomainRegistry extends EditingDomainBasedRegistry implements
 	}
 
 	@Override
-	protected DomainContentAdapter<ProjectDomainRegistry> createContentAdapter() {
+	protected DomainContentAdapter<XProjectDescriptor, ProjectDomainRegistry> createContentAdapter() {
 		return new ProjectDomainRegistryTracker(this);
 	}
 
 	@Override
-	public void registerContent(IdentifiedDescriptor content) {
-		if (content instanceof XProjectDescriptor) {
-			XProjectDescriptor project = (XProjectDescriptor) content;
-			registerProject(project);
-		} else {
-			// TODO Auto-generated method stub
+	public XProjectDescriptor createProject(String projectIdentifier, Iterable<? extends XSourceDescriptor> sources,
+			Iterable<? extends XTargetDescriptor> targets, Iterable<? extends XPileDescriptor> folders) {
+		XWorkspaceFactory factory = XWorkspaceFactory.eINSTANCE;
+		XProject created = factory.createProject();
+		created.setIdentifier(projectIdentifier);
+		created.setName(projectIdentifier);
+		if (sources != null) {
+			EList<XProjectSource> projectSources = created.getProjectSources();
+			for (XSourceDescriptor source : sources) {
+				XProjectSource projectSource = factory.createProjectSource();
+				projectSource.setSourceIdentifier(source.getIdentifier());
+				projectSources.add(projectSource);
+			}
 		}
-		
+		if (targets != null) {
+			EList<XProjectTarget> projectTargets = created.getProjectTargets();
+			for (XTargetDescriptor target : targets) {
+				XProjectTarget projectTarget = factory.createProjectTarget();
+				projectTarget.setTargetIdentifier(target.getIdentifier());
+				projectTargets.add(projectTarget);
+			}
+		}
+		if (folders != null) {
+			EList<XProjectFolder> projectFolders = created.getProjectFolders();
+			for (XPileDescriptor pile : folders) {
+				XProjectFolder projectFolder = factory.createProjectFolder();
+				projectFolder.setIdentifier(pile.getIdentifier());
+				projectFolder.setName(pile.getName());
+				projectFolder.setPath(pile.getPath());
+				projectFolder.setOrigin(pile.getOrigin());
+				projectFolders.add(projectFolder);
+			}
+		}
+		return created;
 	}
 
 	@Override
-	public void unregisterContent(String identifier) {
-		unregisterProject(identifier);
+	public Class<XProjectDescriptor> getContentClass() {
+		return XProjectDescriptor.class;
+	}
+
+	@Override
+	public String resolveIdentifier(XProjectDescriptor content) {
+		if (content == null) {
+			return null;
+		}
+		return content.getIdentifier();
+	}
+
+	@Override
+	public String getContentCreateTopic() {
+		return XWorkspaceEvents.PROJECT_CREATE;
+	}
+
+	@Override
+	public String getContentUpdateTopic() {
+		return XWorkspaceEvents.PROJECT_UPDATE;
+	}
+
+	@Override
+	public String getContentDeleteTopic() {
+		return XWorkspaceEvents.PROJECT_DELETE;
 	}
 
 }

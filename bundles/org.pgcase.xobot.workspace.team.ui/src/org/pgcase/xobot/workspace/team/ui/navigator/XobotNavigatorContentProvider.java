@@ -104,7 +104,7 @@ public class XobotNavigatorContentProvider extends BaseWorkbenchContentProvider
 	public Object[] getElements(Object element) {
 		if (element instanceof IWorkspaceRoot) {
 			isWorkspaceRoot = true;
-			XProjectRegistry root = WorkspaceCoreResources.geWorkspaceElementService().getProjectRegistry();
+			XProjectRegistry root = WorkspaceCoreResources.getWorkspaceElementService().getProjectRegistry();
 			return super.getElements(root);
 			
 		}

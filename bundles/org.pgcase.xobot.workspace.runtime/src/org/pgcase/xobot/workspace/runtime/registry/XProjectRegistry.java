@@ -21,12 +21,17 @@
 package org.pgcase.xobot.workspace.runtime.registry;
 
 import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
+import org.pgcase.xobot.landscape.runtime.XPileDescriptor;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 
-public interface XProjectRegistry extends BasisRegistry {
+public interface XProjectRegistry extends BasisRegistry<XProjectDescriptor> {
 	
-	Iterable<XProjectDescriptor> getProjects();
+	Iterable<? extends XProjectDescriptor> getProjects();
 	
+	XProjectDescriptor createProject(String projectIdentifier, Iterable<? extends XSourceDescriptor> sources, Iterable<? extends XTargetDescriptor> targets, Iterable<? extends XPileDescriptor> folders);
+
 	XProjectDescriptor getProject(String projectIdentifier);
 
 	void registerProject(XProjectDescriptor project);

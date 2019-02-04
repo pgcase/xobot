@@ -24,8 +24,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.pgcase.xobot.basis.emf.edit.DomainContentAdapter;
 import org.pgcase.xobot.workspace.model.api.XProject;
 import org.pgcase.xobot.workspace.model.meta.XWorkspacePackage;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 
-public class ProjectDomainRegistryTracker extends DomainContentAdapter<ProjectDomainRegistry> {
+public class ProjectDomainRegistryTracker extends DomainContentAdapter<XProjectDescriptor,ProjectDomainRegistry> {
 
 	public ProjectDomainRegistryTracker(ProjectDomainRegistry registry) {
 		super(registry);

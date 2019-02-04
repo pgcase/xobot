@@ -18,10 +18,17 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.basis.runtime;
+package org.pgcase.xobot.workspace.ui.navigator;
 
-public interface IdentifiedDescriptor {
+import org.pgcase.xobot.basis.ui.navigator.RegistryNavigator;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 
-	String getIdentifier();
+public class ProjectsNavigator extends RegistryNavigator<XProjectDescriptor, XProjectRegistry> {
+
+	@Override
+	protected Class<XProjectRegistry> getRegistryClass() {
+		return XProjectRegistry.class;
+	}
 
 }

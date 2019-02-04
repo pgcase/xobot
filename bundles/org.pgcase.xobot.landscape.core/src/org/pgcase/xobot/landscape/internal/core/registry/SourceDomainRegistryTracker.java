@@ -25,8 +25,9 @@ import org.pgcase.xobot.basis.emf.edit.DomainContentAdapter;
 import org.pgcase.xobot.landscape.model.api.XSource;
 import org.pgcase.xobot.landscape.model.api.XSourceSet;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
+import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 
-public class SourceDomainRegistryTracker extends DomainContentAdapter<SourceDomainRegistry> {
+public class SourceDomainRegistryTracker extends DomainContentAdapter<XSourceSetDescriptor, SourceDomainRegistry> {
 
 	public SourceDomainRegistryTracker(SourceDomainRegistry registry) {
 		super(registry);

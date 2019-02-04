@@ -3,5 +3,6 @@
    <service>
       <provide interface="org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry"/>
    </service>
+   <reference bind="bindEventAdmin" interface="org.osgi.service.event.EventAdmin" name="EventAdmin" unbind="unbindEventAdmin"/>
    <implementation class="org.pgcase.xobot.workspace.internal.core.registry.ProjectDomainRegistry"/>
 </scr:component>

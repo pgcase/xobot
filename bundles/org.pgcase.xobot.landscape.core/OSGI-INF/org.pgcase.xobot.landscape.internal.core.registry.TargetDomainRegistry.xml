@@ -3,5 +3,6 @@
    <service>
       <provide interface="org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry"/>
    </service>
+   <reference bind="bindEventAdmin" interface="org.osgi.service.event.EventAdmin" name="EventAdmin" unbind="unbindEventAdmin"/>
    <implementation class="org.pgcase.xobot.landscape.internal.core.registry.TargetDomainRegistry"/>
 </scr:component>

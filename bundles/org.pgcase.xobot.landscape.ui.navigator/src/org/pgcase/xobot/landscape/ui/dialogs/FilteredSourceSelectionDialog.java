@@ -1,4 +1,4 @@
-package org.pgcase.xobot.landscape.ui.dialog;
+package org.pgcase.xobot.landscape.ui.dialogs;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;

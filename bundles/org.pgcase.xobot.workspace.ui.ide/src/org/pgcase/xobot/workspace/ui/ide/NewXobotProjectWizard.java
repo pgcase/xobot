@@ -23,21 +23,19 @@ package org.pgcase.xobot.workspace.ui.ide;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.wizard.IWizardContainer;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.ide.undo.CreateProjectOperation;
+import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 import org.pgcase.xobot.workspace.core.filesystem.XobotFiles;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
@@ -46,81 +44,14 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 
 	private NewXobotProjectWizardPage mainPage;
 
-	public class NewXobotProjectWizardPage extends WizardPage {
-		private String projectName;
-		private Text txtName;
-
-		public NewXobotProjectWizardPage(String pageName) {
-			super(pageName);
-			setTitle("New Xobot Project");
-			setDescription("Xobot Project");
-			setMessage("Project name must be specified");
-		}
-
-		@Override
-		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
-				GridLayout layout = new GridLayout();
-				layout.numColumns = 3;
-				layout.verticalSpacing = 12;
-				composite.setLayout(layout);
-
-				GridData data = new GridData();
-				data.verticalAlignment = GridData.FILL;
-				data.grabExcessVerticalSpace = true;
-				data.horizontalAlignment = GridData.FILL;
-				composite.setLayoutData(data);
-			}
-			Label nameFieldILabel = new Label(composite, SWT.LEFT);
-			{
-				nameFieldILabel.setText("Project name:");
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = false;
-				data.horizontalSpan = 1;
-				nameFieldILabel.setLayoutData(data);
-			}
-
-			txtName = new Text(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				data.horizontalSpan = 2;
-				txtName.setLayoutData(data);
-			}
-			txtName.addModifyListener(e -> {
-				projectName = txtName.getText();
-				setPageComplete(validatePage());
-			});
-			String proposedName = "";
-			txtName.setText(proposedName);
-
-			setPageComplete(validatePage());
-			setControl(composite);
-		}
-
-		private boolean validatePage() {
-			// TODO Auto-generated method stub
-			if (projectName.isEmpty()) {
-				return false;
-			}
-			return true;
-		}
-
-		public String getProjectName() {
-			return projectName;
-		}
-	}
-
 	public NewXobotProjectWizard() {
 		setNeedsProgressMonitor(true);
+		setWindowTitle("New Xobot Project");
 	}
 
 	@Override
 	public void addPages() {
-		mainPage = new NewXobotProjectWizardPage("main");
+		mainPage = new NewXobotProjectWizardPage();
 		addPage(mainPage);
 	}
 
@@ -137,11 +68,27 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 			@Override
 			protected void execute(IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
-				WorkspaceCoreResources.createXobotProject(project, description, monitor);
+				WorkspaceCoreResources.configureXobotProject(project, description, monitor);
+			}
+		};
+		// create the new project operation
+		IRunnableWithProgress op = monitor -> {
+			CreateProjectOperation op1 = new CreateProjectOperation(description,
+					"New Xobot Project");
+			try {
+				// see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=219901
+				// directly execute the operation so that the undo state is
+				// not preserved. Making this undoable resulted in too many
+				// accidental file deletions.
+				op1.execute(monitor, WorkspaceUndoUtil.getUIInfoAdapter(getShell()));
+			} catch (ExecutionException e) {
+				throw new InvocationTargetException(e);
 			}
 		};
 		try {
-			getContainer().run(true, false, operation);
+			IWizardContainer container = getContainer();
+			container.run(true, true, op);
+			container.run(true, false, operation);
 			selectAndReveal(project);
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block

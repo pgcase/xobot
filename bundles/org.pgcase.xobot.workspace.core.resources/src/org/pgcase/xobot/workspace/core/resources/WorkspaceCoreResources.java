@@ -105,12 +105,10 @@ public class WorkspaceCoreResources {
 		return false;
 	}
 
-	public static void createXobotProject(IProject project, final IProjectDescription description,
+	public static void configureXobotProject(IProject project, final IProjectDescription description,
 			IProgressMonitor monitor) throws CoreException {
 		description.setNatureIds(new String[] { NATURE_ID });
 		addBuilder(description);
-		project.create(description, monitor);
-		project.open(monitor);
 		project.getFolder(FUNCTION_FOLDER_NAME).create(true, true, monitor);
 		project.getFolder(TRIGGER_FOLDER_NAME).create(true, true, monitor);
 		XProjectRegistry projectRegistry = getWorkspaceElementService().getProjectRegistry();

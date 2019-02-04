@@ -21,13 +21,15 @@
 package org.pgcase.xobot.landscape.ui.navigator;
 
 public class LandscapeUiNavigator {
-	
-	public static final String VIEW_SOURCES = "org.pgcase.xobot.landscape.ui.navigator.views.view.sources"; //$NON-NLS-1$
 
-	public static final String VIEW_TARGTETS = "org.pgcase.xobot.landscape.ui.navigator.views.view.targets"; //$NON-NLS-1$
-	
+	public static final String ID = "org.pgcase.xobot.landscape.ui.navigator"; //$NON-NLS-1$
+
+	public static final String VIEW_SOURCES = ID + '.' + ".views.view.sources"; //$NON-NLS-1$
+
+	public static final String VIEW_TARGTETS = ID + '.' + "views.view.targets"; //$NON-NLS-1$
+
 	private LandscapeUiNavigator() {
-		//block
+		// block
 	}
 
 }

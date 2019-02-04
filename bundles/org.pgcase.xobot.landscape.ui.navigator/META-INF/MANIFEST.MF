@@ -8,8 +8,11 @@ Bundle-Vendor: %Bundle-Vendor
 Bundle-Copyright: %Bundle-Copyright
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.e4.core.contexts;bundle-version="0.0.0",
+ org.pgcase.xobot.basis.jface;bundle-version="0.0.0",
  org.pgcase.xobot.landscape.runtime;bundle-version="0.0.0",
  org.pgcase.xobot.basis.ui.navigator;bundle-version="0.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: org.pgcase.xobot.landscape.ui.dialog,
- org.pgcase.xobot.landscape.ui.navigator
+Export-Package: org.pgcase.xobot.landscape.ui,
+ org.pgcase.xobot.landscape.ui.dialogs,
+ org.pgcase.xobot.landscape.ui.navigator,
+ org.pgcase.xobot.landscape.ui.wizards

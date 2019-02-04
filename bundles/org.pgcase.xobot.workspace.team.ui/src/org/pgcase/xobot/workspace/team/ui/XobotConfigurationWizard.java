@@ -29,13 +29,15 @@ import org.eclipse.team.core.TeamException;
 import org.eclipse.team.ui.IConfigurationWizard;
 import org.eclipse.team.ui.IConfigurationWizardExtension;
 import org.eclipse.ui.IWorkbench;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.ui.wizards.LandscapeConfigurationPage;
 import org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider;
 
 public class XobotConfigurationWizard extends Wizard implements IConfigurationWizard, IConfigurationWizardExtension {
 	
 	IProject[] projects;
 	
-	XobotConfigurationMainPage mainPage;
+	LandscapeConfigurationPage mainPage;
 	
 	public XobotConfigurationWizard() {
 		// retrieve the remembered dialog settings
@@ -57,22 +59,23 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 	}
 
 	public void addPages() {
-		mainPage = new XobotConfigurationMainPage(
-			"XobotConfigurationMainPage", //$NON-NLS-1$
-			"Протянуть Хобот",
-			"Хобот поможет организовать работу с процедурными расширениями",
-			null);
+		String title = "Протянуть Хобот";
+		String description = "Хобот поможет организовать работу с процедурными расширениями";
+		mainPage = new LandscapeConfigurationPage(LandscapeConfigurationPage.class.getName());
+		mainPage.setTitle(title);
+		mainPage.setDescription(description);
 		addPage(mainPage);
+		
 	}
 	
 	public boolean performFinish() {
-		mainPage.finish(null);
 		try {
 			for (int i = 0; i < projects.length; i++) {
 				IProject project = projects[i];
 				RepositoryProvider.map(project, XobotRepositoryProvider.REPOSITORY_PROVIDER_XOBOT);
 				XobotRepositoryProvider provider = (XobotRepositoryProvider) RepositoryProvider.getProvider(project);
-				String path = new Path(mainPage.getSourceLocation()).append(project.getName()).toOSString();
+				XSourceDescriptor sourceIntegrationLocation = mainPage.getSourceIntegrationLocation();
+				String path = new Path(sourceIntegrationLocation.getUri()).append(project.getName()).toOSString();
 				provider.setTargetLocation(path);
 			}
 		} catch (TeamException e) {

@@ -45,7 +45,7 @@ import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
 @Component
 public class TargetDomainRegistry extends EditingDomainBasedRegistry<XTargetSetDescriptor> implements XTargetRegistry {
 
-	private final Map<String, XTargetDescriptor> targets = new HashMap<>();
+	private final Map<String, XTargetDescriptor> targetIndex = new HashMap<>();
 
 	@Activate
 	public void activate() {
@@ -150,23 +150,34 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry<XTargetSetD
 
 	@Override
 	public Iterable<XTargetDescriptor> getTargets() {
-		return targets.values();
+		return targetIndex.values();
 	}
 
 	@Override
 	public void registerTargetSet(XTargetSetDescriptor targetSet) {
 		registerContent(targetSet);
+		Iterable<? extends XTargetDescriptor> targets = targetSet.getTargets();
+		for (XTargetDescriptor targetDescriptor : targets) {
+			registerTarget(targetDescriptor);
+		}
 	}
 
 	@Override
 	public void unregisterTargetSet(String targetSetIdentifier) {
+		XTargetSetDescriptor content = getRegistryContent(targetSetIdentifier);
+		if (content != null) {
+			Iterable<? extends XTargetDescriptor> targets = content.getTargets();
+			for (XTargetDescriptor targetDescriptor : targets) {
+				unregisterTarget(targetDescriptor.getIdentifier());
+			}
+		}
 		unregisterContent(targetSetIdentifier);
 	}
 
 	@Override
 	public void registerTarget(XTargetDescriptor target) {
 		String identifier = target.getIdentifier();
-		targets.put(identifier, target);
+		targetIndex.put(identifier, target);
 		// TODO Auto-generated method stub
 	}
 

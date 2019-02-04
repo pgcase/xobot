@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.osgi.services;bundle-version="0.0.0";visibility:=ree
  org.eclipse.emf.edit.ui;bundle-version="0.0.0";visibility:=reexport,
  org.pgcase.xobot.basis.runtime;bundle-version="0.0.0";visibility:=reexport,
  org.pgcase.xobot.basis.jface;bundle-version="0.0.0"
-Export-Package: org.pgcase.xobot.basis.ui.navigator
+Export-Package: org.pgcase.xobot.basis.emf.edit.ui,
+ org.pgcase.xobot.basis.ui.navigator
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/*.xml
 Bundle-Activator: org.pgcase.xobot.basis.internal.ui.navigator.BasisUiNavigatorActivator

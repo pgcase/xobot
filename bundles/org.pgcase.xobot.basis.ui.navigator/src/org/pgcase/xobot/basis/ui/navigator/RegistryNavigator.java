@@ -31,7 +31,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 
-public abstract class RegistryNavigator<R extends BasisRegistry> extends CommonNavigator {
+public abstract class RegistryNavigator<C, R extends BasisRegistry<C>> extends CommonNavigator {
 	
 	private R registry;
 

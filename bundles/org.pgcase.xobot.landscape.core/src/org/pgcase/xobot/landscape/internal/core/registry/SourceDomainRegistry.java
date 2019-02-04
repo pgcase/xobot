@@ -45,7 +45,7 @@ import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
 @Component
 public class SourceDomainRegistry extends EditingDomainBasedRegistry<XSourceSetDescriptor> implements XSourceRegistry {
 	
-	private final Map<String, XSourceDescriptor> sources = new HashMap<>();
+	private final Map<String, XSourceDescriptor> sourceIndex = new HashMap<>();
 	
 	@Activate
 	public void activate() {
@@ -145,29 +145,40 @@ public class SourceDomainRegistry extends EditingDomainBasedRegistry<XSourceSetD
 	@Override
 	public void registerSourceSet(XSourceSetDescriptor sourceSet) {
 		registerContent(sourceSet);
+		Iterable<? extends XSourceDescriptor> sources = sourceSet.getSources();
+		for (XSourceDescriptor sourceDescriptor : sources) {
+			registerSource(sourceDescriptor);
+		}
 	}
 
 	@Override
 	public void unregisterSourceSet(String sourceSetIdentifier) {
+		XSourceSetDescriptor content = getRegistryContent(sourceSetIdentifier);
+		if (content != null) {
+			Iterable<? extends XSourceDescriptor> sources = content.getSources();
+			for (XSourceDescriptor sourceDescriptor : sources) {
+				unregisterSource(sourceDescriptor.getIdentifier());
+			}
+		}
 		unregisterContent(sourceSetIdentifier);
 	}
 
 	@Override
 	public Iterable<XSourceDescriptor> getSources() {
-		return sources.values();
+		return sourceIndex.values();
 	}
 
 	@Override
 	public void registerSource(XSourceDescriptor source) {
 		String identifier = source.getIdentifier();
-		sources.put(identifier, source);
+		sourceIndex.put(identifier, source);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void unregisterSource(String sourceIdentifier) {
-		sources.remove(sourceIdentifier);
+		sourceIndex.remove(sourceIdentifier);
 		// TODO Auto-generated method stub
 		
 	}

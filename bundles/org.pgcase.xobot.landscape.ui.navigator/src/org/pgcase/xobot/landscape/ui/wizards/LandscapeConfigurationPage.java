@@ -167,7 +167,7 @@ public class LandscapeConfigurationPage extends WizardPage {
 			LandscapeConfigurationPage.this.validatePage();
 		}, FocusDescriptors.MATURITY_INTEGRATION);
 
-		targetSandboxCombo = LandscapeUi.createTargetGroup(composite, "Экспериментальный стэнд", "Конфигурация экспериментальный стэнда",
+		targetSandboxCombo = LandscapeUi.createTargetGroup(composite, "Экспериментальный стэнд", "Конфигурация экспериментального стэнда",
 				e -> {
 					targetSandboxLocation = (XTargetDescriptor) e.widget.getData();
 					LandscapeConfigurationPage.this.validatePage();

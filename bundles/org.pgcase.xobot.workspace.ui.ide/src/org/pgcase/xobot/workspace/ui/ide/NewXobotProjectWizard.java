@@ -74,7 +74,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 			}
 			Label nameFieldILabel = new Label(composite, SWT.LEFT);
 			{
-				nameFieldILabel.setText("Project name:");
+				nameFieldILabel.setText(Messages.NewXobotProjectWizard_Title);
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
 				data.grabExcessHorizontalSpace = false;

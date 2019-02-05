@@ -20,8 +20,12 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.team.ui;
 
+import java.util.Map;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.team.core.RepositoryProvider;
@@ -29,15 +33,25 @@ import org.eclipse.team.core.TeamException;
 import org.eclipse.team.ui.IConfigurationWizard;
 import org.eclipse.team.ui.IConfigurationWizardExtension;
 import org.eclipse.ui.IWorkbench;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
-import org.pgcase.xobot.landscape.ui.wizards.LandscapeConfigurationPage;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
+import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 import org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider;
 
 public class XobotConfigurationWizard extends Wizard implements IConfigurationWizard, IConfigurationWizardExtension {
 	
 	IProject[] projects;
 	
-	LandscapeConfigurationPage mainPage;
+	XobotConfigurationWizardPage mainPage;
 	
 	public XobotConfigurationWizard() {
 		// retrieve the remembered dialog settings
@@ -59,9 +73,22 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 	}
 
 	public void addPages() {
+		Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+		BundleContext bundleContext = bundle.getBundleContext();
+		IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(bundleContext);
+		XSourceRegistry sourceRegistry = serviceContext.get(XSourceRegistry.class);
+		XTargetRegistry targetRegistry = serviceContext.get(XTargetRegistry.class);
+		XWorkspaceElementService workspaceService = serviceContext.get(XWorkspaceElementService.class);
+		XProjectDescriptor projectDescriptor = workspaceService.getProject(projects[0].getName());
+
+		Iterable<? extends XProjectSourceDescriptor> projectSources = projectDescriptor.getProjectSources();
+		Iterable<? extends XProjectTargetDescriptor> projectTargets = projectDescriptor.getProjectTargets();
+		Map<String, XSourceDescriptor> resolvedSources = WorkspaceCoreResources.resolveSources(sourceRegistry, projectSources);
+		Map<String, XTargetDescriptor> resolvedTargets = WorkspaceCoreResources.resolveTargets(targetRegistry, projectTargets);
+
+		mainPage = new XobotConfigurationWizardPage(resolvedSources, resolvedTargets);
 		String title = "Протянуть Хобот";
 		String description = "Хобот поможет организовать работу с процедурными расширениями";
-		mainPage = new LandscapeConfigurationPage(LandscapeConfigurationPage.class.getName());
 		mainPage.setTitle(title);
 		mainPage.setDescription(description);
 		addPage(mainPage);
@@ -77,6 +104,10 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 				XSourceDescriptor sourceIntegrationLocation = mainPage.getSourceIntegrationLocation();
 				String path = new Path(sourceIntegrationLocation.getUri()).append(project.getName()).toOSString();
 				provider.setTargetLocation(path);
+				if (i > 0) {
+					//FIXME: only one project is allowed for now
+					break;
+				}
 			}
 		} catch (TeamException e) {
 			ErrorDialog.openError(

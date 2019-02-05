@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.pgcase.xobot.landscape.ui.wizards;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +39,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.pgcase.xobot.basis.jface.WizardPages;
 import org.pgcase.xobot.landscape.runtime.FocusDescriptors;
+import org.pgcase.xobot.landscape.runtime.XFocusDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.landscape.ui.LandscapeUi;
@@ -51,19 +51,19 @@ public class LandscapeConfigurationPage extends WizardPage {
 
 	private static final int COMBO_HISTORY_LENGTH = 5;
 
-	XSourceDescriptor sourceIntegrationLocation;
+	private XSourceDescriptor sourceIntegrationLocation;
 	Combo sourceIntegrationCombo;
 
-	XTargetDescriptor targetSandboxLocation;
+	private XTargetDescriptor targetSandboxLocation;
 	Combo targetSandboxCombo;
 
-	XTargetDescriptor targetIntegrationLocation;
+	private XTargetDescriptor targetIntegrationLocation;
 	Combo targetIntegrationCombo;
 
-	XTargetDescriptor targetStableLocation;
+	private XTargetDescriptor targetStableLocation;
 	Combo targetStableCombo;
 
-	XTargetDescriptor targetOfficialLocation;
+	private XTargetDescriptor targetOfficialLocation;
 	Combo targetOfficialCombo;
 
 	public LandscapeConfigurationPage(String pageName) {
@@ -163,29 +163,29 @@ public class LandscapeConfigurationPage extends WizardPage {
 
 	protected void createLandscapeControls(Composite composite) {
 		sourceIntegrationCombo = LandscapeUi.createSourceGroup(composite, "Исходный код", "Путь к Git репозиторию", e -> {
-			sourceIntegrationLocation = (XSourceDescriptor) e.widget.getData();
+			setSourceIntegrationLocation((XSourceDescriptor) e.widget.getData());
 			LandscapeConfigurationPage.this.validatePage();
 		}, FocusDescriptors.MATURITY_INTEGRATION);
 
 		targetSandboxCombo = LandscapeUi.createTargetGroup(composite, "Экспериментальный стэнд", "Конфигурация экспериментального стэнда",
 				e -> {
-					targetSandboxLocation = (XTargetDescriptor) e.widget.getData();
+					setTargetSandboxLocation((XTargetDescriptor) e.widget.getData());
 					LandscapeConfigurationPage.this.validatePage();
 				}, FocusDescriptors.MATURITY_SANDBOX);
 
 		targetIntegrationCombo = LandscapeUi.createTargetGroup(composite, "Интеграционный стэнд", "Конфигурация интеграционного стэнда",
 				e -> {
-					targetIntegrationLocation = (XTargetDescriptor) e.widget.getData();
+					setTargetIntegrationLocation((XTargetDescriptor) e.widget.getData());
 					LandscapeConfigurationPage.this.validatePage();
 				}, FocusDescriptors.MATURITY_INTEGRATION);
 
 		targetStableCombo = LandscapeUi.createTargetGroup(composite, "Стабильный стэнд", "Конфигурация стабильного стэнда", e -> {
-			targetStableLocation = (XTargetDescriptor) e.widget.getData();
+			setTargetStableLocation((XTargetDescriptor) e.widget.getData());
 			LandscapeConfigurationPage.this.validatePage();
 		}, FocusDescriptors.MATURITY_STABLE);
 
 		targetOfficialCombo = LandscapeUi.createTargetGroup(composite, "Ахтунг! Прод!", "И не валите всё потом на Хобот", e -> {
-			targetOfficialLocation = (XTargetDescriptor) e.widget.getData();
+			setTargetOfficialLocation((XTargetDescriptor) e.widget.getData());
 			LandscapeConfigurationPage.this.validatePage();
 		}, FocusDescriptors.MATURITY_OFFICIAL);
 
@@ -222,10 +222,21 @@ public class LandscapeConfigurationPage extends WizardPage {
 			String[] locations = settings.getArray(STORE_LOCATION);
 			if (locations != null) {
 				for (int i = 0; i < locations.length; i++) {
-					sourceIntegrationCombo.add(locations[i]);
+					//FIXME: restore
 				}
-				sourceIntegrationCombo.select(0);
 			}
+		}
+		updateCombo(sourceIntegrationLocation, sourceIntegrationCombo);
+		updateCombo(targetSandboxLocation, targetSandboxCombo);
+		updateCombo(targetIntegrationLocation, targetIntegrationCombo);
+		updateCombo(targetStableLocation, targetStableCombo);
+		updateCombo(targetOfficialLocation, targetOfficialCombo);
+	}
+
+	private void updateCombo(XFocusDescriptor descriptor, Combo combo) {
+		if (descriptor != null) {
+			combo.setData(descriptor);
+			combo.setText(descriptor.getName());
 		}
 	}
 
@@ -233,9 +244,10 @@ public class LandscapeConfigurationPage extends WizardPage {
 		IDialogSettings settings = getDialogSettings();
 		if (settings != null) {
 			String[] locations = settings.getArray(STORE_LOCATION);
-			if (locations == null)
+			if (locations == null) {
 				locations = new String[0];
-			locations = addToHistory(locations, sourceIntegrationCombo.getText());
+			}
+			//FIXME: restore
 			settings.put(STORE_LOCATION, locations);
 		}
 	}
@@ -246,23 +258,23 @@ public class LandscapeConfigurationPage extends WizardPage {
 	}
 	
 	protected IStatus validateFields() {
-		if (sourceIntegrationLocation == null) {
+		if (getSourceIntegrationLocation() == null) {
 			String message = "Необходимо указать, где находится исходный код";
 			return createError(message);
 		}
-		if (targetSandboxLocation == null) {
+		if (getTargetSandboxLocation() == null) {
 			String message = "Необходимо указать экспериментальный стэнд";
 			return createError(message);
 		}
-		if (targetIntegrationLocation == null) {
+		if (getTargetIntegrationLocation() == null) {
 			String message = "Необходимо указать интеграционный стэнд";
 			return createError(message);
 		}
-		if (targetStableLocation == null) {
+		if (getTargetStableLocation() == null) {
 			String message = "Рекомендуется указать стабильный стэнд";
 			return createWarning(message);
 		}
-		if (targetOfficialLocation == null) {
+		if (getTargetOfficialLocation() == null) {
 			String message = "Рекомендуется указать официальный стэнд";
 			return createWarning(message);
 		}
@@ -281,5 +293,25 @@ public class LandscapeConfigurationPage extends WizardPage {
 	public void dispose() {
 		storeWidgetValues();
 		super.dispose();
+	}
+
+	protected void setSourceIntegrationLocation(XSourceDescriptor sourceIntegrationLocation) {
+		this.sourceIntegrationLocation = sourceIntegrationLocation;
+	}
+
+	protected void setTargetSandboxLocation(XTargetDescriptor targetSandboxLocation) {
+		this.targetSandboxLocation = targetSandboxLocation;
+	}
+
+	protected void setTargetIntegrationLocation(XTargetDescriptor targetIntegrationLocation) {
+		this.targetIntegrationLocation = targetIntegrationLocation;
+	}
+
+	protected void setTargetStableLocation(XTargetDescriptor targetStableLocation) {
+		this.targetStableLocation = targetStableLocation;
+	}
+
+	protected void setTargetOfficialLocation(XTargetDescriptor targetOfficialLocation) {
+		this.targetOfficialLocation = targetOfficialLocation;
 	}
 }

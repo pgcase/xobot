@@ -22,7 +22,9 @@ package org.pgcase.xobot.workspace.core.resources;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
@@ -36,8 +38,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
+import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
 import org.pgcase.xobot.workspace.internal.core.resources.WorkspaceCoreResourcesActivator;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
 import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
@@ -157,4 +165,26 @@ public class WorkspaceCoreResources {
 		description.setBuildSpec(newCommands);
 	}
 
+	public static Map<String, XSourceDescriptor> resolveSources(XSourceRegistry sourceRegistry, Iterable<? extends XProjectSourceDescriptor> projectSources) {
+		Map<String, XSourceDescriptor> map = new HashMap<>();
+		for (XProjectSourceDescriptor descriptor : projectSources) {
+			XSourceDescriptor source = sourceRegistry.getSource(descriptor.getSourceIdentifier());
+			if (source != null) {
+				map.put(source.getMaturity(), source);
+			}
+		}
+		return map;
+	}
+
+	public static Map<String, XTargetDescriptor> resolveTargets(XTargetRegistry targetRegistry, Iterable<? extends XProjectTargetDescriptor> projectTargets) {
+		Map<String, XTargetDescriptor> map = new HashMap<>();
+		for (XProjectTargetDescriptor descriptor : projectTargets) {
+			XTargetDescriptor target = targetRegistry.getTarget(descriptor.getTargetIdentifier());
+			if (target != null) {
+				map.put(target.getMaturity(), target);
+			}
+		}
+		return map;
+	}
+	
 }

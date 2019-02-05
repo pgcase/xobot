@@ -32,8 +32,9 @@ public class XobotSynchronizeAction extends XobotTeamAction {
 	
 	protected void execute(IAction action) {
 		ResourceMapping[] mappings = getSelectedMappings();
-		if (mappings.length == 0)
+		if (mappings.length == 0) {
 			return;
+		}
 		SubscriberScopeManager manager = XobotModelOperation.createScopeManager(XobotSystemSubscriber.getInstance().getName(), mappings);
 		XobotMergeContext context = new XobotMergeContext(manager);
 		XobotSynchronizeParticipant participant = new XobotSynchronizeParticipant(context);

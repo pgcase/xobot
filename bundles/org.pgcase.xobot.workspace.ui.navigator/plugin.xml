@@ -49,13 +49,13 @@
                      value="org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry">
                </instanceof>
                <instanceof
-                     value="org.pgcase.xobot.workspace.runtime.registry.XProjectSourceDescriptor">
+                     value="org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor">
                </instanceof>
                <instanceof
-                     value="org.pgcase.xobot.workspace.runtime.registry.XProjectTargetDescriptor">
+                     value="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor">
                </instanceof>
                <instanceof
-                     value="org.pgcase.xobot.workspace.runtime.registry.XProjectFolderDescriptor">
+                     value="org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor">
                </instanceof>
             </or>
          </triggerPoints>

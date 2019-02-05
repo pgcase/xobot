@@ -20,6 +20,7 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.internal.core.resources;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.resources.IMarker;
@@ -28,12 +29,36 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.pgcase.xobot.landscape.runtime.FocusDescriptors;
+import org.pgcase.xobot.landscape.runtime.XFocusDescriptor;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
+import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
 public class XobotProjectBuilder extends IncrementalProjectBuilder {
 
+	private XWorkspaceElementService workspaceService;
+	private XSourceRegistry sourceRegistry;
+	private XTargetRegistry targetRegistry;
+
 	public XobotProjectBuilder() {
-		// TODO Auto-generated constructor stub
+		Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+		BundleContext bundleContext = bundle.getBundleContext();
+		IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(bundleContext);
+		workspaceService = serviceContext.get(XWorkspaceElementService.class);
+		sourceRegistry = serviceContext.get(XSourceRegistry.class);
+		targetRegistry = serviceContext.get(XTargetRegistry.class);
 	}
 
 	@Override
@@ -43,13 +68,56 @@ public class XobotProjectBuilder extends IncrementalProjectBuilder {
 	
 	@Override
 	protected IProject[] build(int kind, Map<String, String> args, IProgressMonitor monitor) throws CoreException {
+		//FIXME: need more precise implementation
+		clean(monitor);
+
 		IProject project = getProject();
-//		IFile file = project.getFile(".xobot");
-		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_sandbox, IMarker.SEVERITY_ERROR);
-		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_integration, IMarker.SEVERITY_ERROR);
-		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_stable, IMarker.SEVERITY_WARNING);
-		createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_official, IMarker.SEVERITY_WARNING);
+		XProjectDescriptor xobot = workspaceService.getProject(project.getName());
+		if (xobot == null) {
+			//FIXME: configuration error
+			return null;
+		}
+		Map<String, XFocusDescriptor> resolvedSources = resolveSources(xobot.getProjectSources());
+		if (resolvedSources.get(FocusDescriptors.MATURITY_INTEGRATION) == null) {
+			createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_source_integration, IMarker.SEVERITY_ERROR);
+		}
+		
+		Map<String, XFocusDescriptor> resolvedTargets = resolveTargets(xobot.getProjectTargets());
+		if (resolvedTargets.get(FocusDescriptors.MATURITY_SANDBOX) == null) {
+			createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_target_sandbox, IMarker.SEVERITY_ERROR);
+		}
+		if (resolvedTargets.get(FocusDescriptors.MATURITY_INTEGRATION) == null) {
+			createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_target_integration, IMarker.SEVERITY_ERROR);
+		}
+		if (resolvedTargets.get(FocusDescriptors.MATURITY_STABLE) == null) {
+			createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_target_stable, IMarker.SEVERITY_WARNING);
+		}
+		if (resolvedTargets.get(FocusDescriptors.MATURITY_OFFICIAL) == null) {
+			createProblem(project, WorkspaceCoreResourcesMessages.XobotProjectBuilder_message_no_target_official, IMarker.SEVERITY_WARNING);
+		}
 		return null;
+	}
+
+	private Map<String, XFocusDescriptor> resolveTargets(Iterable<? extends XProjectTargetDescriptor> projectTargets) {
+		Map<String, XFocusDescriptor> map = new HashMap<>();
+		for (XProjectTargetDescriptor descriptor : projectTargets) {
+			XTargetDescriptor target = targetRegistry.getTarget(descriptor.getTargetIdentifier());
+			if (target != null) {
+				map.put(target.getMaturity(), target);
+			}
+		}
+		return map;
+	}
+
+	private Map<String, XFocusDescriptor> resolveSources(Iterable<? extends XProjectSourceDescriptor> projectSources) {
+		Map<String, XFocusDescriptor> map = new HashMap<>();
+		for (XProjectSourceDescriptor descriptor : projectSources) {
+			XSourceDescriptor source = sourceRegistry.getSource(descriptor.getSourceIdentifier());
+			if (source != null) {
+				map.put(source.getMaturity(), source);
+			}
+		}
+		return map;
 	}
 
 	public void createProblem(IResource resource, String message, int severity) throws CoreException {

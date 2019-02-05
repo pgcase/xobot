@@ -20,9 +20,14 @@
  *******************************************************************************/
 package org.pgcase.xobot.basis.ui.navigator;
 
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.pgcase.xobot.basis.emf.edit.ui.ComposedLabelProvider;
 
 public class RegistryLabelProvider extends ComposedLabelProvider implements ICommonLabelProvider {
@@ -43,6 +48,15 @@ public class RegistryLabelProvider extends ComposedLabelProvider implements ICom
 
 	@Override
 	public void init(ICommonContentExtensionSite aConfig) {
+		Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+		BundleContext bundleContext = bundle.getBundleContext();
+		IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(bundleContext);
+		init(serviceContext);
+	}
+
+	protected void init(IEclipseContext serviceContext) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

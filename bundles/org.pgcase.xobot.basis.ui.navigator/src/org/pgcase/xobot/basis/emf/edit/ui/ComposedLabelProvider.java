@@ -65,7 +65,11 @@ public class ComposedLabelProvider implements ILabelProvider, IColorProvider, IF
 		if (element instanceof EObject) {
 			return emfDelegate.getText(element);
 		}
-		return workbenchDelegate.getText(element);
+		String adapted = workbenchDelegate.getText(element);
+		if (adapted != null && !adapted.isEmpty()) {
+			return adapted;
+		}
+		return String.valueOf(element);
 	}
 
 	@Override

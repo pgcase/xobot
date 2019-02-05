@@ -30,6 +30,8 @@ public interface XTargetRegistry extends BasisRegistry<XTargetSetDescriptor> {
 
 	Iterable<? extends XTargetDescriptor> getTargets();
 
+	XTargetDescriptor getTarget(String targetIdentifier);
+
 	void registerTargetSet(XTargetSetDescriptor targetSet);
 
 	void unregisterTargetSet(String targetSetIdentifier);
@@ -37,5 +39,6 @@ public interface XTargetRegistry extends BasisRegistry<XTargetSetDescriptor> {
 	void registerTarget(XTargetDescriptor target);
 
 	void unregisterTarget(String targetIdentifier);
+
 
 }

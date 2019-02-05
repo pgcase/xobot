@@ -136,6 +136,10 @@ public abstract class EditingDomainBasedRegistry<C> implements EditingDomainRegi
 	}
 
 	protected URI createURI(String source) {
+		String platformResource = "platform:";
+		if (source.startsWith(platformResource)) {
+			return URI.createURI(source);
+		}
 		return URI.createFileURI(source);
 	}
 
@@ -145,6 +149,7 @@ public abstract class EditingDomainBasedRegistry<C> implements EditingDomainRegi
 		try {
 			loadResource(identifier);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Logger.getLogger(this.getClass().getName()).log(Level.FINER, e.getMessage(), e);
 		}
 	}

@@ -20,19 +20,19 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.internal.core.resources;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
@@ -57,15 +57,6 @@ public class WorkspaceElementService implements XWorkspaceElementService {
 	
 	public void unbindProjectRegistry(XProjectRegistry registry) {
 		this.projectRegistry = null;
-	}
-	
-	@Activate
-	public void activate() {
-		IWorkspaceRoot root = workspace.getRoot();
-		IProject[] projects = root.getProjects();
-		for (IProject project : projects) {
-			restoreProject(project);
-		}
 	}
 	
 	@Override
@@ -163,6 +154,19 @@ public class WorkspaceElementService implements XWorkspaceElementService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public Iterable<? extends XProjectDescriptor> getProjects() {
+		List<XProjectDescriptor> xobots = new ArrayList<>();
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		for (IProject project : projects) {
+			XProjectDescriptor xobot = getProject(project.getName());
+			if (xobot != null) {
+				xobots.add(xobot);
+			}
+		}
+		return xobots;
 	}
 	
 }

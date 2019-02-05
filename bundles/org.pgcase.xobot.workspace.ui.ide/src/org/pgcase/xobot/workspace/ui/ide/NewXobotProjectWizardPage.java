@@ -1,5 +1,7 @@
 package org.pgcase.xobot.workspace.ui.ide;
 
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -63,8 +65,14 @@ public class NewXobotProjectWizardPage extends LandscapeConfigurationPage {
 	
 	@Override
 	protected void loadWidgetValues() {
-		String proposedName = "xobot_project_1";
-		txtName.setText(proposedName);
+		String prefix ="xobot_project_";
+		int postfix =1;
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		
+		while (root.getProject(prefix + postfix).exists()) {
+			postfix++;
+		}
+		txtName.setText(prefix + postfix);
 		super.loadWidgetValues();
 	}
 	

@@ -25,18 +25,21 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.pgcase.xobot.basis.runtime.BasisEvents;
 import org.pgcase.xobot.basis.ui.navigator.RegistryContentProvider;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
-import org.pgcase.xobot.workspace.runtime.XWorkspaceEvents;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
+import org.pgcase.xobot.workspace.runtime.XWorkspaceEvents;
 import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
 public class ProjectsContentProvider extends RegistryContentProvider<XProjectRegistry> {
+
+	private XWorkspaceElementService workspaceService;
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
@@ -51,8 +54,7 @@ public class ProjectsContentProvider extends RegistryContentProvider<XProjectReg
 			return list.toArray();
 		}
 		if (parentElement instanceof XProjectRegistry) {
-			XProjectRegistry registry = (XProjectRegistry) parentElement;
-			return StreamSupport.stream(registry.getProjects().spliterator(), false).toArray();
+			return StreamSupport.stream(workspaceService.getProjects().spliterator(), false).toArray();
 		}
 		if (parentElement instanceof IProject) {
 			IProject registry = (IProject) parentElement;
@@ -90,6 +92,12 @@ public class ProjectsContentProvider extends RegistryContentProvider<XProjectReg
 	@Override
 	protected String getTopic() {
 		return XWorkspaceEvents.WORKSPACE_TOPIC_BASE + BasisEvents.TOPIC_SEP + BasisEvents.ALL_SUB_TOPICS;
+	}
+	
+	@Override
+	protected void init(IEclipseContext context) {
+		super.init(context);
+		workspaceService = context.get(XWorkspaceElementService.class);
 	}
 	
 }

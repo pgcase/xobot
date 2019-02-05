@@ -84,8 +84,13 @@ public abstract class RegistryContentProvider<R extends BasisRegistry> implement
 			broker.subscribe(getTopic(), this);
 		}
 		registry = serviceContext.get(getRegistryClass());
+		init(serviceContext);
 	}
 	
+	protected void init(IEclipseContext context) {
+		//nothing else by default
+	}
+
 	@Override
 	public void dispose() {
 		if (broker != null) {

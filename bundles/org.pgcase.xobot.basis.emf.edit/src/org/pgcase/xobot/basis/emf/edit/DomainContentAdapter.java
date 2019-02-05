@@ -47,7 +47,8 @@ public abstract class DomainContentAdapter<C, R extends EditingDomainRegistry<C>
 			}
 		} else if (notifier instanceof Resource) {
 			Resource resource = (Resource) notifier;
-			switch (notification.getFeatureID(Resource.class)) {
+			int featureID = notification.getFeatureID(Resource.class);
+			switch (featureID) {
 			case Resource.RESOURCE__CONTENTS:
 				processResourceContents(resource, notification);
 			case Resource.RESOURCE__IS_LOADED:

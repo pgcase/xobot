@@ -37,6 +37,8 @@ public interface XWorkspaceElementService {
 	
 	XProjectDescriptor getProject(String name);
 
+	Iterable<? extends XProjectDescriptor> getProjects();
+
 	XProjectFolderDescriptor getProjectFolder(String name, String path);
 
 	XWorkspaceElementDescriptor getWorkspaceElement(IPath path);

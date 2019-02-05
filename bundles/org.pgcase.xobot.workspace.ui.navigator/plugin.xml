@@ -97,9 +97,14 @@
             labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.sources.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-            </adapt>
+            <or>
+               <adapt
+                     type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+               </adapt>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+               </instanceof>
+            </or>
          </triggerPoints>
       </navigatorContent>
       <navigatorContent
@@ -110,9 +115,14 @@
             labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
             name="%navigatorContent.targets.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-            </adapt>
+            <or>
+               <adapt
+                     type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+               </adapt>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+               </instanceof>
+            </or>
          </triggerPoints>
       </navigatorContent>
    </extension>
@@ -120,6 +130,14 @@
          point="org.eclipse.ui.navigator.viewer">
       <viewerContentBinding
             viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  pattern="org.pgcase.xobot.basis.ui.navigator.navigatorContent.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.pgcase.xobot.workspace.ui.navigator.views.view.projects">
          <includes>
             <contentExtension
                   pattern="org.pgcase.xobot.basis.ui.navigator.navigatorContent.*">

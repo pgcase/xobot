@@ -199,6 +199,22 @@ public class LandscapeConfigurationPage extends WizardPage {
 	public XSourceDescriptor getSourceIntegrationLocation() {
 		return sourceIntegrationLocation;
 	}
+	
+	public XTargetDescriptor getTargetSandboxLocation() {
+		return targetSandboxLocation;
+	}
+	
+	public XTargetDescriptor getTargetIntegrationLocation() {
+		return targetIntegrationLocation;
+	}
+	
+	public XTargetDescriptor getTargetStableLocation() {
+		return targetStableLocation;
+	}
+	
+	public XTargetDescriptor getTargetOfficialLocation() {
+		return targetOfficialLocation;
+	}
 
 	protected void loadWidgetValues() {
 		IDialogSettings settings = getDialogSettings();

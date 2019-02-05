@@ -20,6 +20,7 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.core.resources;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +31,11 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.pgcase.xobot.landscape.runtime.XPileDescriptor;
-import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
-import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.pgcase.xobot.workspace.internal.core.resources.WorkspaceCoreResourcesActivator;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
@@ -74,8 +77,9 @@ public class WorkspaceCoreResources {
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			// FIXME: investigate
+			return false;
 		}
-		return false;
 	}
 
 	public static void addXobotNature(IProject project, IProgressMonitor monitor) throws CoreException {
@@ -105,21 +109,30 @@ public class WorkspaceCoreResources {
 		return false;
 	}
 
-	public static void configureXobotProject(IProject project, final IProjectDescription description,
-			IProgressMonitor monitor) throws CoreException {
+	public static void configureProjectDescription(final IProjectDescription description) {
 		description.setNatureIds(new String[] { NATURE_ID });
 		addBuilder(description);
+	}
+
+	public static void configureXobotProject(IProject project, XProjectDescriptor xobot, IProgressMonitor monitor)
+			throws CoreException {
 		project.getFolder(FUNCTION_FOLDER_NAME).create(true, true, monitor);
 		project.getFolder(TRIGGER_FOLDER_NAME).create(true, true, monitor);
-		XProjectRegistry projectRegistry = getWorkspaceElementService().getProjectRegistry();
-		
-		List<XSourceDescriptor> sources = new ArrayList<>();
-		List<XTargetDescriptor> targets = new ArrayList<>();
-		List<XPileDescriptor> folders = new ArrayList<>();
-		XProjectDescriptor xobot = projectRegistry.createProject(project.getName(), sources , targets, folders);
-		projectRegistry.registerProject(xobot);
+		IFile specification = getXobotProjectSpecification(project);
+		URI uri = URI.createPlatformResourceURI(specification.getFullPath().toString(), true);
+		ResourceSet rs = new ResourceSetImpl();
+		Resource resource = rs.createResource(uri);
+		resource.getContents().add((EObject) xobot);
+		try {
+			resource.save(null);
+			XProjectRegistry projectRegistry = getWorkspaceElementService().getProjectRegistry();
+			projectRegistry.registerResource(uri.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
+
 	public static IFile getXobotProjectSpecification(IProject project) {
 		if (project == null || !project.isAccessible()) {
 			return null;
@@ -143,5 +156,5 @@ public class WorkspaceCoreResources {
 		newCommands[0] = newCommand;
 		description.setBuildSpec(newCommands);
 	}
-	
+
 }

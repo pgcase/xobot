@@ -22,6 +22,8 @@ package org.pgcase.xobot.workspace.ui.ide;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
@@ -37,8 +39,14 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.ide.undo.CreateProjectOperation;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
+import org.pgcase.xobot.landscape.runtime.XPileDescriptor;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.workspace.core.filesystem.XobotFiles;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
+import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
 public class NewXobotProjectWizard extends BasicNewResourceWizard implements INewWizard {
 
@@ -62,25 +70,32 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		final IProjectDescription description = workspace.newProjectDescription(projectName);
 		URI locatiionUri = XobotFiles.composeInstallLocationRoot(projectName);
 		description.setLocationURI(locatiionUri);
+		WorkspaceCoreResources.configureProjectDescription(description);
 		IProject project = workspace.getRoot().getProject(projectName);
-		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+		List<XSourceDescriptor> sources = collectProjectSources();
+		List<XTargetDescriptor> targets = collectProjectTarget();
+		List<XPileDescriptor> folders = new ArrayList<>();
+		
+		WorkspaceModifyOperation configure = new WorkspaceModifyOperation() {
 
 			@Override
 			protected void execute(IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
-				WorkspaceCoreResources.configureXobotProject(project, description, monitor);
+				XWorkspaceElementService service = WorkspaceCoreResources.getWorkspaceElementService();
+				XProjectRegistry projectRegistry = service.getProjectRegistry();
+				XProjectDescriptor xobot = projectRegistry.createProject(project.getName(), sources, targets, folders);
+				WorkspaceCoreResources.configureXobotProject(project, xobot, monitor);
 			}
 		};
 		// create the new project operation
 		IRunnableWithProgress op = monitor -> {
-			CreateProjectOperation op1 = new CreateProjectOperation(description,
-					"New Xobot Project");
+			CreateProjectOperation create = new CreateProjectOperation(description, "New Xobot Project");
 			try {
 				// see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=219901
 				// directly execute the operation so that the undo state is
 				// not preserved. Making this undoable resulted in too many
 				// accidental file deletions.
-				op1.execute(monitor, WorkspaceUndoUtil.getUIInfoAdapter(getShell()));
+				create.execute(monitor, WorkspaceUndoUtil.getUIInfoAdapter(getShell()));
 			} catch (ExecutionException e) {
 				throw new InvocationTargetException(e);
 			}
@@ -88,7 +103,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		try {
 			IWizardContainer container = getContainer();
 			container.run(true, true, op);
-			container.run(true, false, operation);
+			container.run(true, false, configure);
 			selectAndReveal(project);
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block
@@ -99,6 +114,33 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		}
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	private List<XTargetDescriptor> collectProjectTarget() {
+		List<XTargetDescriptor> targets = new ArrayList<>();
+		XTargetDescriptor sandbox = mainPage.getTargetSandboxLocation();
+		if (sandbox != null) {
+			targets.add(sandbox);
+		}
+		XTargetDescriptor integration = mainPage.getTargetIntegrationLocation();
+		if (integration != null) {
+			targets.add(integration);
+		}
+		XTargetDescriptor stable = mainPage.getTargetStableLocation();
+		if (stable != null) {
+			targets.add(stable);
+		}
+		XTargetDescriptor official = mainPage.getTargetOfficialLocation();
+		if (official != null) {
+			targets.add(official);
+		}
+		return targets;
+	}
+
+	private List<XSourceDescriptor> collectProjectSources() {
+		List<XSourceDescriptor> sources = new ArrayList<>();
+		sources.add(mainPage.getSourceIntegrationLocation());
+		return sources;
 	}
 
 }

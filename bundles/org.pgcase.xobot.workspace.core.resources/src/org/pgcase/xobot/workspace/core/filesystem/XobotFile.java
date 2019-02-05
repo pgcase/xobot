@@ -78,7 +78,7 @@ public class XobotFile extends LocalFile {
 	
 	@Override
 	public File toLocalFile(int options, IProgressMonitor monitor) throws CoreException {
-		return null;
+		return super.toLocalFile(options, monitor);
 	}
 
 }

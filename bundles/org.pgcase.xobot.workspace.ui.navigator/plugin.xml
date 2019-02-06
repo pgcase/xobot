@@ -54,12 +54,6 @@
                <instanceof
                      value="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor">
                </instanceof>
-               <instanceof
-                     value="org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor">
-               </instanceof>
-               <instanceof
-                     value="org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor">
-               </instanceof>
             </or>
          </triggerPoints>
          <actionProvider

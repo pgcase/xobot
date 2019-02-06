@@ -291,6 +291,11 @@
             defaultHandler="org.pgcase.xobot.workspace.team.ui.CompareToTargetHandler"
             id="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
             name="Compare to Target">
+         <commandParameter
+               id="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target.maturity"
+               name="Maturity"
+               optional="false">
+         </commandParameter>
       </command>
    </extension>
    <extension
@@ -321,6 +326,10 @@
                      </adapt>
                   </iterate>
                </visibleWhen>
+               <parameter
+                     name="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target.maturity"
+                     value="sandbox">
+               </parameter>
             </command>
             <command
                   commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
@@ -335,6 +344,10 @@
                      </adapt>
                   </iterate>
                </visibleWhen>
+               <parameter
+                     name="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target.maturity"
+                     value="integration">
+               </parameter>
             </command>
             <command
                   commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
@@ -349,6 +362,10 @@
                      </adapt>
                   </iterate>
                </visibleWhen>
+               <parameter
+                     name="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target.maturity"
+                     value="stable">
+               </parameter>
             </command>
             <command
                   commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
@@ -363,6 +380,10 @@
                      </adapt>
                   </iterate>
                </visibleWhen>
+               <parameter
+                     name="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target.maturity"
+                     value="official">
+               </parameter>
             </command>
          </menu>
       </menuContribution>

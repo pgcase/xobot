@@ -20,8 +20,11 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.core.resources;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
@@ -30,11 +33,19 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.pgcase.xobot.landscape.runtime.XPileDescriptor;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
+import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
 import org.pgcase.xobot.workspace.internal.core.resources.WorkspaceCoreResourcesActivator;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
 import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
@@ -74,8 +85,9 @@ public class WorkspaceCoreResources {
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			// FIXME: investigate
+			return false;
 		}
-		return false;
 	}
 
 	public static void addXobotNature(IProject project, IProgressMonitor monitor) throws CoreException {
@@ -105,23 +117,30 @@ public class WorkspaceCoreResources {
 		return false;
 	}
 
-	public static void createXobotProject(IProject project, final IProjectDescription description,
-			IProgressMonitor monitor) throws CoreException {
+	public static void configureProjectDescription(final IProjectDescription description) {
 		description.setNatureIds(new String[] { NATURE_ID });
 		addBuilder(description);
-		project.create(description, monitor);
-		project.open(monitor);
+	}
+
+	public static void configureXobotProject(IProject project, XProjectDescriptor xobot, IProgressMonitor monitor)
+			throws CoreException {
 		project.getFolder(FUNCTION_FOLDER_NAME).create(true, true, monitor);
 		project.getFolder(TRIGGER_FOLDER_NAME).create(true, true, monitor);
-		XProjectRegistry projectRegistry = getWorkspaceElementService().getProjectRegistry();
-		
-		List<XSourceDescriptor> sources = new ArrayList<>();
-		List<XTargetDescriptor> targets = new ArrayList<>();
-		List<XPileDescriptor> folders = new ArrayList<>();
-		XProjectDescriptor xobot = projectRegistry.createProject(project.getName(), sources , targets, folders);
-		projectRegistry.registerProject(xobot);
+		IFile specification = getXobotProjectSpecification(project);
+		URI uri = URI.createPlatformResourceURI(specification.getFullPath().toString(), true);
+		ResourceSet rs = new ResourceSetImpl();
+		Resource resource = rs.createResource(uri);
+		resource.getContents().add((EObject) xobot);
+		try {
+			resource.save(null);
+			XProjectRegistry projectRegistry = getWorkspaceElementService().getProjectRegistry();
+			projectRegistry.registerResource(uri.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
+
 	public static IFile getXobotProjectSpecification(IProject project) {
 		if (project == null || !project.isAccessible()) {
 			return null;
@@ -144,6 +163,28 @@ public class WorkspaceCoreResources {
 		System.arraycopy(buildSpec, 0, newCommands, 1, buildSpec.length);
 		newCommands[0] = newCommand;
 		description.setBuildSpec(newCommands);
+	}
+
+	public static Map<String, XSourceDescriptor> resolveSources(XSourceRegistry sourceRegistry, Iterable<? extends XProjectSourceDescriptor> projectSources) {
+		Map<String, XSourceDescriptor> map = new HashMap<>();
+		for (XProjectSourceDescriptor descriptor : projectSources) {
+			XSourceDescriptor source = sourceRegistry.getSource(descriptor.getSourceIdentifier());
+			if (source != null) {
+				map.put(source.getMaturity(), source);
+			}
+		}
+		return map;
+	}
+
+	public static Map<String, XTargetDescriptor> resolveTargets(XTargetRegistry targetRegistry, Iterable<? extends XProjectTargetDescriptor> projectTargets) {
+		Map<String, XTargetDescriptor> map = new HashMap<>();
+		for (XProjectTargetDescriptor descriptor : projectTargets) {
+			XTargetDescriptor target = targetRegistry.getTarget(descriptor.getTargetIdentifier());
+			if (target != null) {
+				map.put(target.getMaturity(), target);
+			}
+		}
+		return map;
 	}
 	
 }

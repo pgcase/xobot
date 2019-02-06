@@ -152,6 +152,11 @@ public class TargetDomainRegistry extends EditingDomainBasedRegistry<XTargetSetD
 	public Iterable<XTargetDescriptor> getTargets() {
 		return targetIndex.values();
 	}
+	
+	@Override
+	public XTargetDescriptor getTarget(String targetIdentifier) {
+		return targetIndex.get(targetIdentifier);
+	}
 
 	@Override
 	public void registerTargetSet(XTargetSetDescriptor targetSet) {

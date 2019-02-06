@@ -30,6 +30,8 @@ public interface XSourceRegistry extends BasisRegistry<XSourceSetDescriptor> {
 
 	Iterable<? extends XSourceDescriptor> getSources();
 
+	XSourceDescriptor getSource(String sourceIdentifier);
+	
 	void registerSourceSet(XSourceSetDescriptor sourceSet);
 
 	void unregisterSourceSet(String sourceSetIdentifier);

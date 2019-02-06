@@ -167,6 +167,11 @@ public class SourceDomainRegistry extends EditingDomainBasedRegistry<XSourceSetD
 	public Iterable<XSourceDescriptor> getSources() {
 		return sourceIndex.values();
 	}
+	
+	@Override
+	public XSourceDescriptor getSource(String sourceIdentifier) {
+		return sourceIndex.get(sourceIdentifier);
+	}
 
 	@Override
 	public void registerSource(XSourceDescriptor source) {

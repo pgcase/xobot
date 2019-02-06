@@ -1,4 +1,4 @@
-package org.pgcase.xobot.landscape.ui.dialog;
+package org.pgcase.xobot.landscape.ui.dialogs;
 
 import java.text.Collator;
 import java.util.Comparator;
@@ -64,7 +64,7 @@ public abstract class FilteredFocusSelectionDialog extends FilteredItemsSelectio
 				return provider.getImage(element);
 			}
 		});
-		setInitialPattern("\\*");
+		setInitialPattern(".*"); //$NON-NLS-1$
 	}
 	
 	@Override
@@ -80,7 +80,8 @@ public abstract class FilteredFocusSelectionDialog extends FilteredItemsSelectio
 
 	@Override
 	protected IDialogSettings getDialogSettings() {
-		IDialogSettings settings = new DialogSettings("Sources");
+		//FIXME: handle with bundle activator
+		IDialogSettings settings = new DialogSettings("Landscape"); //$NON-NLS-1$
 		return settings;
 	}
 

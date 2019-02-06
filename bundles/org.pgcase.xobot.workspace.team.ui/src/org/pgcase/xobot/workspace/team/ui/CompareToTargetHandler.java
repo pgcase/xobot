@@ -20,26 +20,95 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.team.ui;
 
+import java.util.ArrayList;
+
+import org.eclipse.compare.CompareConfiguration;
+import org.eclipse.compare.CompareUI;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.mapping.ResourceMapping;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.team.core.RepositoryProvider;
+import org.eclipse.team.core.subscribers.SubscriberScopeManager;
+import org.eclipse.team.internal.ui.Utils;
+import org.eclipse.team.ui.synchronize.ISynchronizePageConfiguration;
+import org.eclipse.team.ui.synchronize.ParticipantPageCompareEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.team.core.XobotMergeContext;
+import org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider;
+import org.pgcase.xobot.workspace.team.core.XobotSystemSubscriber;
 
 public class CompareToTargetHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Shell shell = HandlerUtil.getActiveShell(event);
+		String maturity = event.getParameter(WorkspaceTeamUi.COMMAND_PARAMETER_TARGET_MATURITY);
 		IStructuredSelection selection = HandlerUtil.getCurrentStructuredSelection(event);
-		String bind = "Here we should compare {0} to target";
-		Object[] selected = selection.toArray();
-		MessageDialog.openInformation(shell, "Compare to Target", NLS.bind(bind, selected ));
+		ResourceMapping[] mappings = getSelectedMappings(selection);
+		if (mappings.length == 0) {
+			return null;
+		}
+
+		SubscriberScopeManager manager = XobotModelOperation
+				.createScopeManager(XobotSystemSubscriber.getInstance().getName(), mappings);
+		XobotMergeContext context = new XobotMergeContext(manager);
+		XobotSynchronizeParticipant participant = new XobotSynchronizeParticipant(context);
+		CompareConfiguration cc = new CompareConfiguration();
+		ISynchronizePageConfiguration pageConfiguration = participant.createPageConfiguration();
+		// Restrict preview page to only support incoming and conflict modes
+		if (pageConfiguration.getComparisonType() == ISynchronizePageConfiguration.THREE_WAY) {
+			pageConfiguration.setSupportedModes(
+					ISynchronizePageConfiguration.INCOMING_MODE | ISynchronizePageConfiguration.CONFLICTING_MODE);
+			pageConfiguration.setMode(ISynchronizePageConfiguration.INCOMING_MODE);
+		}
+		ParticipantPageCompareEditorInput input = new ParticipantPageCompareEditorInput(cc, pageConfiguration,
+				participant);
+		CompareUI.openCompareDialog(input);
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	private ResourceMapping[] getSelectedMappings(IStructuredSelection selection) {
+		return getSelectedResourceMappings(selection, XobotRepositoryProvider.REPOSITORY_PROVIDER_XOBOT);
+	}
+
+    protected ResourceMapping[] getSelectedResourceMappings(IStructuredSelection selection, String providerId) {
+        Object[] elements = selection.toArray();
+        ArrayList<ResourceMapping> providerMappings = new ArrayList<>();
+        for (int i = 0; i < elements.length; i++) {
+            Object object = elements[i];
+            Object adapted = getResourceMapping(object);
+            if (adapted instanceof ResourceMapping) {
+                ResourceMapping mapping = (ResourceMapping) adapted;
+                if (providerId == null || isMappedToProvider(mapping, providerId)) {
+                    providerMappings.add(mapping);
+                }
+            }
+        }
+        return providerMappings.toArray(new ResourceMapping[providerMappings.size()]);
+    }
+
+    private Object getResourceMapping(Object object) {
+        if (object instanceof ResourceMapping)
+            return object;
+        return Utils.getResourceMapping(object);
+    }
+
+    private boolean isMappedToProvider(ResourceMapping element, String providerId) {
+        IProject[] projects = element.getProjects();
+        for (int k = 0; k < projects.length; k++) {
+            IProject project = projects[k];
+            RepositoryProvider provider = RepositoryProvider.getProvider(project);
+            if (provider != null && provider.getID().equals(providerId)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

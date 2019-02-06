@@ -38,7 +38,7 @@
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectsContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.workspace.ui.navigator.navigatorContent.projects"
-            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
+            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectLabelProvider"
             name="%navigatorContent.projects.name">
          <triggerPoints>
             <or>
@@ -48,10 +48,22 @@
                <instanceof
                      value="org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry">
                </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor">
+               </instanceof>
             </or>
          </triggerPoints>
          <actionProvider
-               class="org.pgcase.xobot.basis.ui.navigator.RegistryActionProvider">
+               class="org.pgcase.xobot.workspace.ui.navigator.ProjectsActionProvider">
          </actionProvider>
          <possibleChildren>
             <or>
@@ -94,12 +106,14 @@
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectSourcesContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.sources"
-            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
+            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectSourcesLabelProvider"
             name="%navigatorContent.sources.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-            </adapt>
+            <or>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor">
+               </instanceof>
+            </or>
          </triggerPoints>
       </navigatorContent>
       <navigatorContent
@@ -107,12 +121,14 @@
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectTargetsContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.targets"
-            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
+            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectTargetsLabelProvider"
             name="%navigatorContent.targets.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-            </adapt>
+            <or>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor">
+               </instanceof>
+            </or>
          </triggerPoints>
       </navigatorContent>
    </extension>
@@ -120,6 +136,14 @@
          point="org.eclipse.ui.navigator.viewer">
       <viewerContentBinding
             viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  pattern="org.pgcase.xobot.basis.ui.navigator.navigatorContent.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.pgcase.xobot.workspace.ui.navigator.views.view.projects">
          <includes>
             <contentExtension
                   pattern="org.pgcase.xobot.basis.ui.navigator.navigatorContent.*">

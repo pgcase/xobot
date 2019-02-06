@@ -14,5 +14,6 @@ Require-Bundle: org.eclipse.e4.core.di;bundle-version="0.0.0",
  org.eclipse.ui.navigator;bundle-version="0.0.0",
  org.pgcase.xobot.landscape.ui.navigator;bundle-version="0.0.0",
  org.pgcase.xobot.workspace.runtime;bundle-version="0.0.0",
+ org.pgcase.xobot.dbproc.antlr;bundle-version="0.0.0",
  org.pgcase.xobot.workspace.core.resources;bundle-version="0.0.0"
 Bundle-ActivationPolicy: lazy

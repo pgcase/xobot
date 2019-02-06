@@ -30,5 +30,5 @@ public class ProjectsNavigator extends RegistryNavigator<XProjectDescriptor, XPr
 	protected Class<XProjectRegistry> getRegistryClass() {
 		return XProjectRegistry.class;
 	}
-
+	
 }

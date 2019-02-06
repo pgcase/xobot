@@ -74,7 +74,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		IProject project = workspace.getRoot().getProject(projectName);
 		List<XSourceDescriptor> sources = collectProjectSources();
 		List<XTargetDescriptor> targets = collectProjectTarget();
-		List<XPileDescriptor> folders = new ArrayList<>();
+		List<XPileDescriptor> folders = collectProjectFolders();
 		
 		WorkspaceModifyOperation configure = new WorkspaceModifyOperation() {
 
@@ -116,6 +116,12 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		return true;
 	}
 
+	private List<XSourceDescriptor> collectProjectSources() {
+		List<XSourceDescriptor> sources = new ArrayList<>();
+		sources.add(mainPage.getSourceIntegrationLocation());
+		return sources;
+	}
+
 	private List<XTargetDescriptor> collectProjectTarget() {
 		List<XTargetDescriptor> targets = new ArrayList<>();
 		XTargetDescriptor sandbox = mainPage.getTargetSandboxLocation();
@@ -137,10 +143,60 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		return targets;
 	}
 
-	private List<XSourceDescriptor> collectProjectSources() {
-		List<XSourceDescriptor> sources = new ArrayList<>();
-		sources.add(mainPage.getSourceIntegrationLocation());
-		return sources;
+	private List<XPileDescriptor> collectProjectFolders() {
+		List<XPileDescriptor> folders = new ArrayList<>();
+		folders.add(new XPileDescriptor() {
+			
+			@Override
+			public String getPath() {
+				// TODO Auto-generated method stub
+				return WorkspaceCoreResources.FUNCTION_FOLDER_NAME;
+			}
+			
+			@Override
+			public String getOrigin() {
+				// TODO Auto-generated method stub
+				return WorkspaceCoreResources.FUNCTION_FOLDER_NAME;
+			}
+			
+			@Override
+			public String getName() {
+				// TODO Auto-generated method stub
+				return "Функции";
+			}
+			
+			@Override
+			public String getIdentifier() {
+				// TODO Auto-generated method stub
+				return WorkspaceCoreResources.FUNCTION_FOLDER_NAME;
+			}
+		});
+		folders.add(new XPileDescriptor() {
+			
+			@Override
+			public String getPath() {
+				// TODO Auto-generated method stub
+				return WorkspaceCoreResources.TRIGGER_FOLDER_NAME;
+			}
+			
+			@Override
+			public String getOrigin() {
+				// TODO Auto-generated method stub
+				return WorkspaceCoreResources.TRIGGER_FOLDER_NAME;
+			}
+			
+			@Override
+			public String getName() {
+				// TODO Auto-generated method stub
+				return "Триггеры";
+			}
+			
+			@Override
+			public String getIdentifier() {
+				// TODO Auto-generated method stub
+				return WorkspaceCoreResources.TRIGGER_FOLDER_NAME;
+			}
+		});
+		return folders;
 	}
-
 }

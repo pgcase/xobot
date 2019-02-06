@@ -101,9 +101,7 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 				IProject project = projects[i];
 				RepositoryProvider.map(project, XobotRepositoryProvider.REPOSITORY_PROVIDER_XOBOT);
 				XobotRepositoryProvider provider = (XobotRepositoryProvider) RepositoryProvider.getProvider(project);
-				XSourceDescriptor sourceIntegrationLocation = mainPage.getSourceIntegrationLocation();
-				String path = new Path(sourceIntegrationLocation.getUri()).append(project.getName()).toOSString();
-				provider.setTargetLocation(path);
+				provider.setIntegrationSource(mainPage.getSourceIntegrationLocation());
 				if (i > 0) {
 					//FIXME: only one project is allowed for now
 					break;

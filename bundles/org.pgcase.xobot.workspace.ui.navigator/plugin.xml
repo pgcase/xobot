@@ -38,7 +38,7 @@
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectsContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.workspace.ui.navigator.navigatorContent.projects"
-            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectLabelProvider"
+            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectsLabelProvider"
             name="%navigatorContent.projects.name">
          <triggerPoints>
             <or>

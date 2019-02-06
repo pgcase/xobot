@@ -58,6 +58,7 @@
 		<module>../../bundles/org.pgcase.xobot.parsers</module>
 		<module>../../bundles/org.pgcase.xobot.dbproc.antlr</module>
 		<module>../../bundles/org.pgcase.xobot.dbproc.jdbc</module>
+		<module>../../bundles/org.pgcase.xobot.dbproc.ui.navigator</module>
 		<module>../../features/org.pgcase.xobot.dbproc.feature</module>
 
 		<module>../../bundles/org.pgcase.xobot.toolchain.runtime</module>

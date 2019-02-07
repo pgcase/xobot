@@ -34,6 +34,7 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.team.core.RepositoryProvider;
 import org.eclipse.team.core.TeamException;
 import org.eclipse.team.core.variants.IResourceVariant;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 
 //FIXME: rework
 public class XobotRepositoryProvider extends RepositoryProvider {
@@ -43,9 +44,10 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 	private static final ResourceRuleFactory RESOURCE_RULE_FACTORY = new ResourceRuleFactory() {
 	};
 
+	private static final String LOCATION = "c:\\work\\arsysop\\github\\pgconf\\demo";
 	private IPath root;
 
-	private static QualifiedName FILESYSTEM_REPO_LOC = new QualifiedName(TeamCore.ID, "disk_location"); //$NON-NLS-1$
+	private static QualifiedName SOURCE_INTEGRATION_PATH = new QualifiedName(TeamCore.ID, "SOURCE_INTEGRATION_PATH"); //$NON-NLS-1$
 
 	public XobotRepositoryProvider() {
 		super();
@@ -56,7 +58,7 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 	}
 
 	public void deconfigure() throws CoreException {
-		getProject().setPersistentProperty(FILESYSTEM_REPO_LOC, null);
+		getProject().setPersistentProperty(SOURCE_INTEGRATION_PATH, null);
 		XobotSystemSubscriber.getInstance().handleRootChanged(getProject(), false /* removed */);
 	}
 
@@ -64,18 +66,20 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 		return REPOSITORY_PROVIDER_XOBOT;
 	}
 
-	public void setTargetLocation(String location) throws TeamException {
+	public void setIntegrationSource(XSourceDescriptor source) throws TeamException {
+		String uri = source.getUri();
+		String path = new Path(uri).append(getProject().getName()).toOSString();
 
-		root = new Path(location);
+		root = new Path(LOCATION);
 
-		File file = new File(location);
+		File file = new File(LOCATION);
 		if (file.exists() && !file.isDirectory()) {
-			String message = NLS.bind(Messages.XobotRepositoryProvider_TargetLocation_Error, location);
+			String message = NLS.bind(Messages.XobotRepositoryProvider_TargetLocation_Error, LOCATION);
 			throw new TeamException(message);
 		}
 
 		try {
-			getProject().setPersistentProperty(FILESYSTEM_REPO_LOC, location);
+			getProject().setPersistentProperty(SOURCE_INTEGRATION_PATH, LOCATION);
 		} catch (CoreException e) {
 			throw TeamCore.wrapException(e);
 		}
@@ -84,7 +88,7 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 	public IPath getRoot() {
 		if (root == null) {
 			try {
-				String location = getProject().getPersistentProperty(FILESYSTEM_REPO_LOC);
+				String location = getProject().getPersistentProperty(SOURCE_INTEGRATION_PATH);
 				if (location == null) {
 					return null;
 				}
@@ -124,5 +128,4 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 	public IResourceRuleFactory getRuleFactory() {
 		return RESOURCE_RULE_FACTORY;
 	}
-
 }

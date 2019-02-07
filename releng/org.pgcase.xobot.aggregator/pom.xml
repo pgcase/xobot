@@ -66,6 +66,7 @@
 		<module>../../bundles/org.pgcase.xobot.workspace.runtime</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.model.ecore</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.model</module>
+		<module>../../bundles/org.pgcase.xobot.workspace.model.edit</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.core</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.core.resources</module>
 		<module>../../bundles/org.pgcase.xobot.workspace.ui.ide</module>

@@ -20,8 +20,11 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.team.ui;
 
+import java.util.Map;
+
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.Path;
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.team.core.RepositoryProvider;
@@ -29,58 +32,77 @@ import org.eclipse.team.core.TeamException;
 import org.eclipse.team.ui.IConfigurationWizard;
 import org.eclipse.team.ui.IConfigurationWizardExtension;
 import org.eclipse.ui.IWorkbench;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
+import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
+import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 import org.pgcase.xobot.workspace.team.core.XobotRepositoryProvider;
 
 public class XobotConfigurationWizard extends Wizard implements IConfigurationWizard, IConfigurationWizardExtension {
-	
+
 	IProject[] projects;
-	
-	XobotConfigurationMainPage mainPage;
-	
+
+	XobotConfigurationWizardPage mainPage;
+
 	public XobotConfigurationWizard() {
-		// retrieve the remembered dialog settings
-//		IDialogSettings workbenchSettings = TeamUi.getDialogSettings();
-//		IDialogSettings section = workbenchSettings.getSection("XobotConfigurationWizard"); //$NON-NLS-1$
-//		if (section == null) {
-//			section = workbenchSettings.addNewSection("XobotConfigurationWizard"); //$NON-NLS-1$
-//		}
-//		setDialogSettings(section);
 	}
 
 	public void init(IWorkbench workbench, IProject project) {
-		init(workbench, new IProject[] { project } );
+		init(workbench, new IProject[] { project });
 	}
-	
+
 	@Override
 	public void init(IWorkbench workbench, IProject[] projects) {
 		this.projects = projects;
 	}
 
 	public void addPages() {
-		mainPage = new XobotConfigurationMainPage(
-			Messages.XobotConfigurationWizard_MainPage_Name,
-			Messages.XobotConfigurationWizard_MainPage_Title,
-			Messages.XobotConfigurationWizard_MainPage_Description,
-			null);
+		Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+		BundleContext bundleContext = bundle.getBundleContext();
+		IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(bundleContext);
+		XSourceRegistry sourceRegistry = serviceContext.get(XSourceRegistry.class);
+		XTargetRegistry targetRegistry = serviceContext.get(XTargetRegistry.class);
+		XWorkspaceElementService workspaceService = serviceContext.get(XWorkspaceElementService.class);
+		XProjectDescriptor projectDescriptor = workspaceService.getProject(projects[0].getName());
+
+		Iterable<? extends XProjectSourceDescriptor> projectSources = projectDescriptor.getProjectSources();
+		Iterable<? extends XProjectTargetDescriptor> projectTargets = projectDescriptor.getProjectTargets();
+		Map<String, XSourceDescriptor> resolvedSources = WorkspaceCoreResources.resolveSources(sourceRegistry,
+				projectSources);
+		Map<String, XTargetDescriptor> resolvedTargets = WorkspaceCoreResources.resolveTargets(targetRegistry,
+				projectTargets);
+
+		mainPage = new XobotConfigurationWizardPage(resolvedSources, resolvedTargets);
+		mainPage.setTitle(Messages.XobotConfigurationWizard_MainPage_Title);
+		mainPage.setDescription(Messages.XobotConfigurationWizard_MainPage_Description);
+
 		addPage(mainPage);
+
 	}
-	
+
 	public boolean performFinish() {
-		mainPage.finish(null);
 		try {
 			for (int i = 0; i < projects.length; i++) {
 				IProject project = projects[i];
 				RepositoryProvider.map(project, XobotRepositoryProvider.REPOSITORY_PROVIDER_XOBOT);
 				XobotRepositoryProvider provider = (XobotRepositoryProvider) RepositoryProvider.getProvider(project);
-				String path = new Path(mainPage.getSourceLocation()).append(project.getName()).toOSString();
-				provider.setTargetLocation(path);
+				provider.setIntegrationSource(mainPage.getSourceIntegrationLocation());
+				if (i > 0) {
+					// FIXME: only one project is allowed for now
+					break;
+				}
 			}
 		} catch (TeamException e) {
-			ErrorDialog.openError(
-				getShell(),
-				Messages.XobotConfigurationWizard_MainPage_DialogError_Title,
-				Messages.XobotConfigurationWizard_MainPage_DialogError_Message,
-				e.getStatus());
+			ErrorDialog.openError(getShell(), Messages.XobotConfigurationWizard_MainPage_DialogError_Title,
+					Messages.XobotConfigurationWizard_MainPage_DialogError_Message, e.getStatus());
 			return false;
 		}
 		return true;

@@ -20,8 +20,11 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.internal.core.resources;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
@@ -29,6 +32,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
@@ -90,10 +94,18 @@ public class WorkspaceElementService implements XWorkspaceElementService {
 			return existing;
 		}
 		IProject project = workspace.getRoot().getProject(name);
+		return restoreProject(project);
+	}
+	
+	private XProjectDescriptor restoreProject(IProject project) {
 		if (WorkspaceCoreResources.isXobotProject(project)) {
-			XProjectDescriptor restored = WorkspaceCoreResources.restoreProject(project);
-			projectRegistry.registerProject(restored);
-			return restored;
+			IFile specification = WorkspaceCoreResources.getXobotProjectSpecification(project);
+			if (specification.exists()) {
+				IPath fullPath = specification.getFullPath();
+				URI uri = URI.createPlatformResourceURI(fullPath.toString(), true);
+				projectRegistry.registerResource(uri.toString());
+				return projectRegistry.getProject(project.getName());
+			}
 		}
 		return null;
 	}
@@ -142,6 +154,19 @@ public class WorkspaceElementService implements XWorkspaceElementService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public Iterable<? extends XProjectDescriptor> getProjects() {
+		List<XProjectDescriptor> xobots = new ArrayList<>();
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		for (IProject project : projects) {
+			XProjectDescriptor xobot = getProject(project.getName());
+			if (xobot != null) {
+				xobots.add(xobot);
+			}
+		}
+		return xobots;
 	}
 	
 }

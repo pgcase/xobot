@@ -28,23 +28,24 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.event.EventAdmin;
 import org.pgcase.xobot.basis.emf.edit.DomainContentAdapter;
 import org.pgcase.xobot.basis.emf.edit.EditingDomainBasedRegistry;
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
 import org.pgcase.xobot.landscape.model.api.XSource;
 import org.pgcase.xobot.landscape.model.api.XSourceSet;
 import org.pgcase.xobot.landscape.model.meta.XLandscapeFactory;
 import org.pgcase.xobot.landscape.model.meta.XLandscapePackage;
 import org.pgcase.xobot.landscape.runtime.FocusDescriptors;
+import org.pgcase.xobot.landscape.runtime.XLandscapeEvents;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
 
 @Component
-public class SourceDomainRegistry extends EditingDomainBasedRegistry implements XSourceRegistry {
+public class SourceDomainRegistry extends EditingDomainBasedRegistry<XSourceSetDescriptor> implements XSourceRegistry {
 	
-	private final Map<String, XSourceSetDescriptor> sourceSets = new HashMap<>();
-	private final Map<String, XSourceDescriptor> sources = new HashMap<>();
+	private final Map<String, XSourceDescriptor> sourceIndex = new HashMap<>();
 	
 	@Activate
 	public void activate() {
@@ -125,41 +126,64 @@ public class SourceDomainRegistry extends EditingDomainBasedRegistry implements 
 
 	}
 
+	@Reference
 	@Override
-	public Iterable<? extends IdentifiedDescriptor> getIdentifiedContent() {
-		return getSourceSets();
+	public void bindEventAdmin(EventAdmin eventAdmin) {
+		super.bindEventAdmin(eventAdmin);
+	}
+	
+	@Override
+	public void unbindEventAdmin(EventAdmin eventAdmin) {
+		super.unbindEventAdmin(eventAdmin);
 	}
 
 	@Override
-	public Iterable<XSourceSetDescriptor> getSourceSets() {
-		return sourceSets.values();
-	}
-
-	@Override
-	public Iterable<XSourceDescriptor> getSources() {
-		return sources.values();
+	public Iterable<? extends XSourceSetDescriptor> getSourceSets() {
+		return getRegistryContent();
 	}
 
 	@Override
 	public void registerSourceSet(XSourceSetDescriptor sourceSet) {
-		String identifier = sourceSet.getIdentifier();
-		sourceSets.put(identifier, sourceSet);
+		registerContent(sourceSet);
+		Iterable<? extends XSourceDescriptor> sources = sourceSet.getSources();
+		for (XSourceDescriptor sourceDescriptor : sources) {
+			registerSource(sourceDescriptor);
+		}
 	}
 
 	@Override
 	public void unregisterSourceSet(String sourceSetIdentifier) {
-		// TODO Auto-generated method stub
+		XSourceSetDescriptor content = getRegistryContent(sourceSetIdentifier);
+		if (content != null) {
+			Iterable<? extends XSourceDescriptor> sources = content.getSources();
+			for (XSourceDescriptor sourceDescriptor : sources) {
+				unregisterSource(sourceDescriptor.getIdentifier());
+			}
+		}
+		unregisterContent(sourceSetIdentifier);
+	}
 
+	@Override
+	public Iterable<XSourceDescriptor> getSources() {
+		return sourceIndex.values();
+	}
+	
+	@Override
+	public XSourceDescriptor getSource(String sourceIdentifier) {
+		return sourceIndex.get(sourceIdentifier);
 	}
 
 	@Override
 	public void registerSource(XSourceDescriptor source) {
+		String identifier = source.getIdentifier();
+		sourceIndex.put(identifier, source);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void unregisterSource(String sourceIdentifier) {
+		sourceIndex.remove(sourceIdentifier);
 		// TODO Auto-generated method stub
 		
 	}
@@ -180,20 +204,36 @@ public class SourceDomainRegistry extends EditingDomainBasedRegistry implements 
 	}
 
 	@Override
-	protected DomainContentAdapter<SourceDomainRegistry> createContentAdapter() {
+	protected DomainContentAdapter<XSourceSetDescriptor, SourceDomainRegistry> createContentAdapter() {
 		return new SourceDomainRegistryTracker(this);
 	}
 
 	@Override
-	public void registerContent(IdentifiedDescriptor content) {
-		// TODO Auto-generated method stub
-		
+	public Class<XSourceSetDescriptor> getContentClass() {
+		return XSourceSetDescriptor.class;
 	}
 
 	@Override
-	public void unregisterContent(String identifier) {
-		// TODO Auto-generated method stub
-		
+	public String resolveIdentifier(XSourceSetDescriptor content) {
+		if (content == null) {
+			return null;
+		}
+		return content.getIdentifier();
+	}
+
+	@Override
+	public String getContentCreateTopic() {
+		return XLandscapeEvents.SOURCE_SET_CREATE;
+	}
+
+	@Override
+	public String getContentUpdateTopic() {
+		return XLandscapeEvents.SOURCE_SET_UPDATE;
+	}
+
+	@Override
+	public String getContentDeleteTopic() {
+		return XLandscapeEvents.SOURCE_SET_DELETE;
 	}
 
 }

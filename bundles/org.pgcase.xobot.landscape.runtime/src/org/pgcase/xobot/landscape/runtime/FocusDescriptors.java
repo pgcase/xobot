@@ -26,5 +26,5 @@ public class FocusDescriptors {
 	public static final String MATURITY_STABLE = "stable"; //$NON-NLS-1$
 	public static final String MATURITY_INTEGRATION = "integration"; //$NON-NLS-1$
 	public static final String MATURITY_SANDBOX = "sandbox"; //$NON-NLS-1$
-
+	
 }

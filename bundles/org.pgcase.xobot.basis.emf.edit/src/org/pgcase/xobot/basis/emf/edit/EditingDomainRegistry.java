@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 
-public interface EditingDomainRegistry extends BasisRegistry, IEditingDomainProvider, ComposedAdapterFactoryProvider {
+public interface EditingDomainRegistry<C> extends BasisRegistry<C>, IEditingDomainProvider, ComposedAdapterFactoryProvider {
 
 	EClass getContentClassifier();
 

@@ -58,7 +58,6 @@ public class XobotPerspectiveFactory implements IPerspectiveFactory {
 
 		String explorers = "org.pgcase.xobot.workspace.ui.ide.explorers";
 		IFolderLayout explorersFolder = layout.createFolder(explorers, IPageLayout.LEFT, 0.26f, editorArea);
-		explorersFolder.addView(IPageLayout.ID_PROJECT_EXPLORER);
 		explorersFolder.addPlaceholder(IPageLayout.ID_BOOKMARKS);
 
 		String outlines = "org.pgcase.xobot.workspace.ui.ide.outlines";

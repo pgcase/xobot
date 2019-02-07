@@ -20,22 +20,33 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.core.resources;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
+import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
+import org.pgcase.xobot.landscape.runtime.registry.XSourceRegistry;
+import org.pgcase.xobot.landscape.runtime.registry.XTargetRegistry;
 import org.pgcase.xobot.workspace.internal.core.resources.WorkspaceCoreResourcesActivator;
-import org.pgcase.xobot.workspace.model.api.XProject;
-import org.pgcase.xobot.workspace.model.api.XProjectFolder;
-import org.pgcase.xobot.workspace.model.meta.XWorkspaceFactory;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
+import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 import org.pgcase.xobot.workspace.runtime.registry.XWorkspaceElementService;
 
 public class WorkspaceCoreResources {
@@ -60,7 +71,7 @@ public class WorkspaceCoreResources {
 		}
 	}
 
-	public static XWorkspaceElementService geWorkspaceElementService() {
+	public static XWorkspaceElementService getWorkspaceElementService() {
 		return WorkspaceCoreResourcesActivator.getActivator().getWorkspaceElementService();
 	}
 
@@ -74,8 +85,9 @@ public class WorkspaceCoreResources {
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			// FIXME: investigate
+			return false;
 		}
-		return false;
 	}
 
 	public static void addXobotNature(IProject project, IProgressMonitor monitor) throws CoreException {
@@ -105,36 +117,35 @@ public class WorkspaceCoreResources {
 		return false;
 	}
 
-	public static XProjectDescriptor restoreProject(IProject project) {
-		// FIXME: throws CoreException
-		String name = project.getName();
-		XProject created = XWorkspaceFactory.eINSTANCE.createProject();
-		created.setIdentifier(name);
-		created.setName(name);
-		restoreProjectFolder(project, created, FUNCTION_FOLDER_NAME);
-		restoreProjectFolder(project, created, TRIGGER_FOLDER_NAME);
-		return created;
+	public static void configureProjectDescription(final IProjectDescription description) {
+		description.setNatureIds(new String[] { NATURE_ID });
+		addBuilder(description);
 	}
 
-	protected static void restoreProjectFolder(IProject project, XProject created, String folderName) {
-		IFolder folder = project.getFolder(folderName);
-		if (folder.exists()) {
-			XProjectFolder projectFolder = XWorkspaceFactory.eINSTANCE.createProjectFolder();
-			projectFolder.setIdentifier(folderName);
-			projectFolder.setName(folderName);
-			projectFolder.setPath(folder.getProjectRelativePath().toString());
-			created.getProjectFolders().add(projectFolder);
+	public static void configureXobotProject(IProject project, XProjectDescriptor xobot, IProgressMonitor monitor)
+			throws CoreException {
+		project.getFolder(FUNCTION_FOLDER_NAME).create(true, true, monitor);
+		project.getFolder(TRIGGER_FOLDER_NAME).create(true, true, monitor);
+		IFile specification = getXobotProjectSpecification(project);
+		URI uri = URI.createPlatformResourceURI(specification.getFullPath().toString(), true);
+		ResourceSet rs = new ResourceSetImpl();
+		Resource resource = rs.createResource(uri);
+		resource.getContents().add((EObject) xobot);
+		try {
+			resource.save(null);
+			XProjectRegistry projectRegistry = getWorkspaceElementService().getProjectRegistry();
+			projectRegistry.registerResource(uri.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
-	public static void createXobotProject(IProject project, final IProjectDescription description,
-			IProgressMonitor monitor) throws CoreException {
-		description.setNatureIds(new String[] { NATURE_ID });
-		addBuilder(description);
-		project.create(description, monitor);
-		project.open(monitor);
-		project.getFolder(FUNCTION_FOLDER_NAME).create(true, true, monitor);
-		project.getFolder(TRIGGER_FOLDER_NAME).create(true, true, monitor);
+	public static IFile getXobotProjectSpecification(IProject project) {
+		if (project == null || !project.isAccessible()) {
+			return null;
+		}
+		return project.getFile(".xobot");
 	}
 
 	public static void addBuilder(IProjectDescription description) {
@@ -154,4 +165,26 @@ public class WorkspaceCoreResources {
 		description.setBuildSpec(newCommands);
 	}
 
+	public static Map<String, XSourceDescriptor> resolveSources(XSourceRegistry sourceRegistry, Iterable<? extends XProjectSourceDescriptor> projectSources) {
+		Map<String, XSourceDescriptor> map = new HashMap<>();
+		for (XProjectSourceDescriptor descriptor : projectSources) {
+			XSourceDescriptor source = sourceRegistry.getSource(descriptor.getSourceIdentifier());
+			if (source != null) {
+				map.put(source.getMaturity(), source);
+			}
+		}
+		return map;
+	}
+
+	public static Map<String, XTargetDescriptor> resolveTargets(XTargetRegistry targetRegistry, Iterable<? extends XProjectTargetDescriptor> projectTargets) {
+		Map<String, XTargetDescriptor> map = new HashMap<>();
+		for (XProjectTargetDescriptor descriptor : projectTargets) {
+			XTargetDescriptor target = targetRegistry.getTarget(descriptor.getTargetIdentifier());
+			if (target != null) {
+				map.put(target.getMaturity(), target);
+			}
+		}
+		return map;
+	}
+	
 }

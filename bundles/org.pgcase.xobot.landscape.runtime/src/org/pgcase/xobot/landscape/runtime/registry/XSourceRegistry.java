@@ -24,12 +24,14 @@ import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 import org.pgcase.xobot.landscape.runtime.XSourceDescriptor;
 import org.pgcase.xobot.landscape.runtime.XSourceSetDescriptor;
 
-public interface XSourceRegistry extends BasisRegistry {
+public interface XSourceRegistry extends BasisRegistry<XSourceSetDescriptor> {
 	
-	Iterable<XSourceSetDescriptor> getSourceSets();
+	Iterable<? extends XSourceSetDescriptor> getSourceSets();
 
-	Iterable<XSourceDescriptor> getSources();
+	Iterable<? extends XSourceDescriptor> getSources();
 
+	XSourceDescriptor getSource(String sourceIdentifier);
+	
 	void registerSourceSet(XSourceSetDescriptor sourceSet);
 
 	void unregisterSourceSet(String sourceSetIdentifier);

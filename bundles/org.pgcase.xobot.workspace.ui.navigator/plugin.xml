@@ -21,6 +21,84 @@
 		ArSysOp - initial API and implementation
 -->
 <plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.pgcase.xobot.workspace.ui.navigator.ProjectsNavigator"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+            id="org.pgcase.xobot.workspace.ui.navigator.views.view.projects"
+            name="%views.view.projects.name">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectsContentProvider"
+            icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
+            id="org.pgcase.xobot.workspace.ui.navigator.navigatorContent.projects"
+            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectLabelProvider"
+            name="%navigatorContent.projects.name">
+         <triggerPoints>
+            <or>
+               <adapt
+                     type="org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry">
+               </adapt>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor">
+               </instanceof>
+            </or>
+         </triggerPoints>
+         <actionProvider
+               class="org.pgcase.xobot.workspace.ui.navigator.ProjectsActionProvider">
+         </actionProvider>
+         <possibleChildren>
+            <or>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor">
+               </instanceof>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor">
+               </instanceof>
+            </or>
+         </possibleChildren>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="org.pgcase.xobot.workspace.ui.navigator.views.view.projects">
+      </viewer>
+      <viewerContentBinding
+            viewerId="org.pgcase.xobot.workspace.ui.navigator.views.view.projects">
+         <includes>
+            <contentExtension
+                  isRoot="true"
+                  pattern="org.pgcase.xobot.workspace.ui.navigator.navigatorContent.projects*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
@@ -28,12 +106,14 @@
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectSourcesContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.sources"
-            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
+            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectSourcesLabelProvider"
             name="%navigatorContent.sources.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-            </adapt>
+            <or>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor">
+               </instanceof>
+            </or>
          </triggerPoints>
       </navigatorContent>
       <navigatorContent
@@ -41,12 +121,14 @@
             contentProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectTargetsContentProvider"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.basis.ui.navigator.navigatorContent.targets"
-            labelProvider="org.pgcase.xobot.basis.ui.navigator.RegistryLabelProvider"
+            labelProvider="org.pgcase.xobot.workspace.ui.navigator.ProjectTargetsLabelProvider"
             name="%navigatorContent.targets.name">
          <triggerPoints>
-            <adapt
-                  type="org.pgcase.xobot.workspace.runtime.XProjectDescriptor">
-            </adapt>
+            <or>
+               <instanceof
+                     value="org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor">
+               </instanceof>
+            </or>
          </triggerPoints>
       </navigatorContent>
    </extension>
@@ -60,6 +142,28 @@
             </contentExtension>
          </includes>
       </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.pgcase.xobot.workspace.ui.navigator.views.view.projects">
+         <includes>
+            <contentExtension
+                  pattern="org.pgcase.xobot.basis.ui.navigator.navigatorContent.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.pgcase.xobot.workspace.ui.ide.perspectives.perspective.xobot">
+         <view
+               id="org.pgcase.xobot.workspace.ui.navigator.views.view.projects"
+               minimized="false"
+               relationship="stack"
+               relative="org.pgcase.xobot.workspace.ui.ide.explorers"
+               visible="true">
+         </view>
+      </perspectiveExtension>
    </extension>
 
 </plugin>

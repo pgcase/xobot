@@ -20,9 +20,12 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.ui.navigator;
 
+import java.util.stream.StreamSupport;
+
 import org.eclipse.core.runtime.Adapters;
 import org.pgcase.xobot.landscape.ui.navigator.TargetsContentProvider;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
+import org.pgcase.xobot.workspace.runtime.XProjectTargetDescriptor;
 
 public class ProjectTargetsContentProvider extends TargetsContentProvider {
 	
@@ -30,9 +33,9 @@ public class ProjectTargetsContentProvider extends TargetsContentProvider {
 	public Object[] getChildren(Object parentElement) {
 		XProjectDescriptor adapt = Adapters.adapt(parentElement, XProjectDescriptor.class);
 		if (adapt != null) {
-//			XProjectDescriptor project = (XProjectDescriptor) parentElement;
-			//FIXME: return configured targets
-			return super.getChildren(getRegistry());
+			XProjectDescriptor project = (XProjectDescriptor) parentElement;
+			Iterable<? extends XProjectTargetDescriptor> targets = project.getProjectTargets();
+			return StreamSupport.stream(targets.spliterator(), false).toArray();
 		}
 		// TODO Auto-generated method stub
 		return super.getChildren(parentElement);

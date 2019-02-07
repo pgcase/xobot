@@ -94,7 +94,7 @@ public class XobotSyncContentProvider extends SynchronizationContentProvider imp
 	}
 
 	protected Object getModelRoot() {
-		return WorkspaceCoreResources.geWorkspaceElementService().getProjectRegistry();
+		return WorkspaceCoreResources.getWorkspaceElementService().getProjectRegistry();
 	}
 
 	protected ResourceTraversal[] getTraversals(

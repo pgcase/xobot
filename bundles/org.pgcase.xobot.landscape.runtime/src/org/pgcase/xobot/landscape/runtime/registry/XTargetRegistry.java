@@ -24,11 +24,13 @@ import org.pgcase.xobot.basis.runtime.registry.BasisRegistry;
 import org.pgcase.xobot.landscape.runtime.XTargetDescriptor;
 import org.pgcase.xobot.landscape.runtime.XTargetSetDescriptor;
 
-public interface XTargetRegistry extends BasisRegistry {
+public interface XTargetRegistry extends BasisRegistry<XTargetSetDescriptor> {
 	
-	Iterable<XTargetSetDescriptor> getTargetSets();
+	Iterable<? extends XTargetSetDescriptor> getTargetSets();
 
-	Iterable<XTargetDescriptor> getTargets();
+	Iterable<? extends XTargetDescriptor> getTargets();
+
+	XTargetDescriptor getTarget(String targetIdentifier);
 
 	void registerTargetSet(XTargetSetDescriptor targetSet);
 
@@ -37,5 +39,6 @@ public interface XTargetRegistry extends BasisRegistry {
 	void registerTarget(XTargetDescriptor target);
 
 	void unregisterTarget(String targetIdentifier);
+
 
 }

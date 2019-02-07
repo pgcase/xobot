@@ -76,8 +76,7 @@ public class XobotNavigatorActionProvider extends CommonActionProvider {
 						Object object = iter.next();
 						if (object instanceof XWorkspaceElementDescriptor) {
 							XWorkspaceElementDescriptor element = (XWorkspaceElementDescriptor) object;
-							// FIXME: progress
-							WorkspaceCoreResources.geWorkspaceElementService().delete(element,
+							WorkspaceCoreResources.getWorkspaceElementService().delete(element,
 									new NullProgressMonitor());
 						}
 					}

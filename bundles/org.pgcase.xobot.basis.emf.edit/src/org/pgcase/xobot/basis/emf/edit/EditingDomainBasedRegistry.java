@@ -40,7 +40,7 @@ import org.eclipse.osgi.service.environment.EnvironmentInfo;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 
-public abstract class EditingDomainBasedRegistry implements EditingDomainRegistry {
+public abstract class EditingDomainBasedRegistry<C> implements EditingDomainRegistry<C> {
 
 	// @see org.eclipse.e4.core.services.events.IEventBroker.DATA
 	protected static final String PROPERTY_DATA = "org.eclipse.e4.data"; //$NON-NLS-1$
@@ -56,6 +56,8 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 	private final List<String> resourceIdentifiers = new ArrayList<>();
 
 	private EContentAdapter contentAdapter;
+
+	private final Map<String, C> contentIndex = new HashMap<>();
 
 	public EditingDomainBasedRegistry() {
 		BasicCommandStack commandStack = new BasicCommandStack();
@@ -94,7 +96,7 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 		editingDomain.getResourceSet().eAdapters().add(contentAdapter);
 	}
 
-	protected abstract DomainContentAdapter<? extends EditingDomainRegistry> createContentAdapter();
+	protected abstract DomainContentAdapter<C, ? extends EditingDomainRegistry<C>> createContentAdapter();
 
 	protected void deactivate(Map<String, Object> properties) {
 		editingDomain.getResourceSet().eAdapters().remove(contentAdapter);
@@ -134,6 +136,10 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 	}
 
 	protected URI createURI(String source) {
+		String platformResource = "platform:";
+		if (source.startsWith(platformResource)) {
+			return URI.createURI(source);
+		}
 		return URI.createFileURI(source);
 	}
 
@@ -143,6 +149,7 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 		try {
 			loadResource(identifier);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Logger.getLogger(this.getClass().getName()).log(Level.FINER, e.getMessage(), e);
 		}
 	}
@@ -168,5 +175,38 @@ public abstract class EditingDomainBasedRegistry implements EditingDomainRegistr
 		Event event = new Event(topic, properties);
 		return event;
 	}
-
+	
+	@Override
+	public Iterable<? extends C> getRegistryContent() {
+		return contentIndex.values();
+	}
+	
+	@Override
+	public C getRegistryContent(String identifier) {
+		return contentIndex.get(identifier);
+	}
+	
+	@Override
+	public void registerContent(C content) {
+		String identifier = resolveIdentifier(content);
+		C existing = contentIndex.put(identifier, content);
+		if (existing != null) {
+			// FIXME: warning
+		}
+		eventAdmin.postEvent(createEvent(getContentCreateTopic(), content));
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void unregisterContent(String identifier) {
+		C removed = contentIndex.remove(identifier);
+		if (removed != null) {
+			eventAdmin.postEvent(createEvent(getContentDeleteTopic(), removed));
+			// TODO Auto-generated method stub
+		} else {
+			// FIXME: warning
+		}
+	}
+	
 }

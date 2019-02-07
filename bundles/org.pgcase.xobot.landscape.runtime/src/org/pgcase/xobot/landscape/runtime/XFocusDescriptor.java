@@ -20,9 +20,9 @@
  *******************************************************************************/
 package org.pgcase.xobot.landscape.runtime;
 
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
+public interface XFocusDescriptor {
 
-public interface XFocusDescriptor extends IdentifiedDescriptor {
+	String getIdentifier();
 
 	String getName();
 

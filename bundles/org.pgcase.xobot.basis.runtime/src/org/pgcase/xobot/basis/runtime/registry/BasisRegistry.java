@@ -20,20 +20,30 @@
  *******************************************************************************/
 package org.pgcase.xobot.basis.runtime.registry;
 
-import org.pgcase.xobot.basis.runtime.IdentifiedDescriptor;
-
-public interface BasisRegistry {
+public interface BasisRegistry<C> {
 	
 	Iterable<String> getResourceIdentifiers();
 	
 	void registerResource(String identifier);
-
+	
 	void unregisterResource(String identifier);
+	
+	Class<C> getContentClass();
 
-	Iterable<? extends IdentifiedDescriptor> getIdentifiedContent();
+	String resolveIdentifier(C content);
 
-	void registerContent(IdentifiedDescriptor content);
+	C getRegistryContent(String identifier);
+
+	Iterable<? extends C> getRegistryContent();
+
+	void registerContent(C content);
 	
 	void unregisterContent(String identifier);
+
+	String getContentCreateTopic();
+	
+	String getContentUpdateTopic();
+
+	String getContentDeleteTopic();
 
 }

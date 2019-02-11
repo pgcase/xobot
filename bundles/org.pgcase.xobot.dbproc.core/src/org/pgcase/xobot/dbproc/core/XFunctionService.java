@@ -18,25 +18,14 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.runtime.registry;
+package org.pgcase.xobot.dbproc.core;
 
-import org.eclipse.core.runtime.IPath;
-import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
-import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public interface XWorkspaceElementService {
-
-	XProjectRegistry getProjectRegistry();
+public interface XFunctionService {
 	
-	Iterable<?> getFolderItems(XProjectFolderDescriptor folder);
-
-	XProjectDescriptor getProject(String name);
-
-	Iterable<? extends XProjectDescriptor> getProjects();
-
-	XProjectFolderDescriptor getProjectFolder(String name, String path);
-
-	XWorkspaceElementDescriptor getWorkspaceElement(IPath path);
+	void delete(XWorkspaceElementDescriptor element, IProgressMonitor monitor) throws CoreException;
 
 }

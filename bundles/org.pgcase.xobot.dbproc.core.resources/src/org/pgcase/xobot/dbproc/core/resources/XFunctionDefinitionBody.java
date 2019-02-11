@@ -18,25 +18,23 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.runtime.registry;
+package org.pgcase.xobot.dbproc.core.resources;
 
-import org.eclipse.core.runtime.IPath;
-import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
-import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
-import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
+import org.eclipse.core.resources.IFile;
+import org.pgcase.xobot.workspace.core.resources.XWorkspaceResource;
 
-public interface XWorkspaceElementService {
+//FIXME: Temporary, just to not loose the functionality of logic model
+public class XFunctionDefinitionBody extends XWorkspaceResource {
 
-	XProjectRegistry getProjectRegistry();
+	private final XFunctionDefinitionIndex functionDefintionIndex;
+
+	public XFunctionDefinitionBody(XFunctionDefinitionIndex parent, IFile file) {
+		super(file);
+		this.functionDefintionIndex = parent;
+	}
+
+	public XFunctionDefinitionIndex getFunctionDefinitionIndex() {
+		return functionDefintionIndex;
+	}
 	
-	Iterable<?> getFolderItems(XProjectFolderDescriptor folder);
-
-	XProjectDescriptor getProject(String name);
-
-	Iterable<? extends XProjectDescriptor> getProjects();
-
-	XProjectFolderDescriptor getProjectFolder(String name, String path);
-
-	XWorkspaceElementDescriptor getWorkspaceElement(IPath path);
-
 }

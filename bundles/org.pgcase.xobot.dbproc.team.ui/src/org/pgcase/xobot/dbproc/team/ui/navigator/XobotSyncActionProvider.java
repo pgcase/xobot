@@ -18,25 +18,21 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.runtime.registry;
+package org.pgcase.xobot.dbproc.team.ui.navigator;
 
-import org.eclipse.core.runtime.IPath;
-import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
-import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
-import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
+import org.eclipse.team.ui.mapping.SynchronizationActionProvider;
+import org.eclipse.team.ui.synchronize.ISynchronizePageConfiguration;
 
-public interface XWorkspaceElementService {
-
-	XProjectRegistry getProjectRegistry();
+public class XobotSyncActionProvider extends SynchronizationActionProvider {
 	
-	Iterable<?> getFolderItems(XProjectFolderDescriptor folder);
+	public XobotSyncActionProvider() {
+		super();
+	}
 
-	XProjectDescriptor getProject(String name);
-
-	Iterable<? extends XProjectDescriptor> getProjects();
-
-	XProjectFolderDescriptor getProjectFolder(String name, String path);
-
-	XWorkspaceElementDescriptor getWorkspaceElement(IPath path);
-
+	protected void initialize() {
+		super.initialize();
+		final ISynchronizePageConfiguration configuration= getSynchronizePageConfiguration();
+		registerHandler(MERGE_ACTION_ID, new XobotMergeActionHandler(configuration, false));
+		registerHandler(OVERWRITE_ACTION_ID, new XobotMergeActionHandler(configuration, true));
+	}
 }

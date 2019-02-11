@@ -33,6 +33,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.team.core.mapping.ISynchronizationContext;
 import org.eclipse.team.ui.mapping.SynchronizationCompareAdapter;
 import org.eclipse.ui.IMemento;
+import org.pgcase.xobot.dbproc.core.resources.DbprocCoreResources;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider;
@@ -125,8 +126,8 @@ public class DbprocCompareAdapter extends SynchronizationCompareAdapter {
 	
 	private IResource getResource(String path) {
 		Path resourcePath = new Path(path);
-		if (path.endsWith(WorkspaceCoreResources.FUNCTION_DEFINITION_INDEX_EXTENSION) 
-				|| path.endsWith(WorkspaceCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION))
+		if (path.endsWith(DbprocCoreResources.FUNCTION_DEFINITION_INDEX_EXTENSION) 
+				|| path.endsWith(DbprocCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION))
 			return ResourcesPlugin.getWorkspace().getRoot().getFile(resourcePath);
 		if (resourcePath.segmentCount() == 1)
 			return ResourcesPlugin.getWorkspace().getRoot().getProject(resourcePath.lastSegment());

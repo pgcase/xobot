@@ -50,6 +50,7 @@ import org.eclipse.team.core.mapping.ResourceMappingMerger;
 import org.eclipse.team.core.mapping.provider.MergeStatus;
 import org.eclipse.team.core.mapping.provider.ResourceDiffTree;
 import org.eclipse.team.core.mapping.provider.SynchronizationContext;
+import org.pgcase.xobot.dbproc.core.resources.DbprocCoreResources;
 import org.pgcase.xobot.dbproc.core.resources.ReworkMe;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider;
@@ -129,7 +130,7 @@ public class DbprocModelMerger extends ResourceMappingMerger {
 		mergeContext.getDiffTree().accept(getModelProjectTraversals(mergeContext), new IDiffVisitor() {
 			public boolean visit(IDiff diff) {
 				IResource resource = ResourceDiffTree.getResourceFor(diff);
-				if (WorkspaceCoreResources.isIndexFile(resource)) {
+				if (DbprocCoreResources.isIndexFile(resource)) {
 					result.add(diff);
 				}
 				return true;

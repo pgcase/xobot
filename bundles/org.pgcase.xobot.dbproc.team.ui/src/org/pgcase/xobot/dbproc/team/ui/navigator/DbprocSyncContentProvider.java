@@ -58,6 +58,7 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.IPipelinedTreeContentProvider;
 import org.eclipse.ui.navigator.PipelinedShapeModification;
 import org.eclipse.ui.navigator.PipelinedViewerUpdate;
+import org.pgcase.xobot.dbproc.core.resources.DbprocCoreResources;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
@@ -125,7 +126,7 @@ public class DbprocSyncContentProvider extends SynchronizationContentProvider im
 			for (int i = 0; i < diffs.length; i++) {
 				IDiff diff = diffs[i];
 				IResource resource = ResourceDiffTree.getResourceFor(diff);
-				if (!resource.exists() && WorkspaceCoreResources.isIndexFile(resource)) {
+				if (!resource.exists() && DbprocCoreResources.isIndexFile(resource)) {
 					XFunctionDefinitionIndex file = (XFunctionDefinitionIndex) Adapters.adapt(resource, XWorkspaceElementDescriptor.class);
 					if (file != null) {
 						allChildren.add(file);
@@ -139,7 +140,7 @@ public class DbprocSyncContentProvider extends SynchronizationContentProvider im
 			for (int i = 0; i < diffs.length; i++) {
 				IDiff diff = diffs[i];
 				IResource resource = ResourceDiffTree.getResourceFor(diff);
-				if (!resource.exists() && WorkspaceCoreResources.isBodyFile(resource)) {
+				if (!resource.exists() && DbprocCoreResources.isBodyFile(resource)) {
 					XFunctionDefinitionIndex index = (XFunctionDefinitionIndex)parent;
 					XFunctionDefinitionBody o = new XFunctionDefinitionBody(index, (IFile)resource);
 					allChildren.add(o);

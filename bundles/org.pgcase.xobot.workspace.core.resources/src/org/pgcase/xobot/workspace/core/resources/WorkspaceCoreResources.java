@@ -61,10 +61,6 @@ public class WorkspaceCoreResources {
 	public static final String FUNCTION_FOLDER_NAME = "functions"; //$NON-NLS-1$
 	public static final String TRIGGER_FOLDER_NAME = "triggers"; //$NON-NLS-1$
 
-	// FIXME: Temporary, just to not loose the functionality of logic model
-	public static final String FUNCTION_DEFINITION_BODY_EXTENSION = "fdp"; //$NON-NLS-1$
-	public static final String FUNCTION_DEFINITION_INDEX_EXTENSION = "fdi"; //$NON-NLS-1$
-
 	public static void removeMarkersFor(IResource resource) throws CoreException {
 		if (resource != null && resource.exists()) {
 			resource.deleteMarkers(MARKER_PROBLEM_ID, false, IResource.DEPTH_INFINITE);
@@ -100,21 +96,6 @@ public class WorkspaceCoreResources {
 		result.add(WorkspaceCoreResources.NATURE_ID);
 		description.setNatureIds((String[]) result.toArray(new String[result.size()]));
 		project.setDescription(description, monitor);
-	}
-
-	public static boolean isBodyFile(IResource resource) {
-		return resource instanceof IFile
-				&& WorkspaceCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION.equals(resource.getFileExtension());
-	}
-
-	public static boolean isIndexFile(IResource resource) {
-		if (resource instanceof IFile) {
-			String fileExtension = resource.getFileExtension();
-			if (fileExtension != null) {
-				return fileExtension.equals(FUNCTION_DEFINITION_INDEX_EXTENSION);
-			}
-		}
-		return false;
 	}
 
 	public static void configureProjectDescription(final IProjectDescription description) {

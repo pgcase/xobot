@@ -28,7 +28,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
-import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.core.resources.XWorkspaceResource;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 
@@ -47,7 +46,7 @@ public class XFunctionDefinitionIndex extends XWorkspaceResource {
 			if (file == null) {
 				continue;
 			}
-			if (WorkspaceCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION.equals(file.getFileExtension())) {
+			if (DbprocCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION.equals(file.getFileExtension())) {
 				result.add(file);
 			}
 		}
@@ -82,7 +81,7 @@ public class XFunctionDefinitionIndex extends XWorkspaceResource {
 	}
 
 	private XFunctionDefinitionBody getBodyFile(IFile file) {
-		if (WorkspaceCoreResources.isBodyFile(file)) {
+		if (DbprocCoreResources.isBodyFile(file)) {
 			return new XFunctionDefinitionBody(this, file);
 		}
 		return null;

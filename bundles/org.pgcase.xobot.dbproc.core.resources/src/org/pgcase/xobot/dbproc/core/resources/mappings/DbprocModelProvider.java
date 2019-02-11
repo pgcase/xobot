@@ -36,6 +36,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.osgi.util.NLS;
+import org.pgcase.xobot.dbproc.core.resources.DbprocCoreResources;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
@@ -48,25 +49,25 @@ public class DbprocModelProvider extends ModelProvider {
 			delta.accept(new IResourceDeltaVisitor() {
 				public boolean visit(IResourceDelta delta) throws CoreException {
 					IResource resource = delta.getResource();
-					if (WorkspaceCoreResources.isBodyFile(resource)) {
+					if (DbprocCoreResources.isBodyFile(resource)) {
 						// Removal may leave a stale reference in a index file
 						if (delta.getKind() == IResourceDelta.REMOVED) {
-							IStatus status = new ModelStatus(IStatus.ERROR, WorkspaceCoreResources.ID, getDescriptor().getId(), 
+							IStatus status = new ModelStatus(IStatus.ERROR, DbprocCoreResources.ID, getDescriptor().getId(), 
 									NLS.bind("Deleting body {0} may corrupt any index that references it.", resource.getFullPath()));
 							problems.add(status);
 						}
 					}
-					if (WorkspaceCoreResources.isIndexFile(resource)) {
+					if (DbprocCoreResources.isIndexFile(resource)) {
 						// Removal may leave unreferenced body files around
 						if (delta.getKind() == IResourceDelta.REMOVED) {
-							IStatus status = new ModelStatus(IStatus.WARNING, WorkspaceCoreResources.ID, getDescriptor().getId(), 
+							IStatus status = new ModelStatus(IStatus.WARNING, DbprocCoreResources.ID, getDescriptor().getId(), 
 									NLS.bind("Deleting index {0} may result in unreferenced body files.", resource.getFullPath()));
 							problems.add(status);
 						}
 						if (delta.getKind() == IResourceDelta.ADDED 
 								&& ((delta.getFlags() & IResourceDelta.COPIED_FROM) > 0)) {
 							// Copying will result in two index files that reference the same body
-							IStatus status = new ModelStatus(IStatus.ERROR, WorkspaceCoreResources.ID, getDescriptor().getId(), 
+							IStatus status = new ModelStatus(IStatus.ERROR, DbprocCoreResources.ID, getDescriptor().getId(), 
 									NLS.bind("Copying body {0} may corrupt the index.", delta.getMovedFromPath()));
 							problems.add(status);
 						}
@@ -82,7 +83,7 @@ public class DbprocModelProvider extends ModelProvider {
 		if (problems.size() == 1)
 			return (IStatus)problems.get(0);
 		else if (problems.size() > 1) {
-			return new MultiStatus(WorkspaceCoreResources.ID, 0, (IStatus[]) problems.toArray(new IStatus[problems.size()]), "Multiple potential side effects have been found.",  null);
+			return new MultiStatus(DbprocCoreResources.ID, 0, (IStatus[]) problems.toArray(new IStatus[problems.size()]), "Multiple potential side effects have been found.",  null);
 		}
 		return super.validateChange(delta, monitor);
 	}

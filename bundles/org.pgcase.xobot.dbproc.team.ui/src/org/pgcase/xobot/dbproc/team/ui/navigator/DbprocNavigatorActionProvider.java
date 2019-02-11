@@ -29,7 +29,6 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Adapters;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
@@ -43,8 +42,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.SaveablesProvider;
+import org.pgcase.xobot.dbproc.core.resources.DbprocCoreResources;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
-import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
@@ -116,7 +115,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 					String name = promptForName();
 					if (name == null)
 						return;
-					String suffix = "." + WorkspaceCoreResources.FUNCTION_DEFINITION_INDEX_EXTENSION;
+					String suffix = "." + DbprocCoreResources.FUNCTION_DEFINITION_INDEX_EXTENSION;
 					if (!name.endsWith(suffix)) {
 						name += suffix;
 					}
@@ -146,7 +145,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 					if (path == null) {
 						return;
 					}
-					String suffix = "." + WorkspaceCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION;
+					String suffix = "." + DbprocCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION;
 					if (!path.endsWith(suffix)) {
 						path += suffix;
 					}

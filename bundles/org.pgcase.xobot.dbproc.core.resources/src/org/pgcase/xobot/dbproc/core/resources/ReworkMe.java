@@ -18,7 +18,7 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.core.resources;
+package org.pgcase.xobot.dbproc.core.resources;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -39,6 +39,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.osgi.util.NLS;
+import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 
 public class ReworkMe {
 

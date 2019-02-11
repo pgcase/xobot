@@ -65,17 +65,17 @@ import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public class XobotSyncContentProvider extends SynchronizationContentProvider implements IPipelinedTreeContentProvider {
+public class DbprocSyncContentProvider extends SynchronizationContentProvider implements IPipelinedTreeContentProvider {
 
-	private XobotNavigatorContentProvider delegate;
+	private DbprocNavigatorContentProvider delegate;
 	
-	public XobotSyncContentProvider() {
+	public DbprocSyncContentProvider() {
 		super();
 	}
 
 	public void init(ICommonContentExtensionSite site) {
 		super.init(site);
-		delegate = new XobotNavigatorContentProvider(getContext() != null);
+		delegate = new DbprocNavigatorContentProvider(getContext() != null);
 		delegate.init(site);
 	}
 	

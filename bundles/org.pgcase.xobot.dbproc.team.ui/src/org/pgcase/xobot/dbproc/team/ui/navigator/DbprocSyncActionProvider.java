@@ -23,16 +23,16 @@ package org.pgcase.xobot.dbproc.team.ui.navigator;
 import org.eclipse.team.ui.mapping.SynchronizationActionProvider;
 import org.eclipse.team.ui.synchronize.ISynchronizePageConfiguration;
 
-public class XobotSyncActionProvider extends SynchronizationActionProvider {
+public class DbprocSyncActionProvider extends SynchronizationActionProvider {
 	
-	public XobotSyncActionProvider() {
+	public DbprocSyncActionProvider() {
 		super();
 	}
 
 	protected void initialize() {
 		super.initialize();
 		final ISynchronizePageConfiguration configuration= getSynchronizePageConfiguration();
-		registerHandler(MERGE_ACTION_ID, new XobotMergeActionHandler(configuration, false));
-		registerHandler(OVERWRITE_ACTION_ID, new XobotMergeActionHandler(configuration, true));
+		registerHandler(MERGE_ACTION_ID, new DbprocMergeActionHandler(configuration, false));
+		registerHandler(OVERWRITE_ACTION_ID, new DbprocMergeActionHandler(configuration, true));
 	}
 }

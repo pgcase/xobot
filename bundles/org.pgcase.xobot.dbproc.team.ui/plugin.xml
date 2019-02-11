@@ -26,7 +26,7 @@
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
             activeByDefault="true"
-            contentProvider="org.pgcase.xobot.dbproc.team.ui.navigator.XobotNavigatorContentProvider"
+            contentProvider="org.pgcase.xobot.dbproc.team.ui.navigator.DbprocNavigatorContentProvider"
             icon="images/xobot16.png"
             id="org.pgcase.xobot.workspace.team.ui.navigatorContent.model"
             labelProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorLabelProvider"
@@ -69,14 +69,14 @@
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
-            contentProvider="org.pgcase.xobot.dbproc.team.ui.navigator.XobotSyncContentProvider"
+            contentProvider="org.pgcase.xobot.dbproc.team.ui.navigator.DbprocSyncContentProvider"
             icon="images/xobot16.png"
             id="org.pgcase.xobot.workspace.team.ui.navigatorContent.xobot"
-            labelProvider="org.pgcase.xobot.dbproc.team.ui.navigator.XobotSyncLabelProvider"
+            labelProvider="org.pgcase.xobot.dbproc.team.ui.navigator.DbprocSyncLabelProvider"
             name="Xobot Sync"
             priority="normal">
          <actionProvider
-               class="org.pgcase.xobot.dbproc.team.ui.navigator.XobotSyncActionProvider">
+               class="org.pgcase.xobot.dbproc.team.ui.navigator.DbprocSyncActionProvider">
          </actionProvider>
          <override
                policy="InvokeAlwaysRegardlessOfSuppressedExt"
@@ -94,7 +94,7 @@
                      value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
                </instanceof>
                <instanceof
-                     value="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider">
+                     value="org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider">
                </instanceof>
             </or>
          </triggerPoints>
@@ -103,7 +103,7 @@
                   value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
             </instanceof>
             <instanceof
-                  value="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider">
+                  value="org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider">
             </instanceof>
          </possibleChildren>
          <actionProvider
@@ -131,7 +131,7 @@
          </adapter>
       </factory>
       <factory
-            adaptableType="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider"
+            adaptableType="org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider"
             class="org.pgcase.xobot.dbproc.team.ui.DbprocElementAdapterFactory">
          <adapter
                type="org.eclipse.team.core.mapping.IResourceMappingMerger">

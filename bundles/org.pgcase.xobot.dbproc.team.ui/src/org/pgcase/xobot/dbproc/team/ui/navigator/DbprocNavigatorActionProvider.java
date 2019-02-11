@@ -183,15 +183,15 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 					Object element = iter.next();
 					if (element instanceof XFunctionDefinitionIndex) {
 						XFunctionDefinitionIndex mo = (XFunctionDefinitionIndex) element;
-						XobotSaveablesProvider provider = getSaveablesProvider();
+						DbprocSaveablesProvider provider = getSaveablesProvider();
 						provider.makeDirty(mo);
 					}
 				}
 			}
 
-			private XobotSaveablesProvider getSaveablesProvider() {
+			private DbprocSaveablesProvider getSaveablesProvider() {
 				ITreeContentProvider provider = getActionSite().getContentService().getContentExtensionById("org.eclipse.team.examples.model.navigator").getContentProvider();
-				return (XobotSaveablesProvider)Adapters.adapt(provider, SaveablesProvider.class);
+				return (DbprocSaveablesProvider)Adapters.adapt(provider, SaveablesProvider.class);
 			}
 		};
 	}

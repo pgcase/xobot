@@ -50,19 +50,19 @@ import org.eclipse.team.core.mapping.ResourceMappingMerger;
 import org.eclipse.team.core.mapping.provider.MergeStatus;
 import org.eclipse.team.core.mapping.provider.ResourceDiffTree;
 import org.eclipse.team.core.mapping.provider.SynchronizationContext;
+import org.pgcase.xobot.dbproc.core.resources.ReworkMe;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
-import org.pgcase.xobot.workspace.core.resources.ReworkMe;
+import org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
-import org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 import org.pgcase.xobot.workspace.team.core.TeamCore;
 
 //FIXME: rework
-public class XobotModelMerger extends ResourceMappingMerger {
+public class DbprocModelMerger extends ResourceMappingMerger {
 
-	private final XobotModelProvider provider;
+	private final DbprocModelProvider provider;
 
-	public XobotModelMerger(XobotModelProvider provider) {
+	public DbprocModelMerger(DbprocModelProvider provider) {
 		this.provider = provider;
 	}
 

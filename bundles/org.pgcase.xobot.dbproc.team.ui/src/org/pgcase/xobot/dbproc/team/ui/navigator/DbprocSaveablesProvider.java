@@ -27,20 +27,20 @@ import org.eclipse.ui.Saveable;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 
-public class XobotSaveablesProvider extends SaveablesProvider {
+public class DbprocSaveablesProvider extends SaveablesProvider {
 
-	private List<XWorkspaceElementSaveable> saveables = new ArrayList<>();
+	private List<DbprocElementSaveable> saveables = new ArrayList<>();
 
 	public Object[] getElements(Saveable saveable) {
-		if (saveable instanceof XWorkspaceElementSaveable) {
-			XWorkspaceElementSaveable ms = (XWorkspaceElementSaveable) saveable;
+		if (saveable instanceof DbprocElementSaveable) {
+			DbprocElementSaveable ms = (DbprocElementSaveable) saveable;
 			return new Object[] { ms.getModelObject() };
 		}
 		return new Object[0];
 	}
 
-	public XWorkspaceElementSaveable getSaveable(Object element) {
-		for (XWorkspaceElementSaveable saveable : saveables) {
+	public DbprocElementSaveable getSaveable(Object element) {
+		for (DbprocElementSaveable saveable : saveables) {
 			if (saveable.getModelObject().equals(element)) {
 				return saveable;
 			}
@@ -53,9 +53,9 @@ public class XobotSaveablesProvider extends SaveablesProvider {
 	}
 
 	public void makeDirty(XFunctionDefinitionIndex index) {
-		XWorkspaceElementSaveable saveable = getSaveable(index);
+		DbprocElementSaveable saveable = getSaveable(index);
 		if (saveable == null) {
-			saveable = new XWorkspaceElementSaveable(this, index);
+			saveable = new DbprocElementSaveable(this, index);
 			saveables.add(saveable);
 			fireSaveablesOpened(new Saveable[] { saveable });
 		}
@@ -63,7 +63,7 @@ public class XobotSaveablesProvider extends SaveablesProvider {
 		fireSaveablesDirtyChanged(new Saveable[] { saveable });
 	}
 
-	public void saved(XWorkspaceElementSaveable saveable) {
+	public void saved(DbprocElementSaveable saveable) {
 		fireSaveablesDirtyChanged(new Saveable[] { saveable });
 	}
 

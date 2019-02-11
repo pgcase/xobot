@@ -7,18 +7,18 @@ import org.eclipse.team.ui.mapping.ISynchronizationCompareAdapter;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
+import org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider;
 import org.pgcase.xobot.dbproc.core.resources.mappings.XFunctionBodyResourceMapping;
 import org.pgcase.xobot.dbproc.core.resources.mappings.XFunctionIndexResourceMapping;
-import org.pgcase.xobot.dbproc.team.core.XobotModelMerger;
+import org.pgcase.xobot.dbproc.team.core.DbprocModelMerger;
 import org.pgcase.xobot.workspace.core.resources.mappings.XWorkspaceElementResourceMapping;
-import org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
 public class DbprocElementAdapterFactory implements IAdapterFactory {
 
-	private IWorkbenchAdapter modelAdapter = new XDbprocElementWorkbenchAdapter();
-	private XobotModelMerger modelMerger;
-	private XobotCompareAdapter compareAdapter;
+	private IWorkbenchAdapter modelAdapter = new DbprocElementWorkbenchAdapter();
+	private DbprocModelMerger modelMerger;
+	private DbprocCompareAdapter compareAdapter;
 	
 	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {
 		if (adapterType == IWorkbenchAdapter.class && adaptableObject instanceof XWorkspaceElementDescriptor) {
@@ -40,15 +40,15 @@ public class DbprocElementAdapterFactory implements IAdapterFactory {
 				return adapterType.cast(mapping);
 			}
 		}
-		if (adapterType == IResourceMappingMerger.class && adaptableObject instanceof XobotModelProvider) {
+		if (adapterType == IResourceMappingMerger.class && adaptableObject instanceof DbprocModelProvider) {
 			if (modelMerger == null) {
-				modelMerger = new XobotModelMerger((XobotModelProvider)adaptableObject);
+				modelMerger = new DbprocModelMerger((DbprocModelProvider)adaptableObject);
 			}
 			return adapterType.cast(modelMerger);
 		}
-		if (adapterType == ISynchronizationCompareAdapter.class && adaptableObject instanceof XobotModelProvider) {
+		if (adapterType == ISynchronizationCompareAdapter.class && adaptableObject instanceof DbprocModelProvider) {
 			if (compareAdapter == null) {
-				compareAdapter = new XobotCompareAdapter((XobotModelProvider)adaptableObject);
+				compareAdapter = new DbprocCompareAdapter((DbprocModelProvider)adaptableObject);
 			}
 			return adapterType.cast(compareAdapter);
 		}

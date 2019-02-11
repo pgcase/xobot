@@ -54,7 +54,7 @@ import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.registry.XProjectRegistry;
 
-public class XobotNavigatorContentProvider extends BaseWorkbenchContentProvider
+public class DbprocNavigatorContentProvider extends BaseWorkbenchContentProvider
 		implements ICommonContentProvider, IResourceChangeListener, IPipelinedTreeContentProvider, ITeamStateChangeListener, IAdaptable {
 
 	private ICommonContentExtensionSite extensionSite;
@@ -62,13 +62,13 @@ public class XobotNavigatorContentProvider extends BaseWorkbenchContentProvider
 	private Viewer viewer;
 	private final boolean updateViewer;
 	private SynchronizationStateTester syncStateTester;
-	private Object saveablesProvider = new XobotSaveablesProvider();
+	private Object saveablesProvider = new DbprocSaveablesProvider();
 
-	public XobotNavigatorContentProvider() {
+	public DbprocNavigatorContentProvider() {
 		this(true);
 	}
 	
-	public XobotNavigatorContentProvider(boolean updateViewer) {
+	public DbprocNavigatorContentProvider(boolean updateViewer) {
 		this.updateViewer = updateViewer;
 	}
 

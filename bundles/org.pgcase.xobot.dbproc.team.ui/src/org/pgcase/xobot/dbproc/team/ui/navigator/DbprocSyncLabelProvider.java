@@ -31,11 +31,11 @@ import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.core.resources.XWorkspaceResource;
 import org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorLabelProvider;
 
-public class XobotSyncLabelProvider extends SynchronizationLabelProvider {
+public class DbprocSyncLabelProvider extends SynchronizationLabelProvider {
 	
 	private XobotNavigatorLabelProvider delegate;
 
-	public XobotSyncLabelProvider() {
+	public DbprocSyncLabelProvider() {
 		super();
 	}
 

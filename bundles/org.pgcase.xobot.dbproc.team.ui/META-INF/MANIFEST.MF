@@ -22,3 +22,4 @@ Require-Bundle: org.eclipse.osgi.services;bundle-version="0.0.0",
  org.pgcase.xobot.dbproc.team.core;bundle-version="0.0.0"
 Export-Package: org.pgcase.xobot.dbproc.team.ui
 Bundle-ActivationPolicy: lazy
+Bundle-Localization: OSGI-INF/l10n/bundle

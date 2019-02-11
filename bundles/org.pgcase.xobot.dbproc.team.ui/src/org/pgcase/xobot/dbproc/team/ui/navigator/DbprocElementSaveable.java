@@ -11,20 +11,20 @@ import org.eclipse.ui.Saveable;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public class XWorkspaceElementSaveable extends Saveable {
+public class DbprocElementSaveable extends Saveable {
 
 	private XWorkspaceElementDescriptor workspaceElement;
 	private boolean dirty;
-	private final XobotSaveablesProvider modelSaveablesProvider;
+	private final DbprocSaveablesProvider modelSaveablesProvider;
 
-	public XWorkspaceElementSaveable(XobotSaveablesProvider modelSaveablesProvider, XFunctionDefinitionIndex element) {
+	public DbprocElementSaveable(DbprocSaveablesProvider modelSaveablesProvider, XFunctionDefinitionIndex element) {
 		this.modelSaveablesProvider = modelSaveablesProvider;
 		workspaceElement = element;
 	}
 
 	public boolean equals(Object object) {
-		if (object instanceof XWorkspaceElementSaveable) {
-			XWorkspaceElementSaveable other = (XWorkspaceElementSaveable) object;
+		if (object instanceof DbprocElementSaveable) {
+			DbprocElementSaveable other = (DbprocElementSaveable) object;
 			return (other.getModelObject().equals(getModelObject()));
 		}
 		return false;

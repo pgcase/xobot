@@ -35,20 +35,20 @@ import org.eclipse.team.ui.mapping.SynchronizationCompareAdapter;
 import org.eclipse.ui.IMemento;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
+import org.pgcase.xobot.dbproc.core.resources.mappings.DbprocModelProvider;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
-import org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public class XobotCompareAdapter extends SynchronizationCompareAdapter {
+public class DbprocCompareAdapter extends SynchronizationCompareAdapter {
 
 	private static final String MEMENTO_INDEX_PATH = "index"; //$NON-NLS-1$
 	private static final String MEMENTO_RESOURCE_PATH = "resource"; //$NON-NLS-1$
 
 	private static final String CTX_MODEL_MAPPINGS = WorkspaceCoreResources.MODEL_PROVIDER_ID;
 	
-	private final XobotModelProvider provider;
+	private final DbprocModelProvider provider;
 
-	public XobotCompareAdapter(XobotModelProvider provider) {
+	public DbprocCompareAdapter(DbprocModelProvider provider) {
 		this.provider = provider;
 	}
 	
@@ -145,7 +145,7 @@ public class XobotCompareAdapter extends SynchronizationCompareAdapter {
 		}
 	}
 
-	public XobotModelProvider getProvider() {
+	public DbprocModelProvider getProvider() {
 		return provider;
 	}
 

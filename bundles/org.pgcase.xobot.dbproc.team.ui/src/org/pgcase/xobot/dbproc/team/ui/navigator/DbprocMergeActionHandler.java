@@ -41,7 +41,7 @@ import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 
 @SuppressWarnings("restriction")
-public class XobotMergeActionHandler extends MergeActionHandler {
+public class DbprocMergeActionHandler extends MergeActionHandler {
 
 	private final class XobotSynchronizeOperation extends ResourceModelProviderOperation {
 		public XobotSynchronizeOperation(ISynchronizePageConfiguration configuration, IStructuredSelection selection) {
@@ -105,7 +105,7 @@ public class XobotMergeActionHandler extends MergeActionHandler {
 	final boolean overwrite;
 	private SynchronizationOperation operation;
 
-	public XobotMergeActionHandler(ISynchronizePageConfiguration configuration, boolean overwrite) {
+	public DbprocMergeActionHandler(ISynchronizePageConfiguration configuration, boolean overwrite) {
 		super(configuration);
 		this.overwrite = overwrite;
 	}

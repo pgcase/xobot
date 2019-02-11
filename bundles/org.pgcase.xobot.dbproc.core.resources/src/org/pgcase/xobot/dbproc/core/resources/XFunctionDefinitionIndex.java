@@ -28,7 +28,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
-import org.pgcase.xobot.workspace.core.resources.ReworkMe;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.core.resources.XWorkspaceResource;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;

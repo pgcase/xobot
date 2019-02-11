@@ -18,7 +18,7 @@
  * Contributors:
  *     ArSysOp - initial API and implementation
  *******************************************************************************/
-package org.pgcase.xobot.workspace.core.resources.mappings;
+package org.pgcase.xobot.dbproc.core.resources.mappings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import org.eclipse.osgi.util.NLS;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public class XobotModelProvider extends ModelProvider {
+public class DbprocModelProvider extends ModelProvider {
 	
 	public IStatus validateChange(IResourceDelta delta, IProgressMonitor monitor) {
 		// Visit the changes in the delta to look for changes we care about

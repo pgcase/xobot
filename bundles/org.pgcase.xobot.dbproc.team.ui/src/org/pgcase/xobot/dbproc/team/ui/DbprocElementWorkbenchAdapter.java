@@ -10,9 +10,9 @@ import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
 
-public class XDbprocElementWorkbenchAdapter implements IWorkbenchAdapter {
+public class DbprocElementWorkbenchAdapter implements IWorkbenchAdapter {
 	
-	public XDbprocElementWorkbenchAdapter() {
+	public DbprocElementWorkbenchAdapter() {
 	}
 
 	public Object[] getChildren(Object o) {

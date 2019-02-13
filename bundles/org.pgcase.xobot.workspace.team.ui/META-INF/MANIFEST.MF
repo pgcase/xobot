@@ -23,4 +23,5 @@ Require-Bundle: org.eclipse.osgi.services;bundle-version="0.0.0",
  org.pgcase.xobot.workspace.core.resources;bundle-version="0.0.0",
  org.pgcase.xobot.workspace.team.core;bundle-version="0.0.0"
 Bundle-ActivationPolicy: lazy
-Export-Package: org.pgcase.xobot.workspace.team.ui
+Export-Package: org.pgcase.xobot.workspace.team.ui,
+ org.pgcase.xobot.workspace.team.ui.navigator

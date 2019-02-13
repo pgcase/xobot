@@ -26,18 +26,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.StreamSupport;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.pgcase.xobot.basis.runtime.BasisEvents;
 import org.pgcase.xobot.basis.ui.navigator.RegistryContentProvider;
-import org.pgcase.xobot.dbproc.antlr.functions.AntlrFunctionExtractor;
-import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
-import org.pgcase.xobot.dbproc.runtime.functions.XFunctionDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectSourceDescriptor;
@@ -76,35 +68,6 @@ public class ProjectsContentProvider extends RegistryContentProvider<XProjectReg
 			list.add(targets);
 			project.getProjectFolders().forEach(list::add);
 			return list.toArray();
-		}
-		if (parentElement instanceof XProjectFolderDescriptor) {
-			XProjectFolderDescriptor projectFolder = (XProjectFolderDescriptor) parentElement;
-			String path = projectFolder.getPath();
-			XProjectDescriptor project = projectFolder.getProject();
-			IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getProject(project.getName()).getFolder(path);
-			AntlrFunctionExtractor antlrFunctionExtractor = new AntlrFunctionExtractor();
-			List<XFunctionDescriptor> functions = new ArrayList<>();
-			try {
-				IResource[] members = folder.members();
-				for (IResource resource : members) {
-					if (resource instanceof IFile) {
-						IFile file = (IFile) resource;
-						antlrFunctionExtractor.extractFunctions(file.getContents(), null, new XIssueReporter() {
-							
-							@Override
-							public void reportIssue(Object source, Object data, String message, Throwable error) {
-								
-								// TODO Auto-generated method stub
-								
-							}
-						}).forEach(functions::add);
-					}
-				}
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return functions.toArray();
 		}
 		if (parentElement instanceof XProjectRegistry) {
 			return StreamSupport.stream(workspaceService.getProjects().spliterator(), false).toArray();

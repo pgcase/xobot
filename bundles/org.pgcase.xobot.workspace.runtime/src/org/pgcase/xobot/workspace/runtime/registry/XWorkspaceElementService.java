@@ -20,9 +20,7 @@
  *******************************************************************************/
 package org.pgcase.xobot.workspace.runtime.registry;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
@@ -33,8 +31,6 @@ public interface XWorkspaceElementService {
 	
 	Iterable<?> getFolderItems(XProjectFolderDescriptor folder);
 
-	void delete(XWorkspaceElementDescriptor element, IProgressMonitor monitor) throws CoreException;
-	
 	XProjectDescriptor getProject(String name);
 
 	Iterable<? extends XProjectDescriptor> getProjects();

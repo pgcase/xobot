@@ -10,7 +10,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.osgi.services;bundle-version="0.0.0",
  org.eclipse.core.runtime;bundle-version="0.0.0",
  org.eclipse.core.filesystem;bundle-version="0.0.0",
- org.eclipse.core.resources;bundle-version="0.0.0",
+ org.eclipse.core.resources;bundle-version="0.0.0";visibility:=reexport,
  org.eclipse.e4.core.contexts;bundle-version="0.0.0",
  org.pgcase.xobot.workspace.model;bundle-version="0.0.0"
 Export-Package: org.pgcase.xobot.workspace.core.filesystem,

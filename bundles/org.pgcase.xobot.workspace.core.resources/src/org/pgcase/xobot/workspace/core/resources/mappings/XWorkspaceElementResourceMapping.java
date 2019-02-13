@@ -25,8 +25,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.mapping.ResourceMapping;
 import org.eclipse.core.runtime.Adapters;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
-import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionBody;
-import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
@@ -43,12 +41,6 @@ public abstract class XWorkspaceElementResourceMapping extends ResourceMapping {
 		if (object instanceof XProjectFolderDescriptor) {
 			XProjectFolderDescriptor folder = (XProjectFolderDescriptor) object;
 			return new XProjectFolderResourceMapping(folder);
-		}
-		if (object instanceof XFunctionDefinitionIndex) {
-			return new XFunctionIndexResourceMapping((XFunctionDefinitionIndex) object);
-		}
-		if (object instanceof XFunctionDefinitionBody) {
-			return new XFunctionBodyResourceMapping((XFunctionDefinitionBody) object);
 		}
 		return null;
 	}

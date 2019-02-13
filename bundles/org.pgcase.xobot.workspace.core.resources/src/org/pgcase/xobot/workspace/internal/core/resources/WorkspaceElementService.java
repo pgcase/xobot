@@ -29,15 +29,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.pgcase.xobot.workspace.core.resources.WorkspaceCoreResources;
-import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionBody;
-import org.pgcase.xobot.workspace.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.runtime.XProjectDescriptor;
 import org.pgcase.xobot.workspace.runtime.XProjectFolderDescriptor;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
@@ -68,23 +64,6 @@ public class WorkspaceElementService implements XWorkspaceElementService {
 	public Iterable<?> getFolderItems(XProjectFolderDescriptor folder) {
 		// TODO delegate
 		return Collections.emptyList();
-	}
-
-	@Override
-	public void delete(XWorkspaceElementDescriptor element, IProgressMonitor monitor) throws CoreException {
-		if (element instanceof XFunctionDefinitionBody) {
-			XFunctionDefinitionBody body = (XFunctionDefinitionBody) element;
-			body.getFunctionDefinitionIndex().remove(body);
-			body.getResource().delete(false, monitor);
-		} else if (element instanceof XFunctionDefinitionIndex) {
-			XFunctionDefinitionIndex index = (XFunctionDefinitionIndex) element;
-			index.getResource().delete(false, monitor);
-			XFunctionDefinitionBody[] files = index.getFunctionBodyFiles();
-			for (int i = 0; i < files.length; i++) {
-				XFunctionDefinitionBody file = files[i];
-				file.getResource().delete(false, null);
-			}
-		}
 	}
 
 	@Override

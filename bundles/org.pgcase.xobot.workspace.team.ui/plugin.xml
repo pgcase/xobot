@@ -120,7 +120,7 @@
                    separator="true"/>
              <insertionPoint
                    name="additions"
-                   separator="true"/>              
+                   separator="true"/>
              <insertionPoint
                    name="properties"
                    separator="true"/>
@@ -148,129 +148,7 @@
             name="Синхронизировать Хоботом">
       </wizard>
    </extension>
-   <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-      <navigatorContent
-            activeByDefault="true"
-            contentProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorContentProvider"
-            icon="images/xobot16.png"
-            id="org.pgcase.xobot.workspace.team.ui.navigatorContent.model"
-            labelProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorLabelProvider"
-            name="Xobot Model"
-            providesSaveables="true">
-         <triggerPoints>
-            <or>
-               <adapt
-                     type="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
-               </adapt>
-               <adapt
-                     type="org.eclipse.core.resources.IWorkspaceRoot">
-               </adapt>
-            </or></triggerPoints>
-         <possibleChildren>
-            <instanceof
-                  value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
-            </instanceof>
-         </possibleChildren>
-         <override
-               policy="InvokeAlwaysRegardlessOfSuppressedExt"
-               suppressedExtensionId="org.eclipse.ui.navigator.resourceContent">
-         </override>
-         <actionProvider
-               class="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorActionProvider"
-               id="org.pgcase.xobot.workspace.team.ui.navigator.model.action.provider">
-         </actionProvider>
-      </navigatorContent>
-   </extension>
-   <extension
-         point="org.eclipse.ui.navigator.viewer">
-      <viewerContentBinding
-            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
-         <includes>
-            <contentExtension
-                  pattern="org.pgcase.xobot.workspace.team.ui.navigatorContent.model">
-            </contentExtension></includes>
-      </viewerContentBinding>
-   </extension>
-   <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-      <navigatorContent
-            contentProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotSyncContentProvider"
-            icon="images/xobot16.png"
-            id="org.pgcase.xobot.workspace.team.ui.navigatorContent.xobot"
-            labelProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotSyncLabelProvider"
-            name="Xobot Sync"
-            priority="normal">
-         <actionProvider
-               class="org.pgcase.xobot.workspace.team.ui.navigator.XobotSyncActionProvider">
-         </actionProvider>
-         <override
-               policy="InvokeAlwaysRegardlessOfSuppressedExt"
-               suppressedExtensionId="org.eclipse.team.ui.resourceContent">
-         </override>
-         <triggerPoints>
-            <or>
-               <instanceof
-                     value="org.eclipse.team.core.mapping.ISynchronizationScope">
-               </instanceof>
-               <instanceof
-                     value="org.eclipse.team.core.mapping.ISynchronizationContext">
-               </instanceof>
-               <instanceof
-                     value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
-               </instanceof>
-               <instanceof
-                     value="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider">
-               </instanceof>
-            </or></triggerPoints>
-         <possibleChildren>
-            <instanceof
-                  value="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor">
-            </instanceof>
-            <instanceof
-                  value="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider">
-            </instanceof></possibleChildren>
-         <actionProvider
-               class="org.pgcase.xobot.workspace.team.ui.navigator.XobotThirdPartyActionProvider"
-               id="org.pgcase.xobot.workspace.team.ui.navigator.ThirdPartyActionProvider">
-            <enablement>
-               <adapt
-                     type="org.eclipse.core.resources.mapping.ResourceMapping">
-               </adapt></enablement>
-         </actionProvider>
-      </navigatorContent>
-   </extension>
-   <extension
-         point="org.eclipse.team.ui.teamContentProviders">
-      <teamContentProvider
-            contentExtensionId="org.pgcase.xobot.workspace.team.ui.navigatorContent.xobot"
-            icon="images/xobot16.png"
-            modelProviderId="org.pgcase.xobot.workspace.core.resources.model">
-      </teamContentProvider>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.adapters">
-      <factory
-            adaptableType="org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor"
-            class="org.pgcase.xobot.workspace.team.ui.navigator.XWorkspaceElementAdapterFactory">
-         <adapter
-               type="org.eclipse.ui.model.IWorkbenchAdapter">
-         </adapter>
-         <adapter
-               type="org.eclipse.core.resources.mapping.ResourceMapping">
-         </adapter>
-      </factory>
-      <factory
-            adaptableType="org.pgcase.xobot.workspace.core.resources.mappings.XobotModelProvider"
-            class="org.pgcase.xobot.workspace.team.ui.navigator.XWorkspaceElementAdapterFactory">
-         <adapter
-               type="org.eclipse.team.core.mapping.IResourceMappingMerger">
-         </adapter>
-         <adapter
-               type="org.eclipse.team.ui.mapping.ISynchronizationCompareAdapter">
-         </adapter>
-      </factory>
-   </extension>
+
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension

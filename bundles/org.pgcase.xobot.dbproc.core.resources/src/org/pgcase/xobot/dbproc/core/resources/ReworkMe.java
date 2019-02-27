@@ -48,7 +48,7 @@ public class ReworkMe {
 		for (int i = 0; i < strings.length; i++) {
 			String string = strings[i];
 			buffer.append(string);
-			buffer.append("\n");
+			buffer.append("\n"); //$NON-NLS-1$
 		}
 		file.setContents(new ByteArrayInputStream(buffer.toString().getBytes()), false, true, null);
 	}
@@ -63,7 +63,7 @@ public class ReworkMe {
 			}
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, WorkspaceCoreResources.ID, 0,
-					NLS.bind("Error reading from file {0}", file.getFullPath()), e));
+					NLS.bind(DBProcCoreResourcesMessages.ReworkMe_message_error_reading_from_file, file.getFullPath()), e));
 		} finally {
 			try {
 				reader.close();
@@ -78,7 +78,7 @@ public class ReworkMe {
 		if (path.length() == 0)
 			return null;
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		IStatus status = workspace.validatePath("/" + projectName + "/" + path, IResource.FILE);
+		IStatus status = workspace.validatePath("/" + projectName + "/" + path, IResource.FILE);  //$NON-NLS-1$//$NON-NLS-2$
 		if (status.isOK()) {
 			IProject project = workspace.getRoot().getProject(projectName);
 			return project.getFile(new Path(path));

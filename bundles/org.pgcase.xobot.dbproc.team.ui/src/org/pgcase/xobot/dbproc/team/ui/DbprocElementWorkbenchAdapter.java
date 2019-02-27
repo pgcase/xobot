@@ -5,6 +5,7 @@ import java.net.URL;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionBody;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
@@ -31,7 +32,7 @@ public class DbprocElementWorkbenchAdapter implements IWorkbenchAdapter {
 	public ImageDescriptor getImageDescriptor(Object object) {
 		//FIXME:
 		try {
-			URL url = new URL("platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png");
+			URL url = new URL("platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"); //$NON-NLS-1$
 			return ImageDescriptor.createFromURL(url);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -43,7 +44,7 @@ public class DbprocElementWorkbenchAdapter implements IWorkbenchAdapter {
 	public String getLabel(Object o) {
 		if (o instanceof XFunctionDefinitionIndex) {
 			XFunctionDefinitionIndex file = (XFunctionDefinitionIndex) o;
-			return "Function: " + file.getName();
+			return NLS.bind(DbprocTeamUiMessages.DbprocElementWorkbenchAdapter_function_definition_text, file.getName());
 		}
 		if (o instanceof XWorkspaceElementDescriptor) {
 			XWorkspaceElementDescriptor descriptor = (XWorkspaceElementDescriptor) o;

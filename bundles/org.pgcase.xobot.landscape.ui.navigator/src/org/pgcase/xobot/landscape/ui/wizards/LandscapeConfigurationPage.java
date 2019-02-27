@@ -162,29 +162,29 @@ public class LandscapeConfigurationPage extends WizardPage {
 	}
 
 	protected void createLandscapeControls(Composite composite) {
-		sourceIntegrationCombo = LandscapeUi.createSourceGroup(composite, "Исходный код", "Путь к Git репозиторию", e -> {
+		sourceIntegrationCombo = LandscapeUi.createSourceGroup(composite, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_group_source_code, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_label_git_repo_path, e -> {
 			setSourceIntegrationLocation((XSourceDescriptor) e.widget.getData());
 			LandscapeConfigurationPage.this.validatePage();
 		}, FocusDescriptors.MATURITY_INTEGRATION);
 
-		targetSandboxCombo = LandscapeUi.createTargetGroup(composite, "Экспериментальный стэнд", "Конфигурация экспериментального стэнда",
+		targetSandboxCombo = LandscapeUi.createTargetGroup(composite, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_group_experimental_target, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_label_experimental_target_config,
 				e -> {
 					setTargetSandboxLocation((XTargetDescriptor) e.widget.getData());
 					LandscapeConfigurationPage.this.validatePage();
 				}, FocusDescriptors.MATURITY_SANDBOX);
 
-		targetIntegrationCombo = LandscapeUi.createTargetGroup(composite, "Интеграционный стэнд", "Конфигурация интеграционного стэнда",
+		targetIntegrationCombo = LandscapeUi.createTargetGroup(composite, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_group_integration_target, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_label_integration_target_config,
 				e -> {
 					setTargetIntegrationLocation((XTargetDescriptor) e.widget.getData());
 					LandscapeConfigurationPage.this.validatePage();
 				}, FocusDescriptors.MATURITY_INTEGRATION);
 
-		targetStableCombo = LandscapeUi.createTargetGroup(composite, "Стабильный стэнд", "Конфигурация стабильного стэнда", e -> {
+		targetStableCombo = LandscapeUi.createTargetGroup(composite, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_group_stable_target, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_label_stable_target_config, e -> {
 			setTargetStableLocation((XTargetDescriptor) e.widget.getData());
 			LandscapeConfigurationPage.this.validatePage();
 		}, FocusDescriptors.MATURITY_STABLE);
 
-		targetOfficialCombo = LandscapeUi.createTargetGroup(composite, "Ахтунг! Прод!", "И не валите всё потом на Хобот", e -> {
+		targetOfficialCombo = LandscapeUi.createTargetGroup(composite, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_group_official_target, LandscapeConfigurationPageMessages.LandscapeConfigurationPage_label_official_target_config, e -> {
 			setTargetOfficialLocation((XTargetDescriptor) e.widget.getData());
 			LandscapeConfigurationPage.this.validatePage();
 		}, FocusDescriptors.MATURITY_OFFICIAL);
@@ -259,23 +259,23 @@ public class LandscapeConfigurationPage extends WizardPage {
 	
 	protected IStatus validateFields() {
 		if (getSourceIntegrationLocation() == null) {
-			String message = "Необходимо указать, где находится исходный код";
+			String message = LandscapeConfigurationPageMessages.LandscapeConfigurationPage_error_no_source_code;
 			return createError(message);
 		}
 		if (getTargetSandboxLocation() == null) {
-			String message = "Необходимо указать экспериментальный стэнд";
+			String message = LandscapeConfigurationPageMessages.LandscapeConfigurationPage_error_no_experimental_target;
 			return createError(message);
 		}
 		if (getTargetIntegrationLocation() == null) {
-			String message = "Необходимо указать интеграционный стэнд";
+			String message = LandscapeConfigurationPageMessages.LandscapeConfigurationPage_error_no_integration_target;
 			return createError(message);
 		}
 		if (getTargetStableLocation() == null) {
-			String message = "Рекомендуется указать стабильный стэнд";
+			String message = LandscapeConfigurationPageMessages.LandscapeConfigurationPage_warning_no_stable_target;
 			return createWarning(message);
 		}
 		if (getTargetOfficialLocation() == null) {
-			String message = "Рекомендуется указать официальный стэнд";
+			String message = LandscapeConfigurationPageMessages.LandscapeConfigurationPage_warning_no_official_target;
 			return createWarning(message);
 		}
 		return Status.OK_STATUS;

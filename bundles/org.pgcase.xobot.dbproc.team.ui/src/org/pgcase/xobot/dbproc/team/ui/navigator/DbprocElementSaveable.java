@@ -37,7 +37,7 @@ public class DbprocElementSaveable extends Saveable {
 	public ImageDescriptor getImageDescriptor() {
 		//FIXME:
 		try {
-			URL url = new URL("platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png");
+			URL url = new URL("platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"); //$NON-NLS-1$
 			return ImageDescriptor.createFromURL(url);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -51,7 +51,7 @@ public class DbprocElementSaveable extends Saveable {
 	}
 
 	public String getToolTipText() {
-		return "Saveable for " + getName();
+		return DBProcTeamUiNavigatorMessages.DbprocElementSaveable_tooltip_saveable_text + getName();
 	}
 
 	public int hashCode() {

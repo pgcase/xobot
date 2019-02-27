@@ -8,7 +8,8 @@ notifications:
     - alexander.fedorov@arsysop.ru
     - sergei.kovalchuk@arsysop.ru
     - andrew.khitrin@arsysop.ru
-    - valeriy.kosarev@gmail.com    
+    - valeriy.kosarev@gmail.com
+    - kefir.fedorov@gmail.com    
 
 cache:
   directories:

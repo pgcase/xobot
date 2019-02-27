@@ -157,7 +157,7 @@ public class LandscapeUi {
 	private static Button createButton(Group group) {
 		Button browse = new Button(group, SWT.NULL);
 		browse.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		browse.setText("Выбрать...");
+		browse.setText(LandscapeUiMessages.LandscapeUi_button_select_text);
 		return browse;
 	}
 

@@ -37,7 +37,7 @@ public class LandscapeUi {
 		IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(bundleContext);
 		XSourceRegistry registry = serviceContext.get(XSourceRegistry.class);
 		FilteredSourceSelectionDialog dialog = new FilteredSourceSelectionDialog(shell, false, maturity, registry);
-		dialog.setTitle("Select Source");
+		dialog.setTitle(LandscapeUiMessages.LandscapeUi_dialog_select_source_title);
 		String message = getSourceSelectionMessage(maturity);
 		dialog.setMessage(message);
 		dialog.open();
@@ -52,15 +52,15 @@ public class LandscapeUi {
 	private static String getSourceSelectionMessage(String maturity) {
 		switch (maturity) {
 		case FocusDescriptors.MATURITY_INTEGRATION:
-			return "Select configuration for integration source";
+			return LandscapeUiMessages.LandscapeUi_source_selection_message_integration;
 		case FocusDescriptors.MATURITY_OFFICIAL:
-			return "Select configuration for official source";
+			return LandscapeUiMessages.LandscapeUi_source_selection_message_official;
 		case FocusDescriptors.MATURITY_SANDBOX:
-			return "Select configuration for experimental source";
+			return LandscapeUiMessages.LandscapeUi_source_selection_message_experimental;
 		case FocusDescriptors.MATURITY_STABLE:
-			return "Select configuration for stable source";
+			return LandscapeUiMessages.LandscapeUi_source_selection_message_stable;
 		default:
-			return "Select configuration for source";
+			return LandscapeUiMessages.LandscapeUi_source_selection_message_default;
 		}
 	}
 
@@ -70,10 +70,8 @@ public class LandscapeUi {
 		IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(bundleContext);
 		XTargetRegistry registry = serviceContext.get(XTargetRegistry.class);
 		FilteredTargetSelectionDialog dialog = new FilteredTargetSelectionDialog(shell, false, maturity, registry);
-//		dialog.setTitle("Выбрать Приемник");
-		dialog.setTitle("Select Target");
+		dialog.setTitle(LandscapeUiMessages.LandscapeUi_dialog_select_target_title);
 		String message = getTargetSelectionMessage(maturity);
-//		String message = NLS.bind("Выбрать приемник в качестве экспериментального", maturity);
 		dialog.setMessage(message);
 		dialog.open();
 		Object firstResult = dialog.getFirstResult();
@@ -87,15 +85,15 @@ public class LandscapeUi {
 	private static String getTargetSelectionMessage(String maturity) {
 		switch (maturity) {
 		case FocusDescriptors.MATURITY_INTEGRATION:
-			return "Select configuration for integration target";
+			return LandscapeUiMessages.LandscapeUi_target_selection_message_integration;
 		case FocusDescriptors.MATURITY_OFFICIAL:
-			return "Select configuration for official target";
+			return LandscapeUiMessages.LandscapeUi_target_selection_message_official;
 		case FocusDescriptors.MATURITY_SANDBOX:
-			return "Select configuration for experimental target";
+			return LandscapeUiMessages.LandscapeUi_target_selection_message_experimental;
 		case FocusDescriptors.MATURITY_STABLE:
-			return "Select configuration for stable target";
+			return LandscapeUiMessages.LandscapeUi_target_selection_message_stable;
 		default:
-			return "Select configuration for target";
+			return LandscapeUiMessages.LandscapeUi_target_selection_message_default;
 		}
 	}
 

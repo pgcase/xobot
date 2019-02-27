@@ -59,8 +59,8 @@ public class ArgumentDescriptorImpl implements XArgumentDescriptor {
 
 	@Override
 	public String toString() {
-		return "Function Argument [argClass=" + argClass + ", argType=" + argType + ", argName=" + argName
-				+ ", argDefault=" + argDefault + "]";
+		return "Function Argument [argClass=" + argClass + ", argType=" + argType + ", argName=" + argName //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				+ ", argDefault=" + argDefault + "]";  //$NON-NLS-1$//$NON-NLS-2$
 	}
 
 }

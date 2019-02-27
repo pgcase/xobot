@@ -61,7 +61,7 @@ public class JdbcFunctionExtractor implements XFunctionExtractor {
 				}
 				return functions;
 			} catch (Exception e) {
-				String message = String.format("Failed to process input with context %s", context);
+				String message = String.format(JDBCFunctionsMessages.getString("JdbcFunctionExtractor.message_failed_to_process_input"), context); //$NON-NLS-1$
 				reporter.reportIssue(this, input, message, e);
 			}
 		}

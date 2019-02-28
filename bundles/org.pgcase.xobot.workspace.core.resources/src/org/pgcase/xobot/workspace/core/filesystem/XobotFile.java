@@ -66,7 +66,7 @@ public class XobotFile extends LocalFile {
 
 	@Override
 	public IFileStore getFileStore(IPath path) {
-		URI childUri = URI.create(uri.toString() + new Path("/").append(path).toString());
+		URI childUri = URI.create(uri.toString() + new Path("/").append(path).toString()); //$NON-NLS-1$
 		File childFile = new Path(file.getPath()).append(path).toFile();
 		return new XobotFile(fileSystem, childUri,  childFile);
 	}

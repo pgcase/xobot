@@ -40,7 +40,7 @@ public class XobotFileSystem extends FileSystem {
 	@Override
 	public IFileStore getStore(URI uri) {
 		String path = uri.getPath();
-		File file = Paths.get(root.getPath(), path.split("/")).toFile();
+		File file = Paths.get(root.getPath(), path.split("/")).toFile(); //$NON-NLS-1$
 		return new XobotFile(this, uri, file);
 	}
 

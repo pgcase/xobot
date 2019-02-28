@@ -57,7 +57,7 @@ public class XobotThirdPartyActionProvider extends CommonActionProvider {
 	
 	public void init(ICommonActionExtensionSite aSite) {
 		super.init(aSite);
-		exampleAction = new Action("Сообщество") {
+		exampleAction = new Action(WorkspaceTeamUINavigatorMessages.XobotThirdPartyActionProvider_action_society_title) {
 			public void run() {
 				StringBuffer buffer = new StringBuffer();
 				boolean addComma = false;
@@ -69,13 +69,13 @@ public class XobotThirdPartyActionProvider extends CommonActionProvider {
 					if (adapter != null) {
 						String name = adapter.getName(mapping);
 						if (addComma) {
-							buffer.append(", ");
+							buffer.append(", "); //$NON-NLS-1$
 						}
 						buffer.append(name);
 						addComma = true;
 					}
 				}
-				MessageDialog.openInformation(getActionSite().getViewSite().getShell(), "Просто Пример", "Вы можете легко добавлять свои акции. Например, над этими объектами: " + buffer.toString());
+				MessageDialog.openInformation(getActionSite().getViewSite().getShell(), WorkspaceTeamUINavigatorMessages.XobotThirdPartyActionProvider_message_dialog_title, WorkspaceTeamUINavigatorMessages.XobotThirdPartyActionProvider_message_dialog_content + buffer.toString());
 			}
 		};
 	}

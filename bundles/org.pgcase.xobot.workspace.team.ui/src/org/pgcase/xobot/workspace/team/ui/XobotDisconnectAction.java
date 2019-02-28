@@ -36,7 +36,7 @@ public class XobotDisconnectAction extends TeamAction {
 				RepositoryProvider.unmap(projects[i]);
 			}
 		} catch (TeamException e) {
-			ErrorDialog.openError(getShell(), "Хобот Устал", null, e.getStatus());
+			ErrorDialog.openError(getShell(), WorkspaceTeamUIMessages.XobotDisconnectAction_error_title, null, e.getStatus());
 		} 
 	}
 	

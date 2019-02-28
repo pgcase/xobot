@@ -56,23 +56,23 @@ public class XobotPerspectiveFactory implements IPerspectiveFactory {
 	public void defineLayout(IPageLayout layout) {
 		String editorArea = layout.getEditorArea();
 
-		String explorers = "org.pgcase.xobot.workspace.ui.ide.explorers";
+		String explorers = "org.pgcase.xobot.workspace.ui.ide.explorers"; //$NON-NLS-1$
 		IFolderLayout explorersFolder = layout.createFolder(explorers, IPageLayout.LEFT, 0.26f, editorArea);
 		explorersFolder.addPlaceholder(IPageLayout.ID_BOOKMARKS);
 
-		String outlines = "org.pgcase.xobot.workspace.ui.ide.outlines";
+		String outlines = "org.pgcase.xobot.workspace.ui.ide.outlines"; //$NON-NLS-1$
 		IFolderLayout outlinesFolder = layout.createFolder(outlines, IPageLayout.BOTTOM, 0.50f, explorers);
 		outlinesFolder.addPlaceholder(IPageLayout.ID_OUTLINE);
 
-		String sources = "org.pgcase.xobot.workspace.ui.ide.sources";
+		String sources = "org.pgcase.xobot.workspace.ui.ide.sources"; //$NON-NLS-1$
 		IFolderLayout sourcesFolder = layout.createFolder(sources, IPageLayout.RIGHT, 0.66f, editorArea);
 		sourcesFolder.addView(LandscapeUiNavigator.VIEW_SOURCES);
 
-		String targets = "org.pgcase.xobot.workspace.ui.ide.targets";
+		String targets = "org.pgcase.xobot.workspace.ui.ide.targets"; //$NON-NLS-1$
 		IFolderLayout targetsFolder = layout.createFolder(targets, IPageLayout.BOTTOM, 0.50f, sources);
 		targetsFolder.addView(LandscapeUiNavigator.VIEW_TARGTETS);
 
-		String messages = "org.pgcase.xobot.workspace.ui.ide.messages";
+		String messages = "org.pgcase.xobot.workspace.ui.ide.messages"; //$NON-NLS-1$
 		IFolderLayout messagesFolder = layout.createFolder(messages, IPageLayout.BOTTOM, 0.66f, editorArea);
 		messagesFolder.addView(IPageLayout.ID_PROBLEM_VIEW);
 		messagesFolder.addView(IPageLayout.ID_TASK_LIST);

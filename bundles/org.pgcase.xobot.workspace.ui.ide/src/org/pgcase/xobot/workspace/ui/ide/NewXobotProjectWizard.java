@@ -54,7 +54,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 
 	public NewXobotProjectWizard() {
 		setNeedsProgressMonitor(true);
-		setWindowTitle("New Xobot Project");
+		setWindowTitle(WorkspaceUIIDEMessages.NewXobotProjectWizard_wizard_title);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 		};
 		// create the new project operation
 		IRunnableWithProgress op = monitor -> {
-			CreateProjectOperation create = new CreateProjectOperation(description, "New Xobot Project");
+			CreateProjectOperation create = new CreateProjectOperation(description, WorkspaceUIIDEMessages.NewXobotProjectWizard_project_operation_label);
 			try {
 				// see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=219901
 				// directly execute the operation so that the undo state is
@@ -162,7 +162,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 			@Override
 			public String getName() {
 				// TODO Auto-generated method stub
-				return "Функции";
+				return WorkspaceUIIDEMessages.NewXobotProjectWizard_folder_display_name_functions;
 			}
 			
 			@Override
@@ -188,7 +188,7 @@ public class NewXobotProjectWizard extends BasicNewResourceWizard implements INe
 			@Override
 			public String getName() {
 				// TODO Auto-generated method stub
-				return "Триггеры";
+				return WorkspaceUIIDEMessages.NewXobotProjectWizard_folder_display_name_triggers;
 			}
 			
 			@Override

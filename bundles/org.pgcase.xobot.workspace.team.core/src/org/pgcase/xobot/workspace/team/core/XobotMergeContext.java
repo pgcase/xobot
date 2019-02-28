@@ -67,7 +67,7 @@ public class XobotMergeContext extends SubscriberMergeContext {
 			if (diff instanceof IThreeWayDiff && resource instanceof IFile) {
 				IThreeWayDiff twd = (IThreeWayDiff) diff;
 				if (twd.getDirection() == IThreeWayDiff.CONFLICTING) {
-					return new MergeStatus(TeamCore.ID, "Cannot merge conflicting files",
+					return new MergeStatus(TeamCore.ID, WorkspaceTeamCoreMessages.XobotMergeContext_message_cannot_merge,
 							new IFile[] { (IFile) resource });
 				}
 			}

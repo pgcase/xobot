@@ -61,7 +61,7 @@ public class XobotResourceVariant extends CachedResourceVariant {
 			return ioFile.getCanonicalPath();
 		} catch (IOException e) {
 			IStatus status = new Status(IStatus.ERROR, TeamCore.ID, 0, 
-					"Failed to obtain canonical path for " + ioFile.getAbsolutePath(), e);
+					WorkspaceTeamCoreMessages.XobotResourceVariant_message_failed_to_obtain_canonical_path + ioFile.getAbsolutePath(), e);
 			//FIXME: report
 			e.printStackTrace();
 			return ioFile.getAbsolutePath();
@@ -112,7 +112,7 @@ public class XobotResourceVariant extends CachedResourceVariant {
 		try {
 			return new BufferedInputStream(new FileInputStream(ioFile));
 		} catch (FileNotFoundException e) {
-			String pattern = "Failed to fetch contents for {0}";
+			String pattern = WorkspaceTeamCoreMessages.XobotResourceVariant_message_failed_to_fetch_contents;
 			String message = NLS.bind(pattern, ioFile);
 			throw new TeamException(message, e);
 		}

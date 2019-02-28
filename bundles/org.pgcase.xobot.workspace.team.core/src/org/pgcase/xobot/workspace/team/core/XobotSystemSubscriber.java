@@ -66,7 +66,7 @@ public class XobotSystemSubscriber extends ThreeWaySubscriber {
 	}
 
 	public String getName() {
-		return "Xobot Subscriber";
+		return "Xobot Subscriber"; //$NON-NLS-1$
 	}
 
 	public IResource[] roots() {

@@ -67,12 +67,12 @@ public class XobotRepositoryProvider extends RepositoryProvider {
 	public void setIntegrationSource(XSourceDescriptor source) throws TeamException {
 		String uri = source.getUri();
 		String path = new Path(uri).append(getProject().getName()).toOSString();
-		String location = "c:\\work\\arsysop\\github\\pgconf\\demo";
+		String location = "c:\\work\\arsysop\\github\\pgconf\\demo"; //$NON-NLS-1$
 		root = new Path(location);
 		
 		File file = new File(location);
 		if (file.exists() && !file.isDirectory()) {
-			String message = NLS.bind("Location {0} must be a folder", location);
+			String message = NLS.bind(WorkspaceTeamCoreMessages.XobotRepositoryProvider_message_location_must_be_a_folder, location);
 			throw new TeamException(message);
 		}
 		

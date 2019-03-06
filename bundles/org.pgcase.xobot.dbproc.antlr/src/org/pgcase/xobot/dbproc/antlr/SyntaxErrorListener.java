@@ -50,7 +50,7 @@ public class SyntaxErrorListener extends BaseErrorListener {
 			for (String message : stack) {
 				reporter.reportIssue(recognizer, offendingSymbol, message, null);
 			}
-			String message = String.format("line %d position %d : %s [%s] %s", line, charPositionInLine, msg,
+			String message = String.format(DbprocAntlrMessages.getString("SyntaxErrorListener.error.details.text"), line, charPositionInLine, msg, //$NON-NLS-1$
 					offendingSymbol.toString(), e.getMessage());
 			reporter.reportIssue(recognizer, offendingSymbol, message, e);
 		}

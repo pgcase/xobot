@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.util.Collections;
 import java.util.Map;
 
+import org.pgcase.xobot.dbproc.antlr.DbprocAntlrMessages;
 import org.pgcase.xobot.dbproc.runtime.XIssueReporter;
 import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerDescriptor;
 import org.pgcase.xobot.dbproc.runtime.triggers.XTriggerExtractor;
@@ -39,7 +40,7 @@ public class AntlrXTriggerExtractor implements XTriggerExtractor {
 				XTriggerDescriptor parsed = PgTriggerParseHeader.parse(inputStream, reporter);
 				return Collections.singletonList(parsed);
 			} catch (IOException e) {
-				String message = String.format("Failed to process input with context %s", context);
+				String message = String.format(DbprocAntlrMessages.getString("AntlrXTriggerExtractor.error.input.processing.failure"), context); //$NON-NLS-1$
 				reporter.reportIssue(this, input, message, e);
 			}
 		}

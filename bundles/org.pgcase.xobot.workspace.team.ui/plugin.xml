@@ -25,7 +25,7 @@
    <extension
          point="org.eclipse.team.ui.configurationWizards">
       <wizard
-            name="Протянуть Хобот"
+            name="%wizard.project.configure.name"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             class="org.pgcase.xobot.workspace.team.ui.XobotConfigurationWizard"
             id="org.pgcase.xobot.workspace.team.ui.ConfigurationWizard">
@@ -84,7 +84,7 @@
                class="org.pgcase.xobot.workspace.team.ui.ShowHistoryAction"
                icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
                id="org.pgcase.xobot.workspace.team.ui.showHistory"
-               label="Show History"
+               label="%action.history.show.label"
                menubarPath="team.main/group4">
          </action>
       </objectContribution>
@@ -134,7 +134,7 @@
             class="org.pgcase.xobot.workspace.team.ui.XobotSynchronizeParticipant"
             icon="images/xobot16.png"
             id="org.pgcase.xobot.workspace.team.ui.xobot"
-            name="Пастбище Хобота"
+            name="%participant.name"
             persistent="false">
       </participant>
    </extension>
@@ -142,10 +142,10 @@
          point="org.eclipse.team.ui.synchronizeWizards">
       <wizard
             class="org.pgcase.xobot.workspace.team.ui.XobotSynchronizeWizard"
-            description="Провести синхронизацию со стэндами"
+            description="%wizard.synchronize.description"
             icon="images/xobot16.png"
             id="org.pgcase.xobot.workspace.team.ui.sync.xobot"
-            name="Синхронизировать Хоботом">
+            name="%wizard.synchronize.name">
       </wizard>
    </extension>
 
@@ -168,10 +168,10 @@
       <command
             defaultHandler="org.pgcase.xobot.workspace.team.ui.CompareToTargetHandler"
             id="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
-            name="Compare to Target">
+            name="%command.compare.name">
          <commandParameter
                id="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target.maturity"
-               name="Maturity"
+               name="%commandParameter.compare.name"
                optional="false">
          </commandParameter>
       </command>
@@ -193,7 +193,7 @@
                label="%compare.menu.label">
             <command
                   commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
-                  label="Экспериментальный стэнд..."
+                  label="%compare.experimental.label"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
@@ -211,7 +211,7 @@
             </command>
             <command
                   commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
-                  label="Интеграционный стэнд..."
+                  label="%compare.integration.label"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
@@ -229,7 +229,7 @@
             </command>
             <command
                   commandId="org.pgcase.xobot.workspace.team.ui.commands.command.compare.target"
-                  label="Стабильный стэнд..."
+                  label="%compare.stable.label"
                   style="push">
                <visibleWhen
                      checkEnabled="false">

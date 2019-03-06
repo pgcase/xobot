@@ -61,7 +61,7 @@ public class FunctionsActionProvider extends RegistryActionProvider {
 				structuredViewer.refresh();
 			}
 		};
-		action.setText("Open");
+		action.setText(DBProcUINavigatorMessages.FunctionsActionProvider_action_open_title);
 		return action;
 	}
 

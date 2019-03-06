@@ -67,8 +67,8 @@ public class FunctionDescriptorImpl implements XFunctionDescriptor {
 
 	@Override
 	public String toString() {
-		return "XFunctionDescriptor [name=" + name + ", returning=" + returning + ", args=" + args + ", options=" + options
-				+ "]";
+		return "XFunctionDescriptor [name=" + name + ", returning=" + returning + ", args=" + args + ", options=" + options //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+				+ "]"; //$NON-NLS-1$
 	}
 
 }

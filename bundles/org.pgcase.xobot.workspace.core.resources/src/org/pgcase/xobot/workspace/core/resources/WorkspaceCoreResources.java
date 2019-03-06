@@ -126,7 +126,7 @@ public class WorkspaceCoreResources {
 		if (project == null || !project.isAccessible()) {
 			return null;
 		}
-		return project.getFile(".xobot");
+		return project.getFile(".xobot"); //$NON-NLS-1$
 	}
 
 	public static void addBuilder(IProjectDescription description) {

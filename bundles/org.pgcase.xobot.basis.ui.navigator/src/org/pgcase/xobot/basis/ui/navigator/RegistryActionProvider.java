@@ -40,7 +40,7 @@ public class RegistryActionProvider extends CommonActionProvider {
 				getActionSite().getStructuredViewer().refresh();
 			}
 		};
-		action.setText("Refresh");
+		action.setText(BasisUiNavigatorMessages.RegistryActionProvider_action_refresh_text);
 		return action;
 	}
 

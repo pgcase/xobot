@@ -18,9 +18,9 @@ public class NewXobotProjectWizardPage extends LandscapeConfigurationPage {
 
 	public NewXobotProjectWizardPage() {
 		super(NewXobotProjectWizardPage.class.getName());
-		setTitle("Xobot Project");
-		setDescription("Xobot Project");
-		setMessage("Project name must be specified");
+		setTitle(WorkspaceUIIDEMessages.NewXobotProjectWizardPage_wizard_page_title);
+		setDescription(WorkspaceUIIDEMessages.NewXobotProjectWizardPage_wizard_page_description);
+		setMessage(WorkspaceUIIDEMessages.NewXobotProjectWizardPage_warning_no_project_name);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class NewXobotProjectWizardPage extends LandscapeConfigurationPage {
 		}
 		Label nameFieldILabel = new Label(composite, SWT.LEFT);
 		{
-			nameFieldILabel.setText("Project name:");
+			nameFieldILabel.setText(WorkspaceUIIDEMessages.NewXobotProjectWizardPage_project_name_field_label);
 			GridData data = new GridData();
 			data.horizontalAlignment = GridData.FILL;
 			data.grabExcessHorizontalSpace = false;
@@ -65,7 +65,7 @@ public class NewXobotProjectWizardPage extends LandscapeConfigurationPage {
 	
 	@Override
 	protected void loadWidgetValues() {
-		String prefix ="xobot_project_";
+		String prefix ="xobot_project_"; //$NON-NLS-1$
 		int postfix =1;
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		
@@ -79,7 +79,7 @@ public class NewXobotProjectWizardPage extends LandscapeConfigurationPage {
 	@Override
 	protected IStatus validateFields() {
 		if (projectName.isEmpty()) {
-			return createError("Необходимо задать имя проекта");
+			return createError(WorkspaceUIIDEMessages.NewXobotProjectWizardPage_error_no_project_name);
 		}
 		// TODO Auto-generated method stub
 		return super.validateFields();

@@ -55,8 +55,8 @@ class TriggerDescriptorImpl implements XTriggerDescriptor {
 
 	@Override
 	public String toString() {
-		return "TriggerDescriptorImpl [object=" + object + ", name=" + name + ", action=" + action + ", events=" + events
-				+ "]";
+		return "TriggerDescriptorImpl [object=" + object + ", name=" + name + ", action=" + action + ", events=" + events //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+				+ "]"; //$NON-NLS-1$
 	}
 
 }

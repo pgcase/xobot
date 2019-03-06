@@ -89,7 +89,7 @@ public class XFunctionDefinitionIndex extends XWorkspaceResource {
 
 	public void addBody(IFile body) throws CoreException {
 		IFile index = (IFile) getResource();
-		ByteArrayInputStream content = new ByteArrayInputStream(("\n" + body.getProjectRelativePath()).getBytes());
+		ByteArrayInputStream content = new ByteArrayInputStream(("\n" + body.getProjectRelativePath()).getBytes()); //$NON-NLS-1$
 		index.appendContents(content, false, true, null);
 	}
 

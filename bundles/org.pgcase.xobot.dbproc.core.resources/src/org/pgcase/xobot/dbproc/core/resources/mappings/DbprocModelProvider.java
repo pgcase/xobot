@@ -53,7 +53,7 @@ public class DbprocModelProvider extends ModelProvider {
 						// Removal may leave a stale reference in a index file
 						if (delta.getKind() == IResourceDelta.REMOVED) {
 							IStatus status = new ModelStatus(IStatus.ERROR, DbprocCoreResources.ID, getDescriptor().getId(), 
-									NLS.bind("Deleting body {0} may corrupt any index that references it.", resource.getFullPath()));
+									NLS.bind(DBProcCoreResourcesMappingsMessages.DbprocModelProvider_message_warning_body_deleting, resource.getFullPath()));
 							problems.add(status);
 						}
 					}
@@ -61,14 +61,14 @@ public class DbprocModelProvider extends ModelProvider {
 						// Removal may leave unreferenced body files around
 						if (delta.getKind() == IResourceDelta.REMOVED) {
 							IStatus status = new ModelStatus(IStatus.WARNING, DbprocCoreResources.ID, getDescriptor().getId(), 
-									NLS.bind("Deleting index {0} may result in unreferenced body files.", resource.getFullPath()));
+									NLS.bind(DBProcCoreResourcesMappingsMessages.DbprocModelProvider_message_warning_index_deleting, resource.getFullPath()));
 							problems.add(status);
 						}
 						if (delta.getKind() == IResourceDelta.ADDED 
 								&& ((delta.getFlags() & IResourceDelta.COPIED_FROM) > 0)) {
 							// Copying will result in two index files that reference the same body
 							IStatus status = new ModelStatus(IStatus.ERROR, DbprocCoreResources.ID, getDescriptor().getId(), 
-									NLS.bind("Copying body {0} may corrupt the index.", delta.getMovedFromPath()));
+									NLS.bind(DBProcCoreResourcesMappingsMessages.DbprocModelProvider_message_warning_body_copying, delta.getMovedFromPath()));
 							problems.add(status);
 						}
 					}
@@ -83,7 +83,7 @@ public class DbprocModelProvider extends ModelProvider {
 		if (problems.size() == 1)
 			return (IStatus)problems.get(0);
 		else if (problems.size() > 1) {
-			return new MultiStatus(DbprocCoreResources.ID, 0, (IStatus[]) problems.toArray(new IStatus[problems.size()]), "Multiple potential side effects have been found.",  null);
+			return new MultiStatus(DbprocCoreResources.ID, 0, (IStatus[]) problems.toArray(new IStatus[problems.size()]), DBProcCoreResourcesMappingsMessages.DbprocModelProvider_message_warning_potential_side_effects,  null);
 		}
 		return super.validateChange(delta, monitor);
 	}

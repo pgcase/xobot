@@ -31,7 +31,7 @@ public class MD5 {
 		
 	    byte[] digest = new byte[0];
  
-	    MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+	    MessageDigest messageDigest = MessageDigest.getInstance("MD5"); //$NON-NLS-1$
 	    messageDigest.reset();
         messageDigest.update(st.getBytes());
         digest = messageDigest.digest();

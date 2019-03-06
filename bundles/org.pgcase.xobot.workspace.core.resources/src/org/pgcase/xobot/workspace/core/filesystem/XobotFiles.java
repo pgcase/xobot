@@ -26,7 +26,7 @@ public class XobotFiles {
 	
 	public static URI composeInstallLocationRoot(String name) {
 		//xobot://osgi.install.area/name
-		String pattern = "{0}://{1}/{2}";
+		String pattern = "{0}://{1}/{2}"; //$NON-NLS-1$
 		Object[] bindings = new Object[] {XOBOT_SCHEMA, OSGI_INSTALL_AREA, name};
 		String str = NLS.bind(pattern, bindings);
 		return URI.create(str);

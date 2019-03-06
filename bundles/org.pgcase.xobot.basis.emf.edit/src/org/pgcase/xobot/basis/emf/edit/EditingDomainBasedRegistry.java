@@ -136,7 +136,7 @@ public abstract class EditingDomainBasedRegistry<C> implements EditingDomainRegi
 	}
 
 	protected URI createURI(String source) {
-		String platformResource = "platform:";
+		String platformResource = "platform:"; //$NON-NLS-1$
 		if (source.startsWith(platformResource)) {
 			return URI.createURI(source);
 		}

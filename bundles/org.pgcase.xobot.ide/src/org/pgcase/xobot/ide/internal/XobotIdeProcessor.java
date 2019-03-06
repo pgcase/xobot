@@ -37,8 +37,8 @@ public class XobotIdeProcessor {
 	@Execute
 	public void execute() {
 		MWindow window = application.getChildren().get(0);
-		window.setLabel("Xobot IDE");
-		window.setIconURI("platform:/plugin/org.pgcase.xobot.ide/images/xobot32.png");
+		window.setLabel(XobotIdeInternalMessages.getString("XobotIdeProcessor.application_title")); //$NON-NLS-1$
+		window.setIconURI("platform:/plugin/org.pgcase.xobot.ide/images/xobot32.png"); //$NON-NLS-1$
 	}
 
 }

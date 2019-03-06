@@ -66,7 +66,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	private void createActions() {
-		deleteAction = new Action("Delete") {
+		deleteAction = new Action(DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_action_delete) {
 			public void run() {
 				IStructuredSelection selection = (IStructuredSelection)getContext().getSelection();
 				try {
@@ -83,7 +83,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 				}
 			}
 		};
-		newFolderAction = new Action("Create Folder") {
+		newFolderAction = new Action(DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_action_create_folder) {
 			public void run() {
 				IContainer container = getSelectedContainer();
 				if (container != null) {
@@ -100,7 +100,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 			}
 
 			private String promptForName() {
-				InputDialog dialog = new InputDialog(getShell(), "Enter Name", "Enter the name of the new folder", "New Folder", null);
+				InputDialog dialog = new InputDialog(getShell(), DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_folder_title, DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_folder_text, DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_folder_button, null);
 				int result = dialog.open();
 				if (result == Window.OK) {
 					return dialog.getValue();
@@ -108,20 +108,20 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 				return null;
 			}
 		};
-		newFunctionIndexAction = new Action("Create Function Index") {
+		newFunctionIndexAction = new Action(DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_action_create_function_index) {
 			public void run() {
 				IContainer container = getSelectedContainer();
 				if (container != null) {
 					String name = promptForName();
 					if (name == null)
 						return;
-					String suffix = "." + DbprocCoreResources.FUNCTION_DEFINITION_INDEX_EXTENSION;
+					String suffix = "." + DbprocCoreResources.FUNCTION_DEFINITION_INDEX_EXTENSION; //$NON-NLS-1$
 					if (!name.endsWith(suffix)) {
 						name += suffix;
 					}
 					IFile file = container.getFile(new Path(name));
 					try {
-						file.create(new ByteArrayInputStream("".getBytes()), false, null);
+						file.create(new ByteArrayInputStream("".getBytes()), false, null); //$NON-NLS-1$
 					} catch (CoreException e) {
 						ErrorDialog.openError(getShell(), null, null, e.getStatus());
 					}
@@ -129,7 +129,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 			}
 
 			private String promptForName() {
-				InputDialog dialog = new InputDialog(getShell(), "Enter Name", "Enter the name of the new function index", "New Function Index", null);
+				InputDialog dialog = new InputDialog(getShell(), DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_index_title, DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_index_text, DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_index_button, null);
 				int result = dialog.open();
 				if (result == Window.OK) {
 					return dialog.getValue();
@@ -137,7 +137,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 				return null;
 			}
 		};
-		newFunctionBodyAction = new Action("Create Function Body") {
+		newFunctionBodyAction = new Action(DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_action_create_body) {
 			public void run() {
 				XFunctionDefinitionIndex functionIndex = getSelectedFunctionFile();
 				if (functionIndex != null) {
@@ -145,7 +145,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 					if (path == null) {
 						return;
 					}
-					String suffix = "." + DbprocCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION;
+					String suffix = "." + DbprocCoreResources.FUNCTION_DEFINITION_BODY_EXTENSION; //$NON-NLS-1$
 					if (!path.endsWith(suffix)) {
 						path += suffix;
 					}
@@ -155,7 +155,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 						IContainer container = (IContainer) resource;
 						IFile file = container.getFile(new Path(path));
 						try {
-							file.create(new ByteArrayInputStream("".getBytes()), false, null);
+							file.create(new ByteArrayInputStream("".getBytes()), false, null); //$NON-NLS-1$
 							functionIndex.addBody(file);
 						} catch (CoreException e) {
 							ErrorDialog.openError(getShell(), null, null, e.getStatus());
@@ -167,7 +167,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 			}
 
 			private String promptForPath(XProjectFolderDescriptor parent) {
-				InputDialog dialog = new InputDialog(getShell(), "Enter Path", "Enter the path of the new function body relative to " + parent.getPath(), "New Function Body", null);
+				InputDialog dialog = new InputDialog(getShell(), DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_body_title, DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_body_text + parent.getPath(), DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_dialog_create_body_button, null);
 				int result = dialog.open();
 				if (result == Window.OK) {
 					return dialog.getValue();
@@ -175,7 +175,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 				return null;
 			}
 		};
-		makeDirty = new Action("Make Dirty") {
+		makeDirty = new Action(DBProcTeamUiNavigatorMessages.DbprocNavigatorActionProvider_action_make_dirty) {
 			public void run() {
 				IStructuredSelection selection = (IStructuredSelection)getContext().getSelection();
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
@@ -189,7 +189,7 @@ public class DbprocNavigatorActionProvider extends CommonActionProvider {
 			}
 
 			private DbprocSaveablesProvider getSaveablesProvider() {
-				ITreeContentProvider provider = getActionSite().getContentService().getContentExtensionById("org.eclipse.team.examples.model.navigator").getContentProvider();
+				ITreeContentProvider provider = getActionSite().getContentService().getContentExtensionById("org.eclipse.team.examples.model.navigator").getContentProvider(); //$NON-NLS-1$
 				return (DbprocSaveablesProvider)Adapters.adapt(provider, SaveablesProvider.class);
 			}
 		};

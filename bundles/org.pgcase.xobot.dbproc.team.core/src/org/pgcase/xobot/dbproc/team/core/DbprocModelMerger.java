@@ -75,7 +75,7 @@ public class DbprocModelMerger extends ResourceMappingMerger {
 		try {
 			IStatus status;
 			if (mergeContext.getType() == SynchronizationContext.THREE_WAY) {
-				monitor.beginTask("Merging Xobot elements", 100);
+				monitor.beginTask(DBProcTeamCoreMessages.DbprocModelMerger_task_merging_xobot_elements_text, 100);
 				status = mergeModelElements(mergeContext, SubMonitor.convert(monitor, 50));
 				if (!status.isOK())
 					return status;
@@ -106,7 +106,7 @@ public class DbprocModelMerger extends ResourceMappingMerger {
 				}
 			}
 			if (failures.size() > 0) {
-				return new MergeStatus(TeamCore.ID, "Several objects could not be merged", getMappings(failures));
+				return new MergeStatus(TeamCore.ID, DBProcTeamCoreMessages.DbprocModelMerger_error_objects_merge, getMappings(failures));
 			}
 			return Status.OK_STATUS;
 		} finally {

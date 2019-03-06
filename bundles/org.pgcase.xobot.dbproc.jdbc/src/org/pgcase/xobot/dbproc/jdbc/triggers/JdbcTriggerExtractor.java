@@ -61,7 +61,7 @@ public class JdbcTriggerExtractor implements XTriggerExtractor {
 				}
 				return triggers;
 			} catch (Exception e) {
-				String message = String.format("Failed to process input with context %s", context);
+				String message = String.format(JDBCTriggersMessages.getString("JdbcTriggerExtractor.message_processing_input_failure"), context); //$NON-NLS-1$
 				reporter.reportIssue(this, input, message, e);
 			}
 		}

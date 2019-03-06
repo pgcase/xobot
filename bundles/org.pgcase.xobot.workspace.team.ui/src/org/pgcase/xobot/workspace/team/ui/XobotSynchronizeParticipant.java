@@ -28,6 +28,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.team.core.TeamException;
 import org.eclipse.team.core.mapping.ISynchronizationScopeManager;
@@ -68,7 +69,7 @@ public class XobotSynchronizeParticipant extends ModelSynchronizeParticipant {
 						SyncInfo info = XobotSystemSubscriber.getInstance().getSyncInfo(resource);
 						IResourceVariant variant = info.getRemote();
 						if (variant != null) {
-							return text + " (" + variant.getContentIdentifier() + ")";
+							return NLS.bind(WorkspaceTeamUIMessages.XobotSynchronizeParticipant_text_decorated, text, variant.getContentIdentifier());
 						}
 					}
 				}
@@ -93,9 +94,9 @@ public class XobotSynchronizeParticipant extends ModelSynchronizeParticipant {
 		
 		protected void configureMergeAction(String mergeActionId, Action action) {
 			if (mergeActionId == SynchronizationActionProvider.MERGE_ACTION_ID) {
-				action.setText("Get");
+				action.setText(WorkspaceTeamUIMessages.XobotSynchronizeParticipant_action_get_text);
 			} else if (mergeActionId == SynchronizationActionProvider.MARK_AS_MERGE_ACTION_ID) {
-				action.setText("Ignore Remote");
+				action.setText(WorkspaceTeamUIMessages.XobotSynchronizeParticipant_action_ignore_remote_text);
 			} else {
 				super.configureMergeAction(mergeActionId, action);
 			}

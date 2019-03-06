@@ -86,8 +86,8 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 		Map<String, XTargetDescriptor> resolvedTargets = WorkspaceCoreResources.resolveTargets(targetRegistry, projectTargets);
 
 		mainPage = new XobotConfigurationWizardPage(resolvedSources, resolvedTargets);
-		String title = "Протянуть Хобот";
-		String description = "Хобот поможет организовать работу с процедурными расширениями";
+		String title = WorkspaceTeamUIMessages.XobotConfigurationWizard_main_page_title;
+		String description = WorkspaceTeamUIMessages.XobotConfigurationWizard_main_page_description;
 		mainPage.setTitle(title);
 		mainPage.setDescription(description);
 		addPage(mainPage);
@@ -109,8 +109,8 @@ public class XobotConfigurationWizard extends Wizard implements IConfigurationWi
 		} catch (TeamException e) {
 			ErrorDialog.openError(
 				getShell(),
-				"Хобот Устал",
-				"Не получается протянуть Хобот",
+				WorkspaceTeamUIMessages.XobotConfigurationWizard_error_title,
+				WorkspaceTeamUIMessages.XobotConfigurationWizard_error_description,
 				e.getStatus());
 			return false;
 		}

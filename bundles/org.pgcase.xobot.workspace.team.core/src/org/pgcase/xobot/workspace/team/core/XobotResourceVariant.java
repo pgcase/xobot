@@ -61,7 +61,7 @@ public class XobotResourceVariant extends CachedResourceVariant {
 			return ioFile.getCanonicalPath();
 		} catch (IOException e) {
 			IStatus status = new Status(IStatus.ERROR, TeamCore.ID, 0, 
-					WorkspaceTeamCoreMessages.XobotResourceVariant_message_failed_to_obtain_canonical_path + ioFile.getAbsolutePath(), e);
+					NLS.bind(WorkspaceTeamCoreMessages.XobotResourceVariant_message_failed_to_obtain_canonical_path, ioFile.getAbsolutePath()), e);
 			//FIXME: report
 			e.printStackTrace();
 			return ioFile.getAbsolutePath();

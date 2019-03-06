@@ -28,6 +28,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.team.core.TeamException;
 import org.eclipse.team.core.mapping.ISynchronizationScopeManager;
@@ -68,7 +69,7 @@ public class XobotSynchronizeParticipant extends ModelSynchronizeParticipant {
 						SyncInfo info = XobotSystemSubscriber.getInstance().getSyncInfo(resource);
 						IResourceVariant variant = info.getRemote();
 						if (variant != null) {
-							return text + " (" + variant.getContentIdentifier() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+							return NLS.bind(WorkspaceTeamUIMessages.XobotSynchronizeParticipant_text_decorated, text, variant.getContentIdentifier());
 						}
 					}
 				}

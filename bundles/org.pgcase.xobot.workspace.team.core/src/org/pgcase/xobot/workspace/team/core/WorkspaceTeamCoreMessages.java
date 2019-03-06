@@ -8,6 +8,7 @@ public class WorkspaceTeamCoreMessages extends NLS {
 	public static String XobotRepositoryProvider_message_location_must_be_a_folder;
 	public static String XobotResourceVariant_message_failed_to_fetch_contents;
 	public static String XobotResourceVariant_message_failed_to_obtain_canonical_path;
+	public static String XobotSystemSubscriber_subscriber_name;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, WorkspaceTeamCoreMessages.class);

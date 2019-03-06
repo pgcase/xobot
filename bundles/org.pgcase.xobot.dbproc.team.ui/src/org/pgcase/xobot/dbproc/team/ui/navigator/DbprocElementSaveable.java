@@ -7,6 +7,7 @@ import org.eclipse.core.resources.mapping.ResourceMapping;
 import org.eclipse.core.runtime.Adapters;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.Saveable;
 import org.pgcase.xobot.dbproc.core.resources.XFunctionDefinitionIndex;
 import org.pgcase.xobot.workspace.runtime.XWorkspaceElementDescriptor;
@@ -51,7 +52,7 @@ public class DbprocElementSaveable extends Saveable {
 	}
 
 	public String getToolTipText() {
-		return DBProcTeamUiNavigatorMessages.DbprocElementSaveable_tooltip_saveable_text + getName();
+		return NLS.bind(DBProcTeamUiNavigatorMessages.DbprocElementSaveable_tooltip_saveable_text, getName());
 	}
 
 	public int hashCode() {

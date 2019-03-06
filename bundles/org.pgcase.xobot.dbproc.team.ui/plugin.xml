@@ -30,7 +30,7 @@
             icon="images/xobot16.png"
             id="org.pgcase.xobot.workspace.team.ui.navigatorContent.model"
             labelProvider="org.pgcase.xobot.workspace.team.ui.navigator.XobotNavigatorLabelProvider"
-            name="Xobot Model"
+            name="%navigatorContent.model.name"
             providesSaveables="true">
          <triggerPoints>
             <or>
@@ -73,7 +73,7 @@
             icon="images/xobot16.png"
             id="org.pgcase.xobot.workspace.team.ui.navigatorContent.xobot"
             labelProvider="org.pgcase.xobot.dbproc.team.ui.navigator.DbprocSyncLabelProvider"
-            name="Xobot Sync"
+            name="%navigatorContent.sync.name"
             priority="normal">
          <actionProvider
                class="org.pgcase.xobot.dbproc.team.ui.navigator.DbprocSyncActionProvider">

@@ -26,7 +26,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="org.pgcase.xobot.workspace.ui.ide.newWizards.category.default"
-            name="Xobot">
+            name="%category.name">
       </category>
       <wizard
             category="org.pgcase.xobot.workspace.ui.ide.newWizards.category.xobot"
@@ -34,10 +34,10 @@
             descriptionImage="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.workspace.ui.ide.newWizards.wizard.project.xobot"
-            name="Xobot Project"
+            name="%wizard.name"
             project="true">
          <description>
-            Creates new Xobot project using Xobot file system
+            %wizard.description
          </description>
       </wizard>
       <primaryWizard
@@ -50,7 +50,7 @@
             class="org.pgcase.xobot.workspace.ui.ide.XobotPerspectiveFactory"
             icon="platform:/plugin/org.pgcase.xobot.workspace.team.ui/images/xobot16.png"
             id="org.pgcase.xobot.workspace.ui.ide.perspectives.perspective.xobot"
-            name="Xobot">
+            name="%perspective.name">
       </perspective>
    </extension>
 

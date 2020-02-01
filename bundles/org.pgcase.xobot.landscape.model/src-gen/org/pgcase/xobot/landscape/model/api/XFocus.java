@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-2019 ArSysOp
+ * Copyright (c) 2018-2020 ArSysOp
  */
 package org.pgcase.xobot.landscape.model.api;
 

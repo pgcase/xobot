@@ -11,7 +11,7 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.pgcase.xobot.basis.ui.navigator.RegistryActionProvider;
 
 /*******************************************************************************
- * Copyright (c) 2018-2019 ArSysOp
+ * Copyright (c) 2019-2020 ArSysOp
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
